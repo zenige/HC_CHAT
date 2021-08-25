@@ -1,0 +1,28 @@
+@mixin portal-layout {
+  margin-left: 490px;
+  min-height: calc(100vh - 52px);
+  padding-top: 52px;
+
+  @media (max-width: 1200px) {
+    margin: 0;
+  }
+
+  .image-banner {
+    display: block;
+    background: var(--vlearn-grey-light);
+    position: fixed;
+    height: 100%;
+    width: 490px;
+    top: 0;
+    left: 0;
+
+    img {
+      width: 100%;
+      position: absolute;
+    }
+
+    @media (max-width: 1200px) {
+      display: none;
+    }
+  }
+}

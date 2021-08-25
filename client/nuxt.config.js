@@ -3,33 +3,70 @@ export default {
   head: {
     title: 'client',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        href: 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900',
+        rel: 'stylesheet',
+        type: 'text/css',
+      },
+      {
+        href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
+        rel: 'stylesheet',
+      },
+    ],
   },
+
+  /**
+   *  Global JS
+   */
+  script: [
+    { src: 'assets/hc-libs/js/main/jquery.min.js' },
+    { src: 'assets/hc-libs/js/main/bootstrap.bundle.min.js' },
+    { src: 'assets/hc-libs/js/plugins/loaders/blockui.min.js' },
+    { src: 'assets/hc-libs/js/app.js' },
+  ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'assets/hc-libs/css/icons/icomoon/styles.css',
+    'assets/hc-libs/css/bootstrap.min.css',
+    'assets/hc-libs/css/bootstrap_limitless.min.css',
+    'assets/hc-libs/css/layout.min.css',
+    'assets/hc-libs/css/components.min.css',
+    'assets/hc-libs/css/colors.min.css',
+    'assets/hc-libs/css/font.css',
+    'assets/hc-libs/css/cd-tabs_vla.css',
+    'assets/hc-libs/css/vlearn.css',
+    'assets/hc-libs/css/main_class.css',
+    'assets/hc-libs/css/main_vl.css',
+    'assets/scss/_global.scss',
+    'assets/scss/_override.scss',
+    'assets/scss/_variables.scss',
+    'assets/scss/_baseline.scss',
+    'assets/hc-libs/css/icons/material/icons.css',
   ],
 
+  styleResources: {
+    scss: ['/assets/scss/_variables.scss'],
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
+  buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -43,6 +80,5 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
 }

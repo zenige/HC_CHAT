@@ -1,0 +1,20 @@
+$small-phone-width: 325px;
+$phone-width: 520px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+$tv-width: 1200px;
+$header-larger-width: 1440px;
+$large-tv-width: 1600px;
+$hd-screen: 1920px;
+
+@mixin for-tablet-and-down {
+  @media (max-width: #{tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin for-tablet-and-up {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}

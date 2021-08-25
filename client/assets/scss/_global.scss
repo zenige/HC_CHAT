@@ -1,0 +1,102 @@
+:root {
+  --vlearn-primary: #ce1f29;
+  --vlearn-grey: #666666;
+  --vlearn-grey-dark: #888888;
+  --vlearn-grey-light: #f3f3f3;
+  --vlearn-black: #333333;
+  --vlearn-white: #ffffff;
+
+  --swiper-navigation-size: 20px !important;
+  --swiper-theme-color: #888888 !important;
+}
+
+* :disabled {
+  pointer-events: none;
+}
+
+.fit-image {
+  object-fit: cover;
+}
+
+.helper-text {
+  display: block;
+  text-align: left;
+  font-size: 18px;
+
+  &.error {
+    color: #cc0000;
+  }
+}
+
+.b-toast-danger {
+  .toast {
+    background-color: var(--vlearn-primary);
+    color: var(--vlearn-white);
+    font-size: 16px;
+  }
+}
+
+.b-toast-success {
+  .toast {
+    background-color: #28a745;
+    color: var(--vlearn-white);
+    font-size: 16px;
+  }
+}
+
+.nuxt-progress {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 2px;
+  width: 0%;
+  opacity: 1;
+  transition: width 0.1s, opacity 0.4s;
+  background-color: var(--vlearn-primary);
+  z-index: 999999;
+}
+
+.fetch-more__btn {
+  margin: 0 24px;
+  max-width: 380px;
+}
+
+.hoverable {
+  cursor: pointer;
+}
+
+.red-hoverable:hover {
+  cursor: pointer;
+  color: #cc0000 !important;
+  text-decoration: none;
+}
+
+.btn_vla_grey_light_border {
+  color: #888;
+  background-color: transparent;
+  border-radius: 5rem;
+  font-size: 18px;
+  padding: 0.1375rem 1rem;
+  border: 1px solid #d9d9d9;
+
+  &:hover {
+    color: #cccccc !important;
+    background-color: transparent !important;
+    border: 1px solid #cccccc !important;
+  }
+
+  i {
+    color: #cccccc;
+    margin-right: 4px;
+  }
+}
+
+.h-120-p {
+  height: 120px;
+}
+
+.vl_navbar .card_list_item:focus .bg_playvdo2,
+.vl_navbar .card_list_item:hover .bg_playvdo2 {
+  filter: brightness(50%);
+}

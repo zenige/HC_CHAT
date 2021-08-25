@@ -1,0 +1,173 @@
+.form_border_grey {
+  border-color: #ddd;
+}
+
+.btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):hover,
+.btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):not([disabled]):not(.disabled).active,
+.btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):not([disabled]):not(.disabled):active,
+.show > .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']).dropdown-toggle {
+  color: #ce1f29 !important;
+}
+
+.vl_navbar {
+  .form-control {
+    &:disabled {
+      background-color: #eee;
+    }
+  }
+}
+
+// .form-control:focus {
+//   background-color: transparent;
+// }
+
+.table-responsive {
+  min-height: 300px;
+}
+
+.mx-datepicker,
+.mx-input-wrapper {
+  width: 100% !important;
+
+  input {
+    padding: 7px 14px;
+    font-family: 'TrueTextBOnline-Regular';
+    font-style: normal;
+    font-size: 18px;
+    height: 48px;
+    cursor: pointer;
+
+    border: 1px solid #ddd !important;
+    border-radius: 0.4rem;
+  }
+}
+
+.mx-datepicker-popup {
+  transition: none !important;
+}
+
+.mx-icon-calendar {
+  margin-right: 8px;
+}
+
+.mx-datepicker-content {
+  font-family: 'TrueTextBOnline-Regular';
+  color: #333;
+
+  .mx-calendar {
+    width: 500px;
+    padding: 8px;
+  }
+
+  .mx-calendar-header,
+  .mx-time-header {
+    height: 24px;
+    line-height: 24px;
+    color: #333;
+
+    &:hover {
+      background-color: #eee;
+      border-radius: 4px;
+    }
+  }
+
+  .cell {
+    color: #333;
+    border-radius: 4px;
+
+    &.today {
+      color: #333;
+    }
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  .mx-table-date td,
+  .mx-table-date th {
+    height: 20px;
+  }
+
+  .mx-calendar-content {
+    height: 160px;
+
+    .cell {
+      &.active {
+        &,
+        &:hover {
+          color: #fff;
+          background-color: var(--vlearn-primary);
+        }
+      }
+
+      &:hover {
+        background-color: #eee;
+        color: #333;
+      }
+    }
+  }
+
+  .mx-btn {
+    color: #333;
+
+    &:hover {
+      border-color: #eee;
+      color: #333;
+    }
+  }
+}
+
+.switchery {
+  box-shadow: rgb(223, 223, 223) 0px 0px 0px 0px inset;
+  border-color: rgb(223, 223, 223);
+  background-color: rgb(255, 255, 255);
+  transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s;
+
+  .knob {
+    left: 0px;
+    transition: background-color 0.4s ease 0s, left 0.2s ease 0s;
+  }
+
+  &.checked {
+    background-color: rgb(100, 189, 99);
+    border-color: rgb(100, 189, 99);
+    box-shadow: rgb(100, 189, 99) 0px 0px 0px 9px inset;
+    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s;
+
+    .knob {
+      left: 18px;
+      background-color: rgb(255, 255, 255);
+      transition: background-color 0.4s ease 0s, left 0.2s ease 0s;
+    }
+  }
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: unset !important;
+}
+
+.btn_vla_red_light_border {
+  color: #cc0000 !important;
+  background-color: #fff;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  padding: 0.1375rem 1.5rem;
+  border: 1px solid #cc0000 !important;
+}
+header {
+  background: inherit;
+}
+
+.txt_true_bighead_sm {
+  font-family: 'TrueTextBOnline-Bold';
+  font-style: normal;
+  font-size: 20px;
+  color: #000000 !important;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+
+.bg_grey_F1 {
+  background-color: #f1f1f1;
+}
