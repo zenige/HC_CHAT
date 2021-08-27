@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -33,7 +33,7 @@ input, textarea {
   font-size: 1.6rem;
 }*/
 
-/* -------------------------------- 
+/* --------------------------------
 
 Responsive Tabbed Navigation - by CodyHouse.co
 
@@ -79,7 +79,13 @@ header h1 {
     width: 50px;
     z-index: 1;
     pointer-events: none;
-    background: -webkit-gradient(linear, right top, left top, from(#f3f3f3), to(rgba(243, 243, 243, 0)));
+    background: -webkit-gradient(
+      linear,
+      right top,
+      left top,
+      from(#f3f3f3),
+      to(rgba(243, 243, 243, 0))
+    );
     background: linear-gradient(to left, #f3f3f3, rgba(243, 243, 243, 0));
     visibility: visible;
     opacity: 1;
@@ -282,14 +288,14 @@ a.link {
   -webkit-text-decoration-skip: objects;
 }
 a.link:hover {
-  color: #cc0000;
+  color: #cc338b;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   opacity: 0.7;
 }
 a.link.active {
-  color: #cc0000;
+  color: #cc338b;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -526,7 +532,7 @@ a.link.disable img {
 
 /* ///////////////////////////////////// */
 a.link-2:hover {
-  color: #cc0000;
+  color: #cc338b;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -534,7 +540,7 @@ a.link-2:hover {
   border-bottom: 3px solid;
 }
 a.link-2.active {
-  color: #cc0000;
+  color: #cc338b;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -571,7 +577,7 @@ a.link-2.disable img {
     padding-right: 30px; */
 }
 .cd-tabs__navigation-2 a {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Kanit-Light';
   position: relative;
   display: block;
   height: 35px;
@@ -594,7 +600,7 @@ a.link-2.disable img {
   white-space: nowrap;
 }
 .cd-tabs__navigation-2 a:hover {
-  color: #cc0000;
+  color: #cc338b;
 }
 .cd-tabs__navigation-2 a.cd-selected {
   background-color: #ffffff !important;

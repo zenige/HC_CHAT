@@ -5,7 +5,8 @@
 .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):hover,
 .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):not([disabled]):not(.disabled).active,
 .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']):not([disabled]):not(.disabled):active,
-.show > .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']).dropdown-toggle {
+.show
+  > .btn-outline:not(.disabled):not(:disabled):not([class*='alpha-']).dropdown-toggle {
   color: #ce1f29 !important;
 }
 
@@ -31,7 +32,7 @@
 
   input {
     padding: 7px 14px;
-    font-family: 'TrueTextBOnline-Regular';
+    font-family: 'Kanit-Light';
     font-style: normal;
     font-size: 18px;
     height: 48px;
@@ -51,7 +52,7 @@
 }
 
 .mx-datepicker-content {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Kanit-Light';
   color: #333;
 
   .mx-calendar {
@@ -133,7 +134,8 @@
     background-color: rgb(100, 189, 99);
     border-color: rgb(100, 189, 99);
     box-shadow: rgb(100, 189, 99) 0px 0px 0px 9px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s;
+    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+      background-color 1.2s ease 0s;
 
     .knob {
       left: 18px;
@@ -148,19 +150,19 @@
 }
 
 .btn_vla_red_light_border {
-  color: #cc0000 !important;
+  color: #cc338b !important;
   background-color: #fff;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 1.5rem;
-  border: 1px solid #cc0000 !important;
+  border: 1px solid #cc338b !important;
 }
 header {
   background: inherit;
 }
 
 .txt_true_bighead_sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Kanit-regular';
   font-style: normal;
   font-size: 20px;
   color: #000000 !important;
