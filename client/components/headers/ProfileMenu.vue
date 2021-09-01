@@ -1,20 +1,16 @@
 <template>
   <div class="vlearn-profile-menu vlearn-profile-menu-container">
     <div class="vlearn-profile-menu-header">
-      <a href="#">
+      <nuxt-link to="/account/Profile">
         <img class="profile-image" :src="defaultProfileUrl" />
-      </a>
+      </nuxt-link>
       <!-- <div class="profile-name">{{ (user && user.firstname) || '-' }} {{ (user && user.lastname) || '-' }}</div> -->
       <div class="profile-name">
-        <!-- <template v-if="user && user.firstname">
-          {{ user && user.firstname }} {{ user && user.lastname }}
-        </template> -->
+        <!-- <template> Bawornsak Luachan </template> -->
         <template>
-          <a href="#"> <span>Login</span> </a>
+          <nuxt-link to="/authentication/Login"> <span>Login</span> </nuxt-link>
           <span
             style="
-              margin-left: 5px;
-              margin-right: 5px;
               hover: {
                 color: '#000000';
               }
@@ -22,50 +18,52 @@
           >
             &nbsp;|&nbsp;</span
           >
-          <a href="#">
+          <a href="/authentication/Register">
             <span>Register</span>
           </a>
         </template>
       </div>
-      <!-- <div class="profile-email">{{ user && user.email }}</div> -->
-      <!-- <button class="red-hover-btn" @click="logout()">
-        Sign out
-      </button> -->
+      <!-- <div class="profile-email">nuiwitclup@gmail.com</div> -->
+      <!-- <button class="red-hover-btn" @click="logout()">Sign out</button> -->
     </div>
-    <!-- <div class="vlearn-profile-menu-body">
+    <div class="vlearn-profile-menu-body">
       <div>
-        <template v-if="user && user.firstname && user && user.lastname">
-          <nuxt-link :to="localePath('/profile')" class="vlearn-profile-menu-item">
+        <template>
+          <nuxt-link to="/account/Profile" class="vlearn-profile-menu-item">
             <div>Profile</div>
           </nuxt-link>
         </template>
-        <div class="vlearn-profile-menu-item" @click="openChooseLanguageModal">
-          <div>Language</div>
-          <div class="txt_vl_20p_gray88_h_red language-selector">{{ currentLanguage }}</div>
-        </div>
       </div>
-    </div> -->
+    </div>
 
-    <!-- <template v-if="workspaces.length > 0 && !superAdminUser">
-      <div class="dropdown-item txt_vl_head d-flex flex-row text-left txt_black_nolink">
-        <div class="w_150p txt_true_Reg">Workspace</div>
-      </div>
+    <template>
       <nuxt-link
-        v-for="workspace in workspaces"
-        :key="workspace.id"
-        :to="/workspace/ + workspace.id"
+        to="/chatbotTraning/main"
         class="dropdown-item txt_vl_head d-flex flex-row text-left"
       >
         <div class="w_150p">
           <img
-            :src="(workspace.image && workspace.image.url) || defaultWorkspaceUrl"
-            class="rounded-circle align-middle w-32p img-item"
+            src="~/assets/hc-libs/images/main/icon_healthcare.png"
+            class="rounded-circle align-middle w-32p img-item mr-1"
             loading="lazy"
           />
-          {{ workspace.name }}
+          Chatbot Training
         </div>
       </nuxt-link>
-    </template> -->
+      <nuxt-link
+        to="#"
+        class="dropdown-item txt_vl_head d-flex flex-row text-left"
+      >
+        <div class="w_150p">
+          <img
+            src="~/assets/hc-libs/images/main/icon_patient-management.png"
+            class="rounded-circle align-middle w-32p img-item mr-1"
+            loading="lazy"
+          />
+          Patient Management
+        </div>
+      </nuxt-link>
+    </template>
 
     <!-- <div class="vlearn-profile-menu-footer">
       <div class="vlearn-profile-menu-link">
@@ -79,7 +77,7 @@
 <script>
 import { mapState } from 'vuex'
 import defaultProfileUrl from '~/assets/hc-libs/images/main/face_default.png'
-// import defaultWorkspaceUrl from '~/assets/vlearn-libs/images/vlstore/default_photo_2.jpg'
+import defaultWorkspaceUrl from '~/assets/hc-libs/images/vlstore/default_photo_2.jpg'
 // import { isSuperAdminUser } from '~/helpers/user'
 
 export default {
@@ -88,7 +86,7 @@ export default {
     // superAdminUser: false,
     // isShowingChooseLanguageModal: false,
     defaultProfileUrl,
-    // defaultWorkspaceUrl,
+    defaultWorkspaceUrl,
   }),
   computed: {
     // ...mapState('auth', ['user']),
@@ -159,7 +157,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    right: 54px;
+    right: 25px;
     color: #888888;
     background: #fff;
     top: 54px;
@@ -247,7 +245,7 @@ export default {
   }
 
   .txt_vl_head {
-    font-family: 'TrueTextBOnline-bold';
+    font-family: 'TrueTextBOnline-Bold';
     font-style: normal;
     color: #000000;
     line-height: 1em;

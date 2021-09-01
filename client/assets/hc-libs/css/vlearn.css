@@ -14,7 +14,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -104,16 +104,16 @@ body {
   color: #cc338b;
 }
 .vl_navbar .txt_navtab {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
 }
 .vl_navbar .txt_iconmenuleft {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 12px;
   line-height: 1.5;
 }
 .vl_navbar .txt_navtab-user {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
   color: #353535;
 }
@@ -255,39 +255,39 @@ body {
   color: #cc338b;
 }
 .vl_navbar .txt_namehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #cc338b;
   line-height: 1em;
 }
 .vl_navbar .txt_icttalent_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #cc338b;
   line-height: 1.2em;
 }
 .vl_navbar .txt_welcome {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 18px;
   color: #000;
   line-height: 1.8em;
 }
 .vl_navbar .txt_nameposition {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 16px;
   color: #404040;
   line-height: 1.8em;
 }
 .vl_navbar .txt_nametopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
 }
 .vl_navbar .txt_formtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
 }
 .vl_navbar .container_footer {
@@ -320,78 +320,78 @@ body {
 }
 .vl_navbar .txt_black_form {
   color: #000000;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 .vl_navbar .txt_red_form {
   color: #7f231c;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 .vl_navbar .txt_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
 }
 .vl_navbar .txt_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
 }
 .vl_navbar .txt_headpoint,
 .vl_navbar .txt_headsp {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
 }
 .vl_navbar .txt_headpoint_num,
 .vl_navbar .txt_headsp_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 48px;
 }
 .vl_navbar .txt_addtaskhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.2rem;
 }
 .vl_navbar .txt_addtaskhead_blue {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.5em;
   font-size: 1.2rem;
 }
 .vl_navbar .txt_date_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_date_day {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 12px;
 }
 .vl_navbar .txt_date_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_date_school {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -404,31 +404,31 @@ body {
   padding: 0;
 }
 .vl_navbar .txt_resource_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #356294;
   line-height: 1.2em;
   font-size: 24px;
 }
 .vl_navbar .txt_resource_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #808080;
   line-height: 1em;
   font-size: 12px;
 }
 .vl_navbar .table .thead-light th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #cc338b;
   border-color: #f6f9fc;
 }
 .vl_navbar .table .thead-txt-w th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #fff;
   border-color: #f6f9fc;
 }
 .vl_navbar .table .thead-ictteam th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #fff;
   border-color: #f6f9fc;
 }
@@ -521,14 +521,14 @@ body {
   color: #e2e2e2;
 }
 .vl_navbar .txt_sp_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_sp_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -985,7 +985,7 @@ body {
   background-color: #796d9b;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step1:hover {
@@ -998,7 +998,7 @@ body {
   background-color: #2daba8;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step2:hover {
@@ -1011,7 +1011,7 @@ body {
   background-color: #eabd26;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step3:hover {
@@ -1024,7 +1024,7 @@ body {
   background-color: #f29724;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step4:hover {
@@ -1037,7 +1037,7 @@ body {
   background-color: #eb5d4f;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step5:hover {
@@ -1050,7 +1050,7 @@ body {
   background-color: #d53c3e;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .btn_step6:hover {
@@ -1066,7 +1066,7 @@ body {
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 0rem;
   padding: 0.5375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 13px;
   width: 152px;
   transition: 0s background-color;
@@ -1504,7 +1504,7 @@ body {
   border-radius: 0.2rem;
   font-size: 1.2rem;
   padding: 0.6rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .top_check_txt {
   top: -20px;
@@ -1961,20 +1961,20 @@ body {
   border-radius: 1rem;
 }
 .vl_navbar .txt_schoolnamehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #fff;
   line-height: 1em;
 }
 .vl_navbar .txt_schoolname_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #cc338b;
 }
 .vl_navbar .txt_schoolname_big {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 36px;
   color: #cc338b;
@@ -1996,28 +1996,28 @@ body {
   padding: 0.5rem 0.45rem;
 }
 .vl_navbar .txt_student_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 100px;
 }
 .vl_navbar .txt_level_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 50px;
 }
 .vl_navbar .txt_level_head_2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 22px;
 }
 .vl_navbar .txt_level_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -2050,54 +2050,54 @@ body {
   color: #cc338b;
 }
 .vl_navbar .txt_ict_bighead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 40px;
   color: #cc338b;
 }
 .vl_navbar .txt_ictlevel_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 50px;
 }
 .vl_navbar .txt_ictlevel_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_ictteamprovince_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 60px;
 }
 .vl_navbar .txt_ictteamprovince_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 16px;
 }
 .vl_navbar .txt_ictteam_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404140;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_ictteam_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1.5em;
   font-size: 14px;
 }
 .vl_navbar .txt_spcoach_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -2119,14 +2119,14 @@ body {
   line-height: 1em;
 }
 .vl_navbar .txt_teamhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .txt_stephead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .txt_loginhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #cc338b;
   font-size: 26px;
 }
@@ -2218,7 +2218,7 @@ body {
   height: 30px;
   margin-left: 0px;
   font-size: 18px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 1.7rem;
 }
 .vl_navbar .content_middle {
@@ -2540,7 +2540,7 @@ body {
   line-height: 1.8385;
 }
 .vl_navbar .txt_stephead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .modal-body-fixed {
@@ -2586,21 +2586,21 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .txt_partnership_cop_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_partnership_cop_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 14px;
 }
 .vl_navbar .txt_partnership_name_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
@@ -2613,14 +2613,14 @@ body {
   font-size: 18px;
 }
 .vl_navbar .txt_partnership_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_partnership_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
@@ -2642,31 +2642,31 @@ body {
   border-bottom-right-radius: 0rem !important;
 }
 .vl_navbar .txt_reportwallhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .txt_reportwall_date {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.7em;
 }
 .vl_navbar .txt_reportwall_month {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 0.7em;
 }
 .vl_navbar .txt_reportwall_dmy {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 1.2em;
 }
 .vl_navbar .txt_reportwall_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -2798,7 +2798,7 @@ body {
   font-size: 1rem;
 }
 .vl_navbar .txt_behaviorhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #cc338b;
@@ -3107,21 +3107,21 @@ body {
   padding: 0.3rem 0.3rem;
 }
 .vl_navbar .txt_sp_headnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.2em;
   font-size: 34px;
 }
 .vl_navbar .txt_sp_titlenum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_sp_titlenum_16 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
@@ -3203,13 +3203,13 @@ body {
   padding-right: 1rem;
 }
 .vl_navbar .txt_nametopic_gray {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 18px;
   color: #808080;
 }
 .vl_navbar .txt_grading_4 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #6f8a3b;
   font-size: 4rem;
 }
@@ -3226,7 +3226,7 @@ body {
   opacity: 0.4;
 }
 .vl_navbar .font-topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
@@ -3360,7 +3360,7 @@ body {
   border-color: #9bbb59;
 }
 .vl_navbar .txt_schoolprofilehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #cc338b;
@@ -3520,7 +3520,7 @@ body {
   background-color: #ffffff;
   border-color: #d9d9d9;
   font-size: 16px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .btn_light.focus,
 .vl_navbar .btn_light:focus,
@@ -3565,7 +3565,7 @@ body {
   border-bottom-right-radius: 0.125rem !important;
 }
 .vl_navbar .nav-tabs-solid {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   background-color: #f2f2f2;
   border: 0px solid #cc338b;
   color: #888;
@@ -3573,7 +3573,7 @@ body {
 }
 .vl_navbar .nav-tabs-solid .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #888;
 }
 .vl_navbar .nav-tabs-solid .nav-item.show .nav-link.active,
@@ -3583,7 +3583,7 @@ body {
   background-color: #fff;
 }
 .vl_navbar .nav-tabs-solid_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   background-color: #fff;
   border-bottom: 5px solid #fff;
   color: #888;
@@ -3592,7 +3592,7 @@ body {
 }
 .vl_navbar .nav-tabs-solid_red .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #888;
   border-bottom: 5px solid #fff;
 }
@@ -3641,14 +3641,14 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .txt_splan_headnum {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .font-eventdetail-head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
@@ -3719,21 +3719,21 @@ body {
   border: 1px solid #eee !important;
 }
 .vl_navbar .txt_splan_setheadnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.2em;
   font-size: 30px;
 }
 .vl_navbar .txt_splan_settitlenum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_splan_settitlenum_w {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
@@ -3743,7 +3743,7 @@ body {
   font-size: 20px;
 }
 .vl_navbar .txt_splan_addtaskhead_blue {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.5em;
@@ -3771,7 +3771,7 @@ body {
   padding-bottom: 15px !important;
 }
 .vl_navbar .txt_splan_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -3808,7 +3808,7 @@ body {
   table-layout: fixed;
   width: 100%;
   color: #849397;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .progress_step > li {
   position: relative;
@@ -3912,7 +3912,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 2.9rem;
   color: #ffffff;
   background-color: #dfe3e4;
@@ -4137,7 +4137,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 3rem;
 }
 .vl_navbar .circle_splannum {
@@ -4147,7 +4147,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 3rem;
 }
 .vl_navbar .circle_splannum_blue {
@@ -4157,7 +4157,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 2.9rem;
   color: #cc338b;
   background-color: #ffffff;
@@ -4187,20 +4187,20 @@ body {
   font-size: 120px;
 }
 .vl_navbar .txt_muted {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #a6a6b2;
   font-size: 20px;
 }
 .vl_navbar .txt_superhead {
   font-size: 100px;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_schoolhead {
   font-size: 40px;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -4218,7 +4218,7 @@ body {
   background-color: #cc338b;
 }
 .vl_navbar .txt_mfl_student_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -4239,7 +4239,7 @@ body {
   background-color: #ffffff;
 }
 .vl_navbar .font_mfl_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -4300,35 +4300,35 @@ body {
   border-top: 1px solid #ddd !important;
 }
 .vl_navbar .txt_mfl_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #cc338b;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 32px;
   color: #000000;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_mfl_numpopulation {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 36px;
   color: #000000;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_titletable {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.5em;
@@ -4349,7 +4349,7 @@ body {
   width: 20%;
 }
 .vl_navbar .txt_mfl_bighead_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   line-height: 1em;
@@ -4361,14 +4361,14 @@ body {
   line-height: 1em;
 }
 .vl_navbar .txt_ps_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 38px;
   color: #cc338b;
   line-height: 1em;
 }
 .vl_navbar .txt_ps_headnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -4392,28 +4392,28 @@ body {
   padding: 0rem 0rem !important;
 }
 .vl_navbar .txt_quest_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 38px;
   color: #cc338b;
   line-height: 1.5em;
 }
 .vl_navbar .txt_quest_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 32px;
   color: #cc338b;
   line-height: 1.5em;
 }
 .vl_navbar .txt_quest_headtext {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #cc338b;
   line-height: 1em;
 }
 .vl_navbar .txt_quest_headnum {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 44px;
   color: #cc338b;
@@ -4458,7 +4458,7 @@ body {
   border-top: 1px solid #ddd;
 }
 .vl_navbar .txt_quest_thx {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #cc338b;
@@ -4473,7 +4473,7 @@ body {
   padding-right: 12px;
 }
 .vl_navbar .country-1-table-schooldetail {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 40px;
   color: #0092db;
   line-height: 0.5;
@@ -4542,7 +4542,7 @@ body {
   color: #888888;
 }
 .vl_navbar .txt_quest_titletable {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.8em;
@@ -4603,7 +4603,7 @@ body {
   border-top: 1px solid #ddd !important;
 }
 .vl_navbar .txt_proapp_searchhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 28px;
   color: #cc338b;
@@ -4635,20 +4635,20 @@ body {
   border-top: 0px;
 }
 .vl_navbar .txt_proapp_superhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 26px;
   color: #cc338b;
 }
 .vl_navbar .txt_proapp_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #cc338b;
   line-height: 1.3em;
 }
 .vl_navbar .txt_proapp_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #3c6494;
@@ -4669,14 +4669,14 @@ body {
   font-size: 38px;
 }
 .vl_navbar .txt_proapp_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_proapp_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -4821,7 +4821,7 @@ body {
   transition: 0.3s;
   margin: 0 6px;
   z-index: 1;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
   font-weight: 500;
   position: relative;
@@ -4862,25 +4862,25 @@ body {
   }
 }
 .vl_navbar .txt_pcr_submenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 11px;
 }
 .vl_navbar .txt_pcr_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: bold;
   font-size: 22px;
   color: #000000;
   line-height: 1.3em;
 }
 .vl_navbar .txt_pcr_detail_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 30px;
   color: #cc338b;
   line-height: 1.3em;
 }
 .vl_navbar .txt_pcr_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4888,7 +4888,7 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_3row {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4896,7 +4896,7 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_4row {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4904,14 +4904,14 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_nolock {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_footerhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .box-topic_pcr {
   overflow: hidden;
@@ -4927,7 +4927,7 @@ body {
   background-color: #f2f2f2;
 }
 .vl_navbar .txt_pcr_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.5em;
@@ -4945,7 +4945,7 @@ body {
   border: 1px solid #cc338b !important;
 }
 .vl_navbar .txt_pcr_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -4964,7 +4964,7 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .box_pcr_title2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   color: #000000;
   line-height: 1.32em;
@@ -5078,7 +5078,7 @@ body {
   background-color: #fff !important;
 }
 .vl_navbar .txt_kpi_submenu {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 11px;
 }
 .vl_navbar .txt_kpi_submenu a {
@@ -5098,7 +5098,7 @@ body {
   transition: 0.5s ease;
 }
 .vl_navbar .font_cned_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5151,7 +5151,7 @@ body {
   color: #666;
 }
 .vl_navbar .txt_cned_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1em;
@@ -5227,7 +5227,7 @@ body {
   z-index: 9999;
 }
 .vl_navbar .txt_pricebaht {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 24px;
   line-height: 0.8;
   overflow: hidden;
@@ -5235,7 +5235,7 @@ body {
   color: #000000;
 }
 .vl_navbar .txt_pricepercent {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 22px;
   line-height: 0.8;
   overflow: hidden;
@@ -5264,7 +5264,7 @@ body {
   height: 10px;
 }
 .vl_navbar .font_cned_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5272,7 +5272,7 @@ body {
   color: #000000;
 }
 .vl_navbar .txt_cned_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.35em;
@@ -5282,7 +5282,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .txt_cned_subhead_nolock {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
   color: #000000;
   line-height: 1.35em;
@@ -5295,14 +5295,14 @@ body {
   padding: 0.525rem 0.525rem !important;
 }
 .vl_navbar .txt_cned_footerhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .vl_navbar .bg_tab_cned {
   border: 1px solid #53b6e0;
 }
 .vl_navbar .bg_tab_cned .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #53b6e0;
 }
 .vl_navbar .bg_tab_cned .nav-item.show .nav-link.active,
@@ -5311,21 +5311,21 @@ body {
   background-color: #53b6e0;
 }
 .vl_navbar .txt_cned_head2 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em;
   font-size: 18px;
 }
 .vl_navbar .txt_cned_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #fff;
   line-height: 1.3em;
 }
 .vl_navbar .txt_cned_head-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #fff;
@@ -5388,19 +5388,19 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .content_cned h1 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #cc338b;
   font-size: 24px;
   line-height: 1.35;
 }
 .vl_navbar .content_cned h2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #cc338b;
   font-size: 22px;
   line-height: 1.35;
 }
 .vl_navbar .content_cned h3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #000000;
   font-size: 34px;
   line-height: 1.35;
@@ -5411,7 +5411,7 @@ body {
   margin-bottom: 0px;
 }
 .vl_navbar .txt_spa_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
   line-height: 1.35em;
 }
@@ -5508,7 +5508,7 @@ body {
   width: 100%;
 }
 .vl_navbar .font-title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5565,7 +5565,7 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   transition: 0.4s;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #cc338b;
   border-radius: 5rem;
   border: 1px solid #cc338b;
@@ -5580,7 +5580,7 @@ body {
   font-size: 14px;
 }
 .vl_navbar .txt_donate_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 26px;
   color: #cc338b;
@@ -5588,12 +5588,12 @@ body {
 }
 .vl_navbar .txt_red_modal {
   color: #e7383b;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 24px;
 }
 .vl_navbar .txt_grey_form {
   color: #a6a6b2;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 .vl_navbar .vjs-poster {
@@ -5744,7 +5744,7 @@ body {
   padding-right: 0.25rem !important;
 }
 .vl_navbar .bar_cn_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5754,7 +5754,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_cn_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5765,7 +5765,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5777,7 +5777,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_greyblack {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5786,7 +5786,7 @@ body {
   font-size: 16px;
 }
 .vl_navbar .bar_cn_headtopic_red {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -5796,7 +5796,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_white {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5807,7 +5807,7 @@ body {
   border-left: 6px solid #cc338b !important;
 }
 .vl_navbar .bar_cn_headtopic_white2 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5817,7 +5817,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -5828,47 +5828,47 @@ body {
 }
 .vl_navbar .txt_cn_red_head {
   color: #cc338b;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .txt_cn_grey_head {
   color: #000000;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .txt_cn_black_head {
   color: #000000;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .vl_navbar .txt_cn_grey_title {
   color: #888;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .txt_cn_numhead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 40px;
 }
 .vl_navbar .txt_lvl_1 {
   color: #cc338b;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .txt_lvl_2 {
   color: #e69138;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .txt_lvl_3 {
   color: #f1c232;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .txt_lvl_4 {
   color: #6aa84f;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .txt_lvl_5 {
   color: #3d85c6;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .bg_lvl_1 {
   background-color: #cc338b;
@@ -5895,7 +5895,7 @@ body {
   background-color: #dddddd;
 }
 .vl_navbar .table_cn_border th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5904,7 +5904,7 @@ body {
   color: #000000;
 }
 .vl_navbar .table_cn_border td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0.3rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -5939,11 +5939,11 @@ body {
 .vl_navbar .table_cn_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.1rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5951,7 +5951,7 @@ body {
   font-size: 14px;
 }
 .vl_navbar .table_cn_border2 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -5979,11 +5979,11 @@ body {
 .vl_navbar .table_cn_border2 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border3 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5991,7 +5991,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .table_cn_border3 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6020,11 +6020,11 @@ body {
 .vl_navbar .table_cn_border3 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border4 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6032,7 +6032,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .table_cn_border4 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6061,11 +6061,11 @@ body {
 .vl_navbar .table_cn_border4 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .table_bms_border th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6073,7 +6073,7 @@ body {
   font-size: 20px;
 }
 .vl_navbar .table_bms_border td {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6103,11 +6103,11 @@ body {
 .vl_navbar .table_bms_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
 }
 .vl_navbar .table_bms_perfvalue td {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0.2rem;
   font-size: 20px;
   color: #555;
@@ -6121,7 +6121,7 @@ body {
   border-top: 0px !important;
   border-bottom: 0px !important;
   padding: 0.2rem 0.5rem;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6131,7 +6131,7 @@ body {
   border-left: 0px !important;
   border-right: 0px !important;
   border-bottom: 0px !important;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6156,7 +6156,7 @@ body {
   background-color: #f3f3f3;
 }
 .vl_navbar .table_cn_border_bottom_1 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6175,7 +6175,7 @@ body {
 .vl_navbar .table_cn_border_bottom_1 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar .table_cn td,
@@ -6220,7 +6220,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom td,
 .vl_navbar .table_kpi_border_bottom th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6233,7 +6233,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom2 td,
 .vl_navbar .table_kpi_border_bottom2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6250,7 +6250,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom_px0 td,
 .vl_navbar .table_kpi_border_bottom_px0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6275,7 +6275,7 @@ body {
 }
 .vl_navbar .table_kpi_noborder_px0 td,
 .vl_navbar .table_kpi_noborder_px0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 0px solid #dddddd !important;
   border-top: 0px;
@@ -6300,7 +6300,7 @@ body {
 }
 .vl_navbar .table_kpi_border_0 td,
 .vl_navbar .table_kpi_border_0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 1px solid #ddd;
   border-top: 0px;
@@ -6331,7 +6331,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom0 td,
 .vl_navbar .table_kpi_border_bottom0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 0px solid #ddd;
   border-top: 0px;
@@ -6358,7 +6358,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom3 td,
 .vl_navbar .table_kpi_border_bottom3 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.1rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6375,7 +6375,7 @@ body {
   background-color: #f3f3f3;
 }
 .vl_navbar .table_kpi_border_bottom td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   border-bottom: 1px solid #dddddd;
   color: #000000;
 }
@@ -6387,7 +6387,7 @@ body {
     border-bottom: 0px !important; } */
 .vl_navbar .table_kpi_grey td,
 .vl_navbar .table_kpi_grey th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6411,7 +6411,7 @@ body {
 }
 .vl_navbar .table_kpi_grey_sm td,
 .vl_navbar .table_kpi_grey_sm th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6434,7 +6434,7 @@ body {
 }
 .vl_navbar .table_kpi_grey_sm_allborder td,
 .vl_navbar .table_kpi_grey_sm_allborder th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6482,7 +6482,7 @@ body {
   border-right: 1px solid #dddddd !important;
 }
 .vl_navbar .txt_kpi_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6492,7 +6492,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6502,7 +6502,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6512,7 +6512,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6522,7 +6522,7 @@ body {
 .vl_navbar .txt_kpi_head_num_sm,
 .vl_navbar .txt_kpi_head_num4,
 .vl_navbar .txt_kpi_head_num5 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6532,7 +6532,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num6 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6542,7 +6542,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_14p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6552,7 +6552,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_18p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6562,7 +6562,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_888 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1em;
@@ -6572,14 +6572,14 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_sm_w {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -6587,21 +6587,21 @@ body {
 }
 .vl_navbar .txt_kpi_title,
 .vl_navbar .txt_kpi_bighead_date {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_title_18p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 18px;
 }
 .vl_navbar .txt_menu_home {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6619,77 +6619,77 @@ body {
   opacity: 0.5;
 }
 .vl_navbar .txt_kpi_head_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .txt_kpi_bighead2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_kpi_bighead3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.35em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_bighead4 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.2em;
   font-size: 24px;
 }
 .vl_navbar .txt_bms_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.55em;
   font-size: 24px;
 }
 .vl_navbar .txt_kpi_mainmenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .txt_kpi_mainmenu_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 28px;
 }
 .vl_navbar .txt_kpi_mainmenu2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_kpi_mainmenu2_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_head_date {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   font-size: 18px;
@@ -6927,7 +6927,7 @@ body {
   text-align: center;
 }
 .vl_navbar .btn_plus_grey_d9 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #d9d9d9;
   line-height: 1.35em;
@@ -6943,7 +6943,7 @@ body {
   border: 1px solid #c90000;
 }
 .vl_navbar .bar_kpi_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6953,7 +6953,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_w2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6961,7 +6961,7 @@ body {
   font-size: 16px;
 }
 .vl_navbar .bar_kpi_headtopic_greenlight {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -6971,7 +6971,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_redline {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -6981,7 +6981,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6989,7 +6989,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_bms_headpopover_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6997,7 +6997,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_bms_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7012,7 +7012,7 @@ body {
   border: 0px;
 }
 .vl_navbar .bar_kpi_navlink {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7020,7 +7020,7 @@ body {
   padding: 14px 14px !important;
 }
 .vl_navbar .bar_bms_navlink {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7028,7 +7028,7 @@ body {
   padding: 15px 14px !important;
 }
 .vl_navbar .bar_kpi_headtopic_white {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7036,7 +7036,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_kpi_headtopic_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7046,7 +7046,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_redlight {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7056,7 +7056,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_kpi_headpic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7065,7 +7065,7 @@ body {
   background-color: #eeeeee;
 }
 .vl_navbar .bar_cluster_headpic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7074,21 +7074,21 @@ body {
   background-color: #eeeeee;
 }
 .vl_navbar .txt_cluster_head_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
 }
 .vl_navbar .txt_cluster_head_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
 }
 .vl_navbar .bar_cluster_headpic_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #fff;
@@ -7097,7 +7097,7 @@ body {
   background-color: #c60000;
 }
 .vl_navbar .txt_cluster_grey_16p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7115,7 +7115,7 @@ body {
   background-color: #f3f3f3 !important;
 }
 .vl_navbar .bar_kpi_headtopic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7179,7 +7179,7 @@ body {
   background-color: #ffffff;
 }
 .vl_navbar .txt_kpi_blod {
-  font-family: 'Kanit-regular' !important;
+  font-family: 'TrueTextBOnline-Bold' !important;
 }
 .vl_navbar .txt_kpi_green {
   color: #6ea954 !important;
@@ -7192,7 +7192,7 @@ body {
 }
 .vl_navbar .txt_kpi_red_bold {
   color: #c60000 !important;
-  font-family: 'Kanit-regular' !important;
+  font-family: 'TrueTextBOnline-Bold' !important;
 }
 .vl_navbar .txt_kpi_blue {
   color: #4786c4;
@@ -7213,33 +7213,33 @@ body {
   color: #f3f3f3;
 }
 .vl_navbar .txt_kpi_title_16p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_head_16p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_head_20p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_head_22p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 22px;
 }
 .vl_navbar .txt_kpi_head_26p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
@@ -7247,7 +7247,7 @@ body {
 }
 .vl_navbar .txt_kpi_num_100p {
   font-size: 100px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 6rem;
 }
 .vl_navbar .kpi_active {
@@ -7262,7 +7262,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -7918,25 +7918,25 @@ body {
   padding-right: 30px;
 }
 .vl_navbar .nav_menu_item_me {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .modal-dialog .txt_vl_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_vl_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_vl_head_reg {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -7944,7 +7944,7 @@ body {
 }
 .vl_navbar .txt_vl_title,
 .modal-dialog .txt_vl_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -7952,20 +7952,20 @@ body {
 }
 .vl_navbar .txt_vl_title_14p,
 .modal-dialog .txt_vl_title_14p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 14px; /*update*/
 }
 .vl_navbar .txt_vl_20p_gray88_h_red {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888 !important;
   font-size: 20px;
 }
 .vl_navbar .txt_true_Reg {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .vl_navbar .txt_vl_20p_gray88_h_red:hover,
 .vl_navbar .txt_termcond:hover {
@@ -8730,7 +8730,7 @@ body {
     max-height: 70px;
   }
   .vl_navbar .txt_ict_bighead {
-    font-family: 'Kanit-Light';
+    font-family: 'TrueTextBOnline-Regular';
     font-size: 30px;
     color: #cc338b;
   }
@@ -8788,7 +8788,7 @@ body {
     min-height: 96px;
   }
   .vl_navbar .txt_kpi_head_num {
-    font-family: 'Kanit-regular';
+    font-family: 'TrueTextBOnline-Bold';
     font-style: normal;
     line-height: 1em;
     font-size: 30px;
@@ -8971,7 +8971,7 @@ body {
     position: relative;
     z-index: 1000;
     color: #fff;
-    font-family: 'Kanit-regular';
+    font-family: 'TrueTextBOnline-Bold';
   }
   .vl_navbar .donation.progress_step > li:after {
     content: '';

@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h1 class="text-center">Index</h1>
+  <div class="main-content mx-auto">
+    <h1>Index</h1>
   </div>
 </template>
 
 <script>
 export default {}
 </script>
+
+<style lang="scss"></style>

@@ -33,21 +33,13 @@
             ></vlearn-profile-menu>
           </div>
         </template>
-
-        <!-- <div class="nav-icon-menu" @click.stop="onToggleVlearnMenu()">
-          <i class="icon-grid2"></i>
-          <vlearn-v-menu
-            v-on-click-out-side="onVlearnMenuClose"
-            :class="vlearnMenuCss()"
-          ></vlearn-v-menu>
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import { ClickOutSide } from '@/directives/ClickOutSide.js'
+import { ClickOutSide } from '@/directives/ClickOutSide.js'
 import { mapState } from 'vuex'
 import defaultProfileUrl from '~/assets/hc-libs/images/main/face_default.png'
 import VlearnProfileMenu from './ProfileMenu'
@@ -55,9 +47,9 @@ import VlearnProfileMenu from './ProfileMenu'
 
 export default {
   name: 'VlearnNavBar',
-  // directives: {
-  //   onClickOutSide: ClickOutSide,
-  // },
+  directives: {
+    onClickOutSide: ClickOutSide,
+  },
   components: {
     // VlearnVMenu,
     VlearnProfileMenu,
@@ -83,10 +75,10 @@ export default {
     //   type: Boolean,
     //   default: false,
     // },
-    // isFixed: {
-    //   type: Boolean,
-    //   default: false,
-    // },
+    isFixed: {
+      type: Boolean,
+      default: false,
+    },
     showProfile: {
       type: Boolean,
       default: true,
@@ -167,7 +159,10 @@ export default {
   &-logo {
     display: flex;
     max-width: 200px;
-    padding-top: 12px;
+    padding-left: 20px;
+    @media (max-width: 1200px) {
+      padding-left: 0px;
+    }
 
     &.standalone {
       padding-left: 20px;
@@ -191,8 +186,11 @@ export default {
   }
 
   &-icon {
+    @media (max-width: 1200px) {
+      display: flex !important;
+    }
     margin-left: 4px;
-    display: flex;
+    display: none !important;
     align-items: center;
     justify-content: center;
     color: #888888;
@@ -239,6 +237,7 @@ export default {
     justify-content: center;
     border-radius: 50%;
     cursor: pointer;
+    margin-right: 1rem;
 
     & > img {
       display: flex;
@@ -259,6 +258,7 @@ export default {
     }
   }
 }
+
 .vlearn-menu {
   &-open {
     display: flex;

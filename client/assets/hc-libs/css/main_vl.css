@@ -1,5 +1,5 @@
 body {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #000;
@@ -186,7 +186,7 @@ html {
   padding-right: 5px;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #000;
   font-size: 18px;
 }
@@ -194,14 +194,14 @@ html {
   text-overflow: ellipsis;
 }
 .txt_mainmenu_sub_2019 a {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 23px;
   line-height: 32px;
   color: #000000;
   padding-left: 40px;
 }
 .txt_vla_head_22p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 1em;
@@ -209,21 +209,21 @@ html {
 }
 
 .txt_vla_head_18p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 22px;
   font-size: 18px;
 }
 .txt_title_progressbar_top {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 16px;
 }
 .txt_title_progressbar_bottom {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -233,14 +233,14 @@ a:hover .txt_vla_head_22p {
   color: #cc338b;
 }
 .txt_vla_subject_22p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 22px;
   color: #000000;
   line-height: 1em;
 }
 .txt_vl_title_16p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -249,7 +249,7 @@ a:hover .txt_vla_head_22p {
 div.list-group-menubottom
   li.wrapper-subsubmenu-responsive
   .txt-main-menu-responsive-sub {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 24px;
   line-height: 32px;
 }
@@ -630,7 +630,7 @@ div.list-group-menubottom
   line-height: 100%;
 }
 .txt_bignum {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 10rem;
   line-height: 0.8;
 }
@@ -1006,7 +1006,7 @@ select.select_lg {
   color: #fff;
 }
 .txt_headtitle {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 22px;
   color: #fff;
@@ -1034,7 +1034,7 @@ select.select_lg {
   height: 76px;
 }
 .font-title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 22px;
   color: #fff;
   font-weight: normal;
@@ -1050,7 +1050,7 @@ select.select_lg {
   height: 47px;
 }
 .txt_btnedit {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 20px;
   padding: 3px 25px;
 }
@@ -1514,7 +1514,7 @@ a {
   table-layout: fixed;
   width: 100%;
   color: #849397;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1703,7 +1703,7 @@ font-weight: 300;*/
   min-width: 80px;
 }
 .txt_namehead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1712,7 +1712,7 @@ font-weight: 300;*/
   line-height: 1.2em;
 }
 .txt_nametitle {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1777,7 +1777,7 @@ ul.ic_border_circle img:hover {
 }
 .txt_explorer_topichead,
 .txt_explorer_topichead:focus {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1787,7 +1787,7 @@ font-weight: 300;*/
 }
 .txt_explorer_topichead_2,
 .txt_explorer_topichead_2:focus {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1796,7 +1796,7 @@ font-weight: 300;*/
   line-height: 100%;
 }
 .txt_explorer_card_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1805,7 +1805,7 @@ font-weight: 300;*/
 }
 .txt_explorer_bar_topichead,
 .txt_explorer_bar_topichead:focus {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -1904,7 +1904,7 @@ font-weight: 300;*/
 }
 /*
 .card_media_box .title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #000;
   font-size: 18px;
   line-height: 22px;
@@ -1917,7 +1917,7 @@ font-weight: 300;*/
 }
 */
 .card_media_box .title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #000;
   font-size: 18px;
   line-height: 22px;
@@ -2039,7 +2039,7 @@ font-weight: 300;*/
   box-shadow: 0 0.125rem 0.55rem rgba(0, 0, 0, 0.275) !important;
 }
 .txt_knowcareer_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -2048,7 +2048,7 @@ font-weight: 400;*/
   line-height: 0.5em;
 }
 .txt_knowcareer_bnnhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -2060,7 +2060,7 @@ font-weight: 400;*/
   width: 100%;
 }
 .txt_knowcareer_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -2069,7 +2069,7 @@ font-weight: 400;*/
   line-height: 0.5em;
 }
 .txt_explorer_content_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -2078,7 +2078,7 @@ font-weight: 400;*/
   line-height: 1.5em;
 }
 .txt_explorer_bar_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -2087,7 +2087,7 @@ font-weight: 400;*/
   line-height: 1.7em;
 }
 .txt_orange {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-size: 22px;*/
   color: #f05a28;
 }
@@ -2123,7 +2123,7 @@ font-weight: 400;*/
   opacity: 0.6;
 }
 .txt_bighead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   /*  font-family: 'SukhumvitSet-Text';*/
@@ -2487,7 +2487,7 @@ html {
   background-color: #fafafa;
 }
 .txt_trueBold {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -2572,7 +2572,7 @@ font-weight: 500;*/
 .zone-education .content_view,
 .tag-view,
 .content_view {
-  /*  font-family: 'Kanit-Light' !important;*/
+  /*  font-family: 'TrueTextBOnline-Regular' !important;*/
   /*
   font-family: 'Kanit', sans-serif;
   font-weight: 400;
@@ -2616,7 +2616,7 @@ font-weight: 500;*/
   margin: 10px 0;
 }
 .txt_mfl_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -2632,7 +2632,7 @@ font-weight: 500;*/
   color: #888;
 }
 .txt_mfl_bighead_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -2643,7 +2643,7 @@ font-weight: 500;*/
   overflow: hidden;
 }
 .txt_mfl_bighead_detail {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -2729,7 +2729,7 @@ font-weight: 500;*/
   border-top: 1px solid #ddd !important;
 }
 .txt_mainmenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3046,7 +3046,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 /* /. MFL*/
 .content_trueplook h1 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -3055,13 +3055,13 @@ font-weight: 400;*/
   line-height: 1.35;
 }
 .content_trueplook h2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #ff6633;
   font-size: 22px;
   line-height: 1.35;
 }
 .content_trueplook h3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*  font-family: 'SukhumvitSet-bold';*/
@@ -3074,7 +3074,7 @@ font-weight: 400;*/
   height: auto;
 }
 .txt_true_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #000;
@@ -3105,7 +3105,7 @@ font-weight: 400;*/
   overflow-x: hidden;
 }
 .txt_vl_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3121,7 +3121,7 @@ font-weight: 500;*/
   color: #000;
 }
 .txt_vl_bighead_2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3137,7 +3137,7 @@ font-weight: 500;*/
   color: #000;
 }
 .txt_vl_bighead_lvl {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3153,7 +3153,7 @@ font-weight: 500;*/
   color: #000;
 }
 .txt_vl_head_subject {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   font-style: normal;
@@ -3162,7 +3162,7 @@ font-weight: 500;*/
   line-height: 1.35em;
 }
 .txt_vl_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   font-style: normal;
@@ -3171,7 +3171,7 @@ font-weight: 500;*/
   line-height: 1em;
 }
 .txt_vl_subtitle {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   font-style: normal;
@@ -3192,7 +3192,7 @@ font-weight: 300;*/
   line-height: 1.3;
 }
 .txt_true_bighead_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3203,7 +3203,7 @@ font-weight: 400;*/
   overflow: hidden;
 }
 .txt_head_divider {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #000000;
@@ -3272,14 +3272,14 @@ font-weight: 400;*/
 }
 /* EXAM */
 .txt_exam_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 1.35em;
   font-size: 18px;
 }
 .txt_exam_namehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3289,7 +3289,7 @@ font-weight: 500;*/
   line-height: 1.35em;
 }
 .txt_headtopic24 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3298,7 +3298,7 @@ font-weight: 500;*/
   font-size: 22px;
 }
 .txt_exam_subhead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 1.35em;
@@ -3331,7 +3331,7 @@ td.bg_grey_hover:hover a.txt_red_hover {
   color: #cc338b !important;
 }
 .txt_exam_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3462,7 +3462,7 @@ font-weight: 500;*/
   background-color: #009245;
 }
 .progressbar_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3509,7 +3509,7 @@ font-weight: 500;*/
   border-right: 0px solid #eaeaea;
 }
 .txt_exam_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3723,7 +3723,7 @@ font-weight: 500;*/
   margin-top: 0px !important;
 }
 .txt_blackhead_bold {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3753,7 +3753,7 @@ font-weight: 500;*/
   padding-right: 50px;
 }
 .txt_schooltour_modal_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -3861,7 +3861,7 @@ font-weight: 500;*/
   height: 50px;
   overflow: hidden;
   white-space: pre-line;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .txt_vl_bighead_2 {
   font-size: 18px;
@@ -4035,7 +4035,7 @@ header {
 }
 .font-submenu,
 .font-submenu a {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -4045,7 +4045,7 @@ font-weight: 500;*/
 }
 /* /.Menu Horizontal Slide */
 .txt_true_user_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   /*font-family: 'SukhumvitSet-SemiBold';*/
@@ -4149,7 +4149,7 @@ a .hover_50 {
   color: #cc338b;
 }
 .badge_vl_grey {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 300;*/
   color: #ccc;
@@ -4182,7 +4182,7 @@ font-weight: 300;*/
   border: 1px solid #ddd;
 }
 .vl_navbar_grey .nav_menu_item_me {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .vl_navbar_grey .hori_menu .nav-item {
@@ -4238,7 +4238,7 @@ font-weight: 300;*/
   border-radius: 0.4rem;
 }
 .txt_vl_point {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   font-style: normal;
@@ -4250,7 +4250,7 @@ font-weight: 500;*/
   color: #000000;
 }
 .txt_vl_modaltitle {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #000;
@@ -4271,7 +4271,7 @@ font-weight: 500;*/
   border: 1px solid #cc338b !important;
 }
 .txt_vla_welcome {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 500;*/
   font-weight: normal;
@@ -4309,7 +4309,7 @@ font-weight: 500;*/
   background-color: #eee;
 }
 .txt_vla_adminpanel {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   font-style: normal;
@@ -4318,21 +4318,21 @@ font-weight: 400;*/
   line-height: 1em;
 }
 .txt_library_headpage {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 40px;
   color: #000000;
   line-height: 1em;
 }
 .txt_library_titlebar {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 20px;
 }
 .txt_vla_left_imgpanel {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   /*font-family: 'Kanit', sans-serif;
 font-weight: 400;*/
   font-style: normal;
@@ -4452,7 +4452,7 @@ font-weight: 400;*/
   color: #cc338b !important;
 }
 .select_vla_grey {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 18px;
   color: #000000;
@@ -4508,7 +4508,7 @@ font-weight: 400;*/
   background-color: #000;
   width: 100%;
   opacity: 0;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 20px;
   transition-duration: 0.3s;
 }
@@ -4516,7 +4516,7 @@ font-weight: 400;*/
   opacity: 0.5;
 }
 .table_vl_border th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -4525,7 +4525,7 @@ font-weight: 400;*/
   color: #000;
 }
 .table_vl_border td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0rem !important;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -4562,11 +4562,11 @@ font-weight: 400;*/
 .table_vl_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .table_vl_border_2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -4575,7 +4575,7 @@ font-weight: 400;*/
   color: #000;
 }
 .table_vl_border_2 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0rem !important;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -4690,14 +4690,14 @@ font-weight: 400;*/
   padding: 0px 10px !important;
 }
 .txt_vla_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 22px;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_vla_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -4724,7 +4724,7 @@ font-weight: 400;*/
   padding: 10px 5px;
 }
 .table_vl_border_bottom td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -4733,7 +4733,7 @@ font-weight: 400;*/
   color: #000000;
 }
 .table_vl_border_bottom th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -4749,7 +4749,7 @@ font-weight: 400;*/
   background-color: #f3f3f3;
 }
 .table_vl_class_border_bottom td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.5rem !important;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px !important;
@@ -4759,7 +4759,7 @@ font-weight: 400;*/
   line-height: 1.45rem;
 }
 .table_vl_class_border_bottom th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.5rem !important;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px !important;
@@ -4784,7 +4784,7 @@ font-weight: 400;*/
   border-right: 0px !important;
 }
 .table_vl_class_border_bottom2 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.5rem !important;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px !important;
@@ -4794,7 +4794,7 @@ font-weight: 400;*/
   line-height: 1.45rem;
 }
 .table_vl_class_border_bottom2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.5rem !important;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px !important;
@@ -4818,7 +4818,7 @@ font-weight: 400;*/
   border-right: 0px !important;
 }
 .table_vl_noborder td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem !important;
   border-bottom: 0px solid #dddddd !important;
   border-top: 0px;
@@ -4827,7 +4827,7 @@ font-weight: 400;*/
   color: #000000;
 }
 .table_vl_noborder th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem !important;
   border-bottom: 0px solid #dddddd !important;
   border-top: 0px;
@@ -4844,7 +4844,7 @@ font-weight: 400;*/
 }
 .table_vl_border_all td,
 .table_vl_border_all th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.5rem !important;
   border-bottom: 1px solid #dddddd !important;
   border-top: 1px solid #dddddd !important;
@@ -4911,7 +4911,7 @@ ul.ic_vl_circle_sm i {
 /* /. VLEARN ADMIN */
 /*Report*/
 .txt_vl_head_36p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em !important;
@@ -5680,7 +5680,7 @@ ul.ic_vl_circle_sm i {
   opacity: 1;
 }
 .card_media_box .title_square {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /*    color: #000;*/
   font-size: 18px;
   line-height: 22px;

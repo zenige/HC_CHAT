@@ -1,5 +1,5 @@
 body {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #333;
@@ -348,7 +348,7 @@ select {
   color: #466c9a;
 }
 .txt_orange {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #f9b908;
 }
 .txt_duedate {
@@ -497,7 +497,7 @@ a:hover .zoomlink div .font-title-thx {
   color: #fff;
 }
 .txt_headtitle {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 22px;
   color: #fff;
@@ -547,7 +547,7 @@ a:hover .zoomlink div .font-title-thx {
 }
 .font-title,
 .font-title-thx {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -574,7 +574,7 @@ a:hover .zoomlink div .font-title-thx {
   height: 96px; /*47*/
 }
 .txt_btnedit {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 20px;
   padding: 3px 25px;
 }
@@ -1418,7 +1418,7 @@ hr {
 }
 .nav-tabs-solid .nav-link {
   border-width: 0;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #a6a6b2;
   /*  background-color: #FFFFFF;*/
 }
@@ -2014,7 +2014,7 @@ header {
 /* /.Menu Horizontal Slide */
 /* EXAM */
 .txt_exam_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #333;
   line-height: 1.35em;
@@ -2034,7 +2034,7 @@ header {
   font-size: 22px;
 }
 .txt_exam_subhead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #333;
   line-height: 1.35em;
@@ -2535,7 +2535,7 @@ tbody.table_upskill_hover:hover {
   height: 50px;
   overflow: hidden;
   white-space: pre-line;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .txt_content_bighead:hover {
   color: #888;

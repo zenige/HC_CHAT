@@ -13,7 +13,7 @@ html {
   overflow-x: hidden;
 }
 body {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #333;
@@ -97,16 +97,16 @@ a.link_blue:hover {
   background-clip: content-box;
 }
 .txt_navtab {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
 }
 .txt_iconmenuleft {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 12px;
   line-height: 1.5;
 }
 .txt_navtab-user {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
   color: #353535;
 }
@@ -230,39 +230,39 @@ a.breadcrumb-item,
   color: #b1261f;
 }
 .txt_namehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #b1261f;
   line-height: 1em;
 }
 .txt_icttalent_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #b1261f;
   line-height: 1.2em;
 }
 .txt_welcome {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 18px;
   color: #000;
   line-height: 1.8em;
 }
 .txt_nameposition {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 16px;
   color: #404040;
   line-height: 1.8em;
 }
 .txt_nametopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
 }
 .txt_formtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
 }
 .container_footer {
@@ -295,78 +295,78 @@ a.breadcrumb-item,
 }
 .txt_black_form {
   color: #333;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 .txt_red_form {
   color: #7f231c;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 .txt_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1.3em;
 }
 .txt_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
 }
 .txt_headpoint,
 .txt_headsp {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
 }
 .txt_headpoint_num,
 .txt_headsp_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 48px;
 }
 .txt_addtaskhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.2rem;
 }
 .txt_addtaskhead_blue {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1.5em;
   font-size: 1.2rem;
 }
 .txt_date_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 24px;
 }
 .txt_date_day {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 12px;
 }
 .txt_date_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 18px;
 }
 .txt_date_school {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -379,31 +379,31 @@ a.breadcrumb-item,
   padding: 0;
 }
 .txt_resource_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #356294;
   line-height: 1.2em;
   font-size: 24px;
 }
 .txt_resource_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #808080;
   line-height: 1em;
   font-size: 12px;
 }
 .table .thead-light th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #b1261f;
   border-color: #f6f9fc;
 }
 .table .thead-txt-w th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #fff;
   border-color: #f6f9fc;
 }
 .table .thead-ictteam th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #fff;
   border-color: #f6f9fc;
 }
@@ -503,14 +503,14 @@ a.breadcrumb-item,
   color: #e2e2e2;
 }
 .txt_sp_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1em;
   font-size: 18px;
 }
 .txt_sp_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -947,7 +947,7 @@ a.breadcrumb-item,
   background-color: #796d9b;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step1:hover {
@@ -960,7 +960,7 @@ a.breadcrumb-item,
   background-color: #2daba8;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step2:hover {
@@ -973,7 +973,7 @@ a.breadcrumb-item,
   background-color: #eabd26;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step3:hover {
@@ -986,7 +986,7 @@ a.breadcrumb-item,
   background-color: #f29724;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step4:hover {
@@ -999,7 +999,7 @@ a.breadcrumb-item,
   background-color: #eb5d4f;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step5:hover {
@@ -1012,7 +1012,7 @@ a.breadcrumb-item,
   background-color: #d53c3e;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .btn_step6:hover {
@@ -1028,7 +1028,7 @@ a.breadcrumb-item,
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 0rem;
   padding: 0.5375rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 13px;
   width: 152px;
   transition: 0s background-color;
@@ -1474,7 +1474,7 @@ a.breadcrumb-item,
   border-radius: 0.2rem;
   font-size: 1.2rem;
   padding: 0.6rem 0.875rem;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url(../images/main/arrow_checked.svg);
@@ -1834,20 +1834,20 @@ select.select_w {
   border-radius: 1rem;
 }
 .txt_schoolnamehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #fff;
   line-height: 1em;
 }
 .txt_schoolname_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #b1261f;
 }
 .txt_schoolname_big {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 36px;
   color: #b1261f;
@@ -1870,28 +1870,28 @@ select.select_w {
 }
 /* 02 */
 .txt_student_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 100px;
 }
 .txt_level_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 50px;
 }
 .txt_level_head_2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 22px;
 }
 .txt_level_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -1924,54 +1924,54 @@ select.select_w {
   color: #b1261f;
 }
 .txt_ict_bighead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 40px;
   color: #b1261f;
 }
 .txt_ictlevel_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 50px;
 }
 .txt_ictlevel_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .txt_ictteamprovince_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 60px; /*24*/ /*40*/ /*33*/
 }
 .txt_ictteamprovince_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 16px; /*14*/
 }
 .txt_ictteam_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404140;
   line-height: 1em;
   font-size: 24px;
 }
 .txt_ictteam_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1.5em;
   font-size: 14px;
 }
 .txt_spcoach_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -1993,14 +1993,14 @@ select.select_w {
   line-height: 1em;
 }
 .txt_teamhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .txt_stephead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .txt_loginhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #b1261f;
   font-size: 26px;
 }
@@ -2091,7 +2091,7 @@ select.select_w {
   height: 30px;
   margin-left: 0px;
   font-size: 18px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 1.7rem;
 }
 .content_middle {
@@ -2405,7 +2405,7 @@ textarea:disabled {
   line-height: 1.8385;
 }
 .txt_stephead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .modal-body-fixed {
@@ -2457,21 +2457,21 @@ textarea:disabled {
   border-radius: 0.4rem;
 }
 .txt_partnership_cop_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 32px;
 }
 .txt_partnership_cop_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 14px;
 }
 .txt_partnership_name_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
@@ -2484,14 +2484,14 @@ textarea:disabled {
   font-size: 18px;
 }
 .txt_partnership_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 32px;
 }
 .txt_partnership_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
@@ -2515,31 +2515,31 @@ textarea:disabled {
 /* /. fontend */
 /* Report Wall */
 .txt_reportwallhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .txt_reportwall_date {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.7em;
 }
 .txt_reportwall_month {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 0.7em;
 }
 .txt_reportwall_dmy {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 1.2em;
 }
 .txt_reportwall_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -2670,7 +2670,7 @@ textarea:disabled {
 /* /. Report Wall */
 /* Behavior */
 .txt_behaviorhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #b1261f;
@@ -3071,21 +3071,21 @@ label {
 /* /.Performance */
 /* SP */
 .txt_sp_headnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1.2em;
   font-size: 34px;
 }
 .txt_sp_titlenum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
   font-size: 18px;
 }
 .txt_sp_titlenum_16 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
@@ -3179,13 +3179,13 @@ label {
   padding-right: 1rem;
 }
 .txt_nametopic_gray {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 18px;
   color: #808080;
 }
 .txt_grading_4 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #6f8a3b;
   font-size: 4rem;
 }
@@ -3202,7 +3202,7 @@ label {
   opacity: 0.4;
 }
 .font-topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
@@ -3368,7 +3368,7 @@ ul.list li:last-child{
   border-color: #9bbb59;
 }
 .txt_schoolprofilehead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 22px;
   color: #b1261f;
@@ -3525,7 +3525,7 @@ ul.list li:last-child{
   background-color: #ffffff;
   border-color: #d9d9d9;
   font-size: 16px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .btn_light.focus,
 .btn_light:focus,
@@ -3575,7 +3575,7 @@ hr {
   border-bottom-right-radius: 0.125rem !important;
 }
 .nav-tabs-solid {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   background-color: #f2f2f2;
   border: 0px solid #cc338b;
   color: #888;
@@ -3583,7 +3583,7 @@ hr {
 }
 .nav-tabs-solid .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #888;
 }
 .nav-tabs-solid .nav-item.show .nav-link.active,
@@ -3594,7 +3594,7 @@ hr {
 }
 
 .nav-tabs-solid_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   background-color: #fff;
   border-bottom: 5px solid #fff;
   color: #888;
@@ -3603,7 +3603,7 @@ hr {
 }
 .nav-tabs-solid_red .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #888;
   border-bottom: 5px solid #fff;
 }
@@ -3653,14 +3653,14 @@ hr {
   border-radius: 0.4rem;
 }
 .txt_splan_headnum {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 40px;
 }
 .font-eventdetail-head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
@@ -3730,21 +3730,21 @@ hr {
   border: 1px solid #eee !important;
 }
 .txt_splan_setheadnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.2em;
   font-size: 30px;
 }
 .txt_splan_settitlenum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
   font-size: 18px;
 }
 .txt_splan_settitlenum_w {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
@@ -3754,7 +3754,7 @@ hr {
   font-size: 20px;
 }
 .txt_splan_addtaskhead_blue {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.5em;
@@ -3782,7 +3782,7 @@ hr {
   padding-bottom: 15px !important;
 }
 .txt_splan_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1.3em;
@@ -3819,7 +3819,7 @@ hr {
   table-layout: fixed;
   width: 100%;
   color: #849397;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .progress_step > li {
   position: relative;
@@ -3927,7 +3927,7 @@ hr {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 2.9rem;
   color: #ffffff;
   background-color: #dfe3e4;
@@ -4181,7 +4181,7 @@ hr {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 3rem;
 }
 .circle_splannum {
@@ -4191,7 +4191,7 @@ hr {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 3rem;
 }
 .circle_splannum_blue {
@@ -4201,7 +4201,7 @@ hr {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 2.9rem;
   color: #b1261f;
   background-color: #ffffff;
@@ -4232,13 +4232,13 @@ hr {
   font-size: 120px;
 }
 .txt_muted {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #a6a6b2;
   font-size: 20px;
 }
 .txt_superhead {
   font-size: 100px;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -4246,7 +4246,7 @@ hr {
 /* MFL */
 .txt_mfl_schoolhead {
   font-size: 40px;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -4264,7 +4264,7 @@ hr {
   background-color: #b1261f;
 }
 .txt_mfl_student_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -4285,7 +4285,7 @@ hr {
   background-color: #ffffff;
 }
 .font_mfl_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -4345,35 +4345,35 @@ a.breadcrumb-item:hover {
   border-top: 1px solid #ddd !important;
 }
 .txt_mfl_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #b1261f;
   line-height: 1em;
 }
 .txt_mfl_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 32px;
   color: #333;
   line-height: 1em;
 }
 .txt_mfl_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .txt_mfl_numpopulation {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 36px;
   color: #333;
   line-height: 1em;
 }
 .txt_mfl_titletable {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1.5em;
@@ -4394,7 +4394,7 @@ a.breadcrumb-item:hover {
   width: 20%;
 }
 .txt_mfl_bighead_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   line-height: 1em;
@@ -4402,21 +4402,21 @@ a.breadcrumb-item:hover {
 /* /.MFL */
 /*Present*/
 .txt_ps_namehead {
-  /*font-family: 'Kanit-regular';*/
+  /*font-family: 'TrueTextBOnline-Bold';*/
   font-style: normal;
   font-size: 40px;
   color: #b1261f;
   line-height: 1em;
 }
 .txt_ps_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 38px;
   color: #b1261f;
   line-height: 1em;
 }
 .txt_ps_headnum {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -4442,28 +4442,28 @@ a.breadcrumb-item:hover {
 /* /.Present*/
 /*  Question */
 .txt_quest_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 38px;
   color: #b1261f;
   line-height: 1.5em;
 }
 .txt_quest_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 32px;
   color: #b1261f;
   line-height: 1.5em;
 }
 .txt_quest_headtext {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #b1261f;
   line-height: 1em;
 }
 .txt_quest_headnum {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 44px;
   color: #b1261f;
@@ -4509,7 +4509,7 @@ a.breadcrumb-item:hover {
   border-top: 1px solid #ddd;
 }
 .txt_quest_thx {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #b1261f;
@@ -4524,7 +4524,7 @@ a.breadcrumb-item:hover {
   padding-right: 12px;
 }
 .country-1-table-schooldetail {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 40px;
   color: #0092db;
   line-height: 0.5;
@@ -4593,7 +4593,7 @@ a.breadcrumb-item:hover {
   color: #888888;
 }
 .txt_quest_titletable {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1.8em;
@@ -4656,7 +4656,7 @@ a.breadcrumb-item:hover {
 /*  /.Question */
 /* Project Approval */
 .txt_proapp_searchhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 28px;
   color: #b1261f;
@@ -4688,20 +4688,20 @@ a.breadcrumb-item:hover {
   border-top: 0px;
 }
 .txt_proapp_superhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 26px;
   color: #b1261f;
 }
 .txt_proapp_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #b1261f;
   line-height: 1.3em;
 }
 .txt_proapp_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #3c6494;
@@ -4722,14 +4722,14 @@ a.breadcrumb-item:hover {
   font-size: 38px;
 }
 .txt_proapp_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .txt_proapp_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -4902,7 +4902,7 @@ nav {
   transition: 0.3s;
   margin: 0 6px;
   z-index: 1;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
   font-weight: 500;
   position: relative;
@@ -4954,25 +4954,25 @@ nav {
   }
 */
 .txt_pcr_submenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 11px;
 }
 .txt_pcr_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: bold;
   font-size: 22px;
   color: #333;
   line-height: 1.3em;
 }
 .txt_pcr_detail_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 30px;
   color: #b1261f;
   line-height: 1.3em;
 }
 .txt_pcr_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #333;
   line-height: 1.4em;
@@ -4980,7 +4980,7 @@ nav {
   overflow: hidden;
 }
 .txt_pcr_subhead_3row {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #333;
   line-height: 1.4em;
@@ -4988,7 +4988,7 @@ nav {
   overflow: hidden;
 }
 .txt_pcr_subhead_4row {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #333;
   line-height: 1.4em;
@@ -4996,14 +4996,14 @@ nav {
   overflow: hidden;
 }
 .txt_pcr_subhead_nolock {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   color: #333;
   line-height: 1.4em;
   overflow: hidden;
 }
 .txt_pcr_footerhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .box-topic_pcr {
   overflow: hidden;
@@ -5019,7 +5019,7 @@ nav {
   background-color: #f2f2f2;
 }
 .txt_pcr_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.5em;
@@ -5037,7 +5037,7 @@ nav {
   border: 1px solid #b1261f !important;
 }
 .txt_pcr_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -5056,7 +5056,7 @@ nav {
   border-radius: 0.4rem;
 }
 /*.box_pcr_title {
-    font-family: 'Kanit-Light';
+    font-family: 'TrueTextBOnline-Regular';
     font-size: 16px;
     color: #333;
     line-height: 1.32em;
@@ -5064,7 +5064,7 @@ nav {
     overflow: hidden;
 }*/
 .box_pcr_title2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   color: #333;
   line-height: 1.32em;
@@ -5188,7 +5188,7 @@ nav {
   background-color: #53B6E0 !important;
 }
 .txt_cned_submenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 11px;
 }
 .txt_cned_submenu a.active, .txt_cned_submenu a:hover {
@@ -5201,7 +5201,7 @@ nav {
   background-color: #fff !important;
 }
 .txt_kpi_submenu {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 11px;
 }
 .txt_kpi_submenu a {
@@ -5222,7 +5222,7 @@ nav {
 }
 
 .font_cned_topic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5275,7 +5275,7 @@ nav {
   color: #666;
 }
 .txt_cned_headnum-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #b1261f;
   line-height: 1em;
@@ -5351,7 +5351,7 @@ a:hover .zoomlink div .font-title-thx {
   z-index: 9999;
 }
 .txt_pricebaht {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 24px;
   line-height: 0.8;
   overflow: hidden;
@@ -5359,7 +5359,7 @@ a:hover .zoomlink div .font-title-thx {
   color: #333;
 }
 .txt_pricepercent {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 22px;
   line-height: 0.8;
   overflow: hidden;
@@ -5388,7 +5388,7 @@ a:hover .zoomlink div .font-title-thx {
   height: 10px;
 }
 .font_cned_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5396,7 +5396,7 @@ a:hover .zoomlink div .font-title-thx {
   color: #333;
 }
 .txt_cned_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.35em;
@@ -5406,7 +5406,7 @@ a:hover .zoomlink div .font-title-thx {
   font-size: 18px;
 }
 .txt_cned_subhead_nolock {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
   color: #333;
   line-height: 1.35em;
@@ -5419,14 +5419,14 @@ a:hover .zoomlink div .font-title-thx {
   padding: 0.525rem 0.525rem !important;
 }
 .txt_cned_footerhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
 }
 .bg_tab_cned {
   border: 1px solid #53b6e0;
 }
 .bg_tab_cned .nav-link {
   border-width: 0;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #53b6e0;
 }
 .bg_tab_cned .nav-item.show .nav-link.active,
@@ -5435,21 +5435,21 @@ a:hover .zoomlink div .font-title-thx {
   background-color: #53b6e0;
 }
 .txt_cned_head2 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #333;
   line-height: 1.35em;
   font-size: 18px;
 }
 .txt_cned_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 24px;
   color: #fff;
   line-height: 1.3em;
 }
 .txt_cned_head-sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #fff;
@@ -5512,19 +5512,19 @@ a:hover .zoomlink div .font-title-thx {
   border-radius: 0.4rem;
 }
 .content_cned h1 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #b1261f;
   font-size: 24px;
   line-height: 1.35;
 }
 .content_cned h2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #b1261f;
   font-size: 22px;
   line-height: 1.35;
 }
 .content_cned h3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   color: #333;
   font-size: 34px;
   line-height: 1.35;
@@ -5537,7 +5537,7 @@ a:hover .zoomlink div .font-title-thx {
 /* /. CNED Web*/
 /* Schoolplan */
 .txt_spa_subhead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
   line-height: 1.35em;
 }
@@ -5637,7 +5637,7 @@ a:hover .zoomlink div .font-title-thx {
   width: 100%;
 }
 .font-title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5697,7 +5697,7 @@ a:hover .zoomlink div .font-title-thx {
   cursor: pointer;
   text-transform: uppercase;
   transition: 0.4s;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   color: #b1261f;
   border-radius: 5rem;
   border: 1px solid #b1261f;
@@ -5712,7 +5712,7 @@ a:hover .zoomlink div .font-title-thx {
   font-size: 14px;
 }
 .txt_donate_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 26px; /*30*/
   color: #b1261f;
@@ -5720,12 +5720,12 @@ a:hover .zoomlink div .font-title-thx {
 }
 .txt_red_modal {
   color: #e7383b;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 24px;
 }
 .txt_grey_form {
   color: #a6a6b2;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 18px;
 }
 /* VideoJS */
@@ -5891,7 +5891,7 @@ a:hover .img_filter_bright {
 }
 /* TrueConnect */
 .bar_cn_headtopic {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #c00000;
   line-height: 1.3em;
@@ -5901,7 +5901,7 @@ a:hover .img_filter_bright {
   border-bottom: 1px solid #dddddd;
 }
 .bar_cn_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5912,7 +5912,7 @@ a:hover .img_filter_bright {
   border-bottom: 1px solid #dddddd !important;
 }
 .bar_cn_headtopic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5923,7 +5923,7 @@ a:hover .img_filter_bright {
   border-bottom: 1px solid #dddddd !important;
 }
 .bar_cn_headtopic_greyblack {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5932,7 +5932,7 @@ a:hover .img_filter_bright {
   font-size: 16px;
 }
 .bar_cn_headtopic_red {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -5942,7 +5942,7 @@ a:hover .img_filter_bright {
   border-bottom: 1px solid #dddddd !important;
 }
 .bar_cn_headtopic_white {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5953,7 +5953,7 @@ a:hover .img_filter_bright {
   border-left: 6px solid #cc338b !important;
 }
 .bar_cn_headtopic_white2 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #cc338b;
   line-height: 1.3em;
@@ -5964,7 +5964,7 @@ a:hover .img_filter_bright {
 }
 
 .bar_cn_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -5975,47 +5975,47 @@ a:hover .img_filter_bright {
 }
 .txt_cn_red_head {
   color: #cc338b;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .txt_cn_grey_head {
   color: #333;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .txt_cn_black_head {
   color: #333;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 22px;
 }
 .txt_cn_grey_title {
   color: #888;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .txt_cn_numhead {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-size: 40px;
 }
 .txt_lvl_1 {
   color: #cc338b;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .txt_lvl_2 {
   color: #e69138;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .txt_lvl_3 {
   color: #f1c232;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .txt_lvl_4 {
   color: #6aa84f;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .txt_lvl_5 {
   color: #3d85c6;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
 }
 .bg_lvl_1 {
   background-color: #cc338b;
@@ -6042,7 +6042,7 @@ a:hover .img_filter_bright {
   background-color: #dddddd;
 }
 .table_cn_border th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -6051,7 +6051,7 @@ a:hover .img_filter_bright {
   color: #333;
 }
 .table_cn_border td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0.3rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6086,11 +6086,11 @@ a:hover .img_filter_bright {
 .table_cn_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .table_cn_border2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.1rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -6098,7 +6098,7 @@ a:hover .img_filter_bright {
   font-size: 14px;
 }
 .table_cn_border2 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6126,12 +6126,12 @@ a:hover .img_filter_bright {
 .table_cn_border2 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 
 .table_cn_border3 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -6139,7 +6139,7 @@ a:hover .img_filter_bright {
   font-size: 18px;
 }
 .table_cn_border3 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6168,12 +6168,12 @@ a:hover .img_filter_bright {
 .table_cn_border3 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 
 .table_cn_border4 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6181,7 +6181,7 @@ a:hover .img_filter_bright {
   font-size: 18px;
 }
 .table_cn_border4 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6210,12 +6210,12 @@ a:hover .img_filter_bright {
 .table_cn_border4 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 
 .table_bms_border th {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6223,7 +6223,7 @@ a:hover .img_filter_bright {
   font-size: 20px;
 }
 .table_bms_border td {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6253,12 +6253,12 @@ a:hover .img_filter_bright {
 .table_bms_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 20px;
 }
 
 .table_bms_perfvalue td {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   padding: 0.2rem;
   font-size: 20px;
   color: #555;
@@ -6272,7 +6272,7 @@ a:hover .img_filter_bright {
   border-top: 0px !important;
   border-bottom: 0px !important;
   padding: 0.2rem 0.5rem;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6282,7 +6282,7 @@ a:hover .img_filter_bright {
   border-left: 0px !important;
   border-right: 0px !important;
   border-bottom: 0px !important;
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6308,7 +6308,7 @@ a .table_cn_border3 {
   background-color: #f3f3f3;
 }
 .table_cn_border_bottom_1 td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.2rem 0rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6327,7 +6327,7 @@ a .table_cn_border3 {
 .table_cn_border_bottom_1 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .table_cn td,
@@ -6373,7 +6373,7 @@ a .table_cn_border3 {
 }
 .table_kpi_border_bottom td,
 .table_kpi_border_bottom th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6383,7 +6383,7 @@ a .table_cn_border3 {
 }
 .table_kpi_border_bottom2 td,
 .table_kpi_border_bottom2 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6401,7 +6401,7 @@ a .table_cn_border3 {
 
 .table_kpi_border_bottom_px0 td,
 .table_kpi_border_bottom_px0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6427,7 +6427,7 @@ a .table_cn_border3 {
 
 .table_kpi_noborder_px0 td,
 .table_kpi_noborder_px0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 0px solid #dddddd !important;
   border-top: 0px;
@@ -6453,7 +6453,7 @@ a .table_cn_border3 {
 /* Sub Toggle */
 .table_kpi_border_0 td,
 .table_kpi_border_0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 1px solid #ddd;
   border-top: 0px;
@@ -6485,7 +6485,7 @@ a .table_cn_border3 {
 /* /.Sub Toggle */
 .table_kpi_border_bottom0 td,
 .table_kpi_border_bottom0 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 0px solid #ddd;
   border-top: 0px;
@@ -6513,7 +6513,7 @@ a .table_cn_border3 {
 
 .table_kpi_border_bottom3 td,
 .table_kpi_border_bottom3 th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.1rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6535,7 +6535,7 @@ a .table_cn_border3 {
 }
 */
 .table_kpi_border_bottom td {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   border-bottom: 1px solid #dddddd;
   color: #333333;
 }
@@ -6548,7 +6548,7 @@ a .table_cn_border3 {
 }
 .table_kpi_grey td,
 .table_kpi_grey th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6573,7 +6573,7 @@ a .table_cn_border3 {
 
 .table_kpi_grey_sm td,
 .table_kpi_grey_sm th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6597,7 +6597,7 @@ a .table_cn_border3 {
 
 .table_kpi_grey_sm_allborder td,
 .table_kpi_grey_sm_allborder th {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6651,28 +6651,28 @@ a .table_cn_border3 {
   border-right: 1px solid #dddddd !important;
 }
 .txt_kpi_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 30px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 24px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
@@ -6680,7 +6680,7 @@ a .table_cn_border3 {
 }
 /*
 .txt_kpi_head_num4 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
@@ -6689,7 +6689,7 @@ a .table_cn_border3 {
 */
 /*
 .txt_kpi_head_num5 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
@@ -6699,49 +6699,49 @@ a .table_cn_border3 {
 .txt_kpi_head_num_sm,
 .txt_kpi_head_num4,
 .txt_kpi_head_num5 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num6 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num_14p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 14px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num_18p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 18px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_num_888 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_head_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
   font-size: 20px;
 }
 .txt_kpi_sm_w {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -6749,7 +6749,7 @@ a .table_cn_border3 {
 }
 /*
 .txt_kpi_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6758,21 +6758,21 @@ a .table_cn_border3 {
 */
 .txt_kpi_title,
 .txt_kpi_bighead_date {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 16px; /*18 14*/
 }
 .txt_kpi_title_18p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 18px;
 }
 .txt_menu_home {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6792,70 +6792,70 @@ a:hover .txt_vl_title {
   opacity: 0.5;
 }
 .txt_kpi_head_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px; /*14*/
 }
 .txt_kpi_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 40px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_bighead2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 24px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_bighead3 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.35em; /*1.2em*/
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_bighead4 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.2em;
   font-size: 24px;
 }
 .txt_bms_bighead {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.55em; /*1.2em*/
   font-size: 24px; /*24*/ /*40*/ /*33*/
 }
 .txt_kpi_mainmenu {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 40px;
 }
 .txt_kpi_mainmenu_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 28px;
 }
 .txt_kpi_mainmenu2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 32px;
 }
 .txt_kpi_mainmenu2_title {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
@@ -6863,7 +6863,7 @@ a:hover .txt_vl_title {
 }
 /*
 .txt_kpi_bighead_date {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #888;
   line-height: 1em;
@@ -6871,7 +6871,7 @@ a:hover .txt_vl_title {
 }
 */
 .txt_kpi_head_date {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   /*  line-height: 1.35em;*/
@@ -7102,7 +7102,7 @@ a:hover .hover_ic_copy {
   text-align: center;
 }
 .btn_plus_grey_d9 {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #d9d9d9;
   line-height: 1.35em;
@@ -7118,7 +7118,7 @@ a:hover .hover_ic_copy {
   border: 1px solid #c90000;
 }
 .bar_kpi_headtopic_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7128,7 +7128,7 @@ a:hover .hover_ic_copy {
   border-bottom: 1px solid #dddddd;
 }
 .bar_kpi_headtopic_w2 {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7137,7 +7137,7 @@ a:hover .hover_ic_copy {
 }
 
 .bar_kpi_headtopic_greenlight {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -7148,7 +7148,7 @@ a:hover .hover_ic_copy {
 }
 
 .bar_kpi_headtopic_redline {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -7158,7 +7158,7 @@ a:hover .hover_ic_copy {
   border-bottom: 1px solid #dddddd;
 }
 .bar_kpi_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7167,7 +7167,7 @@ a:hover .hover_ic_copy {
   padding: 8px 14px;
 }
 .bar_bms_headpopover_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7175,7 +7175,7 @@ a:hover .hover_ic_copy {
   padding: 8px 14px;
 }
 .bar_bms_headtopic_black {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7191,7 +7191,7 @@ a:hover .hover_ic_copy {
   border: 0px;
 }
 .bar_kpi_navlink {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7200,7 +7200,7 @@ a:hover .hover_ic_copy {
   padding: 14px 14px !important;
 }
 .bar_bms_navlink {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7208,7 +7208,7 @@ a:hover .hover_ic_copy {
   padding: 15px 14px !important;
 }
 .bar_kpi_headtopic_white {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7216,7 +7216,7 @@ a:hover .hover_ic_copy {
   padding: 8px 14px;
 }
 .bar_kpi_headtopic_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1.3em;
@@ -7226,7 +7226,7 @@ a:hover .hover_ic_copy {
   border-bottom: 1px solid #dddddd;
 }
 .bar_kpi_headtopic_redlight {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7236,7 +7236,7 @@ a:hover .hover_ic_copy {
   border-bottom: 1px solid #dddddd !important;
 }
 .bar_kpi_headpic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7245,7 +7245,7 @@ a:hover .hover_ic_copy {
   background-color: #eeeeee; /*F3F3F3*/
 }
 .bar_cluster_headpic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7254,21 +7254,21 @@ a:hover .hover_ic_copy {
   background-color: #eeeeee; /*F3F3F3*/
 }
 .txt_cluster_head_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #333;
   line-height: 1.3em;
 }
 .txt_cluster_head_w {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
 }
 .bar_cluster_headpic_red {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
   font-style: normal;
   color: #fff;
@@ -7277,7 +7277,7 @@ a:hover .hover_ic_copy {
   background-color: #c60000;
 }
 .txt_cluster_grey_16p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7296,7 +7296,7 @@ a:hover .txt_kpi_head {
   /*  color: #333;*/
 }
 .bar_kpi_headtopic_grey {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7353,7 +7353,7 @@ a:hover .txt_kpi_head {
   background-color: #ffffff;
 }
 .txt_kpi_blod {
-  font-family: 'Kanit-regular' !important;
+  font-family: 'TrueTextBOnline-Bold' !important;
 }
 .txt_kpi_green {
   color: #6ea954 !important;
@@ -7366,7 +7366,7 @@ a:hover .txt_kpi_head {
 }
 .txt_kpi_red_bold {
   color: #c60000 !important;
-  font-family: 'Kanit-regular' !important;
+  font-family: 'TrueTextBOnline-Bold' !important;
 }
 .txt_kpi_blue {
   color: #4786c4;
@@ -7387,35 +7387,35 @@ a:hover .txt_kpi_head {
   color: #f3f3f3;
 }
 .txt_kpi_title_16p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 16px;
 }
 .txt_kpi_head_16p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   /*  background-color: #FFFFFF;*/
   font-size: 16px;
 }
 .txt_kpi_head_20p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   /*  background-color: #FFFFFF;*/
   font-size: 20px;
 }
 .txt_kpi_head_22p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 22px;
 }
 .txt_kpi_head_26p {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
@@ -7423,7 +7423,7 @@ a:hover .txt_kpi_head {
 }
 .txt_kpi_num_100p {
   font-size: 100px;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   line-height: 6rem;
 }
 .kpi_active {
@@ -7438,7 +7438,7 @@ a:hover .txt_kpi_head {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -8041,7 +8041,7 @@ ul {
   padding-right: 30px;
 }
 .nav_menu_item_me {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-size: 18px;
 }
 .btn_vl_grey_light_border {
@@ -8059,14 +8059,14 @@ ul {
 }
 
 .txt_vl_head {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   color: #333;
   line-height: 1em;
   font-size: 20px; /*24*/ /*40*/ /*33*/
 }
 .txt_vl_title {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -8804,7 +8804,7 @@ ul {
     max-height: 70px;
   }
   .txt_ict_bighead {
-    font-family: 'Kanit-Light';
+    font-family: 'TrueTextBOnline-Regular';
     font-size: 30px;
     color: #b1261f;
   }
@@ -8862,7 +8862,7 @@ ul {
     min-height: 96px;
   }
   .txt_kpi_head_num {
-    font-family: 'Kanit-regular';
+    font-family: 'TrueTextBOnline-Bold';
     font-style: normal;
     line-height: 1em;
     font-size: 30px; /*24*/ /*40*/ /*33*/
@@ -9006,7 +9006,7 @@ ul {
     position: relative;
     z-index: 1000;
     color: #fff;
-    font-family: 'Kanit-regular';
+    font-family: 'TrueTextBOnline-Bold';
   }
   .donation.progress_step > li:after {
     content: '';
@@ -9035,7 +9035,7 @@ ul {
   }
   /*
  .donation.progress_step {
-    font-family: 'Kanit-regular';
+    font-family: 'TrueTextBOnline-Bold';
 }
 */
   /* /.Step*/

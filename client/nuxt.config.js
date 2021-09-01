@@ -1,3 +1,5 @@
+import translation from './static/translation'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -74,7 +76,35 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-i18n',
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'th',
+        iso: 'th-TH',
+        name: 'ภาษาไทย',
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+      },
+    ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: translation.en,
+        th: translation.th,
+      },
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: false,
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

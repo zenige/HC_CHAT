@@ -6,13 +6,9 @@
       </div>
     </div>
     <div v-for="item in menus" :key="item.name" @click.stop="onSetHideDrawer()">
-      <a
-        v-if="item.link && item.isEnable"
-        :href="item.link"
-        class="side-menu-main"
-      >
+      <NuxtLink v-if="item.isEnable" :to="item.link" class="side-menu-main">
         <div class="side-menu-main-item">{{ item.name }}</div>
-      </a>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -88,6 +84,7 @@ export default {
     height: 100%;
     flex-direction: column;
     box-sizing: border-box;
+    box-shadow: 0.25rem 0 1rem rgba(0, 0, 0, 0.35);
     z-index: 99;
   }
   &-container-open {
@@ -139,7 +136,7 @@ export default {
   }
 }
 .side-menu-main-item {
-  color: #000000;
+  color: #000;
   font-size: 18px;
   height: unset;
   padding: 0.35rem 1.25rem;

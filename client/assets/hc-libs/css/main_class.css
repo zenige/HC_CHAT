@@ -5,7 +5,7 @@
 
 .vl_navbar .txt_vl_head,
 .modal-dialog .txt_vl_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em !important;
@@ -24,7 +24,7 @@
   border-radius: 10px;
 }
 .txt_vla_head {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000;
   line-height: 1em;
@@ -34,7 +34,7 @@
   color: #888;
 }
 .txt_true_bighead_sm {
-  font-family: 'Kanit-regular';
+  font-family: 'TrueTextBOnline-Bold';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -42,7 +42,7 @@
   overflow: hidden;
 }
 .txt_true_bighead_24p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   /* font-family: 'SukhumvitSet-SemiBold'; */
   font-style: normal;
   font-size: 24px;
@@ -51,7 +51,7 @@
   overflow: hidden;
 }
 .txt_true_bighead_sm_regular {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -221,14 +221,14 @@
   min-height: 70px;
 }
 .txt_vl_head_24p {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em !important;
   font-size: 24px;
 }
 .txt_vla_subject {
-  font-family: 'Kanit-Light';
+  font-family: 'TrueTextBOnline-Regular';
   font-style: normal;
   font-size: 30px;
   color: #000000;
@@ -263,7 +263,7 @@
 }
 @media (max-width: 576px) {
   .txt_vla_subject {
-    font-family: 'Kanit-Light';
+    font-family: 'TrueTextBOnline-Regular';
     font-style: normal;
     font-size: 28px;
     color: #000000;
