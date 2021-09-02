@@ -15,7 +15,7 @@
                 <b-card-text>Tab contents 2</b-card-text>
               </b-tab>
               <b-tab title="Patient Group">
-                <b-card-text>Tab contents 3</b-card-text>
+                <patient/>
               </b-tab>
             </b-tabs>
           </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import PatientGroup from '../../components/chatbotTraining/patientGroup.vue'
 export default {
   layout: 'noHeaderLayout',
   props: {
@@ -33,8 +34,9 @@ export default {
     selected: { default: false },
   },
   data: () => ({}),
-  components: {
-    newWord: () => import('~/components/chatbotTraining/newWord.vue'),
+  components: {    
+    patient: () => import('~/components/chatbotTraining/patientGroup.vue'),
+    newWord: () => import('~/components/chatbotTraining/newWord.vue')
   },
 }
 </script>

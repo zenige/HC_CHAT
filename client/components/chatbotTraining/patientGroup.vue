@@ -76,15 +76,25 @@
             :headers="headers"
             :items="desserts"
             :single-select="singleSelect"
-            :items-per-page="selectedgg"
             hide-default-footer
             item-key="name"
             show-select
             class="elevation-1"
           >
           </v-data-table>
+              <v-btn
+                elevation="2"
+                fab
+                @click="addCol"
+                large
+                class="text-black">+</v-btn>
         </div>
-        <b-form-select v-model="selectedgg" @change="perpage(selectedgg)" :options="options"></b-form-select>
+        <v-btn
+              elevation="2"
+              fab
+              @click="addRowd"
+              large
+              class="text-black">-</v-btn>
       </div>
     </div>
 
@@ -147,11 +157,7 @@ export default {
         },
       ],
       selected: [],
-      options: [
-          { value: 5, text: '5' },
-          { value: 10, text: '10' },
-        ],
-      selectedgg: ''
+      count: 0,
     }
   },
   methods: {
@@ -175,9 +181,27 @@ export default {
     closeTrainWordModal() {
       this.isShowTrainWordModal = false
     },
-    perpage(value) {
-      console.log(value)
-    }
+    selectAll() {
+      
+    },
+    addRowd() {
+      this.desserts.push({ 
+          name: 'new',
+          calories: '',
+          fat: '',
+          carbs: '',
+          protein: '',
+          iron: '',
+         })
+    },
+    addCol() {
+      this.headers.push(
+        {
+          text: 'new',
+          value: '',
+        }
+      )
+    },
   },
 }
 </script>
