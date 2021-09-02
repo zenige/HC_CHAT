@@ -5,22 +5,19 @@
     </div>
     <div class="vl_navbar">
       <div class="container fitscreen pt-3 pt-md-3 plr_15p">
-        <div class="row">
-          <div class="col-md-12 pb_me-4">
-            <div class="row d-flex justify-content-center">
-              <div class="ml-5 mt-5">
-                <b-card no-body>
-                  <b-tabs card>
-                    <b-tab title="Tab 1" active>
-                      <newWord/>
-                    </b-tab>
-                    <b-tab title="Tab 2">
-                      <b-card-text>Tab contents 2</b-card-text>
-                    </b-tab>
-                  </b-tabs>
-                </b-card>
-              </div>
-            </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 pb_me-4">
+            <b-tabs>
+              <b-tab title="New Word" active>
+                <newWord />
+              </b-tab>
+              <b-tab title="Trained Word">
+                <b-card-text>Tab contents 2</b-card-text>
+              </b-tab>
+              <b-tab title="Patient Group">
+                <b-card-text>Tab contents 3</b-card-text>
+              </b-tab>
+            </b-tabs>
           </div>
         </div>
       </div>
@@ -31,18 +28,48 @@
 <script>
 export default {
   layout: 'noHeaderLayout',
+  props: {
+    name: { required: true },
+    selected: { default: false },
+  },
+  data: () => ({}),
   components: {
-    newWord: () => import('~/components/chatbotTraning/newWord.vue'),
-  }
+    newWord: () => import('~/components/chatbotTraining/newWord.vue'),
+  },
 }
 </script>
 
 <style lang="scss">
+.vl_navbar .nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.vl_navbar .nav-tabs .nav-item.show .nav-link,
+.vl_navbar .nav-tabs .nav-link.active {
+  color: #cc338b;
+  background-color: #fff;
+  border-bottom: 2px solid #cc338b;
+  font-weight: 600;
+}
+
+.vl_navbar .nav-tabs .nav-link {
+  padding: 0.5rem 1rem;
+}
+
 .txt_hc_title {
   font-family: 'TrueTextBOnline-Bold';
   font-size: 36px;
   font-style: normal;
   line-height: 1rem;
   color: #333333;
+}
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: all 0.1s ease-in-out;
+}
+.fade-up-enter,
+.fade-up-leave-to {
+  height: 0;
+  opacity: 0;
 }
 </style>

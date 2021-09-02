@@ -2383,6 +2383,32 @@ html {
   background-color: #296db3;
   border: 1px solid #296db3;
 }
+.btn_red_modal {
+  color: #ec5d57;
+  background-color: #fff;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  padding: 0.1375rem 0.875rem;
+  border: 1px solid #ec5d57;
+}
+.btn_red_modal:hover {
+  color: #fff;
+  background-color: #ec5d57;
+  border: 1px solid #ec5d57;
+}
+.btn_green_modal {
+  color: #41b883;
+  background-color: #fff;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  padding: 0.1375rem 0.875rem;
+  border: 1px solid #41b883;
+}
+.btn_green_modal:hover {
+  color: #fff;
+  background-color: #41b883;
+  border: 1px solid #41b883;
+}
 .btn_red_light_border {
   color: #cc338b;
   background-color: #fff;
@@ -4269,6 +4295,34 @@ font-weight: 500;*/
   background-color: #fff;
   border-radius: 5rem;
   border: 1px solid #cc338b !important;
+}
+.btn_hcb_green {
+  color: #fff;
+  background-color: #41b883;
+  border-radius: 5rem;
+  font-size: 18px;
+  padding: 0.1375rem 0.875rem;
+  border: 1px solid #41b883 !important;
+}
+.btn_hcb_green:hover {
+  color: #41b883 !important;
+  background-color: #fff;
+  border-radius: 5rem;
+  border: 1px solid #41b883 !important;
+}
+.btn_hcb_red {
+  color: #fff;
+  background-color: #ec5d57;
+  border-radius: 5rem;
+  font-size: 18px;
+  padding: 0.1375rem 0.875rem;
+  border: 1px solid #ec5d57 !important;
+}
+.btn_hcb_red:hover {
+  color: #ec5d57 !important;
+  background-color: #fff;
+  border-radius: 5rem;
+  border: 1px solid #ec5d57 !important;
 }
 .txt_vla_welcome {
   font-family: 'TrueTextBOnline-Bold';
