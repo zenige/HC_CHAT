@@ -6,14 +6,10 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 from fastapi import FastAPI
-from router import train,logic
+from router import trainModel
 
 app = FastAPI()
 app.include_router(
-    train.router,
-    prefix="/train"
-)
-app.include_router(
-    logic.router,
-    prefix="/logic"
+    trainModel.router,
+    prefix="/trainModel"
 )
