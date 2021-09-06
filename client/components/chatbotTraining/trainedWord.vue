@@ -43,14 +43,14 @@
           </div>
           <div class="col-4 col-md-8 pb_me-4 text-right">
             <button
-              @click="openTrainWordModal()"
+              @click="onAddNewWord()"
               class="login__btn-submit hcb-btn btn btn_hcb_green btn-block"
               style="height: 2.5rem"
             >
-              Train
+              Add Word
             </button>
             <button
-              @click="openDeleteWordModal()"
+              @click="onDeleteWord()"
               class="login__btn-submit hcb-btn btn btn_hcb_red btn-block"
               style="height: 2.5rem"
             >
@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ newWords.length }})</span>
+            <span class="txt_vla_grey">({{ trainedWords.length }})</span>
           </div>
         </div>
       </div>
@@ -89,38 +89,38 @@
             striped
             hover
             id="my-table"
-            :items="newWords"
+            :items="trainedWords"
             :per-page="perPage"
             :current-page="currentPage"
             :fields="fields"
             :filter="filter"
           >
-            <template #cell(word)="data">
+            <template #cell(first_name)="data">
               <div v-if="data.item.editable === false">
                 <div>
-                  {{ data.item.word }}
+                  {{ data.item.first_name }}
                 </div>
               </div>
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.word"
+                v-model="data.item.first_name"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
                 "
               />
             </template>
-            <template #cell(answer)="data">
+            <template #cell(last_name)="data">
               <div v-if="data.item.editable === false">
                 <div>
-                  {{ data.item.answer }}
+                  {{ data.item.last_name }}
                 </div>
               </div>
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.answer"
+                v-model="data.item.last_name"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -173,16 +173,16 @@
       </div>
     </div>
 
-    <TrainWordModal
-      :isOpen="isShowTrainWordModal"
-      :onCancel="closeTrainWordModal"
-      :onDelete="onTrainWord"
-    ></TrainWordModal>
     <DeleteWordModal
       :isOpen="isShowDeleteWordModal"
       :onCancel="closeDeleteWordModal"
       :onDelete="onDeleteWord"
     ></DeleteWordModal>
+    <TrainWordModal
+      :isOpen="isShowTrainWordModal"
+      :onCancel="closeTrainWordModal"
+      :onDelete="onTrainWord"
+    ></TrainWordModal>
   </div>
 </template>
 
@@ -205,25 +205,24 @@ export default {
       filter: '',
       perPage: 10,
       currentPage: 1,
-      trainSelected: [],
       fields: [
         {
           key: 'selected',
           label: 'Select',
         },
         {
-          key: 'word',
-          label: 'Word',
+          key: 'first_name',
+          label: 'First name',
           sortable: true,
         },
         {
-          key: 'answer',
-          label: 'Answer',
+          key: 'last_name',
+          label: 'Last name',
           sortable: true,
         },
         {
-          key: 'added',
-          label: 'Added',
+          key: 'age',
+          label: 'Person age',
           sortable: true,
         },
         {
@@ -232,36 +231,32 @@ export default {
           sortable: false,
         },
       ],
-      newWords: [
+      trainedWords: [
         {
-          isActive: false,
-          added: '2021-05-21',
-          word: 'Dickerson',
-          answer: 'Macdonald',
+          age: 40,
+          first_name: 'Dickerson',
+          last_name: 'Macdonald',
           selected: false,
           editable: false,
         },
         {
-          isActive: false,
-          added: '2021-05-22',
-          word: 'Larsen',
-          answer: 'Shaw',
+          age: 21,
+          first_name: 'Larsen',
+          last_name: 'Shaw',
           selected: false,
           editable: false,
         },
         {
-          isActive: false,
-          added: '2021-05-23',
-          word: 'Geneva',
-          answer: 'Wilson',
+          age: 89,
+          first_name: 'Geneva',
+          last_name: 'Wilson',
           selected: false,
           editable: false,
         },
         {
-          isActive: false,
-          added: '2021-05-24',
-          word: 'Jami',
-          answer: 'Carney',
+          age: 38,
+          first_name: 'Jami',
+          last_name: 'Carney',
           selected: false,
           editable: false,
         },
@@ -307,7 +302,7 @@ export default {
   },
   watch: {
     selectAll(value) {
-      this.newWords.map(function (item) {
+      this.trainedWords.map(function (item) {
         item.selected = value
         return item
       })
@@ -315,7 +310,7 @@ export default {
   },
   computed: {
     rows() {
-      return this.newWords.length
+      return this.trainedWords.length
     },
   },
   methods: {
@@ -330,11 +325,6 @@ export default {
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
     },
-    onTrainWord() {
-      this.trainSelected = this.newWords.filter(
-        (item) => item.selected === true
-      )
-    },
     openTrainWordModal() {
       this.isShowTrainWordModal = true
     },
@@ -344,9 +334,20 @@ export default {
     onEdit() {
       this.edit = !this.edit
     },
+    onAddNewWord() {
+      this.trainedWords.push({
+        age: 0,
+        first_name: '',
+        last_name: '',
+        selected: false,
+        editable: false,
+      })
+    },
     onDeleteWord() {
-      let selectedRow = this.newWords.filter((item) => item.selected === true)
-      this.newWords = this.newWords.filter(
+      let selectedRow = this.trainedWords.filter(
+        (item) => item.selected === true
+      )
+      this.trainedWords = this.trainedWords.filter(
         (item) => !selectedRow.includes(item)
       )
     },
