@@ -61,3 +61,12 @@ def TrainModel(newDF):
     model.fit(XX,yy)
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
+
+
+@router.post("/predict")
+async def predict():
+    loaded_model = pickle.load(open("finalized_model.sav", 'rb'))
+    result = loaded_model.predict([[1,1,1,1,1,0,0]])
+    str1 = str(result)
+    print(result)
+    return str1

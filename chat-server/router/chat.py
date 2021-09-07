@@ -54,9 +54,30 @@ async def webhook(payload: Dict):
         data = {"message":payload['events'][0]['message']['text']}
         timestamp = datetime.datetime.timestamp(datetime.datetime.now())
         res = stateHandler(sender_id=sender['userId'], message= data, confident=0.6)
-
+    
         # save_message(message=data['message'],bot_name=bot_define['bot_name'],message_type="text",sender=profile.display_name,sender_id=sender_define['userID'],sender_type="line",room=botID+'&'+sender_define['userID'],botId=bot_define['_id'],userID=bot_define['owner'],pictureUrl=profile.picture_url)
-    response = [TextSendMessage(text = res['message'])]
+    if "message" in res.keys():
+        response = [TextSendMessage(text = res['message'])]
+    elif 'flex' in res.keys():
+                    response = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
+        actions=[
+            PostbackAction(
+                label='postback',
+                display_text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            PostbackAction(
+                label='CA',
+                display_text='postback CA',
+                data='action=buy&itemid=1'
+            ),
+           
+        ]
+    )
+)
     line_bot_api.reply_message(Reply_token, response)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
