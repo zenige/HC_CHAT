@@ -5,11 +5,14 @@ from pydantic import BaseModel
 from typing import Optional
 import datetime
 from firebase_admin import firestore
-
+from typing import Any, Dict, AnyStr, List, Union
 class TrainedModel(BaseModel):
     question: str
     answer: str
 
+JSONObject = Dict[AnyStr, Any]
+JSONArray = List[Any]
+JSONStructure = Union[JSONArray, JSONObject]
 
 router = APIRouter()
 
@@ -83,6 +86,14 @@ async def createTrainWord(data: TrainedModel):
     db.collection(u'trained').document().set(obj)
     return "done"
 
+@router.post("/trained/many")
+async def createTrainWord(arbitrary_json: JSONStructure = None):
+    for i in arbitrary_json:
+        i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
+    # # Add a new doc in collection 'cities' with ID 'LA'
+
+        db.collection(u'trained').document().set(i)
+    return "done"
 
 @router.patch("/trained/{id}")
 async def updateTrainWord(data: TrainedModel, id: str):
