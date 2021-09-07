@@ -4,7 +4,7 @@ import requests
 from pydantic import BaseModel
 from typing import Optional
 import datetime
-
+from firebase_admin import firestore
 
 class TrainedModel(BaseModel):
     question: str
@@ -27,15 +27,15 @@ async def getTrainedWord():
 
 
 @router.get("/trained")
-async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0):
+async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
     print(limit)
     docs_ref = db.collection(u'trained')
     if pages == None:
-        docs = docs_ref.order_by("question").stream()
+        docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
         query = streamToDict(docs)
         return query
     elif pages != None:
-        first_query = docs_ref.order_by("question").limit(limit)
+        first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
         docs = first_query.stream()
         # test = streamToDict(docs)
         # print(test)
@@ -49,13 +49,13 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0):
     
                 last_doc = list(docs)[-1]
 
-                last_pop = last_doc.to_dict()[u'question']
+                last_pop = last_doc.to_dict()[order_by]
 
                 next_query = (
                     docs_ref
-                    .order_by(u'question')
+                    .order_by(order_by, direction=firestore.Query.DESCENDING)
                     .start_after({
-                        u'question': last_pop
+                        order_by: last_pop
                     })
                     .limit(limit)
                 )
@@ -100,15 +100,56 @@ async def deleteTrainWord(id: str):
     return "Delete Done"
 
 
+# @router.get("/training")
+# async def getTrainedWord():
+#     docs = db.collection(u'training').stream()
+#     obj = []
+#     for doc in docs:
+#         train_dict = doc.to_dict()
+#         train_dict['id'] = doc.id
+#         obj.append(train_dict)
+#     return obj
+
+
 @router.get("/training")
-async def getTrainedWord():
-    docs = db.collection(u'training').stream()
-    obj = []
-    for doc in docs:
-        train_dict = doc.to_dict()
-        train_dict['id'] = doc.id
-        obj.append(train_dict)
-    return obj
+async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
+    print(limit)
+    docs_ref = db.collection(u'training')
+    if pages == None:
+        docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
+        query = streamToDict(docs)
+        return query
+    elif pages != None:
+        first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
+        docs = first_query.stream()
+        # test = streamToDict(docs)
+        # print(test)
+        # print("____")
+
+        if pages == 1 :
+            query = streamToDict(docs)
+            return query
+        elif pages > 1 :
+            for page in range(pages-1):
+    
+                last_doc = list(docs)[-1]
+
+                last_pop = last_doc.to_dict()[order_by]
+
+                next_query = (
+                    docs_ref
+                    .order_by(order_by, direction=firestore.Query.DESCENDING)
+                    .start_after({
+                        order_by: last_pop
+                    })
+                    .limit(limit)
+                )
+                docs = next_query.stream()
+                # results = docs.get()
+                # print(results)
+            query = streamToDict(docs)
+            return query
+
 
 # @router.post("/training")
 # async def createTrainWord(data: TrainedModel):
@@ -133,3 +174,4 @@ async def updateTrainWord(data: TrainedModel, id: str):
 async def deleteTrainWord(id: str):
     db.collection(u'training').document(id).delete()
     return "Delete Done"
+
