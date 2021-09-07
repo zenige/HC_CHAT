@@ -77,16 +77,16 @@ def streamToDict(stream):
         obj.append(train_dict)
     return obj
 
-# @router.post("/trained")
-# async def createTrainWord(data: TrainedModel):
-#     data = data.dict()
-#     # Add a new doc in collection 'cities' with ID 'LA'
-#     obj = {"question": data['question'], "answer": data['answer'],
-#            "time": datetime.datetime.timestamp(datetime.datetime.now())}
-#     db.collection(u'trained').document().set(obj)
-#     return "done"
-
 @router.post("/trained")
+async def createTrainWord(data: TrainedModel):
+    data = data.dict()
+    # Add a new doc in collection 'cities' with ID 'LA'
+    obj = {"question": data['question'], "answer": data['answer'],
+           "time": datetime.datetime.timestamp(datetime.datetime.now())}
+    db.collection(u'trained').document().set(obj)
+    return "done"
+
+@router.post("/trained/many")
 async def createTrainWord(arbitrary_json: JSONStructure = None):
     for i in arbitrary_json:
         i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
