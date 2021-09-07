@@ -14,15 +14,12 @@ def process_message(message,min_conf,sender_id,platform="line"):
     # flag,ans = basicEventHandler(msg_token,botID,sender_id,platform)
     if not flag:
         similar_trained_word = getTrainedInfo()
-        print(similar_trained_word)
+
         #similar_trained_word = trained_collection.find({'botID': ObjectId(botID)})
         for word in similar_trained_word:
-            print("_____")
-            print(message)
-            print(word['question'])
-            print("_____")
+  
             conf = float("{:.2f}".format(sentence_get_confident(message,word['question'])))
-            print(conf)
+
             if conf == False and type(conf) == bool:
                 flag = False
                 max = -1
@@ -41,10 +38,14 @@ def process_message(message,min_conf,sender_id,platform="line"):
             ans = {"message":"ขอโทษครับ ผมยังไม่เข้าใจคำนี้ครับกำลังศึกษาอยู่"}
         similar_training_word = getTrainingInfo(message['message'])
         print(similar_training_word)
+        print("_____)O_)______")
         #similar_training_word = training_collection.find_one({'question':message['message'],'botID': ObjectId(botID)})
         if similar_training_word == None and max != 1 :
-            obj = {"question":message['message'],"answer":ans["message"], 'confident': max,"time": datetime.datetime.timestamp(datetime.datetime.now())}
+            obj = {"question":message['message'],"answer":ans["message"], 'confident': max,"time": datetime.datetime.timestamp(datetime.datetime.now()),"count":1}
             db.collection(u'training').document().set(obj)
+        else :
+            doc_ref = db.collection(u'training').document(similar_training_word[0]['id'])
+            doc_ref.update({'count': similar_training_word[0]['count']+1})
         #ans = objectReader(ans["message"],botID)
     return ans
 
@@ -66,6 +67,7 @@ def getTrainingInfo(message):
     for doc in docs:
         flag = True
         train_dict = doc.to_dict()
+        train_dict['id'] = doc.id
         arr.append(train_dict)
         return arr
     if not flag:
