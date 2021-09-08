@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 pb_me-4">
+      <!-- <div class="col-md-12 pb_me-4">
         <div class="row d-flex align-items-center">
           <v-data-table
             v-model="selected"
@@ -95,7 +95,7 @@
               @click="addRowd"
               large
               class="text-black">-</v-btn>
-      </div>
+      </div> -->
     </div>
 
     <DeleteWordModal
@@ -181,26 +181,22 @@ export default {
     closeTrainWordModal() {
       this.isShowTrainWordModal = false
     },
-    selectAll() {
-      
-    },
+    selectAll() {},
     addRowd() {
-      this.desserts.push({ 
-          name: 'new',
-          calories: '',
-          fat: '',
-          carbs: '',
-          protein: '',
-          iron: '',
-         })
+      this.desserts.push({
+        name: 'new',
+        calories: '',
+        fat: '',
+        carbs: '',
+        protein: '',
+        iron: '',
+      })
     },
     addCol() {
-      this.headers.push(
-        {
-          text: 'new',
-          value: '',
-        }
-      )
+      this.headers.push({
+        text: 'new',
+        value: '',
+      })
     },
   },
 }

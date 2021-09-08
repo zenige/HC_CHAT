@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ newWordData.length }})</span>
+            <span class="txt_vla_grey">({{ rows }})</span>
           </div>
         </div>
       </div>
@@ -73,38 +73,26 @@
     <div class="row">
       <div class="col-md-12 pb_me-4">
         <div class="row d-flex align-items-center">
-          <!-- <v-data-table
-            v-model="selected"
-            :headers="headers"
-            :items="desserts"
-            :single-select="singleSelect"
-            :items-per-page="selectedgg"
-            hide-default-footer
-            item-key="name"
-            show-select
-            class="elevation-1"
-          >
-          </v-data-table> -->
           <b-table
             striped
             hover
-            id="my-table"
+            id="newWord-table"
             :items="newWordData"
-            :per-page="perPage"
+            :per-page="0"
             :current-page="currentPage"
             :fields="fields"
             :filter="filter"
           >
-            <template #cell(word)="data">
+            <template #cell(question)="data">
               <div v-if="data.item.editable === false">
                 <div>
-                  {{ data.item.word }}
+                  {{ data.item.question }}
                 </div>
               </div>
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.word"
+                v-model="changedQuestionData"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -120,7 +108,7 @@
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.answer"
+                v-model="changedAnswerData"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -139,19 +127,19 @@
               <b-button
                 v-if="data.item.editable === false"
                 variant="primary"
-                @click="data.item.editable = true"
+                @click="editWord(data)"
                 >Edit</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="danger"
-                @click="data.item.editable = false"
+                @click="cancleEditWord(data)"
                 >Cancle</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="success"
-                @click="data.item.editable = false"
+                @click="saveWord(data)"
                 >Save</b-button
               >
             </template>
@@ -159,17 +147,16 @@
           <div class="mt-3">
             <b-pagination
               v-model="currentPage"
-              :total-rows="rows"
+              :total-rows="totalNewWord"
               :per-page="perPage"
               first-text="First"
               prev-text="<"
               next-text=">"
               last-text="Last"
-              aria-controls="my-table"
+              aria-controls="newWord-table"
             ></b-pagination>
           </div>
         </div>
-        <!-- <b-form-select v-model="selectedgg" @change="perpage(selectedgg)" :options="options"></b-form-select> -->
       </div>
     </div>
 
@@ -206,6 +193,10 @@ export default {
       perPage: 10,
       currentPage: 1,
       trainSelected: [],
+      deleteSelected: [],
+      totalNewWord: 0,
+      changedQuestionData: '',
+      changedAnswerData: '',
       fields: [
         {
           key: 'selected',
@@ -238,43 +229,6 @@ export default {
         },
       ],
       newWordData: [],
-      // Note 'isActive' is left out and will not appear in the rendered table
-      // headers: [
-      //   {
-      //     text: 'Dessert (100g serving)',
-      //     align: 'start',
-      //     value: 'name',
-      //   },
-      //   { text: 'Calories', value: 'calories' },
-      //   { text: 'Fat (g)', value: 'fat' },
-      //   { text: 'Carbs (g)', value: 'carbs' },
-      //   { text: 'Protein (g)', value: 'protein' },
-      //   { text: 'Iron (%)', value: 'iron' },
-      // ],
-      // desserts: [
-      //   {
-      //     name: 'Frozen Yogurt',
-      //     calories: 159,
-      //     fat: 6.0,
-      //     carbs: 24,
-      //     protein: 4.0,
-      //     iron: '1%',
-      //   },
-      //   {
-      //     name: 'Ice cream sandwich',
-      //     calories: 237,
-      //     fat: 9.0,
-      //     carbs: 37,
-      //     protein: 4.3,
-      //     iron: '1%',
-      //   },
-      // ],
-      // selected: [],
-      // options: [
-      //   { value: 5, text: '5' },
-      //   { value: 10, text: '10' },
-      // ],
-      // selectedgg: '',
     }
   },
   watch: {
@@ -289,19 +243,14 @@ export default {
     },
   },
   async mounted() {
-    await this.getNewWordData(1, 2, 'question')
+    await this.getNewWordData(1, 10, 'question')
   },
   computed: {
     rows() {
-      return this.newWordData.length
+      return this.totalNewWord
     },
   },
   methods: {
-    onPreviewClick(value, index, item) {},
-
-    onDeleteWord() {
-      console.log('delete word')
-    },
     openDeleteWordModal() {
       this.isShowDeleteWordModal = true
     },
@@ -321,33 +270,62 @@ export default {
     closeTrainWordModal() {
       this.isShowTrainWordModal = false
     },
-    onEdit() {
-      this.edit = !this.edit
-    },
-    onDeleteWord() {
-      let selectedRow = this.newWordData.filter(
+    async onDeleteWord() {
+      this.deleteSelected = this.newWordData.filter(
         (item) => item.selected === true
       )
-      this.newWordData = this.newWordData.filter(
-        (item) => !selectedRow.includes(item)
-      )
+      await this.deleteSelected.forEach(async (item, index) => {
+        await this.$axios.delete(`/train/training/` + item.id)
+        if (index === this.deleteSelected.length - 1) {
+          await this.getNewWordData(this.currentPage, 10, 'question')
+        }
+      })
+    },
+    editWord(data) {
+      this.changedQuestionData = data.item.question
+      this.changedAnswerData = data.item.answer
+      data.item.editable = true
+    },
+    cancleEditWord(data) {
+      data.item.editable = false
+    },
+    async saveWord(data) {
+      data.item.question = this.changedQuestionData
+      data.item.answer = this.changedAnswerData
+      data.item.editable = false
+      await this.$axios.patch(`/train/training/` + data.item.id, {
+        question: data.item.question,
+        answer: data.item.answer,
+      })
     },
     async getNewWordData(page, limit, orderBy) {
       let { data } = await this.$axios.get(
         `train/training?pages=${page}&limit=${limit}&order_by=${orderBy}`
       )
       this.newWordData = data.map((item) => {
-        return {
-          answer: item.answer,
-          time: item.time,
-          count: item.count,
-          confident: item.confident,
-          question: item.question,
-          id: item.id,
-          selected: false,
-          editable: false,
+        // collect total new word data
+        if (item.total) {
+          this.totalNewWord = item.total
+          // it will return undefined item
+        } else {
+          return {
+            answer: item.answer,
+            time: item.time,
+            count: item.count,
+            confident: item.confident,
+            question: item.question,
+            id: item.id,
+            selected: false,
+            editable: false,
+          }
         }
       })
+      // remove undefined item
+      this.newWordData = this.newWordData.filter(function (element) {
+        return element.id !== undefined
+      })
+      console.log(this.totalNewWord)
+      console.log(this.newWordData)
     },
   },
 }

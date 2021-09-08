@@ -43,14 +43,14 @@
           </div>
           <div class="col-4 col-md-8 pb_me-4 text-right">
             <button
-              @click="onAddNewWord()"
+              @click="openAddWordModal()"
               class="login__btn-submit hcb-btn btn btn_hcb_green btn-block"
               style="height: 2.5rem"
             >
               Add Word
             </button>
             <button
-              @click="onDeleteWord()"
+              @click="openDeleteWordModal()"
               class="login__btn-submit hcb-btn btn btn_hcb_red btn-block"
               style="height: 2.5rem"
             >
@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ trainedWordData.length }})</span>
+            <span class="txt_vla_grey">({{ rows }})</span>
           </div>
         </div>
       </div>
@@ -73,54 +73,42 @@
     <div class="row">
       <div class="col-md-12 pb_me-4">
         <div class="row d-flex align-items-center">
-          <!-- <v-data-table
-            v-model="selected"
-            :headers="headers"
-            :items="desserts"
-            :single-select="singleSelect"
-            :items-per-page="selectedgg"
-            hide-default-footer
-            item-key="name"
-            show-select
-            class="elevation-1"
-          >
-          </v-data-table> -->
           <b-table
             striped
             hover
-            id="my-table"
+            id="trainedWord-table"
             :items="trainedWordData"
-            :per-page="perPage"
+            :per-page="0"
             :current-page="currentPage"
             :fields="fields"
             :filter="filter"
           >
-            <template #cell(first_name)="data">
+            <template #cell(question)="data">
               <div v-if="data.item.editable === false">
                 <div>
-                  {{ data.item.first_name }}
+                  {{ data.item.question }}
                 </div>
               </div>
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.first_name"
+                v-model="data.item.question"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
                 "
               />
             </template>
-            <template #cell(last_name)="data">
+            <template #cell(answer)="data">
               <div v-if="data.item.editable === false">
                 <div>
-                  {{ data.item.last_name }}
+                  {{ data.item.answer }}
                 </div>
               </div>
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.last_name"
+                v-model="data.item.answer"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -159,17 +147,16 @@
           <div class="mt-3">
             <b-pagination
               v-model="currentPage"
-              :total-rows="rows"
+              :total-rows="totalTrainedWord"
               :per-page="perPage"
               first-text="First"
               prev-text="<"
               next-text=">"
               last-text="Last"
-              aria-controls="my-table"
+              aria-controls="trainedWord-table"
             ></b-pagination>
           </div>
         </div>
-        <!-- <b-form-select v-model="selectedgg" @change="perpage(selectedgg)" :options="options"></b-form-select> -->
       </div>
     </div>
 
@@ -178,11 +165,13 @@
       :onCancel="closeDeleteWordModal"
       :onDelete="onDeleteWord"
     ></DeleteWordModal>
-    <TrainWordModal
-      :isOpen="isShowTrainWordModal"
-      :onCancel="closeTrainWordModal"
-      :onDelete="onTrainWord"
-    ></TrainWordModal>
+    <AddNewWordModal
+      :isOpen="isShowAddNewWordModal"
+      :onCancel="closeAddWordModal"
+      @getTrainedWordData="getTrainedWordData"
+      :currentPage="currentPage"
+      :perPage="perPage"
+    ></AddNewWordModal>
   </div>
 </template>
 
@@ -191,25 +180,22 @@ export default {
   components: {
     DeleteWordModal: () =>
       import('~/components/chatbotTraining/DeleteWordModal.vue'),
-    TrainWordModal: () =>
-      import('~/components/chatbotTraining/TrainWordModal.vue'),
+    AddNewWordModal: () =>
+      import('~/components/chatbotTraining/AddNewWordModal.vue'),
   },
-  props: {
-    trainedWordData: {
-      type: Array,
-      default: [],
-    },
-  },
+  props: {},
   data() {
     return {
       isShowDeleteWordModal: false,
-      isShowTrainWordModal: false,
+      isShowAddNewWordModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
       filter: '',
       perPage: 10,
       currentPage: 1,
+      totalTrainedWord: 0,
+      deleteSelected: [],
       fields: [
         {
           key: 'selected',
@@ -232,43 +218,6 @@ export default {
         },
       ],
       trainedWordData: [],
-      // Note 'isActive' is left out and will not appear in the rendered table
-      // headers: [
-      //   {
-      //     text: 'Dessert (100g serving)',
-      //     align: 'start',
-      //     value: 'name',
-      //   },
-      //   { text: 'Calories', value: 'calories' },
-      //   { text: 'Fat (g)', value: 'fat' },
-      //   { text: 'Carbs (g)', value: 'carbs' },
-      //   { text: 'Protein (g)', value: 'protein' },
-      //   { text: 'Iron (%)', value: 'iron' },
-      // ],
-      // desserts: [
-      //   {
-      //     name: 'Frozen Yogurt',
-      //     calories: 159,
-      //     fat: 6.0,
-      //     carbs: 24,
-      //     protein: 4.0,
-      //     iron: '1%',
-      //   },
-      //   {
-      //     name: 'Ice cream sandwich',
-      //     calories: 237,
-      //     fat: 9.0,
-      //     carbs: 37,
-      //     protein: 4.3,
-      //     iron: '1%',
-      //   },
-      // ],
-      // selected: [],
-      // options: [
-      //   { value: 5, text: '5' },
-      //   { value: 10, text: '10' },
-      // ],
-      // selectedgg: '',
     }
   },
   watch: {
@@ -278,67 +227,67 @@ export default {
         return item
       })
     },
+    currentPage(value) {
+      this.getTrainedWordData(value, this.perPage, 'question')
+    },
   },
   async mounted() {
     await this.getTrainedWordData(1, 10, 'question')
   },
   computed: {
     rows() {
-      return this.trainedWordData.length
+      return this.totalTrainedWord
     },
   },
   methods: {
-    onPreviewClick(value, index, item) {},
-
-    onDeleteWord() {
-      console.log('delete word')
-    },
     openDeleteWordModal() {
       this.isShowDeleteWordModal = true
     },
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
     },
-    openTrainWordModal() {
-      this.isShowTrainWordModal = true
+    openAddWordModal() {
+      this.isShowAddNewWordModal = true
     },
-    closeTrainWordModal() {
-      this.isShowTrainWordModal = false
+    closeAddWordModal() {
+      this.isShowAddNewWordModal = false
     },
-    onEdit() {
-      this.edit = !this.edit
-    },
-    onAddNewWord() {
-      this.trainedWordData.push({
-        age: 0,
-        first_name: '',
-        last_name: '',
-        selected: false,
-        editable: false,
-      })
-    },
-    onDeleteWord() {
-      let selectedRow = this.trainedWordData.filter(
+    async onDeleteWord() {
+      this.deleteSelected = this.trainedWordData.filter(
         (item) => item.selected === true
       )
-      this.trainedWordData = this.trainedWordData.filter(
-        (item) => !selectedRow.includes(item)
-      )
+      await this.deleteSelected.forEach(async (item, index) => {
+        await this.$axios.delete(`/train/trained/` + item.id)
+        if (index === this.deleteSelected.length - 1) {
+          await this.getTrainedWordData(this.currentPage, 10, 'question')
+        }
+      })
     },
     async getTrainedWordData(page, limit, orderBy) {
       let { data } = await this.$axios.get(
         `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
       )
       this.trainedWordData = data.map((item) => {
-        return {
-          answer: item.answer,
-          time: item.time,
-          question: item.question,
-          id: item.id,
-          selected: false,
-          editable: false,
+        // collect total trained word data
+        if (item.total) {
+          this.totalTrainedWord = item.total
+          // it will return undefined item
+        } else {
+          return {
+            answer: item.answer,
+            time: item.time,
+            question: item.question,
+            id: item.id,
+            selected: false,
+            editable: false,
+          }
         }
       })
+      // remove undefined item
+      this.trainedWordData = this.trainedWordData.filter(function (element) {
+        return element !== undefined
+      })
+      console.log(this.trainedWordData)
     },
   },
 }

@@ -144,7 +144,7 @@ export default {
   .container-md,
   .container-lg,
   .container-xl {
-    max-width: 1140px;
+    max-width: 1200px;
   }
   .container-lg-plus {
     max-width: 1160px;
