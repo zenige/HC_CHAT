@@ -73,7 +73,12 @@ export default {
     '@nuxtjs/vuetify',
 
     // With options
-    ['@nuxtjs/vuetify', { /* module options */ }]
+    [
+      '@nuxtjs/vuetify',
+      {
+        /* module options */
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -113,7 +118,9 @@ export default {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:200/',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

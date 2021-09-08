@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ trainedWords.length }})</span>
+            <span class="txt_vla_grey">({{ trainedWordData.length }})</span>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
             striped
             hover
             id="my-table"
-            :items="trainedWords"
+            :items="trainedWordData"
             :per-page="perPage"
             :current-page="currentPage"
             :fields="fields"
@@ -194,7 +194,12 @@ export default {
     TrainWordModal: () =>
       import('~/components/chatbotTraining/TrainWordModal.vue'),
   },
-
+  props: {
+    trainedWordData: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {
       isShowDeleteWordModal: false,
@@ -211,18 +216,13 @@ export default {
           label: 'Select',
         },
         {
-          key: 'first_name',
-          label: 'First name',
+          key: 'question',
+          label: 'Word',
           sortable: true,
         },
         {
-          key: 'last_name',
-          label: 'Last name',
-          sortable: true,
-        },
-        {
-          key: 'age',
-          label: 'Person age',
+          key: 'answer',
+          label: 'Answer',
           sortable: true,
         },
         {
@@ -231,36 +231,7 @@ export default {
           sortable: false,
         },
       ],
-      trainedWords: [
-        {
-          age: 40,
-          first_name: 'Dickerson',
-          last_name: 'Macdonald',
-          selected: false,
-          editable: false,
-        },
-        {
-          age: 21,
-          first_name: 'Larsen',
-          last_name: 'Shaw',
-          selected: false,
-          editable: false,
-        },
-        {
-          age: 89,
-          first_name: 'Geneva',
-          last_name: 'Wilson',
-          selected: false,
-          editable: false,
-        },
-        {
-          age: 38,
-          first_name: 'Jami',
-          last_name: 'Carney',
-          selected: false,
-          editable: false,
-        },
-      ],
+      trainedWordData: [],
       // Note 'isActive' is left out and will not appear in the rendered table
       // headers: [
       //   {
@@ -302,15 +273,18 @@ export default {
   },
   watch: {
     selectAll(value) {
-      this.trainedWords.map(function (item) {
+      this.trainedWordData.map(function (item) {
         item.selected = value
         return item
       })
     },
   },
+  async mounted() {
+    await this.getTrainedWordData(1, 10, 'question')
+  },
   computed: {
     rows() {
-      return this.trainedWords.length
+      return this.trainedWordData.length
     },
   },
   methods: {
@@ -335,7 +309,7 @@ export default {
       this.edit = !this.edit
     },
     onAddNewWord() {
-      this.trainedWords.push({
+      this.trainedWordData.push({
         age: 0,
         first_name: '',
         last_name: '',
@@ -344,12 +318,27 @@ export default {
       })
     },
     onDeleteWord() {
-      let selectedRow = this.trainedWords.filter(
+      let selectedRow = this.trainedWordData.filter(
         (item) => item.selected === true
       )
-      this.trainedWords = this.trainedWords.filter(
+      this.trainedWordData = this.trainedWordData.filter(
         (item) => !selectedRow.includes(item)
       )
+    },
+    async getTrainedWordData(page, limit, orderBy) {
+      let { data } = await this.$axios.get(
+        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
+      )
+      this.trainedWordData = data.map((item) => {
+        return {
+          answer: item.answer,
+          time: item.time,
+          question: item.question,
+          id: item.id,
+          selected: false,
+          editable: false,
+        }
+      })
     },
   },
 }

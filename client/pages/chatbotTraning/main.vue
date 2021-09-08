@@ -9,7 +9,7 @@
           <div class="col-12 pb_me-4">
             <b-tabs>
               <b-tab title="New Word" active>
-                <newWord :newWordData="newWordData" />
+                <newWord />
               </b-tab>
               <b-tab title="Trained Word">
                 <trainedWord />
@@ -34,21 +34,15 @@ export default {
   },
   data: () => ({
     newWordData: [],
+    trainedWordData: [],
   }),
   components: {
     patientGroup: () => import('~/components/chatbotTraining/patientGroup.vue'),
     newWord: () => import('~/components/chatbotTraining/newWord.vue'),
     trainedWord: () => import('~/components/chatbotTraining/trainedWord.vue'),
   },
-  async mounted() {
-    await this.getNewWordData()
-  },
-  methods: {
-    async getNewWordData() {
-      let { data } = await this.$axios.get('train/training')
-      this.newWordData = data
-    },
-  },
+  async mounted() {},
+  methods: {},
 }
 </script>
 

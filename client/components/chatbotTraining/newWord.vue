@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ newWords.length }})</span>
+            <span class="txt_vla_grey">({{ newWordData.length }})</span>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
             striped
             hover
             id="my-table"
-            :items="newWords"
+            :items="newWordData"
             :per-page="perPage"
             :current-page="currentPage"
             :fields="fields"
@@ -194,7 +194,7 @@ export default {
     TrainWordModal: () =>
       import('~/components/chatbotTraining/TrainWordModal.vue'),
   },
-
+  props: {},
   data() {
     return {
       isShowDeleteWordModal: false,
@@ -212,7 +212,7 @@ export default {
           label: 'Select',
         },
         {
-          key: 'word',
+          key: 'question',
           label: 'Word',
           sortable: true,
         },
@@ -222,8 +222,13 @@ export default {
           sortable: true,
         },
         {
-          key: 'added',
-          label: 'Added',
+          key: 'confident',
+          label: 'Confident',
+          sortable: true,
+        },
+        {
+          key: 'count',
+          label: 'Count',
           sortable: true,
         },
         {
@@ -232,40 +237,7 @@ export default {
           sortable: false,
         },
       ],
-      newWords: [
-        {
-          isActive: false,
-          added: '2021-05-21',
-          word: 'Dickerson',
-          answer: 'Macdonald',
-          selected: false,
-          editable: false,
-        },
-        {
-          isActive: false,
-          added: '2021-05-22',
-          word: 'Larsen',
-          answer: 'Shaw',
-          selected: false,
-          editable: false,
-        },
-        {
-          isActive: false,
-          added: '2021-05-23',
-          word: 'Geneva',
-          answer: 'Wilson',
-          selected: false,
-          editable: false,
-        },
-        {
-          isActive: false,
-          added: '2021-05-24',
-          word: 'Jami',
-          answer: 'Carney',
-          selected: false,
-          editable: false,
-        },
-      ],
+      newWordData: [],
       // Note 'isActive' is left out and will not appear in the rendered table
       // headers: [
       //   {
@@ -307,15 +279,21 @@ export default {
   },
   watch: {
     selectAll(value) {
-      this.newWords.map(function (item) {
+      this.newWordData.map(function (item) {
         item.selected = value
         return item
       })
     },
+    currentPage(value) {
+      this.getNewWordData(value, this.perPage, 'question')
+    },
+  },
+  async mounted() {
+    await this.getNewWordData(1, 2, 'question')
   },
   computed: {
     rows() {
-      return this.newWords.length
+      return this.newWordData.length
     },
   },
   methods: {
@@ -330,10 +308,12 @@ export default {
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
     },
-    onTrainWord() {
-      this.trainSelected = this.newWords.filter(
+    async onTrainWord() {
+      this.trainSelected = this.newWordData.filter(
         (item) => item.selected === true
       )
+      await this.$axios.post('train/trained/many', this.trainSelected)
+      this.onDeleteWord()
     },
     openTrainWordModal() {
       this.isShowTrainWordModal = true
@@ -345,10 +325,29 @@ export default {
       this.edit = !this.edit
     },
     onDeleteWord() {
-      let selectedRow = this.newWords.filter((item) => item.selected === true)
-      this.newWords = this.newWords.filter(
+      let selectedRow = this.newWordData.filter(
+        (item) => item.selected === true
+      )
+      this.newWordData = this.newWordData.filter(
         (item) => !selectedRow.includes(item)
       )
+    },
+    async getNewWordData(page, limit, orderBy) {
+      let { data } = await this.$axios.get(
+        `train/training?pages=${page}&limit=${limit}&order_by=${orderBy}`
+      )
+      this.newWordData = data.map((item) => {
+        return {
+          answer: item.answer,
+          time: item.time,
+          count: item.count,
+          confident: item.confident,
+          question: item.question,
+          id: item.id,
+          selected: false,
+          editable: false,
+        }
+      })
     },
   },
 }
