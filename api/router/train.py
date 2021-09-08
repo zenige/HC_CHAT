@@ -17,25 +17,21 @@ JSONStructure = Union[JSONArray, JSONObject]
 router = APIRouter()
 
 
-@router.get("/trained/count")
-async def getTrainedWord():
-    docs = db.collection(u'trained').stream()
-
-    count = 0
-    for doc in docs:
-        count = count+1
-    return count
 
 
 
 
 @router.get("/trained")
 async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
-    print(limit)
+    count = 0
     docs_ref = db.collection(u'trained')
+    docs = docs_ref.stream()
+    for doc in docs:
+        count = count+1
     if pages == None:
         docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
         query = streamToDict(docs)
+        query.append({"total" : count})
         return query
     elif pages != None:
         first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
@@ -46,6 +42,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
 
         if pages == 1 :
             query = streamToDict(docs)
+            query.append({"total" : count})
             return query
         elif pages > 1 :
             for page in range(pages-1):
@@ -66,6 +63,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
                 # results = docs.get()
                 # print(results)
             query = streamToDict(docs)
+            query.append({"total" : count})
             return query
 
 
@@ -88,11 +86,13 @@ async def createTrainWord(data: TrainedModel):
 
 @router.post("/trained/many")
 async def createTrainWord(arbitrary_json: JSONStructure = None):
+
     for i in arbitrary_json:
         i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
     # # Add a new doc in collection 'cities' with ID 'LA'
 
         db.collection(u'trained').document().set(i)
+
     return "done"
 
 @router.patch("/trained/{id}")
@@ -124,11 +124,16 @@ async def deleteTrainWord(id: str):
 
 @router.get("/training")
 async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
-    print(limit)
+
+    count = 0
     docs_ref = db.collection(u'training')
+    docs = docs_ref.stream()
+    for doc in docs:
+        count = count+1
     if pages == None:
         docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
         query = streamToDict(docs)
+        query.append({"total" : count})
         return query
     elif pages != None:
         first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
@@ -139,6 +144,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
 
         if pages == 1 :
             query = streamToDict(docs)
+            query.append({"total" : count})
             return query
         elif pages > 1 :
             for page in range(pages-1):
@@ -159,6 +165,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
                 # results = docs.get()
                 # print(results)
             query = streamToDict(docs)
+            query.append({"total" : count})
             return query
 
 
