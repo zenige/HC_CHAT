@@ -2,21 +2,13 @@ from fastapi import APIRouter
 from starlette import responses
 from Project import db
 import requests
-from pydantic import BaseModel
+from pydantic import BaseModel,HttpUrl
 from typing import Optional
 import datetime
 from firebase_admin import firestore
-from typing import Any, Dict, AnyStr, List, Union
-class TrainedModel(BaseModel):
-    question: str
-    answer: str
-
-JSONObject = Dict[AnyStr, Any]
-JSONArray = List[Any]
-JSONStructure = Union[JSONArray, JSONObject]
-
+from typing import Any, Dict, AnyStr, List, Union ,Set 
+from model.trainModel import TrainedModel,JSONStructureCREATE,JSONStructureDELETE
 router = APIRouter()
-
 
 
 
@@ -90,14 +82,15 @@ async def createTrainWord(data: TrainedModel):
     return res
 
 @router.post("/trained/many")
-async def createTrainWord(arbitrary_json: JSONStructure = None):
+async def createTrainWord(arbitrary_json: JSONStructureCREATE = None):
     try:
         for i in arbitrary_json:
-            i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
-            db.collection(u'trained').document().set(i)
-            res = {"response" : "Delete Successful" }
+            fakeDict = i.__dict__
+            fakeDict['time'] = datetime.datetime.timestamp(datetime.datetime.now())
+            db.collection(u'trained').document().set(fakeDict)
+            res = {"response" : "Create Successful" }
     except:
-            res = {"response" : "Delete Failed" }
+            res = {"response" : "Create Failed" }
     return res
 
 @router.patch("/trained/{id}")
@@ -115,9 +108,10 @@ async def updateTrainWord(data: TrainedModel, id: str):
 
 
 @router.delete("/trained/delete/many")
-async def deleteTrainWord(arbitrary_json: JSONStructure = None):
+async def deleteTrainWord(arbitrary_json: JSONStructureDELETE = None):
     try:
         for i in arbitrary_json:
+            i = i.__dict__
             db.collection(u'trained').document(i['id']).delete()
         res = {"response" : "Delete Successful" }
     except:
@@ -196,9 +190,10 @@ async def updateTrainWord(data: TrainedModel, id: str):
 
 
 @router.delete("/training/delete/many")
-async def deleteTrainingWord(arbitrary_json: JSONStructure = None):
+async def deleteTrainingWord(arbitrary_json: JSONStructureDELETE = None):
     try:
         for i in arbitrary_json:
+            i = i.__dict__
             db.collection(u'training').document(i['id']).delete()
         res = {"response" : "Delete Successful" }
     except:   
