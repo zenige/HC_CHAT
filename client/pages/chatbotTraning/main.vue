@@ -12,10 +12,10 @@
                 <newWord />
               </b-tab>
               <b-tab title="Trained Word">
-                <b-card-text>Tab contents 2</b-card-text>
+                <trainedWord />
               </b-tab>
               <b-tab title="Patient Group">
-                <patient/>
+                <patientGroup />
               </b-tab>
             </b-tabs>
           </div>
@@ -26,18 +26,23 @@
 </template>
 
 <script>
-import PatientGroup from '../../components/chatbotTraining/patientGroup.vue'
 export default {
   layout: 'noHeaderLayout',
   props: {
     name: { required: true },
     selected: { default: false },
   },
-  data: () => ({}),
-  components: {    
-    patient: () => import('~/components/chatbotTraining/patientGroup.vue'),
-    newWord: () => import('~/components/chatbotTraining/newWord.vue')
+  data: () => ({
+    newWordData: [],
+    trainedWordData: [],
+  }),
+  components: {
+    patientGroup: () => import('~/components/chatbotTraining/patientGroup.vue'),
+    newWord: () => import('~/components/chatbotTraining/newWord.vue'),
+    trainedWord: () => import('~/components/chatbotTraining/trainedWord.vue'),
   },
+  async mounted() {},
+  methods: {},
 }
 </script>
 

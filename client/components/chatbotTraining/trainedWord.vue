@@ -43,11 +43,11 @@
           </div>
           <div class="col-4 col-md-8 pb_me-4 text-right">
             <button
-              @click="openTrainWordModal()"
+              @click="openAddWordModal()"
               class="login__btn-submit hcb-btn btn btn_hcb_green btn-block"
               style="height: 2.5rem"
             >
-              Train
+              Add Word
             </button>
             <button
               @click="openDeleteWordModal()"
@@ -76,8 +76,8 @@
           <b-table
             striped
             hover
-            id="newWord-table"
-            :items="newWordData"
+            id="trainedWord-table"
+            :items="trainedWordData"
             :per-page="0"
             :current-page="currentPage"
             :fields="fields"
@@ -92,7 +92,7 @@
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="changedQuestionData"
+                v-model="data.item.question"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -108,7 +108,7 @@
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="changedAnswerData"
+                v-model="data.item.answer"
                 @keyup.enter="
                   data.item.editable = false
                   $emit('update')
@@ -127,19 +127,19 @@
               <b-button
                 v-if="data.item.editable === false"
                 variant="primary"
-                @click="editWord(data)"
+                @click="data.item.editable = true"
                 >Edit</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="danger"
-                @click="cancleEditWord(data)"
+                @click="data.item.editable = false"
                 >Cancle</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="success"
-                @click="saveWord(data)"
+                @click="data.item.editable = false"
                 >Save</b-button
               >
             </template>
@@ -147,29 +147,31 @@
           <div class="mt-3">
             <b-pagination
               v-model="currentPage"
-              :total-rows="totalNewWord"
+              :total-rows="totalTrainedWord"
               :per-page="perPage"
               first-text="First"
               prev-text="<"
               next-text=">"
               last-text="Last"
-              aria-controls="newWord-table"
+              aria-controls="trainedWord-table"
             ></b-pagination>
           </div>
         </div>
       </div>
     </div>
 
-    <TrainWordModal
-      :isOpen="isShowTrainWordModal"
-      :onCancel="closeTrainWordModal"
-      :onDelete="onTrainWord"
-    ></TrainWordModal>
     <DeleteWordModal
       :isOpen="isShowDeleteWordModal"
       :onCancel="closeDeleteWordModal"
       :onDelete="onDeleteWord"
     ></DeleteWordModal>
+    <AddNewWordModal
+      :isOpen="isShowAddNewWordModal"
+      :onCancel="closeAddWordModal"
+      @getTrainedWordData="getTrainedWordData"
+      :currentPage="currentPage"
+      :perPage="perPage"
+    ></AddNewWordModal>
   </div>
 </template>
 
@@ -178,25 +180,22 @@ export default {
   components: {
     DeleteWordModal: () =>
       import('~/components/chatbotTraining/DeleteWordModal.vue'),
-    TrainWordModal: () =>
-      import('~/components/chatbotTraining/TrainWordModal.vue'),
+    AddNewWordModal: () =>
+      import('~/components/chatbotTraining/AddNewWordModal.vue'),
   },
   props: {},
   data() {
     return {
       isShowDeleteWordModal: false,
-      isShowTrainWordModal: false,
+      isShowAddNewWordModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
       filter: '',
       perPage: 10,
       currentPage: 1,
-      trainSelected: [],
+      totalTrainedWord: 0,
       deleteSelected: [],
-      totalNewWord: 0,
-      changedQuestionData: '',
-      changedAnswerData: '',
       fields: [
         {
           key: 'selected',
@@ -213,41 +212,31 @@ export default {
           sortable: true,
         },
         {
-          key: 'confident',
-          label: 'Confident',
-          sortable: true,
-        },
-        {
-          key: 'count',
-          label: 'Count',
-          sortable: true,
-        },
-        {
           key: 'actions',
           label: '',
           sortable: false,
         },
       ],
-      newWordData: [],
+      trainedWordData: [],
     }
   },
   watch: {
     selectAll(value) {
-      this.newWordData.map(function (item) {
+      this.trainedWordData.map(function (item) {
         item.selected = value
         return item
       })
     },
     currentPage(value) {
-      this.getNewWordData(value, this.perPage, 'question')
+      this.getTrainedWordData(value, this.perPage, 'question')
     },
   },
   async mounted() {
-    await this.getNewWordData(1, 10, 'question')
+    await this.getTrainedWordData(1, 10, 'question')
   },
   computed: {
     rows() {
-      return this.totalNewWord
+      return this.totalTrainedWord
     },
   },
   methods: {
@@ -257,62 +246,36 @@ export default {
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
     },
-    async onTrainWord() {
-      this.trainSelected = this.newWordData.filter(
-        (item) => item.selected === true
-      )
-      await this.$axios.post('train/trained/many', this.trainSelected)
-      this.onDeleteWord()
+    openAddWordModal() {
+      this.isShowAddNewWordModal = true
     },
-    openTrainWordModal() {
-      this.isShowTrainWordModal = true
-    },
-    closeTrainWordModal() {
-      this.isShowTrainWordModal = false
+    closeAddWordModal() {
+      this.isShowAddNewWordModal = false
     },
     async onDeleteWord() {
-      this.deleteSelected = this.newWordData.filter(
+      this.deleteSelected = this.trainedWordData.filter(
         (item) => item.selected === true
       )
       await this.deleteSelected.forEach(async (item, index) => {
-        await this.$axios.delete(`/train/training/` + item.id)
+        await this.$axios.delete(`/train/trained/` + item.id)
         if (index === this.deleteSelected.length - 1) {
-          await this.getNewWordData(this.currentPage, 10, 'question')
+          await this.getTrainedWordData(this.currentPage, 10, 'question')
         }
       })
     },
-    editWord(data) {
-      this.changedQuestionData = data.item.question
-      this.changedAnswerData = data.item.answer
-      data.item.editable = true
-    },
-    cancleEditWord(data) {
-      data.item.editable = false
-    },
-    async saveWord(data) {
-      data.item.question = this.changedQuestionData
-      data.item.answer = this.changedAnswerData
-      data.item.editable = false
-      await this.$axios.patch(`/train/training/` + data.item.id, {
-        question: data.item.question,
-        answer: data.item.answer,
-      })
-    },
-    async getNewWordData(page, limit, orderBy) {
+    async getTrainedWordData(page, limit, orderBy) {
       let { data } = await this.$axios.get(
-        `train/training?pages=${page}&limit=${limit}&order_by=${orderBy}`
+        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
       )
-      this.newWordData = data.map((item) => {
-        // collect total new word data
+      this.trainedWordData = data.map((item) => {
+        // collect total trained word data
         if (item.total) {
-          this.totalNewWord = item.total
+          this.totalTrainedWord = item.total
           // it will return undefined item
         } else {
           return {
             answer: item.answer,
             time: item.time,
-            count: item.count,
-            confident: item.confident,
             question: item.question,
             id: item.id,
             selected: false,
@@ -321,11 +284,10 @@ export default {
         }
       })
       // remove undefined item
-      this.newWordData = this.newWordData.filter(function (element) {
-        return element.id !== undefined
+      this.trainedWordData = this.trainedWordData.filter(function (element) {
+        return element !== undefined
       })
-      console.log(this.totalNewWord)
-      console.log(this.newWordData)
+      console.log(this.trainedWordData)
     },
   },
 }
