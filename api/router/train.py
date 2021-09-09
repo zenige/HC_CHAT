@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from starlette import responses
 from Project import db
 import requests
 from pydantic import BaseModel
@@ -77,49 +78,57 @@ def streamToDict(stream):
 
 @router.post("/trained")
 async def createTrainWord(data: TrainedModel):
-    data = data.dict()
-    # Add a new doc in collection 'cities' with ID 'LA'
-    obj = {"question": data['question'], "answer": data['answer'],
-           "time": datetime.datetime.timestamp(datetime.datetime.now())}
-    db.collection(u'trained').document().set(obj)
-    return "done"
+    try:
+        data = data.dict()
+        # Add a new doc in collection 'cities' with ID 'LA'
+        obj = {"question": data['question'], "answer": data['answer'],
+            "time": datetime.datetime.timestamp(datetime.datetime.now())}
+        db.collection(u'trained').document().set(obj)
+        res = {"response" : "Create Successful" }
+    except: 
+        res = {"response" : "Create Failed" }     
+    return res
 
 @router.post("/trained/many")
 async def createTrainWord(arbitrary_json: JSONStructure = None):
-
-    for i in arbitrary_json:
-        i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
-    # # Add a new doc in collection 'cities' with ID 'LA'
-
-        db.collection(u'trained').document().set(i)
-
-    return "done"
+    try:
+        for i in arbitrary_json:
+            i['time'] = datetime.datetime.timestamp(datetime.datetime.now())
+            db.collection(u'trained').document().set(i)
+            res = {"response" : "Delete Successful" }
+    except:
+            res = {"response" : "Delete Failed" }
+    return res
 
 @router.patch("/trained/{id}")
 async def updateTrainWord(data: TrainedModel, id: str):
-    print(id)
-    data = data.dict()
-    # Add a new doc in collection 'cities' with ID 'LA'
-    doc_ref = db.collection(u'trained').document(id)
-    doc_ref.update({'question': data['question'], 'answer': data['answer']})
-    return "PATCH"
+    try:
+        data = data.dict()
+        doc_ref = db.collection(u'trained').document(id)
+        doc_ref.update({'question': data['question'], 'answer': data['answer']})
+        res = {"response" : "Update Successful" }
+    except:
+        res = {"response" : "Update Failed" }    
+    return res
 
 
-@router.delete("/trained/{id}")
-async def deleteTrainWord(id: str):
+
+
+@router.delete("/trained/delete/many")
+async def deleteTrainWord(arbitrary_json: JSONStructure = None):
+    try:
+        for i in arbitrary_json:
+            db.collection(u'trained').document(i['id']).delete()
+        res = {"response" : "Delete Successful" }
+    except:
+        res = {"response" : "Delete Failed" }
+    return res
+
+
+@router.delete("/trained/delete/{id}")
+async def deleteTrainWordById(id: str):
     db.collection(u'trained').document(id).delete()
-    return "Delete Done"
-
-
-# @router.get("/training")
-# async def getTrainedWord():
-#     docs = db.collection(u'training').stream()
-#     obj = []
-#     for doc in docs:
-#         train_dict = doc.to_dict()
-#         train_dict['id'] = doc.id
-#         obj.append(train_dict)
-#     return obj
+    return {"response" : "Deleted" }
 
 
 @router.get("/training")
@@ -169,13 +178,6 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
             return query
 
 
-# @router.post("/training")
-# async def createTrainWord(data: TrainedModel):
-#     data = data.dict()
-#     # Add a new doc in collection 'cities' with ID 'LA'
-#     obj = {"question":data['answer'],"answer":data['question'],"time": datetime.datetime.timestamp(datetime.datetime.now())}
-#     db.collection(u'training').document().set(obj)
-#     return "done"
 
 
 @router.patch("/training/{id}")
@@ -183,13 +185,33 @@ async def updateTrainWord(data: TrainedModel, id: str):
     print(id)
     data = data.dict()
     # Add a new doc in collection 'cities' with ID 'LA'
-    doc_ref = db.collection(u'training').document(id)
-    doc_ref.update({'question': data['question'], 'answer': data['answer']})
-    return "PATCH"
+    try:
+        doc_ref = db.collection(u'training').document(id)
+        doc_ref.update({'question': data['question'], 'answer': data['answer']})
+        res = {"response" : "Update Successful" }
+    except:
+        res = {"response" : "Update Failed" }
+    return res
 
+
+
+@router.delete("/training/delete/many")
+async def deleteTrainingWord(arbitrary_json: JSONStructure = None):
+    try:
+        for i in arbitrary_json:
+            db.collection(u'training').document(i['id']).delete()
+        res = {"response" : "Delete Successful" }
+    except:   
+        res = {"response" : "Delete Failed" }
+    return res
 
 @router.delete("/training/{id}")
-async def deleteTrainWord(id: str):
-    db.collection(u'training').document(id).delete()
-    return "Delete Done"
+async def deleteTrainingWord(id: str):
+    try:
+        doc_ref = db.collection(u'training').document(id).delete()
+        res = {"response" : "Deleted" }
+    except:  
+        res = {"response" : "Delete Failed" }
+
+    return res
 
