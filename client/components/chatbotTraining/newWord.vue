@@ -252,7 +252,19 @@ export default {
   },
   methods: {
     openDeleteWordModal() {
-      this.isShowDeleteWordModal = true
+      this.deleteSelected = this.newWordData.filter(
+        (item) => item.selected === true
+      )
+      if (this.deleteSelected.length >= 1) {
+        this.isShowDeleteWordModal = true
+      } else {
+        ;(this.isShowDeleteWordModal = false),
+          this.$bvToast.toast('Please select any word', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+      }
     },
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
@@ -265,7 +277,19 @@ export default {
       this.onDeleteWord()
     },
     openTrainWordModal() {
-      this.isShowTrainWordModal = true
+      this.trainSelected = this.newWordData.filter(
+        (item) => item.selected === true
+      )
+      if (this.trainSelected.length >= 1) {
+        this.isShowTrainWordModal = true
+      } else {
+        ;(this.isShowTrainWordModal = false),
+          this.$bvToast.toast('Please select any word', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+      }
     },
     closeTrainWordModal() {
       this.isShowTrainWordModal = false
@@ -274,12 +298,10 @@ export default {
       this.deleteSelected = this.newWordData.filter(
         (item) => item.selected === true
       )
-      await this.deleteSelected.forEach(async (item, index) => {
-        await this.$axios.delete(`/train/training/` + item.id)
-        if (index === this.deleteSelected.length - 1) {
-          await this.getNewWordData(this.currentPage, 10, 'question')
-        }
+      await this.$axios.delete('train/training/delete/many', {
+        data: this.deleteSelected,
       })
+      await this.getNewWordData(this.currentPage, 10, 'question')
     },
     editWord(data) {
       this.changedQuestionData = data.item.question

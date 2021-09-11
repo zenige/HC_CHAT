@@ -241,7 +241,20 @@ export default {
   },
   methods: {
     openDeleteWordModal() {
-      this.isShowDeleteWordModal = true
+      this.deleteSelected = this.trainedWordData.filter(
+        (item) => item.selected === true
+      )
+      console.log(this.deleteSelected)
+      if (this.deleteSelected.length >= 1) {
+        this.isShowDeleteWordModal = true
+      } else {
+        ;(this.isShowDeleteWordModal = false),
+          this.$bvToast.toast('Please select any word', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+      }
     },
     closeDeleteWordModal() {
       this.isShowDeleteWordModal = false
@@ -256,12 +269,10 @@ export default {
       this.deleteSelected = this.trainedWordData.filter(
         (item) => item.selected === true
       )
-      await this.deleteSelected.forEach(async (item, index) => {
-        await this.$axios.delete(`/train/trained/` + item.id)
-        if (index === this.deleteSelected.length - 1) {
-          await this.getTrainedWordData(this.currentPage, 10, 'question')
-        }
+      await this.$axios.delete('train/trained/delete/many', {
+        data: this.deleteSelected,
       })
+      await this.getTrainedWordData(this.currentPage, 10, 'question')
     },
     async getTrainedWordData(page, limit, orderBy) {
       let { data } = await this.$axios.get(
@@ -287,7 +298,6 @@ export default {
       this.trainedWordData = this.trainedWordData.filter(function (element) {
         return element !== undefined
       })
-      console.log(this.trainedWordData)
     },
   },
 }
