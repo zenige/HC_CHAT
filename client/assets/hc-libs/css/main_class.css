@@ -5,7 +5,7 @@
 
 .vl_navbar .txt_vl_head,
 .modal-dialog .txt_vl_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em !important;
@@ -24,7 +24,7 @@
   border-radius: 10px;
 }
 .txt_vla_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000;
   line-height: 1em;
@@ -34,7 +34,7 @@
   color: #888;
 }
 .txt_true_bighead_sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -42,7 +42,7 @@
   overflow: hidden;
 }
 .txt_true_bighead_24p {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   /* font-family: 'SukhumvitSet-SemiBold'; */
   font-style: normal;
   font-size: 24px;
@@ -51,7 +51,7 @@
   overflow: hidden;
 }
 .txt_true_bighead_sm_regular {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -68,8 +68,8 @@
 }
 .btn_vla_grey_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .txt_vla_black_24p {
   font-style: normal;
@@ -84,7 +84,7 @@
   padding: 10px 20px !important;
 }
 .txt_vl_red {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .form_check_0 .switchery > small {
   top: 0px;
@@ -97,7 +97,7 @@
   border: 0px;
 }
 .btn_vla_setting_grey:hover {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
   padding: 8px 14px;
   border-radius: 5rem;
@@ -143,7 +143,7 @@
 }
 .AnyTime-btn:hover {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 5rem;
   width: 45px;
   height: 45px;
@@ -152,7 +152,7 @@
 .AnyTime-body-yr-selector .AnyTime-cur-btn:hover,
 .AnyTime-dom-table .AnyTime-cur-btn,
 .AnyTime-dom-table .AnyTime-cur-btn:hover {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #fff;
   border-radius: 5rem;
   width: 45px;
@@ -160,7 +160,7 @@
 }
 .AnyTime-mons .AnyTime-cur-btn,
 .AnyTime-mons .AnyTime-cur-btn:hover {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #fff;
   border-radius: 5rem;
   width: 45px;
@@ -168,7 +168,7 @@
 }
 .AnyTime-time .AnyTime-cur-btn,
 .AnyTime-time .AnyTime-cur-btn:hover {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #fff;
   border-radius: 5rem;
   width: 45px;
@@ -184,7 +184,7 @@
 .AnyTime-body-yr-selector .AnyTime-cur-btn:hover,
 .AnyTime-dom-table .AnyTime-cur-btn,
 .AnyTime-dom-table .AnyTime-cur-btn:hover {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #fff;
   border-radius: 5rem;
   width: 45px;
@@ -221,14 +221,14 @@
   min-height: 70px;
 }
 .txt_vl_head_24p {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em !important;
   font-size: 24px;
 }
 .txt_vla_subject {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 30px;
   color: #000000;
@@ -263,7 +263,7 @@
 }
 @media (max-width: 576px) {
   .txt_vla_subject {
-    font-family: 'TrueTextBOnline-Regular';
+    font-family: 'Prompt-Regular';
     font-style: normal;
     font-size: 28px;
     color: #000000;

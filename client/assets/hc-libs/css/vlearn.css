@@ -14,7 +14,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
   color: #000000;
@@ -45,7 +45,7 @@ body {
   background-color: #ccc;
 }
 .vl_navbar a.link_blue {
-  color: #cc338b;
+  color: #10c4cc;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -101,19 +101,19 @@ body {
   font-size: 18px;
 }
 .vl_navbar .breadcrumb_txt_link a:hover {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_navtab {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
 }
 .vl_navbar .txt_iconmenuleft {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 12px;
   line-height: 1.5;
 }
 .vl_navbar .txt_navtab-user {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 18px;
   color: #353535;
 }
@@ -124,7 +124,7 @@ body {
 }
 .vl_navbar .navbar-light .navbar-nav-link:focus,
 .vl_navbar .navbar-light .navbar-nav-link:hover {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 50%;
 }
@@ -145,7 +145,7 @@ body {
 .vl_navbar .navbar-light .navbar-nav-link.active,
 .vl_navbar .navbar-light .navbar-nav-link.show,
 .vl_navbar .navbar-light .show > .navbar-nav-link {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 50%;
 }
@@ -162,7 +162,7 @@ body {
   > .nav-link:not(.disabled),
 .vl_navbar .sidebar-light .nav-sidebar > .nav-item > .nav-link.active {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .nav-link.disabled,
 .vl_navbar .nav-link:disabled {
@@ -230,13 +230,13 @@ body {
   color: #000;
 }
 .vl_navbar .bg-blue {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg_blue_light {
   background-color: #c5d7ea;
 }
 .vl_navbar .bg_blue {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg_body_blue_light {
   background-color: #f6f9fc;
@@ -252,42 +252,42 @@ body {
 .vl_navbar .navbar-light .navbar-toggler:focus,
 .vl_navbar .navbar-light .navbar-toggler:hover,
 .vl_navbar .navbar-light .navbar-toggler[aria-expanded='true'] {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_namehead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_icttalent_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .txt_welcome {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 18px;
   color: #000;
   line-height: 1.8em;
 }
 .vl_navbar .txt_nameposition {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 16px;
   color: #404040;
   line-height: 1.8em;
 }
 .vl_navbar .txt_nametopic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
 }
 .vl_navbar .txt_formtopic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
 }
 .vl_navbar .container_footer {
@@ -307,7 +307,7 @@ body {
   min-height: 200px;
 }
 .vl_navbar .txt_blue {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_black {
   color: #000;
@@ -316,84 +316,84 @@ body {
   color: #000;
 }
 .vl_navbar .txt_black a:hover {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_black_form {
   color: #000000;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 18px;
 }
 .vl_navbar .txt_red_form {
   color: #7f231c;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 18px;
 }
 .vl_navbar .txt_headtopic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
 }
 .vl_navbar .txt_headtopic_w {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #fff;
   line-height: 1em;
 }
 .vl_navbar .txt_headpoint,
 .vl_navbar .txt_headsp {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
 }
 .vl_navbar .txt_headpoint_num,
 .vl_navbar .txt_headsp_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 48px;
 }
 .vl_navbar .txt_addtaskhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.2rem;
 }
 .vl_navbar .txt_addtaskhead_blue {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
   font-size: 1.2rem;
 }
 .vl_navbar .txt_date_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_date_day {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 12px;
 }
 .vl_navbar .txt_date_topic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_date_school {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 18px;
 }
@@ -404,31 +404,31 @@ body {
   padding: 0;
 }
 .vl_navbar .txt_resource_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #356294;
   line-height: 1.2em;
   font-size: 24px;
 }
 .vl_navbar .txt_resource_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #808080;
   line-height: 1em;
   font-size: 12px;
 }
 .vl_navbar .table .thead-light th {
-  font-family: 'TrueTextBOnline-Bold';
-  color: #cc338b;
+  font-family: 'Prompt-Medium';
+  color: #10c4cc;
   border-color: #f6f9fc;
 }
 .vl_navbar .table .thead-txt-w th {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #fff;
   border-color: #f6f9fc;
 }
 .vl_navbar .table .thead-ictteam th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   color: #fff;
   border-color: #f6f9fc;
 }
@@ -508,7 +508,7 @@ body {
 }
 .vl_navbar .txt_red,
 .vl_navbar .txt_red a {
-  color: #cc338b !important;
+  color: #10c4cc !important;
 }
 .vl_navbar .txt_w {
   color: #ffffff;
@@ -521,14 +521,14 @@ body {
   color: #e2e2e2;
 }
 .vl_navbar .txt_sp_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_sp_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -541,7 +541,7 @@ body {
   background-color: #f2f2f2;
 }
 .vl_navbar .table-hover tbody tr:hover td {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: rgba(0, 0, 0, 0.04);
 }
 .vl_navbar .table-hover tbody tr.disabled:hover td {
@@ -550,7 +550,7 @@ body {
 }
 .vl_navbar .bg_table_gray th {
   background-color: #d9d9d9 !important;
-  color: #cc338b !important;
+  color: #10c4cc !important;
 }
 .vl_navbar .bg_tableftoor_gray th,
 .vl_navbar .bg_tableftoor_gray td {
@@ -574,11 +574,11 @@ body {
   color: #515050 !important;
 }
 .vl_navbar .bg_tablesplan_red {
-  background-color: #cc338b !important;
+  background-color: #10c4cc !important;
   color: #515050 !important;
 }
 .vl_navbar .bg_tablesplan_gray_sub {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg_table_red th {
   background-color: #c00000 !important;
@@ -613,7 +613,7 @@ body {
   text-decoration: none;
   background-color: #f5f5f5;
   /* font-weight: bold; */
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .card_list_item:focus,
 .vl_navbar .card_list_item:hover {
@@ -621,7 +621,7 @@ body {
   background-color: #f5f5f5;
   cursor: pointer;
   /* font-weight: bold; */
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .card_list_item:focus,
 .vl_navbar .card_list_item:hover .btn_vla_w {
@@ -635,7 +635,7 @@ body {
 .vl_navbar .card:focus .txt_vla_head,
 .vl_navbar .card:hover .txt_vla_head {
   text-decoration: none;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .dropdown-item.disabled,
 .vl_navbar .dropdown-item:disabled,
@@ -985,7 +985,7 @@ body {
   background-color: #796d9b;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step1:hover {
@@ -998,7 +998,7 @@ body {
   background-color: #2daba8;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step2:hover {
@@ -1011,7 +1011,7 @@ body {
   background-color: #eabd26;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step3:hover {
@@ -1024,7 +1024,7 @@ body {
   background-color: #f29724;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step4:hover {
@@ -1037,7 +1037,7 @@ body {
   background-color: #eb5d4f;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step5:hover {
@@ -1050,7 +1050,7 @@ body {
   background-color: #d53c3e;
   border-radius: 0.2rem;
   padding: 0.1375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .btn_step6:hover {
@@ -1059,24 +1059,24 @@ body {
   border: 0px solid #ececec;
 }
 .vl_navbar .btn_schoolprofile_menu {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ececec;
   border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 0rem;
   padding: 0.5375rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 13px;
   width: 152px;
   transition: 0s background-color;
 }
 .vl_navbar .btn_schoolprofile_menu.active {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .btn_schoolprofile_menu:hover {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ececec !important;
   border: 1px solid #ececec;
   transition-delay: 0s;
@@ -1126,7 +1126,7 @@ body {
 }
 .vl_navbar .btn_red_browse {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   font-size: 1.2rem;
 }
 .vl_navbar .btn_green {
@@ -1249,7 +1249,7 @@ body {
 }
 .vl_navbar .btn_search_blue {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
@@ -1301,50 +1301,50 @@ body {
 }
 .vl_navbar .btn_red_light:hover {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
   border: 0px;
 }
 .vl_navbar .btn_blue_light_border {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ffffff;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
-  border: 1px solid #cc338b;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_FA_border {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fafafa;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
-  border: 1px solid #cc338b;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_FA_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_w_border {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fff;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
-  border: 1px solid #cc338b;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_w_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_skyblue_light {
   color: #fff;
@@ -1355,14 +1355,14 @@ body {
 }
 .vl_navbar .btn_skyblue_light:hover {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 0.2rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
   border: 0px;
 }
 .vl_navbar .btn_red_light_border {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fff;
   border-radius: 5rem;
   font-size: 1.2rem;
@@ -1391,12 +1391,12 @@ body {
   border: 1px solid #c00000;
 }
 .vl_navbar .btn_red_sm:hover {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ffffff;
   border: 1px solid #c00000;
 }
 .vl_navbar .btn_red_light_border_sm {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fff;
   border-radius: 5rem;
   font-size: 1.2rem;
@@ -1429,8 +1429,8 @@ body {
 }
 .vl_navbar .btn_grey_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_grey_light_border_sm {
   color: #999;
@@ -1455,8 +1455,8 @@ body {
 }
 .vl_navbar .btn_black_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_grey_light_border_nobg {
   color: #c4c6c9;
@@ -1480,11 +1480,11 @@ body {
 }
 .vl_navbar .btn_splan_grey_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_blue_w {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fff;
   border-radius: 5rem;
   font-size: 1.2rem;
@@ -1492,7 +1492,7 @@ body {
 }
 .vl_navbar .btn_blue_w:hover {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 5rem;
   font-size: 1.2rem;
   padding: 0.1375rem 0.875rem;
@@ -1504,7 +1504,7 @@ body {
   border-radius: 0.2rem;
   font-size: 1.2rem;
   padding: 0.6rem 0.875rem;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .top_check_txt {
   top: -20px;
@@ -1961,23 +1961,23 @@ body {
   border-radius: 1rem;
 }
 .vl_navbar .txt_schoolnamehead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
   color: #fff;
   line-height: 1em;
 }
 .vl_navbar .txt_schoolname_sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_schoolname_big {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 36px;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .table td,
 .vl_navbar .table th {
@@ -1996,28 +1996,28 @@ body {
   padding: 0.5rem 0.45rem;
 }
 .vl_navbar .txt_student_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 100px;
 }
 .vl_navbar .txt_level_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 50px;
 }
 .vl_navbar .txt_level_head_2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 22px;
 }
 .vl_navbar .txt_level_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #404040;
   line-height: 1.5em;
@@ -2047,59 +2047,59 @@ body {
   border-radius: 1rem;
 }
 .vl_navbar .txt_ict_icon {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_ict_bighead {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 40px;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_ictlevel_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 50px;
 }
 .vl_navbar .txt_ictlevel_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_ictteamprovince_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 60px;
 }
 .vl_navbar .txt_ictteamprovince_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 16px;
 }
 .vl_navbar .txt_ictteam_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404140;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_ictteam_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #7f7f7f;
   line-height: 1.5em;
   font-size: 14px;
 }
 .vl_navbar .txt_spcoach_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 40px;
 }
@@ -2119,15 +2119,15 @@ body {
   line-height: 1em;
 }
 .vl_navbar .txt_teamhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .txt_stephead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .txt_loginhead {
-  font-family: 'TrueTextBOnline-Bold';
-  color: #cc338b;
+  font-family: 'Prompt-Medium';
+  color: #10c4cc;
   font-size: 26px;
 }
 .vl_navbar .txt_sp_detail {
@@ -2137,20 +2137,20 @@ body {
 .vl_navbar .nav-tabs .nav-item.show .nav-link,
 .vl_navbar .nav-tabs .nav-link.active {
   color: #fff;
-  background-color: #cc338b;
-  border-color: #cc338b #cc338b #cc338b;
+  background-color: #10c4cc;
+  border-color: #10c4cc #10c4cc #10c4cc;
   border-top-left-radius: 0.4rem !important;
   border-top-right-radius: 0.4rem !important;
 }
 .vl_navbar .nav-tabs {
-  border-bottom: 5px solid #cc338b;
+  border-bottom: 5px solid #10c4cc;
 }
 .vl_navbar .nav-tabs .nav-link {
   borddetailp-left-radius: 0;
   border-top-right-radius: 0;
   color: #888;
   background-color: #fff;
-  border-bottom: 0px solid #cc338b;
+  border-bottom: 0px solid #10c4cc;
   border-left: hidden;
   border-right: hidden;
   border: 0px;
@@ -2218,7 +2218,7 @@ body {
   height: 30px;
   margin-left: 0px;
   font-size: 18px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 1.7rem;
 }
 .vl_navbar .content_middle {
@@ -2240,7 +2240,7 @@ body {
 .vl_navbar .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-color: #ddd;
 }
 .vl_navbar select.form-control:not([size]):not([multiple]) {
@@ -2299,10 +2299,10 @@ body {
   margin-top: -0.25rem;
 }
 .vl_navbar .bd-callout-blue {
-  border-left-color: #cc338b;
+  border-left-color: #10c4cc;
 }
 .vl_navbar .bd-callout-blue h4 {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .bd-callout-info {
   border-left-color: #5bc0de;
@@ -2540,7 +2540,7 @@ body {
   line-height: 1.8385;
 }
 .vl_navbar .txt_stephead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .modal-body-fixed {
@@ -2586,21 +2586,21 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .txt_partnership_cop_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #404040;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_partnership_cop_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #a6a6a6;
   line-height: 1.5em;
   font-size: 14px;
 }
 .vl_navbar .txt_partnership_name_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1em;
@@ -2613,14 +2613,14 @@ body {
   font-size: 18px;
 }
 .vl_navbar .txt_partnership_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_partnership_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
@@ -2642,44 +2642,44 @@ body {
   border-bottom-right-radius: 0rem !important;
 }
 .vl_navbar .txt_reportwallhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .txt_reportwall_date {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 1.7em;
 }
 .vl_navbar .txt_reportwall_month {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
   font-size: 0.7em;
 }
 .vl_navbar .txt_reportwall_dmy {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 1.2em;
 }
 .vl_navbar .txt_reportwall_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 1.5em;
 }
 .vl_navbar .txt_reportwall_namehead {
   font-family: 'TrueTextBBold';
-  color: #cc338b;
+  color: #10c4cc;
   font-size: 1.2em;
 }
 .vl_navbar .txt_reportwall_statushead {
   font-family: 'TrueTextBBold';
-  color: #cc338b;
+  color: #10c4cc;
   font-size: 1.2em;
 }
 .vl_navbar .shadow-sm {
@@ -2724,7 +2724,7 @@ body {
 .vl_navbar .picker__day--highlighted:hover {
   cursor: pointer;
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .picker__footer button {
   border: 0;
@@ -2789,7 +2789,7 @@ body {
 .vl_navbar .daterangepicker td.active:focus,
 .vl_navbar .daterangepicker td.active:hover {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-radius: 0.1875rem;
 }
 .vl_navbar .daterangepicker th {
@@ -2798,10 +2798,10 @@ body {
   font-size: 1rem;
 }
 .vl_navbar .txt_behaviorhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .bg_grey_behaviorhead {
@@ -3070,10 +3070,10 @@ body {
 }
 .vl_navbar .ranges ul li.active {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg-slate {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .btn-group-sm > .btn,
 .vl_navbar .btn-sm {
@@ -3087,7 +3087,7 @@ body {
   bottom: 1rem;
 }
 .vl_navbar .bg-primary {
-  background-color: #cc338b !important;
+  background-color: #10c4cc !important;
 }
 .vl_navbar .ranges .daterangepicker-inputs .daterangepicker_input > span {
   margin-bottom: 0rem;
@@ -3107,21 +3107,21 @@ body {
   padding: 0.3rem 0.3rem;
 }
 .vl_navbar .txt_sp_headnum {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
   font-size: 34px;
 }
 .vl_navbar .txt_sp_titlenum {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_sp_titlenum_16 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1em;
@@ -3203,13 +3203,13 @@ body {
   padding-right: 1rem;
 }
 .vl_navbar .txt_nametopic_gray {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 18px;
   color: #808080;
 }
 .vl_navbar .txt_grading_4 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #6f8a3b;
   font-size: 4rem;
 }
@@ -3226,12 +3226,12 @@ body {
   opacity: 0.4;
 }
 .vl_navbar .font-topic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
   line-height: 1.2em;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .multiselect.btn-light {
   background-color: #f2f2f2;
@@ -3360,10 +3360,10 @@ body {
   border-color: #9bbb59;
 }
 .vl_navbar .txt_schoolprofilehead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 22px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
 }
 .vl_navbar .schoolprofile_menu_height {
@@ -3449,7 +3449,7 @@ body {
 }
 .vl_navbar .dropdown-item.active {
   color: #fff;
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .multiselect {
   padding-top: 0.89rem;
@@ -3520,7 +3520,7 @@ body {
   background-color: #ffffff;
   border-color: #d9d9d9;
   font-size: 16px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .btn_light.focus,
 .vl_navbar .btn_light:focus,
@@ -3565,15 +3565,15 @@ body {
   border-bottom-right-radius: 0.125rem !important;
 }
 .vl_navbar .nav-tabs-solid {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   background-color: #f2f2f2;
-  border: 0px solid #cc338b;
+  border: 0px solid #10c4cc;
   color: #888;
   font-size: 20px;
 }
 .vl_navbar .nav-tabs-solid .nav-link {
   border-width: 0;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #888;
 }
 .vl_navbar .nav-tabs-solid .nav-item.show .nav-link.active,
@@ -3583,7 +3583,7 @@ body {
   background-color: #fff;
 }
 .vl_navbar .nav-tabs-solid_red {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   background-color: #fff;
   border-bottom: 5px solid #fff;
   color: #888;
@@ -3592,16 +3592,16 @@ body {
 }
 .vl_navbar .nav-tabs-solid_red .nav-link {
   border-width: 0;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #888;
   border-bottom: 5px solid #fff;
 }
 .vl_navbar .nav-tabs-solid_red .nav-item.show .nav-link.active,
 .vl_navbar .nav-tabs-solid_red .nav-link.active,
 .vl_navbar .nav-tabs-solid_red .nav-link:hover {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #fff;
-  border-bottom: 5px solid #cc338b;
+  border-bottom: 5px solid #10c4cc;
 }
 .vl_navbar .border_gray_ddd {
   border-top: 1px solid #ddd;
@@ -3622,7 +3622,7 @@ body {
   border: 1px solid #d9d9d9 !important;
 }
 .vl_navbar .border_red {
-  border: 1px solid #cc338b !important;
+  border: 1px solid #10c4cc !important;
 }
 .vl_navbar .card-input-element {
   display: none;
@@ -3637,23 +3637,23 @@ body {
   cursor: pointer;
 }
 .vl_navbar .card-input-element:checked + .card-input {
-  border: 2px solid #cc338b;
+  border: 2px solid #10c4cc;
   border-radius: 0.4rem;
 }
 .vl_navbar .txt_splan_headnum {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .font-eventdetail-head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 24px;
   font-weight: normal;
   line-height: 1.4em;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .table_splan td,
 .vl_navbar .table_splan th {
@@ -3719,21 +3719,21 @@ body {
   border: 1px solid #eee !important;
 }
 .vl_navbar .txt_splan_setheadnum {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #404040;
   line-height: 1.2em;
   font-size: 30px;
 }
 .vl_navbar .txt_splan_settitlenum {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 18px;
 }
 .vl_navbar .txt_splan_settitlenum_w {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #fff;
   line-height: 1em;
@@ -3743,7 +3743,7 @@ body {
   font-size: 20px;
 }
 .vl_navbar .txt_splan_addtaskhead_blue {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.5em;
@@ -3771,9 +3771,9 @@ body {
   padding-bottom: 15px !important;
 }
 .vl_navbar .txt_splan_headtopic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   font-size: 28px;
 }
@@ -3808,7 +3808,7 @@ body {
   table-layout: fixed;
   width: 100%;
   color: #849397;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .progress_step > li {
   position: relative;
@@ -3866,13 +3866,13 @@ body {
   margin-bottom: 0.2em;
 }
 .vl_navbar .progress_step_none .active {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .active .circle_splannum_blue,
 .vl_navbar .circle_splanum_blue:hover {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #ffffff;
-  border: 3px solid #cc338b;
+  border: 3px solid #10c4cc;
 }
 .vl_navbar .active .circle_step_green {
   background-color: #dfe3e4;
@@ -3885,9 +3885,9 @@ body {
   border: 3px solid #9bbb57;
 }
 .vl_navbar .is-reject .circle_step_green {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   color: #ffffff;
-  border: 3px solid #cc338b;
+  border: 3px solid #10c4cc;
   /*  background-image: url("../images/main/ic_reject.svg");*/
   background-position: left top;
   background-repeat: no-repeat;
@@ -3899,12 +3899,12 @@ body {
 }
 .vl_navbar .donation .is-reject a.active,
 .vl_navbar .donation .is-reject a {
-  color: #cc338b;
+  color: #10c4cc;
   text-decoration: none;
 }
 .vl_navbar .donation .progress_step_sm > li.is-reject:before {
   color: #fff;
-  background: #cc338b;
+  background: #10c4cc;
 }
 .vl_navbar .circle_step_green {
   border-radius: 50%;
@@ -3912,7 +3912,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 2.9rem;
   color: #ffffff;
   background-color: #dfe3e4;
@@ -3968,13 +3968,13 @@ body {
   z-index: 0;
 }
 .vl_navbar .donation.progress_step > li.line-reject:after {
-  background: #cc338b !important;
+  background: #10c4cc !important;
 }
 .vl_navbar .progress_step_sm > li.line-reject:after {
   content: '';
   position: absolute;
   display: block;
-  background: #cc338b !important;
+  background: #10c4cc !important;
   width: 100%;
   height: 0.2em;
   top: 0.8em;
@@ -4008,8 +4008,8 @@ body {
 }
 .vl_navbar .progress_step_sm > li.is-reject:before {
   color: #fff;
-  background: #cc338b;
-  border: 2px solid #cc338b;
+  background: #10c4cc;
+  border: 2px solid #10c4cc;
 }
 .vl_navbar .donation .nav-link {
   display: block;
@@ -4115,19 +4115,19 @@ body {
 .vl_navbar .txt_splan_namehead {
   font-style: normal;
   font-size: 40px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .txt_splan_maintopic {
   font-style: normal;
   font-size: 40px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .txt_splan_topic {
   font-style: normal;
   font-size: 26px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .circle_green {
@@ -4137,7 +4137,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 3rem;
 }
 .vl_navbar .circle_splannum {
@@ -4147,7 +4147,7 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 3rem;
 }
 .vl_navbar .circle_splannum_blue {
@@ -4157,9 +4157,9 @@ body {
   height: 50px;
   margin-left: 0px;
   font-size: 34px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 2.9rem;
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ffffff;
   top: -25px;
   z-index: 1001;
@@ -4187,22 +4187,22 @@ body {
   font-size: 120px;
 }
 .vl_navbar .txt_muted {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   color: #a6a6b2;
   font-size: 20px;
 }
 .vl_navbar .txt_superhead {
   font-size: 100px;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_schoolhead {
   font-size: 40px;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .h_100p {
@@ -4215,17 +4215,17 @@ body {
   min-height: 110px;
 }
 .vl_navbar .bg_blue_school {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .txt_mfl_student_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 130px;
 }
 .vl_navbar .page-header-blue {
-  background-color: #cc338b;
+  background-color: #10c4cc;
   border-bottom: 0px solid #ddd;
 }
 .vl_navbar .page-header-blue-light {
@@ -4239,12 +4239,12 @@ body {
   background-color: #ffffff;
 }
 .vl_navbar .font_mfl_topic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
   line-height: 1.5em;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .box_mfl_topic {
   overflow: hidden;
@@ -4300,37 +4300,37 @@ body {
   border-top: 1px solid #ddd !important;
 }
 .vl_navbar .txt_mfl_bighead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 32px;
   color: #000000;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_mfl_numpopulation {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 36px;
   color: #000000;
   line-height: 1em;
 }
 .vl_navbar .txt_mfl_titletable {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
   font-size: 18px;
 }
@@ -4349,7 +4349,7 @@ body {
   width: 20%;
 }
 .vl_navbar .txt_mfl_bighead_black {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
   line-height: 1em;
@@ -4357,25 +4357,25 @@ body {
 .vl_navbar .txt_ps_namehead {
   font-style: normal;
   font-size: 40px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_ps_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 38px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_ps_headnum {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 38px;
 }
 .vl_navbar .table-hover-ps tbody tr:hover td {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: rgba(0, 0, 0, 0);
 }
 .vl_navbar .ps_hover:hover {
@@ -4392,31 +4392,31 @@ body {
   padding: 0rem 0rem !important;
 }
 .vl_navbar .txt_quest_bighead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 38px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
 }
 .vl_navbar .txt_quest_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 32px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
 }
 .vl_navbar .txt_quest_headtext {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 24px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
 }
 .vl_navbar .txt_quest_headnum {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 44px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 0.65em;
 }
 .vl_navbar .widthscreen_quest {
@@ -4458,10 +4458,10 @@ body {
   border-top: 1px solid #ddd;
 }
 .vl_navbar .txt_quest_thx {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 24px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.5em;
 }
 .vl_navbar .txt_status_grey {
@@ -4469,11 +4469,11 @@ body {
   font-size: 16px;
 }
 .vl_navbar .line_right {
-  border-right: 4px solid #cc338b;
+  border-right: 4px solid #10c4cc;
   padding-right: 12px;
 }
 .vl_navbar .country-1-table-schooldetail {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 40px;
   color: #0092db;
   line-height: 0.5;
@@ -4542,9 +4542,9 @@ body {
   color: #888888;
 }
 .vl_navbar .txt_quest_titletable {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.8em;
   font-size: 18px;
 }
@@ -4603,10 +4603,10 @@ body {
   border-top: 1px solid #ddd !important;
 }
 .vl_navbar .txt_proapp_searchhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 28px;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .table_proapp td,
 .vl_navbar .table_proapp th {
@@ -4635,20 +4635,20 @@ body {
   border-top: 0px;
 }
 .vl_navbar .txt_proapp_superhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 26px;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_proapp_bighead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
 }
 .vl_navbar .txt_proapp_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
   color: #3c6494;
@@ -4664,21 +4664,21 @@ body {
 }
 .vl_navbar .txt_proapp_headnum {
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 38px;
 }
 .vl_navbar .txt_proapp_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #95b3d7;
   line-height: 1.5em;
   font-size: 18px;
 }
 .vl_navbar .txt_proapp_headnum-sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 30px;
 }
@@ -4730,7 +4730,7 @@ body {
   width: 45%;
 }
 .vl_navbar .bg-slate-600 {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .badge_radius {
   font-size: 60%;
@@ -4749,7 +4749,7 @@ body {
   width: 100%;
 }
 .vl_navbar .bg-submenu01 {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .scroll {
   white-space: nowrap;
@@ -4821,7 +4821,7 @@ body {
   transition: 0.3s;
   margin: 0 6px;
   z-index: 1;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 18px;
   font-weight: 500;
   position: relative;
@@ -4862,25 +4862,25 @@ body {
   }
 }
 .vl_navbar .txt_pcr_submenu {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 11px;
 }
 .vl_navbar .txt_pcr_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: bold;
   font-size: 22px;
   color: #000000;
   line-height: 1.3em;
 }
 .vl_navbar .txt_pcr_detail_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 30px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
 }
 .vl_navbar .txt_pcr_subhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4888,7 +4888,7 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_3row {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4896,7 +4896,7 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_4row {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
@@ -4904,14 +4904,14 @@ body {
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_subhead_nolock {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   color: #000000;
   line-height: 1.4em;
   overflow: hidden;
 }
 .vl_navbar .txt_pcr_footerhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .box-topic_pcr {
   overflow: hidden;
@@ -4927,7 +4927,7 @@ body {
   background-color: #f2f2f2;
 }
 .vl_navbar .txt_pcr_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.5em;
@@ -4937,17 +4937,17 @@ body {
   box-shadow: 0 1px 5px 0 rgba(14, 30, 62, 0.08);
 }
 .vl_navbar .border_blue {
-  border: 1px solid #cc338b;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .border_blue:active,
 .vl_navbar .border_blue:focus,
 .vl_navbar .border_blue:hover {
-  border: 1px solid #cc338b !important;
+  border: 1px solid #10c4cc !important;
 }
 .vl_navbar .txt_pcr_headnum-sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 42px;
 }
@@ -4964,7 +4964,7 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .box_pcr_title2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
   color: #000000;
   line-height: 1.32em;
@@ -5030,8 +5030,8 @@ body {
 .vl_navbar .btn_circle_grey_32:active,
 .vl_navbar .btn_circle_grey_32:focus {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
   opacity: 1;
 }
 .vl_navbar .over_opacity_80:hover {
@@ -5054,7 +5054,7 @@ body {
 .vl_navbar .card:hover .txt_pcr_subhead,
 .vl_navbar .card:hover .txt_pcr_subhead_3row,
 .vl_navbar .card:hover .txt_pcr_subhead_4row {
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .card_me:hover .card-body,
 .vl_navbar .card_me_nozoom:hover .card-body,
@@ -5078,7 +5078,7 @@ body {
   background-color: #fff !important;
 }
 .vl_navbar .txt_kpi_submenu {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 11px;
 }
 .vl_navbar .txt_kpi_submenu a {
@@ -5086,7 +5086,7 @@ body {
 }
 .vl_navbar .txt_kpi_submenu a.active,
 .vl_navbar .txt_kpi_submenu a:hover.active {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ffffff;
   border-bottom: 3px solid;
   padding-top: 7px;
@@ -5098,12 +5098,12 @@ body {
   transition: 0.5s ease;
 }
 .vl_navbar .font_cned_topic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
   line-height: 1.5em;
-  color: #cc338b;
+  color: #10c4cc;
 }
 .vl_navbar .txt_sm10 {
   font-size: 12px;
@@ -5151,9 +5151,9 @@ body {
   color: #666;
 }
 .vl_navbar .txt_cned_headnum-sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1em;
   font-size: 38px;
 }
@@ -5227,7 +5227,7 @@ body {
   z-index: 9999;
 }
 .vl_navbar .txt_pricebaht {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   line-height: 0.8;
   overflow: hidden;
@@ -5235,7 +5235,7 @@ body {
   color: #000000;
 }
 .vl_navbar .txt_pricepercent {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 22px;
   line-height: 0.8;
   overflow: hidden;
@@ -5264,7 +5264,7 @@ body {
   height: 10px;
 }
 .vl_navbar .font_cned_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5272,7 +5272,7 @@ body {
   color: #000000;
 }
 .vl_navbar .txt_cned_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #78a6db;
   line-height: 1.35em;
@@ -5282,7 +5282,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .txt_cned_subhead_nolock {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 20px;
   color: #000000;
   line-height: 1.35em;
@@ -5295,14 +5295,14 @@ body {
   padding: 0.525rem 0.525rem !important;
 }
 .vl_navbar .txt_cned_footerhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
 }
 .vl_navbar .bg_tab_cned {
   border: 1px solid #53b6e0;
 }
 .vl_navbar .bg_tab_cned .nav-link {
   border-width: 0;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #53b6e0;
 }
 .vl_navbar .bg_tab_cned .nav-item.show .nav-link.active,
@@ -5311,21 +5311,21 @@ body {
   background-color: #53b6e0;
 }
 .vl_navbar .txt_cned_head2 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1.35em;
   font-size: 18px;
 }
 .vl_navbar .txt_cned_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 24px;
   color: #fff;
   line-height: 1.3em;
 }
 .vl_navbar .txt_cned_head-sm {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
   color: #fff;
@@ -5388,19 +5388,19 @@ body {
   border-radius: 0.4rem;
 }
 .vl_navbar .content_cned h1 {
-  font-family: 'TrueTextBOnline-Bold';
-  color: #cc338b;
+  font-family: 'Prompt-Medium';
+  color: #10c4cc;
   font-size: 24px;
   line-height: 1.35;
 }
 .vl_navbar .content_cned h2 {
-  font-family: 'TrueTextBOnline-Bold';
-  color: #cc338b;
+  font-family: 'Prompt-Medium';
+  color: #10c4cc;
   font-size: 22px;
   line-height: 1.35;
 }
 .vl_navbar .content_cned h3 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   color: #000000;
   font-size: 34px;
   line-height: 1.35;
@@ -5411,7 +5411,7 @@ body {
   margin-bottom: 0px;
 }
 .vl_navbar .txt_spa_subhead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 20px;
   line-height: 1.35em;
 }
@@ -5425,13 +5425,13 @@ body {
 .vl_navbar .txt_spa_maintopic {
   font-style: normal;
   font-size: 40px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .txt_spa_topic {
   font-style: normal;
   font-size: 26px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.2em;
 }
 .vl_navbar .px_p70_m10 {
@@ -5508,7 +5508,7 @@ body {
   width: 100%;
 }
 .vl_navbar .font-title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
   font-weight: normal;
@@ -5565,35 +5565,35 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   transition: 0.4s;
-  font-family: 'TrueTextBOnline-Regular';
-  color: #cc338b;
+  font-family: 'Prompt-Regular';
+  color: #10c4cc;
   border-radius: 5rem;
-  border: 1px solid #cc338b;
+  border: 1px solid #10c4cc;
   box-shadow: 0px 7px 20px -14px rgba(34, 54, 60, 0.74);
 }
 .vl_navbar .btn_red_sm_light_border:hover {
   color: #fff !important;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .txt_14p {
   font-size: 14px;
 }
 .vl_navbar .txt_donate_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 26px;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
 }
 .vl_navbar .txt_red_modal {
   color: #e7383b;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 24px;
 }
 .vl_navbar .txt_grey_form {
   color: #a6a6b2;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 18px;
 }
 .vl_navbar .vjs-poster {
@@ -5621,7 +5621,7 @@ body {
 }
 .vl_navbar a .card.bg_card_ict:hover {
   background-color: #f1f1f1;
-  border: 1px solid #cc338b !important;
+  border: 1px solid #10c4cc !important;
 }
 .vl_navbar .bg_table_organ_gray {
   background-color: #eee !important;
@@ -5744,9 +5744,9 @@ body {
   padding-right: 0.25rem !important;
 }
 .vl_navbar .bar_cn_headtopic {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 8px 14px;
   background-color: #ffffff;
@@ -5754,62 +5754,62 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_cn_headtopic_w {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 8px 14px;
   background-color: #ffffff;
   font-size: 16px;
-  border-left: 6px solid #cc338b !important;
+  border-left: 6px solid #10c4cc !important;
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 8px 14px;
   background-color: #f5f5f5;
   /*f5f5f5 D9D9D9*/
   font-size: 20px;
-  /*  border-left: 6px solid #cc338b !important;*/
+  /*  border-left: 6px solid #10c4cc !important;*/
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_greyblack {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 8px 14px;
   background-color: #d9d9d9;
   font-size: 16px;
 }
 .vl_navbar .bar_cn_headtopic_red {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
   padding: 12px 14px;
-  background-color: #cc338b;
+  background-color: #10c4cc;
   font-size: 22px;
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_white {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 10px 14px;
   background-color: #ffffff;
   font-size: 22px;
   border-bottom: 1px solid #dddddd !important;
-  border-left: 6px solid #cc338b !important;
+  border-left: 6px solid #10c4cc !important;
 }
 .vl_navbar .bar_cn_headtopic_white2 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #cc338b;
+  color: #10c4cc;
   line-height: 1.3em;
   padding: 10px 14px;
   background-color: #ffffff;
@@ -5817,7 +5817,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_cn_headtopic_black {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -5827,51 +5827,51 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .txt_cn_red_head {
-  color: #cc338b;
-  font-family: 'TrueTextBOnline-Bold';
+  color: #10c4cc;
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .txt_cn_grey_head {
   color: #000000;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .txt_cn_black_head {
   color: #000000;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 22px;
 }
 .vl_navbar .txt_cn_grey_title {
   color: #888;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .txt_cn_numhead {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 40px;
 }
 .vl_navbar .txt_lvl_1 {
-  color: #cc338b;
-  font-family: 'TrueTextBOnline-Regular';
+  color: #10c4cc;
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .txt_lvl_2 {
   color: #e69138;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .txt_lvl_3 {
   color: #f1c232;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .txt_lvl_4 {
   color: #6aa84f;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .txt_lvl_5 {
   color: #3d85c6;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .bg_lvl_1 {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg_lvl_2 {
   background-color: #e69138;
@@ -5886,7 +5886,7 @@ body {
   background-color: #3d85c6;
 }
 .vl_navbar .bg_red {
-  background-color: #cc338b;
+  background-color: #10c4cc;
 }
 .vl_navbar .bg_table_cn_grey {
   background-color: #d9d9d9;
@@ -5895,7 +5895,7 @@ body {
   background-color: #dddddd;
 }
 .vl_navbar .table_cn_border th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5904,7 +5904,7 @@ body {
   color: #000000;
 }
 .vl_navbar .table_cn_border td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0rem 0rem 0.3rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -5939,11 +5939,11 @@ body {
 .vl_navbar .table_cn_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border2 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.1rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5951,7 +5951,7 @@ body {
   font-size: 14px;
 }
 .vl_navbar .table_cn_border2 td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -5979,11 +5979,11 @@ body {
 .vl_navbar .table_cn_border2 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border3 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 0px solid #dddddd;
   border-right: 0px;
@@ -5991,7 +5991,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .table_cn_border3 td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0rem 0rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6020,11 +6020,11 @@ body {
 .vl_navbar .table_cn_border3 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .table_cn_border4 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6032,7 +6032,7 @@ body {
   font-size: 18px;
 }
 .vl_navbar .table_cn_border4 td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.2rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6061,11 +6061,11 @@ body {
 .vl_navbar .table_cn_border4 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .table_bms_border th {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   padding: 0.2rem 0.6rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6073,7 +6073,7 @@ body {
   font-size: 20px;
 }
 .vl_navbar .table_bms_border td {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   padding: 0rem 0.6rem 0rem 0rem;
   border-bottom: 0px solid #555;
   border-right: 0px;
@@ -6103,11 +6103,11 @@ body {
 .vl_navbar .table_bms_border tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 20px;
 }
 .vl_navbar .table_bms_perfvalue td {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   padding: 0.2rem;
   font-size: 20px;
   color: #555;
@@ -6121,7 +6121,7 @@ body {
   border-top: 0px !important;
   border-bottom: 0px !important;
   padding: 0.2rem 0.5rem;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6131,7 +6131,7 @@ body {
   border-left: 0px !important;
   border-right: 0px !important;
   border-bottom: 0px !important;
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6142,7 +6142,7 @@ body {
 .vl_navbar a .table_cn_border2,
 .vl_navbar .table_cn_border3 .active,
 .vl_navbar a .table_cn_border3 {
-  color: #cc338b !important;
+  color: #10c4cc !important;
 }
 .vl_navbar .table td,
 .vl_navbar .table th,
@@ -6152,11 +6152,11 @@ body {
 .vl_navbar .table-hover-kpi tbody tr:hover td,
 .vl_navbar .table-hover-kpi tbody tr:hover td .txt_w,
 .vl_navbar .table-hover-kpi tbody tr:hover td .bg_kpi_progress_red {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #f3f3f3;
 }
 .vl_navbar .table_cn_border_bottom_1 td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.2rem 0rem;
   border-bottom: 1px solid #dddddd;
   border-right: 0px;
@@ -6175,7 +6175,7 @@ body {
 .vl_navbar .table_cn_border_bottom_1 tr:first-child th {
   border-top: 0px !important;
   line-height: 1.35;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .vl_navbar .table_cn td,
@@ -6220,7 +6220,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom td,
 .vl_navbar .table_kpi_border_bottom th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6233,7 +6233,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom2 td,
 .vl_navbar .table_kpi_border_bottom2 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6245,12 +6245,12 @@ body {
   border-bottom: 0px solid #dddddd !important;
 }
 .vl_navbar .table_kpi_border_bottom2.table_hover tbody tr:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
 }
 .vl_navbar .table_kpi_border_bottom_px0 td,
 .vl_navbar .table_kpi_border_bottom_px0 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6270,12 +6270,12 @@ body {
   border-bottom: 0px solid #dddddd !important;
 }
 .vl_navbar .table_kpi_border_bottom_px0.table_hover tbody tr:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
 }
 .vl_navbar .table_kpi_noborder_px0 td,
 .vl_navbar .table_kpi_noborder_px0 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0.625rem;
   border-bottom: 0px solid #dddddd !important;
   border-top: 0px;
@@ -6295,12 +6295,12 @@ body {
   border-bottom: 0px solid #dddddd !important;
 }
 .vl_navbar .table_kpi_noborder_px0.table_hover tbody tr:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
 }
 .vl_navbar .table_kpi_border_0 td,
 .vl_navbar .table_kpi_border_0 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 1px solid #ddd;
   border-top: 0px;
@@ -6312,7 +6312,7 @@ body {
   border-bottom: 0px solid #dddddd !important;
 }
 .vl_navbar .table_kpi_border_0 tbody tr.table_hover:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #ddd;
 }
 .vl_navbar .table_kpi_border_0 .table_sub td {
@@ -6331,7 +6331,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom0 td,
 .vl_navbar .table_kpi_border_bottom0 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.6rem 0.6rem;
   border-bottom: 0px solid #ddd;
   border-top: 0px;
@@ -6346,7 +6346,7 @@ body {
   border-bottom: 0px solid #dddddd !important;
 }
 .vl_navbar .table_kpi_border_bottom0 tbody tr.table_hover:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #ddd;
 }
 .vl_navbar .table_kpi_border_bottom0 .table_sub td {
@@ -6358,7 +6358,7 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom3 td,
 .vl_navbar .table_kpi_border_bottom3 th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.1rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6371,23 +6371,23 @@ body {
 }
 .vl_navbar .table_kpi_border_bottom3.table_hover tbody tr:hover td,
 .vl_navbar .table_kpi_border_bottom3.table_hover tbody tr td.active {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
 }
 .vl_navbar .table_kpi_border_bottom td {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   border-bottom: 1px solid #dddddd;
   color: #000000;
 }
 .vl_navbar .table_kpi_border_bottom.table_hover tbody tr:hover td {
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #f3f3f3;
 }
 /* .vl_navbar .table_kpi_border_bottom tr:last-child td {
     border-bottom: 0px !important; } */
 .vl_navbar .table_kpi_grey td,
 .vl_navbar .table_kpi_grey th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6411,7 +6411,7 @@ body {
 }
 .vl_navbar .table_kpi_grey_sm td,
 .vl_navbar .table_kpi_grey_sm th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6434,7 +6434,7 @@ body {
 }
 .vl_navbar .table_kpi_grey_sm_allborder td,
 .vl_navbar .table_kpi_grey_sm_allborder th {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   padding: 0.3rem 0.3rem;
   border-bottom: 1px solid #dddddd !important;
   border-top: 0px;
@@ -6482,7 +6482,7 @@ body {
   border-right: 1px solid #dddddd !important;
 }
 .vl_navbar .txt_kpi_head {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6492,7 +6492,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6502,7 +6502,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6512,7 +6512,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num3 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6522,7 +6522,7 @@ body {
 .vl_navbar .txt_kpi_head_num_sm,
 .vl_navbar .txt_kpi_head_num4,
 .vl_navbar .txt_kpi_head_num5 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6532,7 +6532,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num6 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6542,7 +6542,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_14p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6552,7 +6552,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_18p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -6562,7 +6562,7 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_num_888 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1em;
@@ -6572,14 +6572,14 @@ body {
   /*33*/
 }
 .vl_navbar .txt_kpi_head_w {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_sm_w {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -6587,21 +6587,21 @@ body {
 }
 .vl_navbar .txt_kpi_title,
 .vl_navbar .txt_kpi_bighead_date {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_title_18p {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 18px;
 }
 .vl_navbar .txt_menu_home {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -6619,77 +6619,77 @@ body {
   opacity: 0.5;
 }
 .vl_navbar .txt_kpi_head_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_bighead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .txt_kpi_bighead2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 24px;
 }
 .vl_navbar .txt_kpi_bighead3 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.35em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_bighead4 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.2em;
   font-size: 24px;
 }
 .vl_navbar .txt_bms_bighead {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.55em;
   font-size: 24px;
 }
 .vl_navbar .txt_kpi_mainmenu {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 40px;
 }
 .vl_navbar .txt_kpi_mainmenu_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 28px;
 }
 .vl_navbar .txt_kpi_mainmenu2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 32px;
 }
 .vl_navbar .txt_kpi_mainmenu2_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #888;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_head_date {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   font-size: 18px;
@@ -6857,8 +6857,8 @@ body {
 .vl_navbar .btn_kpi_grey_light_border:hover,
 .modal-dialog .btn_kpi_grey_light_border:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_kpi_grey_light_border2 {
   color: #888;
@@ -6870,8 +6870,8 @@ body {
 }
 .vl_navbar .btn_kpi_grey_light_border2:hover {
   color: #fff;
-  background-color: #cc338b;
-  border: 1px solid #cc338b;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
 }
 .vl_navbar .btn_kpi_green_sm {
   color: #6ea954;
@@ -6927,7 +6927,7 @@ body {
   text-align: center;
 }
 .vl_navbar .btn_plus_grey_d9 {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #d9d9d9;
   line-height: 1.35em;
@@ -6943,7 +6943,7 @@ body {
   border: 1px solid #c90000;
 }
 .vl_navbar .bar_kpi_headtopic_w {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6953,7 +6953,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_w2 {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6961,7 +6961,7 @@ body {
   font-size: 16px;
 }
 .vl_navbar .bar_kpi_headtopic_greenlight {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -6971,7 +6971,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_redline {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
@@ -6981,7 +6981,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_black {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6989,7 +6989,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_bms_headpopover_black {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -6997,7 +6997,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_bms_headtopic_black {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7012,7 +7012,7 @@ body {
   border: 0px;
 }
 .vl_navbar .bar_kpi_navlink {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7020,7 +7020,7 @@ body {
   padding: 14px 14px !important;
 }
 .vl_navbar .bar_bms_navlink {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7028,7 +7028,7 @@ body {
   padding: 15px 14px !important;
 }
 .vl_navbar .bar_kpi_headtopic_white {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7036,7 +7036,7 @@ body {
   padding: 8px 14px;
 }
 .vl_navbar .bar_kpi_headtopic_red {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
@@ -7046,7 +7046,7 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 .vl_navbar .bar_kpi_headtopic_redlight {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #ffffff;
   line-height: 1.3em;
@@ -7056,7 +7056,7 @@ body {
   border-bottom: 1px solid #dddddd !important;
 }
 .vl_navbar .bar_kpi_headpic_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7065,7 +7065,7 @@ body {
   background-color: #eeeeee;
 }
 .vl_navbar .bar_cluster_headpic_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   font-style: normal;
   color: #555555;
@@ -7074,21 +7074,21 @@ body {
   background-color: #eeeeee;
 }
 .vl_navbar .txt_cluster_head_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
   font-style: normal;
   color: #000000;
   line-height: 1.3em;
 }
 .vl_navbar .txt_cluster_head_w {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
   font-style: normal;
   color: #fff;
   line-height: 1.3em;
 }
 .vl_navbar .bar_cluster_headpic_red {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
   font-style: normal;
   color: #fff;
@@ -7097,7 +7097,7 @@ body {
   background-color: #c60000;
 }
 .vl_navbar .txt_cluster_grey_16p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7115,7 +7115,7 @@ body {
   background-color: #f3f3f3 !important;
 }
 .vl_navbar .bar_kpi_headtopic_grey {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 16px;
   font-style: normal;
   color: #888;
@@ -7175,11 +7175,11 @@ body {
   padding-right: 15px !important;
 }
 .vl_navbar .table_cn_border.table-hover tbody tr:hover td {
-  color: #cc338b;
+  color: #10c4cc;
   background-color: #ffffff;
 }
 .vl_navbar .txt_kpi_blod {
-  font-family: 'TrueTextBOnline-Bold' !important;
+  font-family: 'Prompt-Medium' !important;
 }
 .vl_navbar .txt_kpi_green {
   color: #6ea954 !important;
@@ -7192,7 +7192,7 @@ body {
 }
 .vl_navbar .txt_kpi_red_bold {
   color: #c60000 !important;
-  font-family: 'TrueTextBOnline-Bold' !important;
+  font-family: 'Prompt-Medium' !important;
 }
 .vl_navbar .txt_kpi_blue {
   color: #4786c4;
@@ -7213,33 +7213,33 @@ body {
   color: #f3f3f3;
 }
 .vl_navbar .txt_kpi_title_16p {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_head_16p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   line-height: 1.2em;
   font-size: 16px;
 }
 .vl_navbar .txt_kpi_head_20p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   line-height: 1.2em;
   font-size: 20px;
 }
 .vl_navbar .txt_kpi_head_22p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
   font-size: 22px;
 }
 .vl_navbar .txt_kpi_head_26p {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   line-height: 1.2em;
   background-color: #ffffff;
@@ -7247,7 +7247,7 @@ body {
 }
 .vl_navbar .txt_kpi_num_100p {
   font-size: 100px;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   line-height: 6rem;
 }
 .vl_navbar .kpi_active {
@@ -7262,7 +7262,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-style: normal;
   color: #ffffff;
   line-height: 1em;
@@ -7903,7 +7903,7 @@ body {
 .vl_navbar .txt_main_submenu a.active,
 .vl_navbar .txt_main_submenu a:hover.active {
   padding-top: 24px;
-  color: #cc338b !important;
+  color: #10c4cc !important;
   background-color: #ffffff;
   border-bottom: 3px solid;
 }
@@ -7918,25 +7918,25 @@ body {
   padding-right: 30px;
 }
 .vl_navbar .nav_menu_item_me {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 18px;
 }
 .modal-dialog .txt_vl_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_vl_head {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
   font-size: 20px;
 }
 .vl_navbar .txt_vl_head_reg {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000000;
   line-height: 1em;
@@ -7944,7 +7944,7 @@ body {
 }
 .vl_navbar .txt_vl_title,
 .modal-dialog .txt_vl_title {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
@@ -7952,24 +7952,24 @@ body {
 }
 .vl_navbar .txt_vl_title_14p,
 .modal-dialog .txt_vl_title_14p {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888;
   line-height: 1.35em;
   font-size: 14px; /*update*/
 }
 .vl_navbar .txt_vl_20p_gray88_h_red {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-style: normal;
   color: #888 !important;
   font-size: 20px;
 }
 .vl_navbar .txt_true_Reg {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
 }
 .vl_navbar .txt_vl_20p_gray88_h_red:hover,
 .vl_navbar .txt_termcond:hover {
-  color: #cc338b !important;
+  color: #10c4cc !important;
 }
 .vl_navbar .txt_termcond {
   font-size: 18px;
@@ -8031,7 +8031,7 @@ body {
 }
 .vl_navbar .txt_grey_80 a:hover,
 .vl_navbar .navbar-light .navbar-nav-link .txt_grey_80 a:hover {
-  color: #cc338b;
+  color: #10c4cc;
 }
 @media (min-width: 768px) {
   .vl_navbar .col-md-pull-12 {
@@ -8132,7 +8132,7 @@ body {
     background-color: #fcfcfc;
   }
   .vl_navbar .sidebar-light .nav-sidebar .nav-link:not(.disabled):hover {
-    color: #cc338b;
+    color: #10c4cc;
     background-color: #efefef;
   }
   .vl_navbar .navbar-expand-md .navbar-brand {
@@ -8551,7 +8551,7 @@ body {
     font-size: 24px;
   }
   .vl_navbar .nav-tabs .nav-link {
-    border-bottom: 0px solid #cc338b;
+    border-bottom: 0px solid #10c4cc;
     border-left: hidden;
     border-right: hidden;
   }
@@ -8730,9 +8730,9 @@ body {
     max-height: 70px;
   }
   .vl_navbar .txt_ict_bighead {
-    font-family: 'TrueTextBOnline-Regular';
+    font-family: 'Prompt-Regular';
     font-size: 30px;
-    color: #cc338b;
+    color: #10c4cc;
   }
   .vl_navbar .txt_splan_settitlenum_sub {
     font-size: 16px;
@@ -8788,7 +8788,7 @@ body {
     min-height: 96px;
   }
   .vl_navbar .txt_kpi_head_num {
-    font-family: 'TrueTextBOnline-Bold';
+    font-family: 'Prompt-Medium';
     font-style: normal;
     line-height: 1em;
     font-size: 30px;
@@ -8971,7 +8971,7 @@ body {
     position: relative;
     z-index: 1000;
     color: #fff;
-    font-family: 'TrueTextBOnline-Bold';
+    font-family: 'Prompt-Medium';
   }
   .vl_navbar .donation.progress_step > li:after {
     content: '';

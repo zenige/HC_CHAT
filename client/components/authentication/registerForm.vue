@@ -312,7 +312,7 @@ export default {
 }
 
 .txt_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   line-height: 33px;
   color: #333333;

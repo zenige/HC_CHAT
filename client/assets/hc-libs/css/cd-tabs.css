@@ -286,14 +286,14 @@ a.link {
   -webkit-text-decoration-skip: objects;
 }
 a.link:hover {
-  color: #cc338b;
+  color: #10c4cc;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   opacity: 0.7;
 }
 a.link.active {
-  color: #cc338b;
+  color: #10c4cc;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;

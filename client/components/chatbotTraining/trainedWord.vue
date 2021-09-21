@@ -65,7 +65,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_content">
             Total words
-            <span class="txt_vla_grey">({{ rows }})</span>
+            <span class="txt_vla_grey">({{ totalTrainedWord }})</span>
           </div>
         </div>
       </div>
@@ -92,11 +92,8 @@
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.question"
-                @keyup.enter="
-                  data.item.editable = false
-                  $emit('update')
-                "
+                v-model="changedQuestionData"
+                @keyup.enter="saveWord(data)"
               />
             </template>
             <template #cell(answer)="data">
@@ -108,38 +105,35 @@
               <b-form-input
                 autofocus
                 v-if="data.item.editable === true"
-                v-model="data.item.answer"
-                @keyup.enter="
-                  data.item.editable = false
-                  $emit('update')
-                "
+                v-model="changedAnswerData"
+                @keyup.enter="saveWord(data)"
               />
-            </template>
-            <template #cell(selected)="data">
-              <input type="checkbox" v-model="data.item.selected" />
             </template>
             <template #head(selected)>
               <input type="checkbox" v-model="selectAll" />
               <span>Select All</span>
+            </template>
+            <template #cell(selected)="data">
+              <input type="checkbox" v-model="data.item.selected" />
             </template>
 
             <template #cell(actions)="data">
               <b-button
                 v-if="data.item.editable === false"
                 variant="primary"
-                @click="data.item.editable = true"
+                @click="editWord(data)"
                 >Edit</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="danger"
-                @click="data.item.editable = false"
+                @click="cancleEditWord(data)"
                 >Cancle</b-button
               >
               <b-button
                 v-if="data.item.editable === true"
                 variant="success"
-                @click="data.item.editable = false"
+                @click="saveWord(data)"
                 >Save</b-button
               >
             </template>
@@ -194,8 +188,10 @@ export default {
       filter: '',
       perPage: 10,
       currentPage: 1,
-      totalTrainedWord: 0,
       deleteSelected: [],
+      totalTrainedWord: 0,
+      changedQuestionData: '',
+      changedAnswerData: '',
       fields: [
         {
           key: 'selected',
@@ -224,7 +220,7 @@ export default {
     selectAll(value) {
       this.trainedWordData.map(function (item) {
         item.selected = value
-        return item
+        // return item
       })
     },
     currentPage(value) {
@@ -234,17 +230,12 @@ export default {
   async mounted() {
     await this.getTrainedWordData(1, 10, 'question')
   },
-  computed: {
-    rows() {
-      return this.totalTrainedWord
-    },
-  },
+  computed: {},
   methods: {
     openDeleteWordModal() {
       this.deleteSelected = this.trainedWordData.filter(
         (item) => item.selected === true
       )
-      console.log(this.deleteSelected)
       if (this.deleteSelected.length >= 1) {
         this.isShowDeleteWordModal = true
       } else {
@@ -257,6 +248,7 @@ export default {
       }
     },
     closeDeleteWordModal() {
+      this.selectAll = false
       this.isShowDeleteWordModal = false
     },
     openAddWordModal() {
@@ -273,6 +265,26 @@ export default {
         data: this.deleteSelected,
       })
       await this.getTrainedWordData(this.currentPage, 10, 'question')
+      if (this.trainedWordData.length === 0) {
+        this.totalTrainedWord = 0
+      }
+    },
+    editWord(data) {
+      this.changedQuestionData = data.item.question
+      this.changedAnswerData = data.item.answer
+      data.item.editable = true
+    },
+    cancleEditWord(data) {
+      data.item.editable = false
+    },
+    async saveWord(data) {
+      data.item.question = this.changedQuestionData
+      data.item.answer = this.changedAnswerData
+      data.item.editable = false
+      await this.$axios.patch(`/train/trained/` + data.item.id, {
+        question: data.item.question,
+        answer: data.item.answer,
+      })
     },
     async getTrainedWordData(page, limit, orderBy) {
       let { data } = await this.$axios.get(
@@ -281,7 +293,12 @@ export default {
       this.trainedWordData = data.map((item) => {
         // collect total trained word data
         if (item.total) {
-          this.totalTrainedWord = item.total
+          return (
+            {
+              id: undefined,
+            },
+            (this.totalTrainedWord = item.total)
+          )
           // it will return undefined item
         } else {
           return {
@@ -296,8 +313,19 @@ export default {
       })
       // remove undefined item
       this.trainedWordData = this.trainedWordData.filter(function (element) {
-        return element !== undefined
+        return element.id !== undefined
       })
+      if (this.trainedWordData.length === 0) {
+        this.totalTrainedWord = 0
+      }
+      console.log(
+        'page: ',
+        page,
+        'data: ',
+        this.trainedWordData.length,
+        'total: ',
+        this.totalTrainedWord
+      )
     },
   },
 }
@@ -311,7 +339,7 @@ export default {
 }
 
 .txt_hc_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 36px;
   font-style: normal;
   line-height: 1rem;
@@ -319,7 +347,7 @@ export default {
 }
 
 .txt_hc_content {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   font-weight: 600;
   font-style: normal;

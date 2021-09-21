@@ -116,14 +116,24 @@ export default {
         question: this.question,
         answer: this.answer,
       }
-      await this.$axios.post('train/trained', body)
-      this.$emit(
-        'getTrainedWordData',
-        this.currentPage,
-        this.perPage,
-        'question'
-      )
-      this.onCancel()
+      if (this.question !== '' && this.answer !== '') {
+        await this.$axios.post('train/trained', body)
+        this.$emit(
+          'getTrainedWordData',
+          this.currentPage,
+          this.perPage,
+          'question'
+        )
+        this.question = ''
+        this.answer = ''
+        this.onCancel()
+      } else {
+        this.$bvToast.toast('Please fill question and answer', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
     },
   },
 }

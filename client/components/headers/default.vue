@@ -13,13 +13,15 @@
         <div class="nav-icon d-flex" @click.stop="onToggleDrawer()">
           <i class="icon-menu7"></i>
         </div>
-        <img
-          class="nav-logo d-block"
-          src="~/assets/hc-libs/images/main/logo_healthcare.png"
-          alt="vlearn-logo"
-        />
+        <NuxtLink :to="'/'">
+          <img
+            class="nav-logo d-block"
+            src="~/assets/hc-libs/images/main/logo_healthcare2.png"
+            alt="vlearn-logo"
+          />
+        </NuxtLink>
       </div>
-      <div class="nav-row">
+      <!-- <div class="nav-row">
         <template v-if="showProfile">
           <div
             class="nav-profile"
@@ -33,26 +35,24 @@
             ></vlearn-profile-menu>
           </div>
         </template>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import { ClickOutSide } from '@/directives/ClickOutSide.js'
-import { mapState } from 'vuex'
-import defaultProfileUrl from '~/assets/hc-libs/images/main/face_default.png'
-import VlearnProfileMenu from './ProfileMenu'
-// import VlearnVMenu from './VirtualWorldMenu'
+// import { mapState } from 'vuex'
+// import defaultProfileUrl from '~/assets/hc-libs/images/main/face_default.png'
+// import VlearnProfileMenu from './ProfileMenu'
 
 export default {
-  name: 'VlearnNavBar',
+  name: 'HealthcareNavbar',
   directives: {
     onClickOutSide: ClickOutSide,
   },
   components: {
-    // VlearnVMenu,
-    VlearnProfileMenu,
+    // VlearnProfileMenu,
   },
   props: {
     isDrawer: {
@@ -63,10 +63,10 @@ export default {
     //   type: Boolean,
     //   default: undefined,
     // },
-    isDisabledProfileMenu: {
-      type: Boolean,
-      default: undefined,
-    },
+    // isDisabledProfileMenu: {
+    //   type: Boolean,
+    //   default: undefined,
+    // },
     // hideUserMenu: {
     //   type: Boolean,
     //   default: false,
@@ -75,59 +75,59 @@ export default {
     //   type: Boolean,
     //   default: false,
     // },
-    isFixed: {
-      type: Boolean,
-      default: false,
-    },
-    showProfile: {
-      type: Boolean,
-      default: true,
-    },
+    // isFixed: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+    // showProfile: {
+    //   type: Boolean,
+    //   default: true,
+    // },
   },
   data: () => ({
     isVlearnMenuOpen: false,
     isVlearnProfileOpen: false,
-    defaultProfileUrl,
+    // defaultProfileUrl,
   }),
   computed: {},
   watch: {
-    isDrawer(newVal, oldVal) {
-      this.onVlearnMenuClose()
-    },
+    // isDrawer(newVal, oldVal) {
+    //   this.onVlearnMenuClose()
+    // },
   },
   beforeCreate: () => ({
-    isVlearnMenuOpen: false,
-    isVlearnProfileOpen: false,
+    // isVlearnMenuOpen: false,
+    // isVlearnProfileOpen: false,
   }),
   created: () => ({}),
   methods: {
     onToggleDrawer() {
       this.$emit('onToggleDrawer', '')
     },
-    onToggleVlearnMenu() {
-      this.isVlearnMenuOpen = !this.isVlearnMenuOpen
-      this.isVlearnProfileOpen = false
-    },
-    onToggleVlearnProfile() {
-      this.isVlearnProfileOpen = !this.isVlearnProfileOpen
-      this.isVlearnMenuOpen = false
-    },
-    vlearnMenuCss() {
-      return {
-        'vlearn-menu-close': !this.isVlearnMenuOpen,
-        'vlearn-menu-open': this.isVlearnMenuOpen,
-      }
-    },
-    vlearnProfileCss() {
-      return {
-        'vlearn-menu-close': !this.isVlearnProfileOpen,
-        'vlearn-menu-open': this.isVlearnProfileOpen,
-      }
-    },
-    onVlearnMenuClose() {
-      this.isVlearnMenuOpen = false
-      this.isVlearnProfileOpen = false
-    },
+    // onToggleVlearnMenu() {
+    //   this.isVlearnMenuOpen = !this.isVlearnMenuOpen
+    //   this.isVlearnProfileOpen = false
+    // },
+    // onToggleVlearnProfile() {
+    //   this.isVlearnProfileOpen = !this.isVlearnProfileOpen
+    //   this.isVlearnMenuOpen = false
+    // },
+    // vlearnMenuCss() {
+    //   return {
+    //     'vlearn-menu-close': !this.isVlearnMenuOpen,
+    //     'vlearn-menu-open': this.isVlearnMenuOpen,
+    //   }
+    // },
+    // vlearnProfileCss() {
+    //   return {
+    //     'vlearn-menu-close': !this.isVlearnProfileOpen,
+    //     'vlearn-menu-open': this.isVlearnProfileOpen,
+    //   }
+    // },
+    // onVlearnMenuClose() {
+    //   this.isVlearnMenuOpen = false
+    //   this.isVlearnProfileOpen = false
+    // },
     // openToTrueVirtual(link) {
     //   window.open(link)
     // },
@@ -143,30 +143,13 @@ export default {
     width: 100%;
     color: #444444;
     background-color: #fff;
-    border-bottom-color: rgba(0, 0, 0, 0.125);
-    border-bottom: 1px solid #dddddd;
-    height: 54px;
+    border-bottom: 1px solid #e5e5e5;
+    height: 56px;
     justify-content: space-between;
     flex-direction: row;
     box-sizing: border-box;
-    z-index: 998;
-
-    &.fixed {
-      position: fixed;
-    }
-  }
-
-  &-logo {
-    display: flex;
-    max-width: 200px;
-    padding-left: 20px;
-    @media (max-width: 1200px) {
-      padding-left: 0px;
-    }
-
-    &.standalone {
-      padding-left: 20px;
-    }
+    z-index: 997;
+    padding: 0.5rem;
   }
 
   &-row {
@@ -177,19 +160,10 @@ export default {
     align-items: center;
   }
 
-  &-row-reverse {
-    display: flex;
-    height: 100%;
-    flex-direction: row-reverse;
-    width: auto;
-    align-items: center;
-  }
-
   &-icon {
     @media (max-width: 1200px) {
       display: flex !important;
     }
-    margin-left: 4px;
     display: none !important;
     align-items: center;
     justify-content: center;
@@ -201,81 +175,18 @@ export default {
 
     &:hover {
       background: rgba(0, 0, 0, 0.04);
-      color: #cc338b;
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-      pointer-events: none;
+      color: #10c4cc;
     }
   }
 
-  &-icon-menu {
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    margin-right: 5px;
-    margin-left: 5px;
-    color: #888888;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.04);
-      color: #cc338b;
+  &-logo {
+    @media (max-width: 1200px) {
+      display: flex !important;
+    }
+    display: none !important;
+    &.standalone {
+      padding-left: 1rem;
     }
   }
-
-  &-profile {
-    display: flex;
-    height: 42px;
-    width: 42px;
-    padding: 5px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 1rem;
-
-    & > img {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 1px solid #f2f2f2;
-      object-fit: cover;
-    }
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.04);
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-  }
-}
-
-.vlearn-menu {
-  &-open {
-    display: flex;
-  }
-  &-close {
-    display: none;
-  }
-}
-
-.navbar-light {
-  color: #444444;
-  background-color: #fff;
-  border-bottom-color: rgba(0, 0, 0, 0.125);
-  border-bottom: 1px solid #dddddd;
-}
-
-.navbar {
-  padding: 0;
 }
 </style>

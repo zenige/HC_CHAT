@@ -1,3 +1,4 @@
+import routesConfig from './routes.config'
 import translation from './static/translation'
 
 export default {
@@ -46,15 +47,17 @@ export default {
     'assets/hc-libs/css/components.min.css',
     'assets/hc-libs/css/colors.min.css',
     'assets/hc-libs/css/font.css',
+    'assets/hc-libs/css/icons/material/icons.css',
     'assets/hc-libs/css/cd-tabs_vla.css',
     'assets/hc-libs/css/vlearn.css',
     'assets/hc-libs/css/main_class.css',
     'assets/hc-libs/css/main_vl.css',
+    'assets/hc-libs/css/swiper-bundle.css',
+    // 'assets/hc-libs/css/main_vcourse.css',
     'assets/scss/_global.scss',
     'assets/scss/_override.scss',
     'assets/scss/_variables.scss',
     'assets/scss/_baseline.scss',
-    'assets/hc-libs/css/icons/material/icons.css',
   ],
 
   styleResources: {
@@ -103,6 +106,20 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       alwaysRedirect: false,
+    },
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.splice(
+        0,
+        routes.length,
+        ...routesConfig.map((route) => ({
+          ...route,
+          name: route.name,
+          component: resolve(__dirname, route.component),
+        }))
+      )
     },
   },
 

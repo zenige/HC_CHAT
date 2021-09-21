@@ -93,10 +93,7 @@
                 autofocus
                 v-if="data.item.editable === true"
                 v-model="changedQuestionData"
-                @keyup.enter="
-                  data.item.editable = false
-                  $emit('update')
-                "
+                @keyup.enter="saveWord(data)"
               />
             </template>
             <template #cell(answer)="data">
@@ -109,10 +106,7 @@
                 autofocus
                 v-if="data.item.editable === true"
                 v-model="changedAnswerData"
-                @keyup.enter="
-                  data.item.editable = false
-                  $emit('update')
-                "
+                @keyup.enter="saveWord(data)"
               />
             </template>
             <template #cell(selected)="data">
@@ -302,6 +296,7 @@ export default {
         data: this.deleteSelected,
       })
       await this.getNewWordData(this.currentPage, 10, 'question')
+      this.selectAll = false
     },
     editWord(data) {
       this.changedQuestionData = data.item.question
@@ -327,7 +322,12 @@ export default {
       this.newWordData = data.map((item) => {
         // collect total new word data
         if (item.total) {
-          this.totalNewWord = item.total
+          return (
+            {
+              id: undefined,
+            },
+            (this.totalNewWord = item.total)
+          )
           // it will return undefined item
         } else {
           return {
@@ -361,7 +361,7 @@ export default {
 }
 
 .txt_hc_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 36px;
   font-style: normal;
   line-height: 1rem;
@@ -369,7 +369,7 @@ export default {
 }
 
 .txt_hc_content {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   font-weight: 600;
   font-style: normal;

@@ -14,16 +14,16 @@
               >
                 <div class="separator"></div>
                 <div class="accessory">
-                  <nuxt-link
+                  <NuxtLink
                     :to="localePath('/forgot-password')"
                     class="accessory__cta"
-                    >{{ $t('login.forgotPassword') }}</nuxt-link
+                    >{{ $t('login.forgotPassword') }}</NuxtLink
                   >
                   <div class="accessory-separator">|</div>
-                  <nuxt-link
+                  <NuxtLink
                     :to="localePath('/authentication/Register')"
                     class="accessory__cta"
-                    >{{ $t('login.register') }}</nuxt-link
+                    >{{ $t('login.register') }}</NuxtLink
                   >
                 </div>
               </LoginForm>

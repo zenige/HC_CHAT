@@ -36,7 +36,7 @@
                 <span>{{ tab.name }}</span>
               </div>
             </a>
-            <nuxt-link
+            <NuxtLink
               v-else-if="!tab.isNotShow"
               class="link-2 link-item p-0"
               :to="
@@ -58,7 +58,7 @@
               >
                 <span>{{ tab.name }}</span>
               </div>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </nav>

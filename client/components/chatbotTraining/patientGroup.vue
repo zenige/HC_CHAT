@@ -210,7 +210,7 @@ export default {
 }
 
 .txt_hc_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 36px;
   font-style: normal;
   line-height: 1rem;
@@ -218,7 +218,7 @@ export default {
 }
 
 .txt_hc_content {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   font-weight: 600;
   font-style: normal;
