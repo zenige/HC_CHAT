@@ -17,7 +17,7 @@
           <img
             class="nav-logo d-block"
             src="~/assets/hc-libs/images/main/logo_healthcare2.png"
-            alt="vlearn-logo"
+            alt="healthcare-logo"
           />
         </NuxtLink>
       </div>
@@ -26,13 +26,13 @@
           <div
             class="nav-profile"
             :class="{ disabled: isDisabledProfileMenu }"
-            @click.stop="onToggleVlearnProfile()"
+            @click.stop="onToggleHealthcareProfile()"
           >
             <img :src="defaultProfileUrl" alt />
-            <vlearn-profile-menu
-              v-on-click-out-side="onVlearnMenuClose"
-              :class="vlearnProfileCss()"
-            ></vlearn-profile-menu>
+            <healthcare-profile-menu
+              v-on-click-out-side="onHealthcareMenuClose"
+              :class="healthcareProfileCss()"
+            ></healthcare-profile-menu>
           </div>
         </template>
       </div> -->
@@ -44,7 +44,7 @@
 import { ClickOutSide } from '@/directives/ClickOutSide.js'
 // import { mapState } from 'vuex'
 // import defaultProfileUrl from '~/assets/hc-libs/images/main/face_default.png'
-// import VlearnProfileMenu from './ProfileMenu'
+// import HealthcareProfileMenu from './ProfileMenu'
 
 export default {
   name: 'HealthcareNavbar',
@@ -52,7 +52,7 @@ export default {
     onClickOutSide: ClickOutSide,
   },
   components: {
-    // VlearnProfileMenu,
+    // HealthcareProfileMenu,
   },
   props: {
     isDrawer: {
@@ -85,48 +85,48 @@ export default {
     // },
   },
   data: () => ({
-    isVlearnMenuOpen: false,
-    isVlearnProfileOpen: false,
+    isHealthcareMenuOpen: false,
+    isHealthcareProfileOpen: false,
     // defaultProfileUrl,
   }),
   computed: {},
   watch: {
     // isDrawer(newVal, oldVal) {
-    //   this.onVlearnMenuClose()
+    //   this.onHealthcareMenuClose()
     // },
   },
   beforeCreate: () => ({
-    // isVlearnMenuOpen: false,
-    // isVlearnProfileOpen: false,
+    // isHealthcareMenuOpen: false,
+    // isHealthcareProfileOpen: false,
   }),
   created: () => ({}),
   methods: {
     onToggleDrawer() {
       this.$emit('onToggleDrawer', '')
     },
-    // onToggleVlearnMenu() {
-    //   this.isVlearnMenuOpen = !this.isVlearnMenuOpen
-    //   this.isVlearnProfileOpen = false
+    // onToggleHealthcareMenu() {
+    //   this.isHealthcareMenuOpen = !this.isHealthcareMenuOpen
+    //   this.isHealthcareProfileOpen = false
     // },
-    // onToggleVlearnProfile() {
-    //   this.isVlearnProfileOpen = !this.isVlearnProfileOpen
-    //   this.isVlearnMenuOpen = false
+    // onToggleHealthcareProfile() {
+    //   this.isHealthcareProfileOpen = !this.isHealthcareProfileOpen
+    //   this.isHealthcareMenuOpen = false
     // },
-    // vlearnMenuCss() {
+    // healthcareMenuCss() {
     //   return {
-    //     'vlearn-menu-close': !this.isVlearnMenuOpen,
-    //     'vlearn-menu-open': this.isVlearnMenuOpen,
+    //     'healthcare-menu-close': !this.isHealthcareMenuOpen,
+    //     'healthcare-menu-open': this.isHealthcareMenuOpen,
     //   }
     // },
-    // vlearnProfileCss() {
+    // healthcareProfileCss() {
     //   return {
-    //     'vlearn-menu-close': !this.isVlearnProfileOpen,
-    //     'vlearn-menu-open': this.isVlearnProfileOpen,
+    //     'healthcare-menu-close': !this.isHealthcareProfileOpen,
+    //     'healthcare-menu-open': this.isHealthcareProfileOpen,
     //   }
     // },
-    // onVlearnMenuClose() {
-    //   this.isVlearnMenuOpen = false
-    //   this.isVlearnProfileOpen = false
+    // onHealthcareMenuClose() {
+    //   this.isHealthcareMenuOpen = false
+    //   this.isHealthcareProfileOpen = false
     // },
     // openToTrueVirtual(link) {
     //   window.open(link)

@@ -1,10 +1,10 @@
 :root {
-  --vlearn-primary: #10c4cc;
-  --vlearn-grey: #666666;
-  --vlearn-grey-dark: #888888;
-  --vlearn-grey-light: #f3f3f3;
-  --vlearn-black: #333333;
-  --vlearn-white: #ffffff;
+  --healthcare-primary: #10c4cc;
+  --healthcare-grey: #666666;
+  --healthcare-grey-dark: #888888;
+  --healthcare-grey-light: #f3f3f3;
+  --healthcare-black: #333333;
+  --healthcare-white: #ffffff;
 
   --swiper-navigation-size: 20px !important;
   --swiper-theme-color: #888888 !important;
@@ -30,17 +30,17 @@
 
 .b-toast-danger {
   .toast {
-    background-color: #f93e3e;
-    color: var(--vlearn-white);
-    font-size: 16px;
+    background-color: #de493c;
+    color: var(--healthcare-white);
+    font-size: 13px;
   }
 }
 
 .b-toast-success {
   .toast {
-    background-color: #28a745;
-    color: var(--vlearn-white);
-    font-size: 16px;
+    background-color: #2ed47a;
+    color: var(--healthcare-white);
+    font-size: 13px;
   }
 }
 
@@ -53,7 +53,7 @@
   width: 0%;
   opacity: 1;
   transition: width 0.1s, opacity 0.4s;
-  background-color: var(--vlearn-primary);
+  background-color: var(--healthcare-primary);
   z-index: 999999;
 }
 
@@ -96,7 +96,7 @@
   height: 120px;
 }
 
-.vl_navbar .card_list_item:focus .bg_playvdo2,
-.vl_navbar .card_list_item:hover .bg_playvdo2 {
+.hc_navbar .card_list_item:focus .bg_playvdo2,
+.hc_navbar .card_list_item:hover .bg_playvdo2 {
   filter: brightness(50%);
 }

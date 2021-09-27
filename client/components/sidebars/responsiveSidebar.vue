@@ -63,7 +63,7 @@
 
 <script>
 export default {
-  name: 'VlearnSideMenu',
+  name: 'HealthcareSideMenu',
   props: ['isDrawer'],
   data: () => ({
     isOpen: false,

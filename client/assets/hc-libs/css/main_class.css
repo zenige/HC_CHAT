@@ -3,15 +3,15 @@
   background-color: #f3f3f3;
 }
 
-.vl_navbar .txt_vl_head,
-.modal-dialog .txt_vl_head {
+.hc_navbar .txt_hc_head,
+.modal-dialog .txt_hc_head {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em !important;
   font-size: 20px;
 }
-.vl_navbar .card {
+.hc_navbar .card {
   margin-bottom: 1.25rem;
   border: 0px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0 1px 5px 0 rgba(14, 30, 62, 0.18);
@@ -33,11 +33,19 @@
 .txt_grey_close {
   color: #888;
 }
+.txt_grey_cancel {
+  color: #707683;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.txt_grey_cancel:hover {
+  color: #de493c;
+}
 .txt_true_bighead_sm {
   font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em;
   overflow: hidden;
 }
@@ -46,7 +54,7 @@
   /* font-family: 'SukhumvitSet-SemiBold'; */
   font-style: normal;
   font-size: 24px;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em;
   overflow: hidden;
 }
@@ -54,7 +62,7 @@
   font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em;
   overflow: hidden;
 }
@@ -74,7 +82,7 @@
 .txt_vla_black_24p {
   font-style: normal;
   font-size: 24px;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em;
 }
 .border_gray_ddd {
@@ -83,7 +91,7 @@
 .p_card {
   padding: 10px 20px !important;
 }
-.txt_vl_red {
+.txt_hc_red {
   color: #10c4cc;
 }
 .form_check_0 .switchery > small {
@@ -205,25 +213,25 @@
   height: 45px;
 }
 /* /.AnyTime Picker Date */
-.ic_vl_noti {
+.ic_hc_noti {
   right: -7px;
   top: -3px;
 }
-.ic_vl_noti_card {
+.ic_hc_noti_card {
   right: 5px;
   top: 3px;
 }
-.ic_vl_noti_menu {
+.ic_hc_noti_menu {
   right: 0px;
   top: -5px;
 }
 .minheight_70p {
   min-height: 70px;
 }
-.txt_vl_head_24p {
+.txt_hc_head_24p {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  color: #000000;
+  color: #333333;
   line-height: 1.35em !important;
   font-size: 24px;
 }
@@ -231,7 +239,7 @@
   font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 30px;
-  color: #000000;
+  color: #333333;
   line-height: 1em;
 }
 /* hide scrollbar */
@@ -266,7 +274,7 @@
     font-family: 'Prompt-Regular';
     font-style: normal;
     font-size: 28px;
-    color: #000000;
+    color: #333333;
     line-height: 1em;
   }
 }

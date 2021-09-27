@@ -3,15 +3,15 @@
     id="modal-scoped"
     v-model="isModalOpen"
     size="md"
-    modal-class="delete-word-modal"
+    modal-class="train-model-modal"
     hide-footer
     @close="onCancel"
     @hidden="onCancel"
-    @ok="onDelete"
+    @ok="onTrain"
   >
     <template v-slot:modal-header="{ close }">
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
-        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Train word</h4>
+        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Train</h4>
         <button
           type="button"
           class="close pr-1 pt_15p"
@@ -32,7 +32,7 @@
         <div class="text-center">
           <div style="font-size: 18px" class="mb-3">
             This action cannot undo later.<br />
-            Do you want to train this word?
+            Do you want to train model?
           </div>
         </div>
         <div class="row d-flex justify-content-center">
@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: 'DeleteWordModal',
+  name: 'DeleteFeatureModal',
   props: {
     isOpen: {
       type: Boolean,
@@ -78,7 +78,7 @@ export default {
       type: Function,
       default: () => {},
     },
-    onDelete: {
+    onTrain: {
       type: Function,
       default: () => {},
     },
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="scss">
-.delete-word-modal {
+.train-model-modal {
   .modal-header {
     width: 100%;
     margin: 0 !important;

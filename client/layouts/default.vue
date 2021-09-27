@@ -68,10 +68,10 @@ export default {
   min-height: 100vh;
 }
 .main-content {
+  margin-left: 256px;
+  margin-top: 56px;
   @media (max-width: 1200px) {
     margin-left: 0;
   }
-  margin-left: 256px;
-  margin-top: 56px;
 }
 </style>

@@ -11,7 +11,7 @@
   >
     <template v-slot:modal-header="{ close }">
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
-        <h4 class="modal-title txt_vl_modaltitle mr-4 pr-2">Delete word</h4>
+        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Delete word</h4>
         <button
           type="button"
           class="close pr-1 pt_15p"
@@ -30,10 +30,10 @@
     <template v-slot:default="{ close, ok }">
       <div class="modal-body px-3 px-md-3">
         <div class="text-center">
-          <h2>
+          <div style="font-size: 18px" class="mb-3">
             This action cannot undo later.<br />
             Do you want to delete this word?
-          </h2>
+          </div>
         </div>
         <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-4 col-lg-4">

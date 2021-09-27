@@ -43,6 +43,7 @@
         Group Management
       </div>
     </div>
+
     <NuxtLink
       :to="localePath('/dashboard/all-patient-group')"
       class="sidebar-menu-main"
@@ -50,6 +51,7 @@
       <i class="mi-dashboard sidebar-menu-main-icon"></i>
       <span>Dashboard</span>
     </NuxtLink>
+
     <div class="sidebar-menu-main-signout">
       <NuxtLink :to="localePath('/login')">
         <img
@@ -165,17 +167,13 @@ export default {
     padding: 1.5rem 1rem 0.5rem 2rem;
     cursor: pointer;
     max-width: 100%;
-    span {
-      font-family: 'Prompt-Medium';
-      font-size: 13px;
-      color: #334d6e;
-      text-align: left;
-    }
+    font-family: 'Prompt-Medium';
+    font-size: 13px;
+    color: #334d6e;
+    text-align: left;
     &:hover {
-      span {
-        color: #10c4cc;
-        transition: all 0.2s ease-in-out;
-      }
+      color: #10c4cc;
+      transition: all 0.2s ease-in-out;
     }
 
     &-disabled {

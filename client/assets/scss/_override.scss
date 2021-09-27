@@ -10,7 +10,7 @@
   color: #ce1f29 !important;
 }
 
-.vl_navbar {
+.hc_navbar {
   .form-control {
     &:disabled {
       background-color: #eee;
@@ -98,7 +98,7 @@
         &,
         &:hover {
           color: #fff;
-          background-color: var(--vlearn-primary);
+          background-color: var(--healthcare-primary);
         }
       }
 
@@ -165,7 +165,7 @@ header {
   font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
-  color: #000000 !important;
+  color: #333333 !important;
   line-height: 1.35em;
   overflow: hidden;
 }

@@ -1,9 +1,328 @@
 <template>
-  <div><h1>Group Management</h1></div>
+  <div class="container">
+    <Loader v-if="isLoading" />
+    <div v-else class="hc_navbar">
+      <div class="container fitscreen" style="padding: 2rem 0">
+        <div class="row d-flex align-items-center">
+          <div class="col-8 col-md-4">
+            <div class="border_search_gray form-group-feedback-right">
+              <div class="input-group">
+                <span class="input-group-append"
+                  ><span
+                    class="
+                      input-group-text input-group-text-search-border
+                      rounded-left
+                    "
+                    ><i class="icon-search4 txt_grey mr-2"></i></span
+                ></span>
+                <input
+                  v-model="filter"
+                  type="search"
+                  class="
+                    form-control
+                    rounded-right
+                    form-control-search-border
+                    h2dot5
+                  "
+                  style="margin-right: 1rem"
+                  placeholder="Search for a word...."
+                />
+                <div class="form-control-feedback" @click="filter = ''">
+                  <i class="icon-cross3 txt_grey" style="height: 22px"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-8 text-right">
+            <button
+              @click="openCreateGroupModal()"
+              class="hcb-btn btn btn_hcb_green btn-block"
+            >
+              Create group
+            </button>
+            <button
+              @click="openTrainModelModal()"
+              class="hcb-btn btn btn_hcb_red btn-block"
+            >
+              Train model
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12" style="padding-top: 2rem; padding-bottom: 1rem">
+          <div class="row d-flex align-items-center">
+            <div class="txt_hc_head_total">
+              Total group
+              <span class="txt_vla_grey">(0)</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row d-flex align-items-center justify-content-center">
+            <b-table
+              responsive
+              id="Group-table"
+              :items="groupData"
+              :per-page="0"
+              :current-page="currentPage"
+              :fields="fields"
+              :filter="filter"
+              :tbody-tr-class="selectedRowClass"
+            >
+              <template #cell(group)="data">
+                <div v-if="data.item.editable === false">
+                  <div>
+                    {{ data.item.group }}
+                  </div>
+                </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-input autofocus v-model="changedGroupData" />
+                </div>
+              </template>
+              <template #head(action)>
+                <div class="d-flex justify-content-center">Action</div>
+              </template>
+              <template #cell(action)="data">
+                <div
+                  v-if="data.item.editable === false"
+                  class="d-flex justify-content-center"
+                >
+                  <button
+                    @click="editGroup(data)"
+                    class="hcb-btn-light btn btn_hcb_blue_light btn-block"
+                  >
+                    Edit
+                  </button>
+                </div>
+                <div
+                  class="row d-flex justify-content-center align-items-center"
+                  v-if="data.item.editable === true"
+                >
+                  <button
+                    @click="saveGroup(data)"
+                    class="hcb-btn-light btn btn_hcb_green_light mr-2 btn-block"
+                  >
+                    Save
+                  </button>
+                  <div @click="cancleEditGroup(data)" class="txt_grey_cancel">
+                    Cancel
+                  </div>
+                </div>
+              </template>
+            </b-table>
+            <div style="margin-top: 0.5rem">
+              <b-pagination
+                v-model="currentPage"
+                :total-rows="totalGroup"
+                :per-page="perPage"
+                aria-controls="Group-table"
+                first-number
+                last-number
+                align="center"
+                class="myPaginattion"
+              ></b-pagination>
+            </div>
+          </div>
+        </div>
+
+        <CreateGroupModal
+          :isOpen="isShowCreateGroupModal"
+          :onCancel="closeCreateGroupModal"
+          @getGroupData="getGroupData"
+          :currentPage="currentPage"
+          :perPage="perPage"
+        ></CreateGroupModal>
+        <TrainModelModal
+          :isOpen="isShowTrainModelModal"
+          :onCancel="closeTrainModelModal"
+          :onTrain="TrainModel"
+          @getGroupData="getGroupData"
+          :currentPage="currentPage"
+          :perPage="perPage"
+        ></TrainModelModal>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  components: {
+    CreateGroupModal: () =>
+      import('~/components/chatbotTraining/CreateGroupModal.vue'),
+    TrainModelModal: () =>
+      import('~/components/chatbotTraining/TrainModelModal.vue'),
+    Loader: () => import('~/components/Loader.vue'),
+  },
+  props: {},
+  data() {
+    return {
+      isLoading: true,
+      isShowCreateGroupModal: false,
+      isShowTrainModelModal: false,
+      edit: false,
+      selectAll: false,
+      selectedRow: {},
+      filter: '',
+      perPage: 10,
+      currentPage: 1,
+      deleteSelected: [],
+      totalGroup: 0,
+      changedGroupData: '',
+      fields: [
+        {
+          key: 'group',
+          label: 'Group name',
+          sortable: true,
+          thClass: 'groupthGroup-Class',
+          tdClass: 'grouptdGroup-Class',
+        },
+        {
+          key: 'status',
+          label: 'Status',
+          sortable: true,
+          thClass: 'groupthStatus-Class',
+          tdClass: 'grouptdStatus-Class',
+        },
+        {
+          key: 'action',
+          label: 'Action',
+          sortable: false,
+          thClass: 'groupthAction-Class',
+          tdClass: 'grouptdAction-Class',
+        },
+      ],
+      groupData: [
+        {
+          group: 'Group 1',
+          status: 'Trained',
+          editable: false,
+        },
+        {
+          group: 'Group 2',
+          status: 'Not trained',
+          editable: false,
+        },
+      ],
+    }
+  },
+  watch: {
+    selectAll(value) {
+      this.groupData.map(function (item) {
+        item.selected = value
+        // return item
+      })
+    },
+    currentPage(value) {
+      this.getGroupData(value, this.perPage, 'question')
+    },
+  },
+  async mounted() {
+    // await this.getGroupData(1, 10, 'question')
+    this.isLoading = false
+  },
+  computed: {},
+  methods: {
+    trainModel() {
+      console.log('train model')
+    },
+    selectedRowClass(item) {
+      if (item.selected === true) return 'row-selected'
+    },
+    openTrainModelModal() {
+      this.isShowTrainModelModal = true
+    },
+    closeCreateGroupModal() {
+      this.selectAll = false
+      this.isShowCreateGroupModal = false
+    },
+    openCreateGroupModal() {
+      this.isShowCreateGroupModal = true
+    },
+    closeTrainModelModal() {
+      this.isShowTrainModelModal = false
+    },
+    async onCreateGroup() {
+      this.deleteSelected = this.groupData.filter(
+        (item) => item.selected === true
+      )
+      await this.$axios.delete('train/trained/delete/many', {
+        data: this.deleteSelected,
+      })
+      await this.getGroupData(this.currentPage, 10, 'question')
+      if (this.groupData.length === 0) {
+        this.totalGroup = 0
+      }
+    },
+    editGroup(data) {
+      this.changedGroupData = data.item.group
+      data.item.editable = true
+    },
+    cancleEditGroup(data) {
+      data.item.editable = false
+    },
+    async saveGroup(data) {
+      data.item.group = this.changedGroupData
+      data.item.editable = false
+      // await this.$axios.patch(`/train/trained/` + data.item.id, {
+      //   feature: data.item.group,
+      // })
+    },
+    async getGroupData(page, limit, orderBy) {
+      let { data } = await this.$axios.get(
+        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
+      )
+      this.groupData = data.map((item) => {
+        // collect total trained word data
+        if (item.total) {
+          return (
+            {
+              id: undefined,
+            },
+            (this.totalGroup = item.total)
+          )
+          // it will return undefined item
+        } else {
+          return {
+            answer: item.answer,
+            time: item.time,
+            question: item.question,
+            id: item.id,
+            selected: false,
+            editable: false,
+          }
+        }
+      })
+      // remove undefined item
+      this.groupData = this.groupData.filter(function (element) {
+        return element.id !== undefined
+      })
+      if (this.groupData.length === 0) {
+        this.totalGroup = 0
+      }
+      // console.log(
+      //   'page: ',
+      //   page,
+      //   'data: ',
+      //   this.groupData.length,
+      //   'total: ',
+      //   this.totalGroup
+      // )
+    },
+  },
+}
 </script>
 
-<style></style>
+<style lang="scss">
+.groupthGroup-Class,
+.grouptdGroup-Class {
+  width: 32.5%;
+}
+.groupthStatus-Class,
+.grouptdStatus-Class {
+  width: 47.5%;
+}
+.groupthAction-Class,
+.grouptdAction-Class {
+  width: 20%;
+}
+</style>

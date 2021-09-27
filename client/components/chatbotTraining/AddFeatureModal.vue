@@ -4,15 +4,17 @@
     v-model="isModalOpen"
     size="md"
     hide-footer
-    modal-class="add-new-word-modal"
+    modal-class="add-new-feature-modal"
     @close="onCancel"
     @hidden="onCancel"
-    @ok="onAddNewWord"
+    @ok="onAddNewFeature"
   >
     <template v-slot:modal-header="{ close }">
       <!-- Emulate built in modal header close button action -->
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
-        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Add a new word</h4>
+        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">
+          Add a new feature
+        </h4>
         <button
           type="button"
           class="close pr-1 pt_15p"
@@ -30,19 +32,11 @@
 
     <template v-slot:default>
       <div class="modal-body px-3 px-md-3">
-        <form method="post" @submit.prevent="onAddNewWord">
+        <form method="post" @submit.prevent="onAddNewFeature">
           <div class="d-flex flex-column text-left mb-3">
-            <div class="learning-area-title">Question</div>
+            <div class="learning-area-title">Feature name</div>
             <input
-              v-model="question"
-              type="text"
-              class="form-control border-gray border"
-            />
-          </div>
-          <div class="d-flex flex-column text-left">
-            <div class="learning-area-title">Answer</div>
-            <input
-              v-model="answer"
+              v-model="feature"
               type="text"
               class="form-control border-gray border"
             />
@@ -79,7 +73,7 @@ export default {
       type: Function,
       default: () => {},
     },
-    getTrainedWordData: {
+    getFeatureData: {
       type: Function,
       default: () => {},
     },
@@ -94,8 +88,7 @@ export default {
   },
   data: () => ({
     isModalOpen: false,
-    question: '',
-    answer: '',
+    feature: '',
   }),
   watch: {
     isOpen(newVal) {
@@ -111,24 +104,17 @@ export default {
     onModalHide() {
       this.$emit('onModalHide', false)
     },
-    async onAddNewWord() {
+    async onAddNewFeature() {
       const body = {
-        question: this.question,
-        answer: this.answer,
+        feature: this.question,
       }
-      if (this.question !== '' && this.answer !== '') {
+      if (this.feature !== '') {
         await this.$axios.post('train/trained', body)
-        this.$emit(
-          'getTrainedWordData',
-          this.currentPage,
-          this.perPage,
-          'question'
-        )
-        this.question = ''
-        this.answer = ''
+        this.$emit('getFeatureData', this.currentPage, this.perPage, 'question')
+        this.feature = ''
         this.onCancel()
       } else {
-        this.$bvToast.toast('Please fill question and answer', {
+        this.$bvToast.toast('Please fill feature name', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,
@@ -140,7 +126,7 @@ export default {
 </script>
 
 <style lang="scss">
-.add-new-word-modal {
+.add-new-feature-modal {
   .modal-header {
     width: 100%;
     margin: 0 !important;
