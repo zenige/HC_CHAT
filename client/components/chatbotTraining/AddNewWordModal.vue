@@ -12,7 +12,7 @@
     <template v-slot:modal-header="{ close }">
       <!-- Emulate built in modal header close button action -->
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
-        <h4 class="modal-title txt_vl_modaltitle mr-4 pr-2">Add a new word</h4>
+        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Add a new word</h4>
         <button
           type="button"
           class="close pr-1 pt_15p"
@@ -31,7 +31,7 @@
     <template v-slot:default>
       <div class="modal-body px-3 px-md-3">
         <form method="post" @submit.prevent="onAddNewWord">
-          <div class="d-flex flex-column text-left">
+          <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Question</div>
             <input
               v-model="question"
@@ -116,14 +116,24 @@ export default {
         question: this.question,
         answer: this.answer,
       }
-      await this.$axios.post('train/trained', body)
-      this.$emit(
-        'getTrainedWordData',
-        this.currentPage,
-        this.perPage,
-        'question'
-      )
-      this.onCancel()
+      if (this.question !== '' && this.answer !== '') {
+        await this.$axios.post('train/trained', body)
+        this.$emit(
+          'getTrainedWordData',
+          this.currentPage,
+          this.perPage,
+          'question'
+        )
+        this.question = ''
+        this.answer = ''
+        this.onCancel()
+      } else {
+        this.$bvToast.toast('Please fill question and answer', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
     },
   },
 }

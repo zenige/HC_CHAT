@@ -14,16 +14,16 @@
               >
                 <div class="separator"></div>
                 <div class="accessory">
-                  <nuxt-link
+                  <NuxtLink
                     :to="localePath('/forgot-password')"
                     class="accessory__cta"
-                    >{{ $t('login.forgotPassword') }}</nuxt-link
+                    >{{ $t('login.forgotPassword') }}</NuxtLink
                   >
                   <div class="accessory-separator">|</div>
-                  <nuxt-link
+                  <NuxtLink
                     :to="localePath('/authentication/Register')"
                     class="accessory__cta"
-                    >{{ $t('login.register') }}</nuxt-link
+                    >{{ $t('login.register') }}</NuxtLink
                   >
                 </div>
               </LoginForm>
@@ -120,7 +120,7 @@ export default {
   .container,
   .container-sm,
   .container-md {
-    max-width: 740px; /*720*/
+    max-width: 720px; /*720*/
   }
   /* .fitscreen .col, .fitscreen .col-1, .fitscreen .col-10, .fitscreen .col-11, .fitscreen .col-12, .fitscreen .col-2, .fitscreen .col-3, .fitscreen .col-4, .fitscreen .col-5, .fitscreen .col-6, .fitscreen .col-7, .fitscreen .col-8, .fitscreen .col-9, .fitscreen .col-auto, .fitscreen .col-lg, .fitscreen .col-lg-1, .fitscreen .col-lg-10, .fitscreen .col-lg-11, .fitscreen .col-lg-12, .fitscreen .col-lg-2, .fitscreen .col-lg-3, .fitscreen .col-lg-4, .fitscreen .col-lg-5, .fitscreen .col-lg-6, .fitscreen .col-lg-7, .fitscreen .col-lg-8, .fitscreen .col-lg-9, .fitscreen .col-lg-auto, .fitscreen .col-md, .fitscreen .col-md-1, .fitscreen .col-md-10, .fitscreen .col-md-11, .fitscreen .col-md-12, .fitscreen .col-md-2, .fitscreen .col-md-3, .fitscreen .col-md-4, .fitscreen .col-md-5, .fitscreen .col-md-6, .fitscreen .col-md-7, .fitscreen .col-md-8, .fitscreen .col-md-9, .fitscreen .col-md-auto, .fitscreen .col-sm, .fitscreen .col-sm-1, .fitscreen .col-sm-10, .fitscreen .col-sm-11, .fitscreen .col-sm-12, .fitscreen .col-sm-2, .fitscreen .col-sm-3, .fitscreen .col-sm-4, .fitscreen .col-sm-5, .fitscreen .col-sm-6, .fitscreen .col-sm-7, .fitscreen .col-sm-8, .fitscreen .col-sm-9, .fitscreen .col-sm-auto, .fitscreen .col-xl, .fitscreen .col-xl-1, .fitscreen .col-xl-10, .fitscreen .col-xl-11, .fitscreen .col-xl-12, .fitscreen .col-xl-2, .fitscreen .col-xl-3, .fitscreen .col-xl-4, .fitscreen .col-xl-5, .fitscreen .col-xl-6, .fitscreen .col-xl-7, .fitscreen .col-xl-8, .fitscreen .col-xl-9, .fitscreen .col-xl-auto {
     position: relative;
@@ -183,14 +183,14 @@ export default {
     margin: 0 auto;
     column-gap: 4px;
     font-size: 18px;
-    color: var(--vlearn-grey-dark);
+    color: var(--healthcare-grey-dark);
 
     &-separator {
-      color: var(--vlearn-grey-dark);
+      color: var(--healthcare-grey-dark);
     }
 
     &__cta:hover {
-      color: var(--vlearn-primary);
+      color: var(--healthcare-primary);
     }
   }
 }

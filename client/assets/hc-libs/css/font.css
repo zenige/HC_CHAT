@@ -172,7 +172,7 @@
       format('svg'); /* Legacy iOS */
 }
 @font-face {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   src: url('../fonts/TrueTextBOnline-Regular.eot'); /* IE9 Compat Modes */
   src: url('../fonts/TrueTextBOnline-Regular.eot?#iefix')
       format('embedded-opentype'),
@@ -185,7 +185,7 @@
       url('../fonts/TrueTextBOnline-Regular.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 @font-face {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   src: url('../fonts/TrueTextBOnline-Bold.eot'); /* IE9 Compat Modes */
   src: url('../fonts/TrueTextBOnline-Bold.eot?#iefix')
       format('embedded-opentype'),
@@ -208,6 +208,14 @@
 @font-face {
   font-family: 'Kanit-Light';
   src: url('../fonts/kanit-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Prompt-Regular';
+  src: url('../fonts/Prompt-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Prompt-Medium';
+  src: url('../fonts/Prompt-Medium.ttf') format('truetype');
 }
 
 /* CSS Document */
@@ -299,7 +307,7 @@ a {
 	padding-left: 10px;
 }
 .txt_black{
-	color: #000000;
+	color: #333333;
 }
 .txt_w{
 	color: #FFF;

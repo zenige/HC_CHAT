@@ -48,15 +48,15 @@ export default {
 <style lang="scss">
 @import '~assets/scss/layouts.scss';
 
-.container {
-  padding-left: 0.9375rem; /*15px = 0.9375rem*/
-  padding-right: 0.9375rem; /*15px = 0.9375rem*/
-}
+// .container {
+//   padding-left: 0.9375rem; /*15px = 0.9375rem*/
+//   padding-right: 0.9375rem; /*15px = 0.9375rem*/
+// }
 
 // .register-page {
 //   // .change-language-btn {
 //   //   &:hover {
-//   //     color: var(--vlearn-primary);
+//   //     color: var(--healthcare-primary);
 //   //   }
 //   // }
 
@@ -88,14 +88,14 @@ export default {
 //     margin: 0 auto;
 //     column-gap: 4px;
 //     font-size: 18px;
-//     color: var(--vlearn-grey-dark);
+//     color: var(--healthcare-grey-dark);
 
 //     &-separator {
-//       color: var(--vlearn-grey-dark);
+//       color: var(--healthcare-grey-dark);
 //     }
 
 //     &__cta:hover {
-//       color: var(--vlearn-primary);
+//       color: var(--healthcare-primary);
 //     }
 //   }
 // }

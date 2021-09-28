@@ -206,7 +206,7 @@ export default {
 }
 
 .txt_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 26px;
   line-height: 33px;
   color: #333333;
@@ -234,7 +234,7 @@ export default {
 }
 
 .login__btn-submit {
-  font-family: 'TrueTextBOnline-Regular';
+  font-family: 'Prompt-Regular';
   font-size: 20px;
   line-height: 27.5px;
   color: #fff;
@@ -242,6 +242,6 @@ export default {
 
 .login__btn-submit:hover {
   background-color: #ffffff;
-  color: #cc338b;
+  color: #10c4cc;
 }
 </style>

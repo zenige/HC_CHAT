@@ -202,27 +202,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.hcb-btn {
-  height: 40px;
-  margin-top: 0 !important;
-  max-width: 120px;
-}
-
-.txt_hc_title {
-  font-family: 'TrueTextBOnline-Bold';
-  font-size: 36px;
-  font-style: normal;
-  line-height: 1rem;
-  color: #333333;
-}
-
-.txt_hc_content {
-  font-family: 'TrueTextBOnline-Bold';
-  font-size: 24px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 1rem;
-  color: #333333;
-}
-</style>
+<style lang="scss"></style>

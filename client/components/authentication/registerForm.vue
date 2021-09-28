@@ -312,7 +312,7 @@ export default {
 }
 
 .txt_title {
-  font-family: 'TrueTextBOnline-Bold';
+  font-family: 'Prompt-Medium';
   font-size: 24px;
   line-height: 33px;
   color: #333333;
@@ -362,7 +362,7 @@ export default {
     font-size: 16px;
     text-align: left;
     margin-top: 16px;
-    color: var(--vlearn-grey-dark);
+    color: var(--healthcare-grey-dark);
   }
 
   .separator {

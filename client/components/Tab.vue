@@ -36,7 +36,7 @@
                 <span>{{ tab.name }}</span>
               </div>
             </a>
-            <nuxt-link
+            <NuxtLink
               v-else-if="!tab.isNotShow"
               class="link-2 link-item p-0"
               :to="
@@ -58,7 +58,7 @@
               >
                 <span>{{ tab.name }}</span>
               </div>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -97,13 +97,13 @@ export default {
 .cd-tabs {
   display: flex;
   justify-content: center;
-  color: var(--vlearn-grey-dark);
+  color: var(--healthcare-grey-dark);
 
   .no-active {
     .active-link {
       &:not(:hover) {
         color: inherit;
-        border-color: var(--vlearn-white);
+        border-color: var(--healthcare-white);
       }
     }
   }
@@ -113,7 +113,7 @@ export default {
       white-space: nowrap;
 
       &:hover {
-        color: var(--vlearn-primary);
+        color: var(--healthcare-primary);
         cursor: pointer;
       }
     }
@@ -121,13 +121,13 @@ export default {
 
   .link-item {
     &.sub-tab {
-      color: var(--vlearn-grey-dark);
+      color: var(--healthcare-grey-dark);
       border-bottom: 3px solid transparent;
 
       &-active,
       &:hover {
-        color: var(--vlearn-primary);
-        border-bottom: 3px solid var(--vlearn-primary);
+        color: var(--healthcare-primary);
+        border-bottom: 3px solid var(--healthcare-primary);
       }
     }
 

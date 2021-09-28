@@ -1,5 +1,5 @@
 <template>
-  <div class="date-picker input-group border-gray border rounded vl_navbar">
+  <div class="date-picker input-group border-gray border rounded hc_navbar">
     <input
       v-if="value == 'Invalid Date'"
       required

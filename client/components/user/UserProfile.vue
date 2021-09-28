@@ -1,7 +1,7 @@
 <template>
   <form
     method="post"
-    class="user-profile vl_navbar"
+    class="user-profile hc_navbar"
     @submit.prevent="handleSubmit"
   >
     <div class="">
@@ -73,7 +73,7 @@
         <div class="row pt-5 pt-md-5">
           <div class="col-12 col-md-6 offset-md-3">
             <div class="d-flex justify-content-between">
-              <div class="txt_vl_head txt_profile_head">User Profile</div>
+              <div class="txt_hc_head txt_profile_head">User Profile</div>
               <!-- <div v-if="statusEditable">
                 <div
                   class="
@@ -229,7 +229,7 @@
           <div class="row">
             <div class="col-12 col-md-6 offset-md-3">
               <div class="d-flex justify-content-between">
-                <div class="txt_vl_head">Workspace</div>
+                <div class="txt_hc_head">Workspace</div>
               </div>
               <div>
                 <hr class="mt-1 mb-3" />
@@ -404,7 +404,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      color: var(--vlearn-primary);
+      color: var(--healthcare-primary);
     }
   }
 }
