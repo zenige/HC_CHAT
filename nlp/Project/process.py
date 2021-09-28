@@ -38,12 +38,12 @@ def process_message(message,min_conf,sender_id,platform="line"):
             ans = {"message":"ขอโทษครับ ผมยังไม่เข้าใจคำนี้ครับกำลังศึกษาอยู่"}
         similar_training_word = getTrainingInfo(message['message'])
         print(similar_training_word)
-        print("_____)O_)______")
+ 
         #similar_training_word = training_collection.find_one({'question':message['message'],'botID': ObjectId(botID)})
-        if similar_training_word == None and max != 1 :
+        if similar_training_word == None  :
             obj = {"question":message['message'],"answer":ans["message"], 'confident': max,"time": datetime.datetime.timestamp(datetime.datetime.now()),"count":1}
             db.collection(u'training').document().set(obj)
-        else :
+        elif  max != 1 :
             doc_ref = db.collection(u'training').document(similar_training_word[0]['id'])
             doc_ref.update({'count': similar_training_word[0]['count']+1})
         #ans = objectReader(ans["message"],botID)
