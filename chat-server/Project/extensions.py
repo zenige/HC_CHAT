@@ -16,10 +16,10 @@ def getAnswer(message, confident, sender_id):
     return x
 
 
-def predict():
+def predict(userId):
 
     url = 'http://127.0.0.1:500/trainModel/predictRF'
-    myobj = {}
+    myobj = userId
     json_object = json.dumps(myobj)
 
     x = requests.post(url, json_object, headers={

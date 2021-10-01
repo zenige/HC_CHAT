@@ -7,7 +7,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 from fastapi import FastAPI
-from router import train,logic,dashboard
+from router import train,logic,dashboard,group
 
 app = FastAPI()
 app.include_router(
@@ -22,4 +22,9 @@ app.include_router(
 app.include_router(
     dashboard.router,
     prefix="/dashboard"
+)
+
+app.include_router(
+    group.router,
+    prefix="/group"
 )

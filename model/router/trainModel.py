@@ -14,6 +14,14 @@ import ast
 from sklearn.ensemble import RandomForestClassifier
 warnings.filterwarnings("ignore")
 router = APIRouter()
+from pydantic import BaseModel,HttpUrl
+
+class user(BaseModel):
+
+    userId: str
+
+
+
 
 import json
 @router.get("/")
@@ -162,10 +170,11 @@ async def predict():
         return "something went wrong"
 
 @router.post("/predictRF")
-async def predict():
-    userId = "Ueb59687406ee1813431033235e2b83ec"
+async def predict(user:user):
+    print(user)
+    # userId = "Ueb59687406ee1813431033235e2b83ec"
     loaded_model = pickle.load(open("RF_model.sav", 'rb'))
-    doc_ref = db.collection(u'users').document(userId)
+    doc_ref = db.collection(u'users').document(user.userId)
     doc = doc_ref.get()
     result = ''
     if doc.exists:
@@ -185,12 +194,14 @@ async def predict():
             agegroup = 7
         userInfo['symptom']['AGE'] = agegroup
         df = pd.DataFrame([userInfo['symptom']], columns=userInfo['symptom'].keys())
-
+        print(df)
         df = await checkOrPredict(df)
+        print(df)
         df = df.reindex(sorted(df.columns), axis=1)
         groupName = None
+        print(df)
         df = cleanData(df,groupName)
-        # print(df)
+        print(df)
         result = loaded_model.predict(df)
         docs = db.collection("logics").stream()
         datas = []
@@ -228,6 +239,9 @@ async def predict():
     else:
 
         return "something went wrong"
+
+
+
 
 @router.get("/testmodelSVM")
 async def testModelRoute():

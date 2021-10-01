@@ -123,7 +123,8 @@ def commandsHandler(**kwargs):
             return {'flex': event,'alt':seq['Question']}
         else:
             doc_ref.update({'subState': 'none','mainState':'none'})
-            pred = predict()
+            obj = {"userId":kwargs['sender_id']}
+            pred = predict(obj)
             res = json.loads(pred.text)
             doc_ref.update({'subState': "Done",'group': res})
             return {'message': "คุณอยู่ Group ความเสี่ยงที่ : "+res}

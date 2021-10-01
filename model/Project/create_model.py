@@ -231,7 +231,7 @@ def cleanData(newDF,groupName):
         for idx, val in enumerate(groupName):
             newDF = newDF.replace(val, idx)
 
-    print(newDF)
+
     return newDF
 
 def TrainModelSVM(newDF):
