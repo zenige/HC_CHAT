@@ -9,11 +9,6 @@ const HEALTHCARE_ROUTE = [
     path: '/login',
     component: 'pages/authentication/Login.vue',
   },
-  // {
-  //   name: 'Social login',
-  //   path: '/social-login',
-  //   component: 'pages/social-login/index.vue',
-  // },
   {
     name: 'Register',
     path: '/register',
@@ -56,6 +51,11 @@ const CHATBOT_TRAINING_ROUTE = [
     name: 'Group management',
     path: '/chatbot-training/group-management',
     component: 'pages/chatbotTraining/GroupManagement.vue',
+  },
+  {
+    name: 'Group management group',
+    path: '/chatbot-training/group-management/group/groupId',
+    component: 'pages/chatbotTraining/GroupManagementGroup.vue',
   },
 ]
 

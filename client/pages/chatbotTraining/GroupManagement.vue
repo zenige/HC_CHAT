@@ -36,13 +36,13 @@
           <div class="col-4 col-md-8 text-right">
             <button
               @click="openCreateGroupModal()"
-              class="hcb-btn btn btn_hcb_green btn-block"
+              class="hcb-btn btn btn_hcb_blue btn-block"
             >
               Create group
             </button>
             <button
               @click="openTrainModelModal()"
-              class="hcb-btn btn btn_hcb_red btn-block"
+              class="hcb-btn btn btn_hcb_green btn-block"
             >
               Train model
             </button>
@@ -86,12 +86,37 @@
                   v-if="data.item.editable === false"
                   class="d-flex justify-content-center"
                 >
-                  <button
-                    @click="editGroup(data)"
-                    class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                  >
-                    Edit
-                  </button>
+                  <div class="header-elements">
+                    <div class="list-icons">
+                      <div class="breadcrumb-elements-item dropdown p-0 mx-1">
+                        <b-dropdown right variant="link" no-caret>
+                          <template v-slot:button-content>
+                            <i class="icon-more2 txt_grey"></i>
+                          </template>
+                          <span @click="editGroup(data)" class="dropdown-item">
+                            Rename
+                          </span>
+                          <NuxtLink
+                            :to="
+                              localePath(
+                                '/chatbot-training/group-management/group/groupId'
+                              )
+                            "
+                            class="dropdown-item"
+                          >
+                            Edit group
+                          </NuxtLink>
+                          <div class="dropdown-divider"></div>
+                          <span
+                            class="dropdown-item txt_red"
+                            @click="openDeleteGroupModal(data)"
+                          >
+                            Delete
+                          </span>
+                        </b-dropdown>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="row d-flex justify-content-center align-items-center"
@@ -139,6 +164,11 @@
           :currentPage="currentPage"
           :perPage="perPage"
         ></TrainModelModal>
+        <DeleteGroupModal
+          :isOpen="isShowDeleteGroupModal"
+          :onCancel="closeDeleteGroupModal"
+          :onDelete="onDeleteGroup"
+        ></DeleteGroupModal>
       </div>
     </div>
   </div>
@@ -147,10 +177,9 @@
 <script>
 export default {
   components: {
-    CreateGroupModal: () =>
-      import('~/components/chatbotTraining/CreateGroupModal.vue'),
-    TrainModelModal: () =>
-      import('~/components/chatbotTraining/TrainModelModal.vue'),
+    CreateGroupModal: () => import('~/components/modals/CreateGroupModal.vue'),
+    TrainModelModal: () => import('~/components/modals/TrainModelModal.vue'),
+    DeleteGroupModal: () => import('~/components/modals/DeleteGroupModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},
@@ -159,6 +188,7 @@ export default {
       isLoading: true,
       isShowCreateGroupModal: false,
       isShowTrainModelModal: false,
+      isShowDeleteGroupModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
@@ -222,6 +252,22 @@ export default {
   },
   computed: {},
   methods: {
+    openDeleteGroupModal(data) {
+      this.isShowDeleteWordModal = true
+    },
+    async onDeleteGroup() {
+      this.deleteSelected = this.newWordData.filter(
+        (item) => item.selected === true
+      )
+      await this.$axios.delete('train/training/delete/many', {
+        data: this.deleteSelected,
+      })
+      await this.getNewWordData(this.currentPage, 10, 'question')
+      this.selectAll = false
+    },
+    closeDeleteWordModal() {
+      this.isShowDeleteWordModal = false
+    },
     trainModel() {
       console.log('train model')
     },

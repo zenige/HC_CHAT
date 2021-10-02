@@ -161,9 +161,8 @@
 export default {
   components: {
     DeleteFeatureModal: () =>
-      import('~/components/chatbotTraining/DeleteFeatureModal.vue'),
-    AddNewFeatureModal: () =>
-      import('~/components/chatbotTraining/AddFeatureModal.vue'),
+      import('~/components/modals/DeleteFeatureModal.vue'),
+    AddNewFeatureModal: () => import('~/components/modals/AddFeatureModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},

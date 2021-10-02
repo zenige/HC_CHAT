@@ -178,10 +178,8 @@
 <script>
 export default {
   components: {
-    DeleteWordModal: () =>
-      import('~/components/chatbotTraining/DeleteWordModal.vue'),
-    AddNewWordModal: () =>
-      import('~/components/chatbotTraining/AddNewWordModal.vue'),
+    DeleteWordModal: () => import('~/components/modals/DeleteWordModal.vue'),
+    AddNewWordModal: () => import('~/components/modals/AddNewWordModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},
