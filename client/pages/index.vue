@@ -15,7 +15,7 @@
                     "
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
-                <input
+                <b-form-input
                   v-model="filter"
                   type="search"
                   class="
@@ -26,13 +26,21 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word..."
-                />
-                <div class="form-control-feedback" @click="filter = ''">
+                  @input="setDebouncedQuery"
+                >
+                </b-form-input>
+                <div
+                  class="form-control-feedback"
+                  :disabled="!filter"
+                  @click="filter = ''"
+                >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
               </div>
             </div>
           </div>
+          <span v-if="typing">You are typing</span>
+          <span v-if="message">You typed: {{ message }}</span>
           <div class="col-4 col-md-8 text-right">
             <button
               @click="openTrainWordModal()"
@@ -55,6 +63,11 @@
               <span class="txt_vla_grey">({{ rows }})</span>
             </div>
           </div>
+          <div>
+            Sorting By: <b>{{ sortBy }}</b
+            >, Sort Direction:
+            <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
+          </div>
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
@@ -62,11 +75,13 @@
               responsive
               id="newWord-table"
               :items="newWordData"
+              :fields="fields"
               :per-page="0"
               :current-page="currentPage"
-              :fields="fields"
               :filter="filter"
               :tbody-tr-class="selectedRowClass"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -187,6 +202,8 @@
 </template>
 
 <script>
+const DEBOUNCE_TIME = 2000
+
 export default {
   components: {
     DeleteWordModal: () => import('~/components/modals/DeleteWordModal.vue'),
@@ -196,6 +213,8 @@ export default {
   props: {},
   data() {
     return {
+      sortBy: 'question',
+      sortDesc: false,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowTrainWordModal: false,
@@ -254,6 +273,9 @@ export default {
         },
       ],
       newWordData: [],
+      message: null,
+      typing: null,
+      debounce: null,
     }
   },
   watch: {
@@ -277,6 +299,11 @@ export default {
     },
   },
   methods: {
+    setDebouncedQuery() {
+      setTimeout(() => {
+        console.log(this.filter)
+      }, DEBOUNCE_TIME)
+    },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },
@@ -381,8 +408,6 @@ export default {
       this.newWordData = this.newWordData.filter(function (element) {
         return element.id !== undefined
       })
-      console.log(this.totalNewWord)
-      console.log(this.newWordData)
     },
   },
 }
