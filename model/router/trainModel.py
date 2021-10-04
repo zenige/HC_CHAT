@@ -1,6 +1,6 @@
 from firebase_admin import firestore
 import pickle
-from fastapi import APIRouter
+from fastapi import APIRouter,Request
 from Project import db
 from Project.create_model import cleanData, create_model,TrainModelSVM,checkOr,checkOrPredict
 from Project.test_mode import testModelRF,readCSV,cleanTestData, testModelRF, testModelSVM
@@ -15,12 +15,20 @@ from sklearn.ensemble import RandomForestClassifier
 warnings.filterwarnings("ignore")
 router = APIRouter()
 from pydantic import BaseModel,HttpUrl
-
+from typing import Any, Dict, AnyStr, List, Union ,Set 
 class user(BaseModel):
 
     userId: str
 
+class group(BaseModel):
+    group: str
 
+
+JSONObject = Dict[AnyStr, Any]
+JSONArrayCREATE = List
+
+
+JSONStructureDELETE = Union[List, JSONObject]
 
 
 import json
@@ -262,22 +270,35 @@ async def testModelRoute():
 
 
 
-@router.get('/testt')
-async def testna():
-    data = [{"group": "group0", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "ANY", "tired": "ANY", "close": "false", "Travel": "false"}, 
-            {"group": "group1", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "false", "tired": "ANY", "close": "true", "Travel": "true"}, {
-            "group": "group1p2", "AGE": "ANY", 'disease': "ANY", "cough": "false", "Fever": "true", "tired": "false", "close": "true", "Travel": "true"}, {
-            "group": "group2", "AGE": 4, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]}, {
-            "group": "group3", "AGE": 5, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
-    },{
-            "group": "group3", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
-    },
-    {
-             "group": "group4", "AGE": "ANY", 'disease': "ANY", "Fever": "true", "close": "ANY", "Travel": "true","cough":"true","tired":"true"
-    }
-    ]
+@router.post('/addlogic')
+async def testna( request: Request):
+    data = await request.json()
+    print(data)
+    # data = [{"group": "group0", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "ANY", "tired": "ANY", "close": "false", "Travel": "false"}, 
+    #         {"group": "group1", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "false", "tired": "ANY", "close": "true", "Travel": "true"}, {
+    #         "group": "group1p2", "AGE": "ANY", 'disease': "ANY", "cough": "false", "Fever": "true", "tired": "false", "close": "true", "Travel": "true"}, {
+    #         "group": "group2", "AGE": 4, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]}, {
+    #         "group": "group3", "AGE": 5, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
+    # },{
+    #         "group": "group3", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
+    # },
+    # {
+    #          "group": "group4", "AGE": "ANY", 'disease': "ANY", "Fever": "true", "close": "ANY", "Travel": "true","cough":"true","tired":"true"
+    # }
+    # ]
     for i in data :
         print(i)
         group = str(i)
         db.collection("logics").document(i['group']).set({"data":group})
-    return 0
+    return "done"
+
+@router.post('/addlineLogic')
+async def testna( request: Request):
+    data = await request.json()
+    print(data)
+
+    for i in data :
+        print(i)
+        group = str(i)
+        db.collection("logics").document(i['group']).set({"data":group})
+    return "done"

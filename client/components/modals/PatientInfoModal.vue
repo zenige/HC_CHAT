@@ -3,15 +3,17 @@
     id="modal-scoped"
     v-model="isModalOpen"
     size="md"
-    modal-class="train-model-modal"
+    modal-class="patient-info-modal"
     hide-footer
     @close="onCancel"
     @hidden="onCancel"
-    @ok="onTrain"
+    @ok="onShowInfo"
   >
     <template v-slot:modal-header="{ close }">
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
-        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Train</h4>
+        <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">
+          รายละเอียดเพิ่มเติม
+        </h4>
         <button
           type="button"
           class="close pr-1 pt_15p"
@@ -29,13 +31,22 @@
 
     <template v-slot:default="{ close, ok }">
       <div class="modal-body px-3 px-md-3">
-        <div class="text-center">
-          <div style="font-size: 18px" class="mb-3">
-            This action cannot undo later.<br />
-            Do you want to train model?
+        <div class="d-flex flex-column justify-content-start">
+          <div class="txt_patientInfo_16px">ข้อมูลส่วนตัว</div>
+          <div class="txt_patientInfo_13px">
+            ชื่อ-นามสกุล: บวรศักดิ์ เหลือจันทร์
           </div>
+          <div class="txt_patientInfo_13px">เพศ: ชาย</div>
+          <div class="txt_patientInfo_13px">ช่วงอายุ: 21-30 ปี</div>
+          <div class="txt_patientInfo_13px">เบอร์โทรศัพท์: 21-30 ปี</div>
+          <div class="txt_patientInfo_13px">อัพเดทเมื่อ: 22/09/2021</div>
+          <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
+            Group: <span>Group name</span>
+          </div>
+          <div class="txt_patientInfo_16px">แบบสอบถาม</div>
+          <div class="txt_patientInfo_13px">คุณมีโรคประจำตัวหรือไม่: ไม่</div>
         </div>
-        <div class="row d-flex justify-content-center">
+        <!-- <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-4 col-lg-4">
             <div class="pt-2">
               <div class="form-group mb-0">
@@ -60,7 +71,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </template>
   </b-modal>
@@ -68,7 +79,7 @@
 
 <script>
 export default {
-  name: 'DeleteFeatureModal',
+  name: 'DeleteWordModal',
   props: {
     isOpen: {
       type: Boolean,
@@ -78,7 +89,7 @@ export default {
       type: Function,
       default: () => {},
     },
-    onTrain: {
+    onShowInfo: {
       type: Function,
       default: () => {},
     },
@@ -106,7 +117,20 @@ export default {
 </script>
 
 <style lang="scss">
-.train-model-modal {
+.txt_patientInfo_16px {
+  color: #333333;
+  font-size: 16px;
+  padding-bottom: 0.5rem;
+}
+.txt_patientInfo_16px span {
+  color: #707683;
+}
+.txt_patientInfo_13px {
+  color: #707683;
+  font-size: 13px;
+  padding: 0.5em 0;
+}
+.patient-info-modal {
   .modal-header {
     width: 100%;
     margin: 0 !important;

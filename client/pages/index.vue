@@ -189,10 +189,8 @@
 <script>
 export default {
   components: {
-    DeleteWordModal: () =>
-      import('~/components/chatbotTraining/DeleteWordModal.vue'),
-    TrainWordModal: () =>
-      import('~/components/chatbotTraining/TrainWordModal.vue'),
+    DeleteWordModal: () => import('~/components/modals/DeleteWordModal.vue'),
+    TrainWordModal: () => import('~/components/modals/TrainWordModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},

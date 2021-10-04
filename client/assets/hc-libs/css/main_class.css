@@ -5,11 +5,11 @@
 
 .hc_navbar .txt_hc_head,
 .modal-dialog .txt_hc_head {
-  font-family: 'Prompt-Regular';
+  font-family: 'Prompt-Medium';
   font-style: normal;
-  color: #333333;
+  color: #192a3e;
   line-height: 1.35em !important;
-  font-size: 20px;
+  font-size: 16px;
 }
 .hc_navbar .card {
   margin-bottom: 1.25rem;
@@ -23,7 +23,7 @@
   box-shadow: 0 1px 5px 0 rgba(14, 30, 62, 0.18);
   border-radius: 10px;
 }
-.txt_vla_head {
+.txt_hc_head {
   font-family: 'Prompt-Regular';
   font-style: normal;
   color: #000;
@@ -41,7 +41,7 @@
 .txt_grey_cancel:hover {
   color: #de493c;
 }
-.txt_true_bighead_sm {
+.txt_hc_bighead_sm {
   font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 20px;
@@ -49,16 +49,31 @@
   line-height: 1.35em;
   overflow: hidden;
 }
-.txt_true_bighead_24p {
-  font-family: 'Prompt-Regular';
-  /* font-family: 'SukhumvitSet-SemiBold'; */
+.txt_hc_bighead_24p {
+  font-family: 'Prompt-Medium';
   font-style: normal;
   font-size: 24px;
-  color: #333333;
+  color: #192a3e;
   line-height: 1.35em;
   overflow: hidden;
 }
-.txt_true_bighead_sm_regular {
+.txt_hc_bighead_18p {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 18px;
+  color: #192a3e;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_20p {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 20px;
+  color: #192a3e;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_sm_regular {
   font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 20px;
@@ -66,7 +81,7 @@
   line-height: 1.35em;
   overflow: hidden;
 }
-.btn_vla_grey_light_border {
+.btn_hc_grey_light_border {
   color: #888;
   background-color: transparent;
   border-radius: 5rem;
@@ -74,12 +89,12 @@
   padding: 0.1375rem 1rem;
   border: 1px solid #d9d9d9;
 }
-.btn_vla_grey_light_border:hover {
+.btn_hc_grey_light_border:hover {
   color: #fff;
   background-color: #10c4cc;
   border: 1px solid #10c4cc;
 }
-.txt_vla_black_24p {
+.txt_hc_black_24p {
   font-style: normal;
   font-size: 24px;
   color: #333333;
@@ -89,7 +104,7 @@
   border-color: #ddd !important;
 }
 .p_card {
-  padding: 10px 20px !important;
+  padding: 10px !important;
 }
 .txt_hc_red {
   color: #10c4cc;
@@ -97,14 +112,14 @@
 .form_check_0 .switchery > small {
   top: 0px;
 }
-.btn_vla_setting_grey {
+.btn_hc_setting_grey {
   color: #888 !important;
   background-color: transparent;
   padding: 8px 14px;
   border-radius: 5rem;
   border: 0px;
 }
-.btn_vla_setting_grey:hover {
+.btn_hc_setting_grey:hover {
   color: #10c4cc !important;
   background-color: #f3f3f3;
   padding: 8px 14px;
@@ -235,7 +250,7 @@
   line-height: 1.35em !important;
   font-size: 24px;
 }
-.txt_vla_subject {
+.txt_hc_subject {
   font-family: 'Prompt-Regular';
   font-style: normal;
   font-size: 30px;
@@ -270,7 +285,7 @@
 @media (max-width: 768px) {
 }
 @media (max-width: 576px) {
-  .txt_vla_subject {
+  .txt_hc_subject {
     font-family: 'Prompt-Regular';
     font-style: normal;
     font-size: 28px;
