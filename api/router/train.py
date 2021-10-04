@@ -15,19 +15,36 @@ router = APIRouter()
 
 
 @router.get("/trained")
-async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
+async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question",sort_by: Optional[str] = "DESCENDING"):
     count = 0
     docs_ref = db.collection(u'trained')
     docs = docs_ref.stream()
+    if sort_by == "DESCENDING":
+        sort_by = firestore.Query.DESCENDING
+    else :
+        sort_by = firestore.Query.ASCENDING
     for doc in docs:
         count = count+1
+    if filter:
+
+        count = 0
+        docs = docs_ref.order_by(order_by, direction=sort_by).stream()
+        query = streamToDict(docs)
+        # query.append({"total" : count})
+        res = []
+        for i in query:
+            if filter in i[order_by]:
+                count = count+1
+                res.append(i)
+        res.append({"total" : count})
+        return res
     if pages == None:
-        docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
+        docs = docs_ref.order_by(order_by, direction=sort_by).stream()
         query = streamToDict(docs)
         query.append({"total" : count})
         return query
     elif pages != None:
-        first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
+        first_query = docs_ref.order_by(order_by, direction=sort_by).limit(limit)
         docs = first_query.stream()
         # test = streamToDict(docs)
         # print(test)
@@ -46,7 +63,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
 
                 next_query = (
                     docs_ref
-                    .order_by(order_by, direction=firestore.Query.DESCENDING)
+                    .order_by(order_by, direction=sort_by)
                     .start_after({
                         order_by: last_pop
                     })
@@ -104,9 +121,6 @@ async def updateTrainWord(data: TrainedModel, id: str):
         res = {"response" : "Update Failed" }    
     return res
 
-
-
-
 @router.delete("/trained/delete/many")
 async def deleteTrainWord(arbitrary_json: JSONStructureDELETE = None):
     try:
@@ -118,7 +132,6 @@ async def deleteTrainWord(arbitrary_json: JSONStructureDELETE = None):
         res = {"response" : "Delete Failed" }
     return res
 
-
 @router.delete("/trained/delete/{id}")
 async def deleteTrainWordById(id: str):
     db.collection(u'trained').document(id).delete()
@@ -126,20 +139,37 @@ async def deleteTrainWordById(id: str):
 
 
 @router.get("/training")
-async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question"):
+async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question",sort_by: Optional[str] = "DESCENDING"):
 
     count = 0
     docs_ref = db.collection(u'training')
     docs = docs_ref.stream()
+    if sort_by == "DESCENDING":
+        sort_by = firestore.Query.DESCENDING
+    else :
+        sort_by = firestore.Query.ASCENDING
     for doc in docs:
+
         count = count+1
+        if filter:
+            res = []
+            count = 0
+            docs = docs_ref.order_by(order_by, direction=sort_by).stream()
+            query = streamToDict(docs)
+            # query.append({"total" : count})
+            for i in query:
+                if filter in i[order_by]:
+                    count = count+1
+                    res.append(i)
+            res.append({"total" : count})
+            return res
     if pages == None:
-        docs = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).stream()
+        docs = docs_ref.order_by(order_by, direction=sort_by).stream()
         query = streamToDict(docs)
         query.append({"total" : count})
         return query
     elif pages != None:
-        first_query = docs_ref.order_by(order_by, direction=firestore.Query.DESCENDING).limit(limit)
+        first_query = docs_ref.order_by(order_by, direction=sort_by).limit(limit)
         docs = first_query.stream()
         # test = streamToDict(docs)
         # print(test)
@@ -158,7 +188,7 @@ async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,or
 
                 next_query = (
                     docs_ref
-                    .order_by(order_by, direction=firestore.Query.DESCENDING)
+                    .order_by(order_by, direction=sort_by)
                     .start_after({
                         order_by: last_pop
                     })
