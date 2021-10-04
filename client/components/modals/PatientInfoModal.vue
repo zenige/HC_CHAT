@@ -43,7 +43,9 @@
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
             Group: <span>Group name</span>
           </div>
-          <div class="txt_patientInfo_16px">แบบสอบถาม</div>
+          <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
+            แบบสอบถาม
+          </div>
           <div class="txt_patientInfo_13px">คุณมีโรคประจำตัวหรือไม่: ไม่</div>
         </div>
         <!-- <div class="row d-flex justify-content-center">

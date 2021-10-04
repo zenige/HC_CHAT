@@ -56,7 +56,7 @@
                           </div>
                         </div>
                         <div class="row col-12 col-md-12 px-4">
-                          <div class="col-12 col-md-6 pb_me-4">
+                          <div class="col-12 col-md-12 pb_me-4">
                             <div class="txt_vla_feature_content pb-1">
                               Question
                             </div>
@@ -76,19 +76,18 @@
                               Condition
                             </div>
                             <div class="form-group mb-0 w-100">
-                              <select
+                              <b-form-select
                                 v-model="featureCondition"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
                               >
-                                <option
-                                  v-for="option in conditionOptions"
-                                  :key="option.label"
-                                  :value="option.value"
+                                <b-form-select-option value="a"
+                                  >มีไข้</b-form-select-option
                                 >
-                                  {{ option.value }}
-                                </option>
-                              </select>
+                                <b-form-select-option value="b"
+                                  >ไอ</b-form-select-option
+                                >
+                              </b-form-select>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 pb_me-4">
@@ -109,32 +108,77 @@
                           </div>
                           <div class="col-12 col-md-6 pb_me-4">
                             <div class="txt_vla_feature_content pb-1">
-                              Only one of these
+                              Only one of these (Other features)
                             </div>
                             <div class="form-group mb-0 w-100">
-                              <div class="selectBox" @click="showCheckboxes()">
+                              <div
+                                class="selectBox"
+                                @click="showCheckboxes()"
+                                style="cursor: pointer"
+                              >
                                 <select
-                                  v-model="featureOnlyOneOfThese"
                                   class="form-control border-gray border"
                                 ></select>
                                 <div class="overSelect"></div>
                               </div>
                               <div id="checkboxes">
-                                <label class="onlyOneOfThese_label">
-                                  <b-form-checkbox id="one">
-                                    First checkbox
-                                  </b-form-checkbox>
-                                </label>
-                                <label class="onlyOneOfThese_label">
-                                  <b-form-checkbox id="two">
-                                    Second checkbox
-                                  </b-form-checkbox>
-                                </label>
-                                <label class="onlyOneOfThese_label">
-                                  <b-form-checkbox id="three">
-                                    Third checkbox
-                                  </b-form-checkbox>
-                                </label>
+                                <b-form-group
+                                  v-slot="{ ariaDescribedby }"
+                                  class="group_radio"
+                                >
+                                  <b-form-radio
+                                    v-model="selectedOnlyOneOfThese"
+                                    :aria-describedby="ariaDescribedby"
+                                    value="A"
+                                    class="onlyOneOfThese_label"
+                                    >Option A</b-form-radio
+                                  >
+
+                                  <b-form-radio
+                                    v-model="selectedOnlyOneOfThese"
+                                    :aria-describedby="ariaDescribedby"
+                                    value="B"
+                                    >Option B</b-form-radio
+                                  >
+                                </b-form-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 pb_me-4">
+                            <div class="txt_vla_feature_content pb-1">
+                              Or (Other features)
+                            </div>
+                            <div class="form-group mb-0 w-100">
+                              <div
+                                class="selectBox2"
+                                @click="showCheckboxes2()"
+                                style="cursor: pointer"
+                              >
+                                <select
+                                  class="form-control border-gray border"
+                                ></select>
+                                <div class="overSelect"></div>
+                              </div>
+                              <div id="checkboxes2">
+                                <b-form-group
+                                  v-slot="{ ariaDescribedby }"
+                                  class="group_radio"
+                                >
+                                  <b-form-radio
+                                    v-model="selectedOrFeature"
+                                    :aria-describedby="ariaDescribedby"
+                                    value="A"
+                                    class="onlyOneOfThese_label"
+                                    >Option A</b-form-radio
+                                  >
+
+                                  <b-form-radio
+                                    v-model="selectedOrFeature"
+                                    :aria-describedby="ariaDescribedby"
+                                    value="B"
+                                    >Option B</b-form-radio
+                                  >
+                                </b-form-group>
                               </div>
                             </div>
                           </div>
@@ -220,6 +264,8 @@ export default {
     featureCondition: null,
     featureOnlyOneOfThese: null,
     expanded: false,
+    selectedOnlyOneOfThese: null,
+    selectedOrFeature: null,
   }),
   computed: {
     previousUrl() {
@@ -252,11 +298,28 @@ export default {
         this.expanded = false
       }
     },
+    showCheckboxes2() {
+      let checkboxes = document.getElementById('checkboxes2')
+      if (!this.expanded) {
+        checkboxes.style.display = 'flex'
+        this.expanded = true
+      } else {
+        checkboxes.style.display = 'none'
+        this.expanded = false
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss">
+.txt_vla_feature_title {
+  font-size: 16px;
+}
+.group_radio {
+  width: 100%;
+  padding: 0;
+}
 .overSelect {
   position: absolute;
   left: 0;
@@ -270,7 +333,8 @@ export default {
 .selectBox select {
   width: 100%;
 }
-#checkboxes {
+#checkboxes,
+#checkboxes2 {
   display: none;
   flex-direction: column;
   justify-content: flex-start;
@@ -280,13 +344,15 @@ export default {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-#checkboxes label {
+#checkboxes label,
+#checkboxes2 label {
   width: 100%;
   margin-bottom: 0;
   padding: 0.5rem;
 }
 
-#checkboxes label:hover {
+#checkboxes label:hover,
+#checkboxes2 label:hover {
   background-color: #ebeff2;
 }
 

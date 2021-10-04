@@ -2825,6 +2825,14 @@ input[type='number'],
 }
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url('../images/main/arrow_checked.svg');
+  top: 0.55rem !important;
+  left: -2rem;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #10c4cc;
+  background-size: 90% 90%;
+  margin-left: 0.7rem;
 }
 .custom-checkbox .custom-control-label::before {
   top: 0.2rem;
@@ -2833,6 +2841,15 @@ input[type='number'],
   width: 16px;
   height: 16px;
   border: 2px solid #d5d5d5;
+}
+.custom-radio .custom-control-label::before {
+  top: 0.55rem;
+  left: -2rem;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d5d5d5;
+  margin-left: 0.7rem;
 }
 .onlyOneOfThese_label > .custom-checkbox .custom-control-label::before {
   top: 0.55rem;
@@ -2868,7 +2885,7 @@ input[type='number'],
   background-size: 90% 90%;
 }
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #9bbb59;
+  background-color: #10c4cc;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #10c4cc;

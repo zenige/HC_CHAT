@@ -5,17 +5,17 @@
         <i class="icon-cross2"></i>
       </div>
     </div>
-    <NuxtLink :to="'/user/profile'" class="sidebar-menu-profile mt-0">
+    <a class="sidebar-menu-profile mt-0">
       <img
         class="sidebar-menu-profile-img"
         src="~/assets/hc-libs/images/main/face_default.png"
         alt="user-profile"
       />
       <div class="sidebar-menu-profile-item">
-        <div class="sidebar-menu-profile-item-name">Bawornsak Luachan</div>
-        <div class="sidebar-menu-profile-item-email">nuiwitclup@gmail.com</div>
+        <div class="sidebar-menu-profile-item-name">Firstname Lastname</div>
+        <div class="sidebar-menu-profile-item-email">example@email.com</div>
       </div>
-    </NuxtLink>
+    </a>
     <div class="sidebar-menu-main-disabled">
       <i class="mi-chat-bubble sidebar-menu-main-icon"></i>
       <span>Chatbot Training</span>
@@ -49,14 +49,14 @@
       <span>Dashboard</span>
     </NuxtLink>
     <div class="sidebar-menu-main-signout">
-      <NuxtLink :to="localePath('/login')">
+      <a href="#">
         <img
           src="~assets/hc-libs/images/main/logout.svg"
           width="20"
           class="sidebar-menu-main-icon"
         />
         <span>Signout</span>
-      </NuxtLink>
+      </a>
     </div>
   </div>
 </template>
