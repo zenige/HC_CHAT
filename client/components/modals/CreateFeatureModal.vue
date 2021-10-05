@@ -13,7 +13,7 @@
       <!-- Emulate built in modal header close button action -->
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
         <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">
-          Add a new feature
+          Create a new feature
         </h4>
         <button
           type="button"
@@ -49,7 +49,7 @@
                     type="submit"
                     class="btn btn_green_modal h2dot5 btn-block py-2"
                   >
-                    Add
+                    Create
                   </button>
                 </div>
               </div>
@@ -106,11 +106,11 @@ export default {
     },
     async onAddNewFeature() {
       const body = {
-        feature: this.question,
+        Name: this.feature,
       }
       if (this.feature !== '') {
-        await this.$axios.post('train/trained', body)
-        this.$emit('getFeatureData', this.currentPage, this.perPage, 'question')
+        await this.$axios.post('feature', body)
+        this.$emit('getFeatureData')
         this.feature = ''
         this.onCancel()
       } else {

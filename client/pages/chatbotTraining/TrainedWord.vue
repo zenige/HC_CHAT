@@ -15,7 +15,7 @@
                     "
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
-                <input
+                <b-form-input
                   v-model="filter"
                   type="search"
                   class="
@@ -26,8 +26,17 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word...."
-                />
-                <div class="form-control-feedback" @click="filter = ''">
+                  @input="filterWord($event)"
+                >
+                </b-form-input>
+                <div
+                  class="form-control-feedback"
+                  :disabled="!filter"
+                  @click="
+                    filter = null
+                    getTrainedWordData(filter, 1, 10, 'question', ASCENDING)
+                  "
+                >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
               </div>
@@ -55,6 +64,11 @@
               <span class="txt_vla_grey">({{ totalTrainedWord }})</span>
             </div>
           </div>
+          <div>
+            Sorting By: <b>{{ sortBy }}</b
+            >, Sort Direction:
+            <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
+          </div>
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
@@ -62,11 +76,12 @@
               responsive
               id="trainedWord-table"
               :items="trainedWordData"
+              :fields="fields"
               :per-page="0"
               :current-page="currentPage"
-              :fields="fields"
-              :filter="filter"
               :tbody-tr-class="selectedRowClass"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -169,6 +184,9 @@
           @getTrainedWordData="getTrainedWordData"
           :currentPage="currentPage"
           :perPage="perPage"
+          :sortBy="sortBy"
+          :sortDesc="sortDesc"
+          :filter="filter"
         ></AddNewWordModal>
       </div>
     </div>
@@ -176,6 +194,9 @@
 </template>
 
 <script>
+const ASCENDING = 'ASCENDING'
+const DESCENDING = 'DESCENDING'
+
 export default {
   components: {
     DeleteWordModal: () => import('~/components/modals/DeleteWordModal.vue'),
@@ -185,13 +206,15 @@ export default {
   props: {},
   data() {
     return {
+      sortBy: null,
+      sortDesc: false,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowAddNewWordModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: '',
+      filter: null,
       perPage: 10,
       currentPage: 1,
       deleteSelected: [],
@@ -234,19 +257,39 @@ export default {
     selectAll(value) {
       this.trainedWordData.map(function (item) {
         item.selected = value
-        // return item
+        return item
       })
     },
     currentPage(value) {
-      this.getTrainedWordData(value, this.perPage, 'question')
+      this.getTrainedWordData(this.filter, value, 10, 'question', ASCENDING)
+    },
+    sortBy(value) {
+      setTimeout(() => {
+        if (this.sortDesc === false) {
+          this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
+        } else {
+          this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
+        }
+      }, 250)
     },
   },
   async mounted() {
-    await this.getTrainedWordData(1, 10, 'question')
+    await this.getTrainedWordData(this.filter, 1, 10, 'question', ASCENDING)
     this.isLoading = true
   },
   computed: {},
   methods: {
+    filterWord(e) {
+      setTimeout(() => {
+        if (this.sortDesc === false) {
+          this.getTrainedWordData(e, 1, 10, this.sortBy, ASCENDING)
+          this.sortBy = null
+        } else {
+          this.getTrainedWordData(e, 1, 10, this.sortBy, DESCENDING)
+          this.sortBy = null
+        }
+      }, 250)
+    },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },
@@ -282,7 +325,14 @@ export default {
       await this.$axios.delete('train/trained/delete/many', {
         data: this.deleteSelected,
       })
-      await this.getTrainedWordData(this.currentPage, 10, 'question')
+      await this.getTrainedWordData(
+        this.filter,
+        this.currentPage,
+        10,
+        orderBy,
+        'question',
+        ASCENDING
+      )
       if (this.trainedWordData.length === 0) {
         this.totalTrainedWord = 0
       }
@@ -299,15 +349,21 @@ export default {
       data.item.question = this.changedQuestionData
       data.item.answer = this.changedAnswerData
       data.item.editable = false
-      await this.$axios.patch(`/train/trained/` + data.item.id, {
+      await this.$axios.patch('train/trained/' + data.item.id, {
         question: data.item.question,
         answer: data.item.answer,
       })
     },
-    async getTrainedWordData(page, limit, orderBy) {
-      let { data } = await this.$axios.get(
-        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
-      )
+    async getTrainedWordData(filter, page, limit, orderBy, sortBy) {
+      let { data } = await this.$axios.get('train/trained', {
+        params: {
+          filter: filter,
+          pages: page,
+          limit: limit,
+          order_by: orderBy,
+          sort_by: sortBy,
+        },
+      })
       this.trainedWordData = data.map((item) => {
         // collect total trained word data
         if (item.total) {
@@ -336,14 +392,6 @@ export default {
       if (this.trainedWordData.length === 0) {
         this.totalTrainedWord = 0
       }
-      console.log(
-        'page: ',
-        page,
-        'data: ',
-        this.trainedWordData.length,
-        'total: ',
-        this.totalTrainedWord
-      )
     },
   },
 }

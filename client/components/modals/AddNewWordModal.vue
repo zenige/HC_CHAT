@@ -68,6 +68,9 @@
 </template>
 
 <script>
+const ASCENDING = 'ASCENDING'
+const DESCENDING = 'DESCENDING'
+
 export default {
   name: 'AddNewWordModal',
   props: {
@@ -90,6 +93,18 @@ export default {
     perPage: {
       type: Number,
       default: 10,
+    },
+    sortBy: {
+      type: String,
+      default: null,
+    },
+    sortDesc: {
+      type: Boolean,
+      default: false,
+    },
+    filter: {
+      type: String,
+      default: null,
     },
   },
   data: () => ({
@@ -118,12 +133,25 @@ export default {
       }
       if (this.question !== '' && this.answer !== '') {
         await this.$axios.post('train/trained', body)
-        this.$emit(
-          'getTrainedWordData',
-          this.currentPage,
-          this.perPage,
-          'question'
-        )
+        if (this.sortDesc === false) {
+          this.$emit(
+            'getTrainedWordData',
+            this.filter,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            ASCENDING
+          )
+        } else {
+          this.$emit(
+            'getTrainedWordData',
+            this.filter,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            DESCENDING
+          )
+        }
         this.question = ''
         this.answer = ''
         this.onCancel()

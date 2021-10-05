@@ -343,7 +343,7 @@ export default {
             answer: item.answer,
             time: item.time,
             count: item.count,
-            confident: item.confident.toFixed(2),
+            confident: item.confident,
             question: item.question,
             id: item.id,
             selected: false,
@@ -355,8 +355,8 @@ export default {
       this.newWordData = this.newWordData.filter(function (element) {
         return element.id !== undefined
       })
-      console.log(this.totalPatient)
-      console.log(this.newWordData)
+      // console.log(this.totalPatient)
+      // console.log(this.newWordData)
     },
   },
 }

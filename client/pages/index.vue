@@ -26,21 +26,22 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word..."
-                  @input="setDebouncedQuery"
+                  @input="filterWord($event)"
                 >
                 </b-form-input>
                 <div
                   class="form-control-feedback"
                   :disabled="!filter"
-                  @click="filter = ''"
+                  @click="
+                    filter = null
+                    getNewWordData(filter, 1, 10, 'question', ASCENDING)
+                  "
                 >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
               </div>
             </div>
           </div>
-          <span v-if="typing">You are typing</span>
-          <span v-if="message">You typed: {{ message }}</span>
           <div class="col-4 col-md-8 text-right">
             <button
               @click="openTrainWordModal()"
@@ -78,7 +79,6 @@
               :fields="fields"
               :per-page="0"
               :current-page="currentPage"
-              :filter="filter"
               :tbody-tr-class="selectedRowClass"
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
@@ -202,7 +202,8 @@
 </template>
 
 <script>
-const DEBOUNCE_TIME = 2000
+const ASCENDING = 'ASCENDING'
+const DESCENDING = 'DESCENDING'
 
 export default {
   components: {
@@ -213,7 +214,7 @@ export default {
   props: {},
   data() {
     return {
-      sortBy: 'question',
+      sortBy: null,
       sortDesc: false,
       isLoading: false,
       isShowDeleteWordModal: false,
@@ -221,7 +222,7 @@ export default {
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: '',
+      filter: null,
       perPage: 10,
       currentPage: 1,
       trainSelected: [],
@@ -273,9 +274,6 @@ export default {
         },
       ],
       newWordData: [],
-      message: null,
-      typing: null,
-      debounce: null,
     }
   },
   watch: {
@@ -286,11 +284,20 @@ export default {
       })
     },
     currentPage(value) {
-      this.getNewWordData(value, this.perPage, 'question')
+      this.getNewWordData(this.filter, value, 10, 'question', ASCENDING)
+    },
+    sortBy(value) {
+      setTimeout(() => {
+        if (this.sortDesc === false) {
+          this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
+        } else {
+          this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
+        }
+      }, 250)
     },
   },
   async mounted() {
-    await this.getNewWordData(1, 10, 'question')
+    await this.getNewWordData(this.filter, 1, 10, 'question', ASCENDING)
     this.isLoading = true
   },
   computed: {
@@ -299,10 +306,16 @@ export default {
     },
   },
   methods: {
-    setDebouncedQuery() {
+    filterWord(e) {
       setTimeout(() => {
-        console.log(this.filter)
-      }, DEBOUNCE_TIME)
+        if (this.sortDesc === false) {
+          this.getNewWordData(e, 1, 10, this.sortBy, ASCENDING)
+          this.sortBy = null
+        } else {
+          this.getNewWordData(e, 1, 10, this.sortBy, DESCENDING)
+          this.sortBy = null
+        }
+      }, 250)
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
@@ -323,6 +336,7 @@ export default {
       }
     },
     closeDeleteWordModal() {
+      this.selectAll = false
       this.isShowDeleteWordModal = false
     },
     async onTrainWord() {
@@ -357,7 +371,13 @@ export default {
       await this.$axios.delete('train/training/delete/many', {
         data: this.deleteSelected,
       })
-      await this.getNewWordData(this.currentPage, 10, 'question')
+      await this.getNewWordData(
+        this.filter,
+        this.currentPage,
+        10,
+        'question',
+        ASCENDING
+      )
       this.selectAll = false
     },
     editWord(data) {
@@ -372,15 +392,21 @@ export default {
       data.item.question = this.changedQuestionData
       data.item.answer = this.changedAnswerData
       data.item.editable = false
-      await this.$axios.patch(`/train/training/` + data.item.id, {
+      await this.$axios.patch('train/training/' + data.item.id, {
         question: data.item.question,
         answer: data.item.answer,
       })
     },
-    async getNewWordData(page, limit, orderBy) {
-      let { data } = await this.$axios.get(
-        `train/training?pages=${page}&limit=${limit}&order_by=${orderBy}`
-      )
+    async getNewWordData(filter, page, limit, orderBy, sortBy) {
+      let { data } = await this.$axios.get('train/training', {
+        params: {
+          filter: filter,
+          pages: page,
+          limit: limit,
+          order_by: orderBy,
+          sort_by: sortBy,
+        },
+      })
       this.newWordData = data.map((item) => {
         // collect total new word data
         if (item.total) {
@@ -396,7 +422,7 @@ export default {
             answer: item.answer,
             time: item.time,
             count: item.count,
-            confident: item.confident.toFixed(2),
+            confident: item.confident,
             question: item.question,
             id: item.id,
             selected: false,

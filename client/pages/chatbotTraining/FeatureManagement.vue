@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Loader v-if="isLoading" />
+    <Loader v-if="!isLoading" />
     <div v-else class="hc_navbar">
       <div class="container fitscreen" style="padding: 2rem 0">
         <div class="row d-flex align-items-center">
@@ -15,7 +15,7 @@
                     "
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
-                <input
+                <b-form-input
                   v-model="filter"
                   type="search"
                   class="
@@ -26,8 +26,12 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word...."
-                />
-                <div class="form-control-feedback" @click="filter = ''">
+                ></b-form-input>
+                <div
+                  class="form-control-feedback"
+                  :disabled="!filter"
+                  @click="filter = ''"
+                >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
               </div>
@@ -62,11 +66,13 @@
               responsive
               id="Feature-table"
               :items="featureData"
-              :per-page="0"
-              :current-page="currentPage"
               :fields="fields"
+              :per-page="0"
               :filter="filter"
+              :current-page="currentPage"
               :tbody-tr-class="selectedRowClass"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -145,13 +151,13 @@
           :onCancel="closeDeleteFeatureModal"
           :onDelete="onDeleteFeature"
         ></DeleteFeatureModal>
-        <AddNewFeatureModal
-          :isOpen="isShowAddNewFeatureModal"
+        <CreateNewFeatureModal
+          :isOpen="isShowCreateNewFeatureModal"
           :onCancel="closeAddFeatureModal"
           @getFeatureData="getFeatureData"
           :currentPage="currentPage"
           :perPage="perPage"
-        ></AddNewFeatureModal>
+        ></CreateNewFeatureModal>
       </div>
     </div>
   </div>
@@ -162,23 +168,26 @@ export default {
   components: {
     DeleteFeatureModal: () =>
       import('~/components/modals/DeleteFeatureModal.vue'),
-    AddNewFeatureModal: () => import('~/components/modals/AddFeatureModal.vue'),
+    CreateNewFeatureModal: () =>
+      import('~/components/modals/CreateFeatureModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},
   data() {
     return {
-      isLoading: true,
+      sortBy: null,
+      sortDesc: false,
+      isLoading: false,
       isShowDeleteFeatureModal: false,
-      isShowAddNewFeatureModal: false,
+      isShowCreateNewFeatureModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: '',
+      filter: null,
       perPage: 10,
       currentPage: 1,
       deleteSelected: [],
-      totalFeature: 0,
+      totalFeature: null,
       changedFeatureData: '',
       fields: [
         {
@@ -202,43 +211,7 @@ export default {
           tdClass: 'featuretdAction-Class',
         },
       ],
-      featureData: [
-        {
-          feature: 'ช่วงอายุ',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'มีโรคประจำตัว',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'มีไข้',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'ไอ',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'เหนื่อย',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'ความเสี่ยงใกล้ชิดผู้ติดเชื้อ',
-          selected: false,
-          editable: false,
-        },
-        {
-          feature: 'กลับจากประเทศเสี่ยง',
-          selected: false,
-          editable: false,
-        },
-      ],
+      featureData: [],
     }
   },
   watch: {
@@ -248,13 +221,13 @@ export default {
         // return item
       })
     },
-    currentPage(value) {
-      this.getFeatureData(value, this.perPage, 'question')
-    },
+    // currentPage(value) {
+    //   this.getFeatureData(value, this.perPage, 'question')
+    // },
   },
   async mounted() {
-    // await this.getFeatureData(1, 10, 'question')
-    this.isLoading = false
+    await this.getFeatureData()
+    this.isLoading = true
   },
   computed: {},
   methods: {
@@ -265,11 +238,11 @@ export default {
       this.deleteSelected = this.featureData.filter(
         (item) => item.selected === true
       )
-      if (this.deleteSelected.length >= 1) {
+      if (this.deleteSelected.length < this.featureData.length) {
         this.isShowDeleteFeatureModal = true
-      } else {
+      } else if (this.deleteSelected.length === this.featureData.length) {
         ;(this.isShowDeleteFeatureModal = false),
-          this.$bvToast.toast('Please select any word', {
+          this.$bvToast.toast("You can't delete all feature", {
             variant: 'danger',
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
@@ -281,19 +254,19 @@ export default {
       this.isShowDeleteFeatureModal = false
     },
     openAddFeatureModal() {
-      this.isShowAddNewFeatureModal = true
+      this.isShowCreateNewFeatureModal = true
     },
     closeAddFeatureModal() {
-      this.isShowAddNewFeatureModal = false
+      this.isShowCreateNewFeatureModal = false
     },
     async onDeleteFeature() {
       this.deleteSelected = this.featureData.filter(
         (item) => item.selected === true
       )
-      await this.$axios.delete('train/trained/delete/many', {
-        data: this.deleteSelected,
-      })
-      await this.getFeatureData(this.currentPage, 10, 'question')
+      for (i = 0; i < this.deleteSelected.length; i++) {
+        await this.$axios.delete('feature' + this.deleteSelected[i].id)
+      }
+      await this.getFeatureData()
       if (this.featureData.length === 0) {
         this.totalFeature = 0
       }
@@ -308,33 +281,19 @@ export default {
     async saveFeature(data) {
       data.item.feature = this.changedFeatureData
       data.item.editable = false
-      // await this.$axios.patch(`/train/trained/` + data.item.id, {
-      //   feature: data.item.feature,
-      // })
+      await this.$axios.patch('feature', {
+        id: data.item.id,
+        Name: data.item.feature,
+      })
     },
-    async getFeatureData(page, limit, orderBy) {
-      let { data } = await this.$axios.get(
-        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
-      )
+    async getFeatureData() {
+      let { data } = await this.$axios.get('feature')
       this.featureData = data.map((item) => {
-        // collect total trained word data
-        if (item.total) {
-          return (
-            {
-              id: undefined,
-            },
-            (this.totalFeature = item.total)
-          )
-          // it will return undefined item
-        } else {
-          return {
-            answer: item.answer,
-            time: item.time,
-            question: item.question,
-            id: item.id,
-            selected: false,
-            editable: false,
-          }
+        return {
+          feature: item.Name,
+          id: item.id,
+          selected: false,
+          editable: false,
         }
       })
       // remove undefined item
@@ -343,15 +302,9 @@ export default {
       })
       if (this.featureData.length === 0) {
         this.totalFeature = 0
+      } else {
+        this.totalFeature = this.featureData.length
       }
-      // console.log(
-      //   'page: ',
-      //   page,
-      //   'data: ',
-      //   this.featureData.length,
-      //   'total: ',
-      //   this.totalFeature
-      // )
     },
   },
 }
