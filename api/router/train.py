@@ -37,17 +37,17 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
             if filter in i[order_by] or filter in i['answer']:
                 count = count+1
                 res.append(i)
-        if pages == 1 :
-            query = searchPage1(docs)
-        print(query)
+        # if pages == 1 :
+        #     query = searchPage1(docs)
+
         # if limit:
         #     for i in range(limit):
         #         print(query)
         #     return query
-        if pages > 1 :
-            query =  searchPages(pages,order_by,sort_by,docs_ref,limit,docs)
+        # if pages > 1 :
+        #     query =  searchPages(pages,order_by,sort_by,docs_ref,limit,docs)
 
-            return query
+        #     return query
         res.append({"total" : count})
         return res
     if pages == None:
@@ -58,9 +58,7 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
     elif pages != None:
         first_query = docs_ref.order_by(order_by, direction=sort_by).limit(limit)
         docs = first_query.stream()
-        # test = streamToDict(docs)
-        # print(test)
-        # print("____")
+
 
         if pages == 1 :
             query = streamToDict(docs)
@@ -70,11 +68,11 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
             return query
         elif pages > 1 :
             for page in range(pages-1):
-    
+
                 last_doc = list(docs)[-1]
 
                 last_pop = last_doc.to_dict()[order_by]
-
+                print('sss',last_pop)
                 next_query = (
                     docs_ref
                     .order_by(order_by, direction=sort_by)
@@ -181,10 +179,9 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
 
             if filter in i[order_by] or filter in i['answer']:
                 count = count+1
-                res.append(i)
             
-        if pages == 1 :
-            query = searchPage1(docs)
+        # if pages == 1 :
+        #     query = searchPage1(docs)
 
             # if limit:
                 # for i in range(limit):
