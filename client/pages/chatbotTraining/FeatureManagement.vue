@@ -238,7 +238,10 @@ export default {
       this.deleteSelected = this.featureData.filter(
         (item) => item.selected === true
       )
-      if (this.deleteSelected.length < this.featureData.length) {
+      if (
+        this.deleteSelected.length < this.featureData.length &&
+        this.featureData.length >= 1
+      ) {
         this.isShowDeleteFeatureModal = true
       } else if (this.deleteSelected.length === this.featureData.length) {
         ;(this.isShowDeleteFeatureModal = false),
@@ -263,7 +266,7 @@ export default {
       this.deleteSelected = this.featureData.filter(
         (item) => item.selected === true
       )
-      for (i = 0; i < this.deleteSelected.length; i++) {
+      for (let i = 0; i < this.deleteSelected.length; i++) {
         await this.$axios.delete('feature' + this.deleteSelected[i].id)
       }
       await this.getFeatureData()

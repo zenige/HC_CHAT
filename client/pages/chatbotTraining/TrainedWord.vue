@@ -266,9 +266,9 @@ export default {
     sortBy(value) {
       setTimeout(() => {
         if (this.sortDesc === false) {
-          this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
+          this.getTrainedWordData(this.filter, 1, 10, value, ASCENDING)
         } else {
-          this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
+          this.getTrainedWordData(this.filter, 1, 10, value, DESCENDING)
         }
       }, 250)
     },
