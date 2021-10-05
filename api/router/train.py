@@ -174,23 +174,18 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
         query = streamToDict(docs)
 
         for i in query:
+
             if order_by == 'count':
                 i['count'] = str(i['count'])
+            i['answer'] = str( i['answer'])
+ 
+            if (filter in i[order_by]) or (filter in i['answer']):
 
-            if filter in i[order_by] or filter in i['answer']:
                 count = count+1
+                res.append(i)
         query = searchPage1(docs)
-        # if pages == 1 :
-        #     query = searchPage1(docs)
 
-            # if limit:
-                # for i in range(limit):
-                #     print(query)
-            #     return query
-            # elif pages > 1 :
-            #     query =  searchPages(pages,order_by,sort_by,docs_ref,limit,docs)
 
-            #     return query
         res.append({"total" : count})
         return res
     if pages == None:
