@@ -38,7 +38,7 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
                 count = count+1
                 res.append(i)
         # if pages == 1 :
-        #     query = searchPage1(docs)
+        query = searchPage1(docs)
 
         # if limit:
         #     for i in range(limit):
@@ -72,7 +72,7 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
                 last_doc = list(docs)[-1]
 
                 last_pop = last_doc.to_dict()[order_by]
-                print('sss',last_pop)
+
                 next_query = (
                     docs_ref
                     .order_by(order_by, direction=sort_by)
@@ -179,7 +179,7 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
 
             if filter in i[order_by] or filter in i['answer']:
                 count = count+1
-            
+        query = searchPage1(docs)
         # if pages == 1 :
         #     query = searchPage1(docs)
 
