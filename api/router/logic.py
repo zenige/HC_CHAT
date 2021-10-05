@@ -139,16 +139,7 @@ async def updateLineLogic(data: Logic):
         return 'done'
     else :
         return {"err": "no logic id"}
-    # print(currentLogic)
-    # # lastLogic['Next'] = data.id
-    # # newLogic = dict(data)
 
-    # # newLogic['Next'] = None
-    # # newLogic['Previous'] = lastLogic['id']
-
-    # # db.collection("lineLogic").document(newLogic['id']).set(newLogic)
-    # # print(newLogic)
-    # return currentLogic
 
 @router.get("/updateLogic")
 async def updateData():

@@ -55,10 +55,10 @@ async def getUsers(id:str):
 
 
 
-@router.get("/dsadsadsadsa")
-async def getUsers():
+@router.get("/getAllRawLogic")
+async def getAllRawLogic():
 
-    docs = db.collection("feature").stream()
+    docs = db.collection("logics").stream()
     # users = []
     features = []
     for doc in docs:
@@ -69,4 +69,53 @@ async def getUsers():
     #     fakedict['id'] = doc.id
         features.append(feature)
 
+    return features
+@router.get("/deleteLogicafterDeleteFeature")
+def deleteLogicafterDeleteFeature():
+    featName = "cough"
+    docs = db.collection("logics").stream()
+    # users = []
+    features = []
+    for doc in docs:
+        data =  doc.to_dict()
+        dataStr = data['data']
+        group = ast.literal_eval(dataStr)
+        flag = True
+        if featName in group.keys():
+            del group[featName]
+            flag = False
+        if flag:
+            if "Relation" in group.keys():
+                del group["Relation"]
+        features.append(group)
+        
+    return features
+
+@router.patch("/updateLogicAfterUpdateFeaTure")
+def updateLogicAfterUpdateFeaTure():
+    new_key = "getcough"
+    old_key = "cough"
+    docs = db.collection("logics").stream()
+    # users = []
+    features = []
+    for doc in docs:
+        data =  doc.to_dict()
+        dataStr = data['data']
+        group = ast.literal_eval(dataStr)
+
+        flag = True
+        if old_key in group.keys():
+            group[new_key] = group.pop(old_key)
+        #     del group[featName]
+            flag = False
+        if flag:
+            if "Relation" in group.keys():
+                for i in  group['Relation'][0]:
+                    if i == old_key:
+                        group['Relation'][0].remove(i)
+                        group['Relation'][0].append(new_key)
+
+
+        features.append(group)
+        
     return features
