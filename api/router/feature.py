@@ -47,9 +47,24 @@ async def getUsers(body:Feature):
     # db.collection(u'feature').document(body['Name']).set(body)
     return "update done"
 
-@router.delete("/{id}")
-async def getUsers(id:str):
+@router.delete("/{id}/{featName}")
+async def getUsers(id:str,featName:str):
     db.collection(u'feature').document(id).delete()
+    docs = db.collection("logics").stream()
+    # users = []
+    features = []
+    for doc in docs:
+        data =  doc.to_dict()
+        dataStr = data['data']
+        group = ast.literal_eval(dataStr)
+        flag = True
+        if featName in group.keys():
+            del group[featName]
+            flag = False
+        if flag:
+            if "Relation" in group.keys():
+                del group["Relation"]
+        features.append(group)
     # db.collection(u'feature').document(body['Name']).set(body)
     return "delete done"
 
