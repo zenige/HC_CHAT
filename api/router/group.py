@@ -19,6 +19,8 @@ async def getTrainedWord():
     groups =[]
     for doc in docs_ref:
         group = doc.to_dict()
+
+        group['id'] = doc.id
         groups.append(group)
     return groups
 
