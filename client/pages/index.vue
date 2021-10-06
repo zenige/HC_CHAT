@@ -16,6 +16,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
+                  id="filter-input"
                   v-model="filter"
                   type="search"
                   class="
@@ -26,16 +27,12 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word..."
-                  @input="filterWord($event)"
                 >
                 </b-form-input>
                 <div
                   class="form-control-feedback"
                   :disabled="!filter"
-                  @click="
-                    filter = null
-                    getNewWordData(filter, 1, 10, 'question', ASCENDING)
-                  "
+                  @click="filter = null"
                   style="cursor: pointer"
                 >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
@@ -70,6 +67,9 @@
             >, Sort Direction:
             <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
           </div>
+          <div>
+            Current page: <b>{{ currentPage }}</b>
+          </div>
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
@@ -81,6 +81,9 @@
               :per-page="0"
               :current-page="currentPage"
               :tbody-tr-class="selectedRowClass"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
+              no-local-sorting
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -91,14 +94,6 @@
               <template #cell(selected)="data">
                 <b-form-checkbox v-model="data.item.selected">
                 </b-form-checkbox>
-              </template>
-              <template #head(question)>
-                <div
-                  @click="getSortData()"
-                  class="d-flex justify-content-start"
-                >
-                  Question
-                </div>
               </template>
               <template #cell(question)="data">
                 <div
@@ -223,14 +218,14 @@ export default {
     return {
       sortBy: 'question',
       sortDesc: false,
-      flag: false,
+      filter: null,
+      // flag: false,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowTrainWordModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: null,
       perPage: 10,
       currentPage: 1,
       trainSelected: [],
@@ -292,55 +287,186 @@ export default {
       })
     },
     currentPage(value) {
-      this.getNewWordData(this.filter, value, 10, 'question', ASCENDING)
+      if (this.filter === null || this.filter === '') {
+        if (this.sortDesc === false) {
+          this.perPage = 10
+          this.getNewWordData(
+            this.filter,
+            value,
+            this.perPage,
+            this.sortBy,
+            ASCENDING
+          )
+        } else {
+          this.perPage = 10
+          this.getNewWordData(
+            this.filter,
+            value,
+            this.perPage,
+            this.sortBy,
+            DESCENDING
+          )
+        }
+      }
     },
-    // sortBy(value) {
-    //   console.log(this.sortBy)
-    //   if (this.sortDesc === false) {
-    //     this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
-    //   } else {
-    //     this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
-    //   }
-    // },
+    filter(value) {
+      if (value !== null || value !== '') {
+        this.currentPage = 1
+        this.perPage = null
+        setTimeout(() => {
+          if (this.sortDesc === false) {
+            this.getNewWordData(
+              value,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              ASCENDING
+            )
+          } else {
+            this.getNewWordData(
+              value,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              DESCENDING
+            )
+          }
+        }, 250)
+      }
+      if (value === null || value === '') {
+        this.currentPage = 1
+        this.perPage = 10
+        if (this.sortDesc === false) {
+          this.getNewWordData(
+            value,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            ASCENDING
+          )
+        } else {
+          this.getNewWordData(
+            value,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            DESCENDING
+          )
+        }
+      }
+    },
+    sortBy(value) {
+      if (value !== '' || value !== null) {
+        if (this.filter !== null || this.filter !== '') {
+          this.currentPage = 1
+          this.perPage = null
+          if (this.sortDesc === false) {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              value,
+              ASCENDING
+            )
+          } else {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              value,
+              DESCENDING
+            )
+          }
+        } else if (this.filter === null || this.filter === '') {
+          this.currentPage = 1
+          this.perPage = 10
+          if (this.sortDesc === false) {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              value,
+              ASCENDING
+            )
+          } else {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              value,
+              DESCENDING
+            )
+          }
+        }
+      } else {
+        this.sortBy = 'question'
+        if (this.filter !== null || this.filter !== '') {
+          this.currentPage = 1
+          this.perPage = null
+          if (this.sortDesc === false) {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              ASCENDING
+            )
+          } else {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              DESCENDING
+            )
+          }
+        } else if (this.filter === null || this.filter === '') {
+          this.currentPage = 1
+          this.perPage = 10
+          if (this.sortDesc === false) {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              ASCENDING
+            )
+          } else {
+            this.getNewWordData(
+              this.filter,
+              this.currentPage,
+              this.perPage,
+              this.sortBy,
+              DESCENDING
+            )
+          }
+        }
+      }
+    },
   },
   async mounted() {
-    if (this.flag === false) {
-      await this.getNewWordData(this.filter, 1, 10, this.sortBy, ASCENDING)
-    } else {
-      await this.getNewWordData(this.filter, 1, 10, this.sortBy, DESCENDING)
-    }
+    await this.getNewWordData(
+      this.filter,
+      this.currentPage,
+      this.perPage,
+      this.sortBy,
+      ASCENDING
+    )
     this.isLoading = true
   },
   computed: {
     rows() {
       return this.totalNewWord
     },
-  },
-  methods: {
-    getSortData() {
-      console.log('before', this.flag)
-      this.flag = !this.flag
-      console.log('after', this.flag)
-
-      if (this.flag === false) {
-        this.getNewWordData(this.filter, 1, 10, this.sortBy, ASCENDING)
+    sortData() {
+      if (this.sortDesc === false) {
+        return ASCENDING
       } else {
-        this.getNewWordData(this.filter, 1, 10, this.sortBy, DESCENDING)
+        return DESCENDING
       }
     },
-    filterWord(e) {
-      setTimeout(() => {
-        if (this.flag === false) {
-          this.perPage = null
-          this.getNewWordData(e, null, null, null, ASCENDING)
-          this.sortBy = null
-        } else {
-          this.perPage = null
-          this.getNewWordData(e, null, null, null, DESCENDING)
-          this.sortBy = null
-        }
-      }, 250)
-    },
+  },
+  methods: {
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },
