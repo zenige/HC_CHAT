@@ -272,20 +272,20 @@ async def testModelRoute():
 
 @router.post('/addlogic')
 async def testna( request: Request):
-    data = await request.json()
-    print(data)
-    # data = [{"group": "group0", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "ANY", "tired": "ANY", "close": "false", "Travel": "false"}, 
-    #         {"group": "group1", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "false", "tired": "ANY", "close": "true", "Travel": "true"}, {
-    #         "group": "group1p2", "AGE": "ANY", 'disease': "ANY", "cough": "false", "Fever": "true", "tired": "false", "close": "true", "Travel": "true"}, {
-    #         "group": "group2", "AGE": 4, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]}, {
-    #         "group": "group3", "AGE": 5, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
-    # },{
-    #         "group": "group3", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
-    # },
-    # {
-    #          "group": "group4", "AGE": "ANY", 'disease': "ANY", "Fever": "true", "close": "ANY", "Travel": "true","cough":"true","tired":"true"
-    # }
-    # ]
+    # data = await request.json()
+
+    data = [{"group": "group0", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "ANY", "tired": "ANY", "close": "false", "Travel": "false"}, 
+            {"group": "group1", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "false", "tired": "ANY", "close": "true", "Travel": "true"}, {
+            "group": "group1p2", "AGE": "ANY", 'disease': "ANY", "cough": "false", "Fever": "true", "tired": "false", "close": "true", "Travel": "true"}, {
+            "group": "group2", "AGE": 4, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]}, {
+            "group": "group3", "AGE": 5, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
+    },{
+            "group": "group3", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
+    },
+    {
+             "group": "group4", "AGE": "ANY", 'disease': "ANY", "Fever": "true", "close": "ANY", "Travel": "true","cough":"true","tired":"true"
+    }
+    ]
     for i in data :
         print(i)
         group = str(i)

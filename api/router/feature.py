@@ -48,7 +48,7 @@ async def getUsers(body:updateFeature):
     docs.update({u'Name': body['Name']})
     # db.collection(u'feature').document(body['Name']).set(body)
 
-    new_key = body['name']
+    new_key = body['Name']
     old_key = body['old_Name']
     docs = db.collection("logics").stream()
     # users = []
@@ -72,6 +72,12 @@ async def getUsers(body:updateFeature):
 
 
         features.append(group)
+    for feature in features:
+        featureStr = str(feature)
+        print(featureStr)
+        print(feature['group'])
+        # db.collection(u'logics').document(feature['group']).delete()
+        db.collection(u'logics').document(feature['group']).set({"data":featureStr})
     return "update done"
 
 @router.delete("/{id}/{featName}")
