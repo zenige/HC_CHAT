@@ -5,3 +5,7 @@ class Feature(BaseModel):
     Name: str
 
 
+class updateFeature(BaseModel):
+    id: Optional[str] = None
+    Name: str
+    old_Name : str
