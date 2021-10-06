@@ -36,6 +36,7 @@
                     filter = null
                     getNewWordData(filter, 1, 10, 'question', ASCENDING)
                   "
+                  style="cursor: pointer"
                 >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
@@ -80,8 +81,6 @@
               :per-page="0"
               :current-page="currentPage"
               :tbody-tr-class="selectedRowClass"
-              :sort-by.sync="sortBy"
-              :sort-desc.sync="sortDesc"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -92,6 +91,14 @@
               <template #cell(selected)="data">
                 <b-form-checkbox v-model="data.item.selected">
                 </b-form-checkbox>
+              </template>
+              <template #head(question)>
+                <div
+                  @click="getSortData()"
+                  class="d-flex justify-content-start"
+                >
+                  Question
+                </div>
               </template>
               <template #cell(question)="data">
                 <div
@@ -214,8 +221,9 @@ export default {
   props: {},
   data() {
     return {
-      sortBy: null,
+      sortBy: 'question',
       sortDesc: false,
+      flag: false,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowTrainWordModal: false,
@@ -286,18 +294,21 @@ export default {
     currentPage(value) {
       this.getNewWordData(this.filter, value, 10, 'question', ASCENDING)
     },
-    sortBy(value) {
-      setTimeout(() => {
-        if (this.sortDesc === false) {
-          this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
-        } else {
-          this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
-        }
-      }, 250)
-    },
+    // sortBy(value) {
+    //   console.log(this.sortBy)
+    //   if (this.sortDesc === false) {
+    //     this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
+    //   } else {
+    //     this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
+    //   }
+    // },
   },
   async mounted() {
-    await this.getNewWordData(this.filter, 1, 10, 'question', ASCENDING)
+    if (this.flag === false) {
+      await this.getNewWordData(this.filter, 1, 10, this.sortBy, ASCENDING)
+    } else {
+      await this.getNewWordData(this.filter, 1, 10, this.sortBy, DESCENDING)
+    }
     this.isLoading = true
   },
   computed: {
@@ -306,13 +317,26 @@ export default {
     },
   },
   methods: {
+    getSortData() {
+      console.log('before', this.flag)
+      this.flag = !this.flag
+      console.log('after', this.flag)
+
+      if (this.flag === false) {
+        this.getNewWordData(this.filter, 1, 10, this.sortBy, ASCENDING)
+      } else {
+        this.getNewWordData(this.filter, 1, 10, this.sortBy, DESCENDING)
+      }
+    },
     filterWord(e) {
       setTimeout(() => {
-        if (this.sortDesc === false) {
-          this.getNewWordData(e, 1, 10, this.sortBy, ASCENDING)
+        if (this.flag === false) {
+          this.perPage = null
+          this.getNewWordData(e, null, null, null, ASCENDING)
           this.sortBy = null
         } else {
-          this.getNewWordData(e, 1, 10, this.sortBy, DESCENDING)
+          this.perPage = null
+          this.getNewWordData(e, null, null, null, DESCENDING)
           this.sortBy = null
         }
       }, 250)

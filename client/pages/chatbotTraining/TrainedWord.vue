@@ -36,6 +36,7 @@
                     filter = null
                     getTrainedWordData(filter, 1, 10, 'question', ASCENDING)
                   "
+                  style="cursor: pointer"
                 >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>

@@ -240,12 +240,20 @@ export default {
       )
       if (
         this.deleteSelected.length < this.featureData.length &&
-        this.featureData.length >= 1
+        this.featureData.length >= 1 &&
+        this.deleteSelected.length >= 1
       ) {
         this.isShowDeleteFeatureModal = true
       } else if (this.deleteSelected.length === this.featureData.length) {
         ;(this.isShowDeleteFeatureModal = false),
           this.$bvToast.toast("You can't delete all feature", {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+      } else if (this.deleteSelected.length < 1) {
+        ;(this.isShowDeleteFeatureModal = false),
+          this.$bvToast.toast('Please select any feature', {
             variant: 'danger',
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
@@ -267,7 +275,7 @@ export default {
         (item) => item.selected === true
       )
       for (let i = 0; i < this.deleteSelected.length; i++) {
-        await this.$axios.delete('feature' + this.deleteSelected[i].id)
+        await this.$axios.delete('feature/' + this.deleteSelected[i].id)
       }
       await this.getFeatureData()
       if (this.featureData.length === 0) {
