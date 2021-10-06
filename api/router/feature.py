@@ -48,7 +48,7 @@ async def getUsers(body:Feature):
 
     # db.collection(u'feature').document(body['Name']).set(body)
     feat = docs.to_dict()
-    print(feat)
+
     new_key = body['Name']
     old_key = feat['Name']
     docs = db.collection(u'feature').document(body['id'])
