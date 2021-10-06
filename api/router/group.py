@@ -10,57 +10,15 @@ from firebase_admin import firestore
 router = APIRouter()
 
 
-@router.get("/trained")
-async def getTrainedWord(pages: Optional[int] = None,limit: Optional[int] = 0,group: Optional[str] = "all"):
+@router.get("/")
+async def getTrainedWord():
     count = 0
-    docs_ref = db.collection(u'users')
-    docs = docs_ref.where("group", "!=", False).stream()
-    users =[]
-    for doc in docs:
-        user = doc.to_dict()
-        users.append(user)
-    if pages == None:
-        res = []
-        for user in users :
-            if user['group'] == group:
-                res.append(user)
-        return res
-    elif pages != None:
-        first_query = docs_ref.where("group", "!=", False).where("group", "==", group).order_by("group", direction=firestore.Query.DESCENDING).limit(limit)
-       
-        docs = first_query.stream()
-        if pages == 1 :
-            groupList,count = streamToList(docs)
-            groupList.append({"total" : count})
-            return groupList
-        elif pages > 1 :
-            for page in range(pages-1):
-
-                last_doc = list(docs)[-1]
-
-                last_pop = last_doc.to_dict()['userId']
-
-                next_query = (
-                    docs_ref
-                    .order_by("userId", direction=firestore.Query.DESCENDING)
-                    .start_after({
-                        "userId": last_pop
-                    })
-                    .limit(limit)
-                )
-                docs = next_query.stream()
-                # results = docs.get()
-                # print(results)
-            query,count = streamToList(docs)
-            query.append({"total" : count})
-            return query
-        # userGroup = []
-        # for doc in docs:
-        #     fakeDict = doc.to_dict()
-        #     userGroup.append(fakeDict)
-        # return userGroup
-
-    return users
+    docs_ref = db.collection(u'logics').stream()
+    groups =[]
+    for doc in docs_ref:
+        group = doc.to_dict()
+        groups.append(group)
+    return groups
 
 def streamToList(docs):
     userGroup = []
