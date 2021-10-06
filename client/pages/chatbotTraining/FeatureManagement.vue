@@ -275,7 +275,12 @@ export default {
         (item) => item.selected === true
       )
       for (let i = 0; i < this.deleteSelected.length; i++) {
-        await this.$axios.delete('feature/' + this.deleteSelected[i].id)
+        await this.$axios.delete(
+          'feature/' +
+            this.deleteSelected[i].id +
+            '/' +
+            this.deleteSelected[i].feature
+        )
       }
       await this.getFeatureData()
       if (this.featureData.length === 0) {
