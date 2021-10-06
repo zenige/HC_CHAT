@@ -8,7 +8,7 @@ from typing import Optional
 import datetime
 from typing import Any, Dict, AnyStr, List, Union
 import ast
-from model.Feature import Feature
+from model.Feature import Feature,updateFeature
 router = APIRouter()
 
 
@@ -37,19 +37,52 @@ async def getUsers(body:Feature):
         if feat['Name'] == body['Name']:
             return "Duplicate Name"
     db.collection(u'feature').document().set({"Name":body['Name']})
+
+    
     return "update done"
 
 @router.patch("/")
-async def getUsers(body:Feature):
+async def getUsers(body:updateFeature):
     body = dict(body)
     docs = db.collection(u'feature').document(body['id'])
     docs.update({u'Name': body['Name']})
     # db.collection(u'feature').document(body['Name']).set(body)
+
+    new_key = body['Name']
+    old_key = body['old_Name']
+    docs = db.collection("logics").stream()
+    # users = []
+    features = []
+    for doc in docs:
+        data =  doc.to_dict()
+        dataStr = data['data']
+        group = ast.literal_eval(dataStr)
+
+        flag = True
+        if old_key in group.keys():
+            group[new_key] = group.pop(old_key)
+        #     del group[featName]
+            flag = False
+        if flag:
+            if "Relation" in group.keys():
+                for i in  group['Relation'][0]:
+                    if i == old_key:
+                        group['Relation'][0].remove(i)
+                        group['Relation'][0].append(new_key)
+
+
+        features.append(group)
+    for feature in features:
+        featureStr = str(feature)
+        print(featureStr)
+        print(feature['group'])
+        # db.collection(u'logics').document(feature['group']).delete()
+        db.collection(u'logics').document(feature['group']).set({"data":featureStr})
     return "update done"
 
 @router.delete("/{id}/{featName}")
 async def getUsers(id:str,featName:str):
-    db.collection(u'feature').document(id).delete()
+    # db.collection(u'feature').document(id).delete()
     docs = db.collection("logics").stream()
     # users = []
     features = []
@@ -65,6 +98,12 @@ async def getUsers(id:str,featName:str):
             if "Relation" in group.keys():
                 del group["Relation"]
         features.append(group)
+    for feature in features:
+        featureStr = str(feature)
+        print(featureStr)
+        print(feature['group'])
+        # db.collection(u'logics').document(feature['group']).delete()
+        db.collection(u'logics').document(feature['group']).set({"data":featureStr})
     # db.collection(u'feature').document(body['Name']).set(body)
     return "delete done"
 
