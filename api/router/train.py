@@ -33,8 +33,6 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
         # query.append({"total" : count})
         res = []
         for i in query:
-
-
                 i['count'] = str(i['count'])
                 i['answer'] = str( i['answer'])
                 i['question'] = str( i['question'])
