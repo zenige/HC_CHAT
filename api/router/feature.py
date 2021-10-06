@@ -42,14 +42,17 @@ async def getUsers(body:Feature):
     return "update done"
 
 @router.patch("/")
-async def getUsers(body:updateFeature):
+async def getUsers(body:Feature):
     body = dict(body)
+    docs = db.collection(u'feature').document(body['id']).get()
+
+    # db.collection(u'feature').document(body['Name']).set(body)
+    feat = docs.to_dict()
+    print(feat)
+    new_key = body['Name']
+    old_key = feat['Name']
     docs = db.collection(u'feature').document(body['id'])
     docs.update({u'Name': body['Name']})
-    # db.collection(u'feature').document(body['Name']).set(body)
-
-    new_key = body['Name']
-    old_key = body['old_Name']
     docs = db.collection("logics").stream()
     # users = []
     features = []
@@ -82,7 +85,7 @@ async def getUsers(body:updateFeature):
 
 @router.delete("/{id}/{featName}")
 async def getUsers(id:str,featName:str):
-    # db.collection(u'feature').document(id).delete()
+    db.collection(u'feature').document(id).delete()
     docs = db.collection("logics").stream()
     # users = []
     features = []
