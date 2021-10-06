@@ -32,11 +32,17 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
         query = streamToDict(docs)
         # query.append({"total" : count})
         res = []
-
         for i in query:
-            if filter in i[order_by] or filter in i['answer']:
-                count = count+1
-                res.append(i)
+
+
+                i['count'] = str(i['count'])
+                i['answer'] = str( i['answer'])
+                i['question'] = str( i['question'])
+                i['confident'] = str( i['confident'])
+
+                if (filter in i['question']) or (filter in i['answer']) or(filter in i['count'])or(filter in i['confident']) :
+                    count = count+1
+                    res.append(i)
         # if pages == 1 :
         query = searchPage1(docs)
 
@@ -155,7 +161,7 @@ async def deleteTrainWordById(id: str):
 
 
 @router.get("/training")
-async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question",sort_by: Optional[str] = "DESCENDING"):
+async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = None,sort_by: Optional[str] = "DESCENDING"):
 
     count = 0
     docs_ref = db.collection(u'training')
@@ -172,15 +178,17 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
         count = 0
         docs = docs_ref.order_by(order_by, direction=sort_by).stream()
         query = streamToDict(docs)
+        # if order_by == None:
 
         for i in query:
 
-            if order_by == 'count':
-                i['count'] = str(i['count'])
-            i['answer'] = str( i['answer'])
- 
-            if (filter in i[order_by]) or (filter in i['answer']):
 
+            i['count'] = str(i['count'])
+            i['answer'] = str( i['answer'])
+            i['question'] = str( i['question'])
+            i['confident'] = str( i['confident'])
+
+            if (filter in i['question']) or (filter in i['answer']) or(filter in i['count'])or(filter in i['confident']) :
                 count = count+1
                 res.append(i)
         query = searchPage1(docs)
