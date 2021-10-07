@@ -33,12 +33,12 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
         # query.append({"total" : count})
         res = []
         for i in query:
-                i['count'] = str(i['count'])
+
                 i['answer'] = str( i['answer'])
                 i['question'] = str( i['question'])
-                i['confident'] = str( i['confident'])
 
-                if (filter in i['question']) or (filter in i['answer']) or(filter in i['count'])or(filter in i['confident']) :
+
+                if (filter in i['question']) or (filter in i['answer']) :
                     count = count+1
                     res.append(i)
         # if pages == 1 :
