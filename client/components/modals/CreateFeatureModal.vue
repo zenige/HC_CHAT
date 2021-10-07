@@ -115,7 +115,7 @@ export default {
         if (english.test(this.feature)) {
           await this.$axios.post('feature', body)
           this.$emit('getFeatureData')
-          this.feature = ''
+          this.feature = null
           this.onCancel()
         } else {
           this.$bvToast.toast('Please fill in English only.', {
@@ -123,6 +123,7 @@ export default {
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
           })
+          this.feature = null
         }
       } else {
         this.$bvToast.toast('Please fill feature name.', {

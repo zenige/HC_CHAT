@@ -16,7 +16,6 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
-                  id="filter-input"
                   v-model="filter"
                   type="search"
                   class="
@@ -70,6 +69,9 @@
           <div>
             Current page: <b>{{ currentPage }}</b>
           </div>
+          <div>
+            Data: <b>{{ newWordData.length }}</b>
+          </div>
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
@@ -83,7 +85,6 @@
               :tbody-tr-class="selectedRowClass"
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
-              no-local-sorting
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -219,7 +220,6 @@ export default {
       sortBy: 'question',
       sortDesc: false,
       filter: null,
-      // flag: false,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowTrainWordModal: false,
@@ -287,72 +287,80 @@ export default {
       })
     },
     currentPage(value) {
-      if (this.filter === null || this.filter === '') {
-        if (this.sortDesc === false) {
-          this.perPage = 10
-          this.getNewWordData(
-            this.filter,
-            value,
-            this.perPage,
-            this.sortBy,
-            ASCENDING
-          )
-        } else {
-          this.perPage = 10
-          this.getNewWordData(
-            this.filter,
-            value,
-            this.perPage,
-            this.sortBy,
-            DESCENDING
-          )
-        }
+      if (!this.filter) {
+        this.perPage = 10
+        this.getNewWordData(
+          this.filter,
+          value,
+          this.perPage,
+          this.sortBy,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
       }
     },
     filter(value) {
-      if (value !== null || value !== '') {
+      if (value) {
         this.currentPage = 1
-        this.perPage = null
+        this.perPage = this.newWordData.length
         setTimeout(() => {
-          if (this.sortDesc === false) {
-            this.getNewWordData(
-              value,
-              this.currentPage,
-              this.perPage,
-              this.sortBy,
-              ASCENDING
-            )
-          } else {
-            this.getNewWordData(
-              value,
-              this.currentPage,
-              this.perPage,
-              this.sortBy,
-              DESCENDING
-            )
-          }
+          this.getNewWordData(
+            value,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            this.sortDesc ? DESCENDING : ASCENDING
+          )
         }, 250)
-      }
-      if (value === null || value === '') {
+      } else if (!value) {
         this.currentPage = 1
         this.perPage = 10
-        if (this.sortDesc === false) {
-          this.getNewWordData(
-            value,
-            this.currentPage,
-            this.perPage,
-            this.sortBy,
-            ASCENDING
-          )
-        } else {
-          this.getNewWordData(
-            value,
-            this.currentPage,
-            this.perPage,
-            this.sortBy,
-            DESCENDING
-          )
-        }
+        this.getNewWordData(
+          value,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+      }
+    },
+    sortBy(value) {
+      console.log(value)
+      if (value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          value,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+      } else if (!value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          'question',
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+        this.sortBy = 'question'
+      }
+    },
+    sortDesc(value) {
+      if (!value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          ASCENDING
+        )
+      } else if (value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          DESCENDING
+        )
       }
     },
   },

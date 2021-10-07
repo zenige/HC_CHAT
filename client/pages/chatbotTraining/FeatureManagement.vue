@@ -303,9 +303,9 @@ export default {
       data.item.editable = false
     },
     async saveFeature(data) {
-      data.item.feature = this.changedFeatureName
-      if (english.test(data.item.feature)) {
-        await this.$axios.patch('feature', {
+      if (english.test(this.changedFeatureName)) {
+        data.item.feature = this.changedFeatureName
+        this.$axios.patch('feature', {
           id: data.item.id,
           Name: data.item.feature,
         })
