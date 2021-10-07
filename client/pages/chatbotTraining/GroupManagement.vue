@@ -25,7 +25,7 @@
                     h2dot5
                   "
                   style="margin-right: 1rem"
-                  placeholder="Search for a word...."
+                  placeholder="Search for a group...."
                 />
                 <div class="form-control-feedback" @click="filter = ''">
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
@@ -195,9 +195,10 @@ export default {
       filter: '',
       perPage: 10,
       currentPage: 1,
-      deleteSelected: [],
+      deleteSelected: {},
       totalGroup: 0,
-      changedGroupData: '',
+      newGroupName: '',
+      oldGroupName: '',
       fields: [
         {
           key: 'group',
@@ -242,20 +243,18 @@ export default {
   computed: {},
   methods: {
     openDeleteGroupModal(data) {
-      this.isShowDeleteWordModal = true
+      this.isShowDeleteGroupModal = true
+      this.deleteSelected = data
     },
     async onDeleteGroup() {
-      this.deleteSelected = this.newWordData.filter(
-        (item) => item.selected === true
+      await this.$axios.delete('group/' + this.deleteSelected.item.id)
+      this.groupData = this.groupData.filter(
+        (e) => e.id != this.deleteSelected.item.id
       )
-      await this.$axios.delete('train/training/delete/many', {
-        data: this.deleteSelected,
-      })
-      await this.getNewWordData(this.currentPage, 10, 'question')
-      this.selectAll = false
+      this.deleteSelected = {}
     },
-    closeDeleteWordModal() {
-      this.isShowDeleteWordModal = false
+    closeDeleteGroupModal() {
+      this.isShowDeleteGroupModal = false
     },
     trainModel() {
       console.log('train model')
@@ -298,9 +297,10 @@ export default {
     async saveGroup(data) {
       data.item.group = this.changedGroupData
       data.item.editable = false
-      // await this.$axios.patch(`/train/trained/` + data.item.id, {
-      //   feature: data.item.group,
-      // })
+      await this.$axios.patch('group', {
+        id: data.item.id,
+        Name: data.item.group,
+      })
     },
     async getGroupData() {
       let { data } = await this.$axios.get('group')
@@ -309,7 +309,7 @@ export default {
         let group = JSON.parse(item.data)
         return {
           group: group.group,
-          // selected: false,
+          id: item.id,
           editable: false,
         }
       })

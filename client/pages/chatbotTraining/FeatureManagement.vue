@@ -26,6 +26,7 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word...."
+                  @keydown.prevent.space
                 ></b-form-input>
                 <div
                   class="form-control-feedback"
@@ -97,7 +98,11 @@
                   v-if="data.item.editable === true"
                   style="max-width: 32.5%"
                 >
-                  <b-form-input autofocus v-model="changedFeatureData" />
+                  <b-form-input
+                    autofocus
+                    v-model="changedFeatureName"
+                    @keydown.prevent.space
+                  />
                 </div>
               </template>
               <template #head(action)>
@@ -164,6 +169,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9]*$/
+
 export default {
   components: {
     DeleteFeatureModal: () =>
@@ -188,7 +195,8 @@ export default {
       currentPage: 1,
       deleteSelected: [],
       totalFeature: null,
-      changedFeatureData: '',
+      changedFeatureName: '',
+      oldFeatureName: '',
       fields: [
         {
           key: 'selected',
@@ -288,19 +296,27 @@ export default {
       }
     },
     editFeature(data) {
-      this.changedFeatureData = data.item.feature
+      this.changedFeatureName = data.item.feature
       data.item.editable = true
     },
     cancleEditFeature(data) {
       data.item.editable = false
     },
     async saveFeature(data) {
-      data.item.feature = this.changedFeatureData
-      data.item.editable = false
-      await this.$axios.patch('feature', {
-        id: data.item.id,
-        Name: data.item.feature,
-      })
+      data.item.feature = this.changedFeatureName
+      if (english.test(data.item.feature)) {
+        await this.$axios.patch('feature', {
+          id: data.item.id,
+          Name: data.item.feature,
+        })
+        data.item.editable = false
+      } else {
+        this.$bvToast.toast('Please fill in English only.', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
     },
     async getFeatureData() {
       let { data } = await this.$axios.get('feature')
