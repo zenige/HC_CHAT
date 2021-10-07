@@ -98,3 +98,12 @@ async def getUsers(id:str):
     #     # db.collection(u'logics').document(feature['group']).delete()
     #     db.collection(u'logics').document(feature['group']).set({"data":featureStr})
     return "update done"
+
+
+@router.post("/")
+async def createGroupName(body:Feature):
+    body = dict(body)
+    docs = db.collection(u'logics').document(body['Name']).set({"Name":body['Name']})
+
+
+    return "Create done"
