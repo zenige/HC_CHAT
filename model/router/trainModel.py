@@ -280,7 +280,7 @@ async def testna( request: Request):
             "group": "group2", "AGE": 4, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]}, {
             "group": "group3", "AGE": 5, 'disease': "false", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
     },{
-            "group": "group3", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
+            "group": "group3p2", "AGE": "ANY", 'disease': "true", "Fever": "true", "close": "true", "Travel": "true", "Relation": [["cough", "tired"]]
     },
     {
              "group": "group4", "AGE": "ANY", 'disease': "ANY", "Fever": "true", "close": "ANY", "Travel": "true","cough":"true","tired":"true"
