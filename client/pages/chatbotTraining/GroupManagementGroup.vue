@@ -365,14 +365,14 @@ export default {
         return group
       })
     },
-    // async getAllLineLogicData() {
-    //   let { data } = await this.$axios.get('logic/linelogic')
-    //   this.allLineLogicData = data
-    //   for (let [i, feature] of this.allFeatureData.entries()) {
-    //     console.log(this.allGroupData[i])
-    //     console.log(feature)
-    //   }
-    // },
+    async getAllLineLogicData() {
+      let { data } = await this.$axios.get('logic/linelogic')
+      this.allLineLogicData = data
+      // for (let [i, feature] of this.allFeatureData.entries()) {
+      //   console.log(this.allGroupData[i])
+      //   console.log(feature)
+      // }
+    },
 
     mergeData() {
       // console.log(this.allFeatureData)
