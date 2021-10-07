@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Loader v-if="isLoading" />
+    <Loader v-if="!isLoading" />
     <div v-else class="hc_navbar">
       <div class="container fitscreen" style="padding: 2rem 0">
         <div class="row d-flex align-items-center">
@@ -25,7 +25,7 @@
                     h2dot5
                   "
                   style="margin-right: 1rem"
-                  placeholder="Search for a word...."
+                  placeholder="Search for a group...."
                 />
                 <div class="form-control-feedback" @click="filter = ''">
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
@@ -185,7 +185,7 @@ export default {
   props: {},
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
       isShowCreateGroupModal: false,
       isShowTrainModelModal: false,
       isShowDeleteGroupModal: false,
@@ -195,9 +195,10 @@ export default {
       filter: '',
       perPage: 10,
       currentPage: 1,
-      deleteSelected: [],
+      deleteSelected: {},
       totalGroup: 0,
-      changedGroupData: '',
+      newGroupName: '',
+      oldGroupName: '',
       fields: [
         {
           key: 'group',
@@ -221,18 +222,7 @@ export default {
           tdClass: 'grouptdAction-Class',
         },
       ],
-      groupData: [
-        {
-          group: 'Group 1',
-          status: 'Trained',
-          editable: false,
-        },
-        {
-          group: 'Group 2',
-          status: 'Not trained',
-          editable: false,
-        },
-      ],
+      groupData: [],
     }
   },
   watch: {
@@ -247,26 +237,24 @@ export default {
     },
   },
   async mounted() {
-    // await this.getGroupData(1, 10, 'question')
-    this.isLoading = false
+    await this.getGroupData()
+    this.isLoading = true
   },
   computed: {},
   methods: {
     openDeleteGroupModal(data) {
-      this.isShowDeleteWordModal = true
+      this.isShowDeleteGroupModal = true
+      this.deleteSelected = data
     },
     async onDeleteGroup() {
-      this.deleteSelected = this.newWordData.filter(
-        (item) => item.selected === true
+      await this.$axios.delete('group/' + this.deleteSelected.item.id)
+      this.groupData = this.groupData.filter(
+        (e) => e.id != this.deleteSelected.item.id
       )
-      await this.$axios.delete('train/training/delete/many', {
-        data: this.deleteSelected,
-      })
-      await this.getNewWordData(this.currentPage, 10, 'question')
-      this.selectAll = false
+      this.deleteSelected = {}
     },
-    closeDeleteWordModal() {
-      this.isShowDeleteWordModal = false
+    closeDeleteGroupModal() {
+      this.isShowDeleteGroupModal = false
     },
     trainModel() {
       console.log('train model')
@@ -309,50 +297,27 @@ export default {
     async saveGroup(data) {
       data.item.group = this.changedGroupData
       data.item.editable = false
-      // await this.$axios.patch(`/train/trained/` + data.item.id, {
-      //   feature: data.item.group,
-      // })
+      await this.$axios.patch('group', {
+        id: data.item.id,
+        Name: data.item.group,
+      })
     },
-    async getGroupData(page, limit, orderBy) {
-      let { data } = await this.$axios.get(
-        `train/trained?pages=${page}&limit=${limit}&order_by=${orderBy}`
-      )
+    async getGroupData() {
+      let { data } = await this.$axios.get('group')
       this.groupData = data.map((item) => {
-        // collect total trained word data
-        if (item.total) {
-          return (
-            {
-              id: undefined,
-            },
-            (this.totalGroup = item.total)
-          )
-          // it will return undefined item
-        } else {
-          return {
-            answer: item.answer,
-            time: item.time,
-            question: item.question,
-            id: item.id,
-            selected: false,
-            editable: false,
-          }
+        item.data = item.data.replaceAll("'", '"')
+        let group = JSON.parse(item.data)
+        return {
+          group: group.group,
+          id: item.id,
+          editable: false,
         }
       })
-      // remove undefined item
-      this.groupData = this.groupData.filter(function (element) {
-        return element.id !== undefined
-      })
+      this.totalGroup = this.groupData.lenght
       if (this.groupData.length === 0) {
         this.totalGroup = 0
       }
-      // console.log(
-      //   'page: ',
-      //   page,
-      //   'data: ',
-      //   this.groupData.length,
-      //   'total: ',
-      //   this.totalGroup
-      // )
+      console.log(this.groupData)
     },
   },
 }

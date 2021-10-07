@@ -26,16 +26,13 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word..."
-                  @input="filterWord($event)"
                 >
                 </b-form-input>
                 <div
                   class="form-control-feedback"
                   :disabled="!filter"
-                  @click="
-                    filter = null
-                    getNewWordData(filter, 1, 10, 'question', ASCENDING)
-                  "
+                  @click="filter = null"
+                  style="cursor: pointer"
                 >
                   <i class="icon-cross3 txt_grey" style="height: 22px"></i>
                 </div>
@@ -68,6 +65,12 @@
             Sorting By: <b>{{ sortBy }}</b
             >, Sort Direction:
             <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
+          </div>
+          <div>
+            Current page: <b>{{ currentPage }}</b>
+          </div>
+          <div>
+            Data: <b>{{ newWordData.length }}</b>
           </div>
         </div>
         <div class="col-md-12">
@@ -214,15 +217,15 @@ export default {
   props: {},
   data() {
     return {
-      sortBy: null,
+      sortBy: 'question',
       sortDesc: false,
+      filter: null,
       isLoading: false,
       isShowDeleteWordModal: false,
       isShowTrainWordModal: false,
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: null,
       perPage: 10,
       currentPage: 1,
       trainSelected: [],
@@ -284,39 +287,106 @@ export default {
       })
     },
     currentPage(value) {
-      this.getNewWordData(this.filter, value, 10, 'question', ASCENDING)
+      if (!this.filter) {
+        this.perPage = 10
+        this.getNewWordData(
+          this.filter,
+          value,
+          this.perPage,
+          this.sortBy,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+      }
+    },
+    filter(value) {
+      if (value) {
+        this.currentPage = 1
+        this.perPage = this.newWordData.length
+        setTimeout(() => {
+          this.getNewWordData(
+            value,
+            this.currentPage,
+            this.perPage,
+            this.sortBy,
+            this.sortDesc ? DESCENDING : ASCENDING
+          )
+        }, 250)
+      } else if (!value) {
+        this.currentPage = 1
+        this.perPage = 10
+        this.getNewWordData(
+          value,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+      }
     },
     sortBy(value) {
-      setTimeout(() => {
-        if (this.sortDesc === false) {
-          this.getNewWordData(this.filter, 1, 10, value, ASCENDING)
-        } else {
-          this.getNewWordData(this.filter, 1, 10, value, DESCENDING)
-        }
-      }, 250)
+      console.log(value)
+      if (value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          value,
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+      } else if (!value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          'question',
+          this.sortDesc ? DESCENDING : ASCENDING
+        )
+        this.sortBy = 'question'
+      }
+    },
+    sortDesc(value) {
+      if (!value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          ASCENDING
+        )
+      } else if (value) {
+        this.getNewWordData(
+          this.filter,
+          this.currentPage,
+          this.perPage,
+          this.sortBy,
+          DESCENDING
+        )
+      }
     },
   },
   async mounted() {
-    await this.getNewWordData(this.filter, 1, 10, 'question', ASCENDING)
+    await this.getNewWordData(
+      this.filter,
+      this.currentPage,
+      this.perPage,
+      this.sortBy,
+      ASCENDING
+    )
     this.isLoading = true
   },
   computed: {
     rows() {
       return this.totalNewWord
     },
+    sortData() {
+      if (this.sortDesc === false) {
+        return ASCENDING
+      } else {
+        return DESCENDING
+      }
+    },
   },
   methods: {
-    filterWord(e) {
-      setTimeout(() => {
-        if (this.sortDesc === false) {
-          this.getNewWordData(e, 1, 10, this.sortBy, ASCENDING)
-          this.sortBy = null
-        } else {
-          this.getNewWordData(e, 1, 10, this.sortBy, DESCENDING)
-          this.sortBy = null
-        }
-      }, 250)
-    },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },

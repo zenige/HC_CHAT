@@ -39,6 +39,7 @@
               v-model="feature"
               type="text"
               class="form-control border-gray border"
+              @keydown.prevent.space
             />
           </div>
           <div class="row d-flex justify-content-center">
@@ -62,6 +63,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9]*$/
+
 export default {
   name: 'AddNewWordModal',
   props: {
@@ -108,13 +111,22 @@ export default {
       const body = {
         Name: this.feature,
       }
-      if (this.feature !== '') {
-        await this.$axios.post('feature', body)
-        this.$emit('getFeatureData')
-        this.feature = ''
-        this.onCancel()
+      if (this.feature !== '' || this.feature !== null) {
+        if (english.test(this.feature)) {
+          await this.$axios.post('feature', body)
+          this.$emit('getFeatureData')
+          this.feature = null
+          this.onCancel()
+        } else {
+          this.$bvToast.toast('Please fill in English only.', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+          this.feature = null
+        }
       } else {
-        this.$bvToast.toast('Please fill feature name', {
+        this.$bvToast.toast('Please fill feature name.', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,

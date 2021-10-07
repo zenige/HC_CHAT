@@ -26,6 +26,7 @@
                   "
                   style="margin-right: 1rem"
                   placeholder="Search for a word...."
+                  @keydown.prevent.space
                 ></b-form-input>
                 <div
                   class="form-control-feedback"
@@ -97,7 +98,11 @@
                   v-if="data.item.editable === true"
                   style="max-width: 32.5%"
                 >
-                  <b-form-input autofocus v-model="changedFeatureData" />
+                  <b-form-input
+                    autofocus
+                    v-model="changedFeatureName"
+                    @keydown.prevent.space
+                  />
                 </div>
               </template>
               <template #head(action)>
@@ -164,6 +169,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9]*$/
+
 export default {
   components: {
     DeleteFeatureModal: () =>
@@ -188,7 +195,8 @@ export default {
       currentPage: 1,
       deleteSelected: [],
       totalFeature: null,
-      changedFeatureData: '',
+      changedFeatureName: '',
+      oldFeatureName: '',
       fields: [
         {
           key: 'selected',
@@ -240,12 +248,20 @@ export default {
       )
       if (
         this.deleteSelected.length < this.featureData.length &&
-        this.featureData.length >= 1
+        this.featureData.length >= 1 &&
+        this.deleteSelected.length >= 1
       ) {
         this.isShowDeleteFeatureModal = true
       } else if (this.deleteSelected.length === this.featureData.length) {
         ;(this.isShowDeleteFeatureModal = false),
           this.$bvToast.toast("You can't delete all feature", {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+      } else if (this.deleteSelected.length < 1) {
+        ;(this.isShowDeleteFeatureModal = false),
+          this.$bvToast.toast('Please select any feature', {
             variant: 'danger',
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
@@ -267,7 +283,12 @@ export default {
         (item) => item.selected === true
       )
       for (let i = 0; i < this.deleteSelected.length; i++) {
-        await this.$axios.delete('feature' + this.deleteSelected[i].id)
+        await this.$axios.delete(
+          'feature/' +
+            this.deleteSelected[i].id +
+            '/' +
+            this.deleteSelected[i].feature
+        )
       }
       await this.getFeatureData()
       if (this.featureData.length === 0) {
@@ -275,19 +296,27 @@ export default {
       }
     },
     editFeature(data) {
-      this.changedFeatureData = data.item.feature
+      this.changedFeatureName = data.item.feature
       data.item.editable = true
     },
     cancleEditFeature(data) {
       data.item.editable = false
     },
     async saveFeature(data) {
-      data.item.feature = this.changedFeatureData
-      data.item.editable = false
-      await this.$axios.patch('feature', {
-        id: data.item.id,
-        Name: data.item.feature,
-      })
+      if (english.test(this.changedFeatureName)) {
+        data.item.feature = this.changedFeatureName
+        this.$axios.patch('feature', {
+          id: data.item.id,
+          Name: data.item.feature,
+        })
+        data.item.editable = false
+      } else {
+        this.$bvToast.toast('Please fill in English only.', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
     },
     async getFeatureData() {
       let { data } = await this.$axios.get('feature')

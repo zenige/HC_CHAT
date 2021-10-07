@@ -1,5 +1,6 @@
 import routesConfig from './routes.config'
 import translation from './static/translation'
+const webpack = require('webpack')
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -128,5 +129,13 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+      }),
+    ],
+  },
 }
