@@ -99,7 +99,8 @@
                           <NuxtLink
                             :to="
                               localePath(
-                                '/chatbot-training/group-management/group/groupId'
+                                '/chatbot-training/group-management/group/' +
+                                  data.item.id
                               )
                             "
                             class="dropdown-item"

@@ -25,7 +25,7 @@
           <div class="col-md-12">
             <div class="row d-flex justify-content-between">
               <div class="col-12 col-md-8 col-lg-9">
-                <div class="txt_hc_bighead_18p">Group name</div>
+                <div class="txt_hc_bighead_18p">Group: {{ groupName }}</div>
               </div>
             </div>
           </div>
@@ -33,9 +33,14 @@
             <hr class="mt-1 mb-3" />
           </div>
         </div>
+        <div>Condition Selected: {{ conditionSelected }}</div>
         <div class="pt-1 pt-md-1">
           <!-- Feature card -->
-          <div class="pb-3 pt-1 card_vld_wrapper">
+          <div
+            v-for="(feature, index) in allFeatureData"
+            :key="feature.id"
+            class="pb-3 pt-1 card_vld_wrapper"
+          >
             <div class="task-item pb_me-4">
               <div class="card h-100 mb-0 position-relative">
                 <div class="card-body p_card">
@@ -49,14 +54,14 @@
                   >
                     <div class="container py-2 py-md-2">
                       <div class="row">
-                        <div class="col-12 col-md-12 pb_me-4 mb-2">
+                        <div class="col-12 col-md-6 pb_me-4 mb-2">
                           <div class="txt_vla_feature_title">
-                            1.) Feature:
-                            <span>มีไข้</span>
+                            {{ index + 1 }}.) Feature:
+                            <span>{{ feature.feature }}</span>
                           </div>
                         </div>
                         <div class="row col-12 col-md-12 px-4">
-                          <div class="col-12 col-md-12 pb_me-4">
+                          <div class="col-12 col-md-6 pb_me-4">
                             <div class="txt_vla_feature_content pb-1">
                               Question
                             </div>
@@ -77,15 +82,34 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
+                                v-model="conditionSelected"
+                                class="form-control border-gray border"
+                                style="curser: pointer"
+                              >
+                                <b-form-select-option
+                                  v-for="option in conditionOptions"
+                                  :key="option"
+                                  :value="option.label"
+                                  >{{ option.value }}</b-form-select-option
+                                >
+                              </b-form-select>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 pb_me-4">
+                            <div class="txt_vla_feature_content pb-1">
+                              More than or Less than
+                            </div>
+                            <div class="form-group mb-0 w-100">
+                              <b-form-select
                                 v-model="featureCondition"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
                               >
                                 <b-form-select-option value="a"
-                                  >มีไข้</b-form-select-option
+                                  >More than</b-form-select-option
                                 >
                                 <b-form-select-option value="b"
-                                  >ไอ</b-form-select-option
+                                  >Less thans</b-form-select-option
                                 >
                               </b-form-select>
                             </div>
@@ -193,35 +217,36 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12 pb-2">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="m_width_250p">
-            <a
-              @click="onSaveGroup()"
-              class="
-                btn btn-block btn_hc_light_border btn_hcb_green_light
-                h2dot5
-                m_width_250p
-              "
-              >Save</a
-            >
+      <div class="row mb-4">
+        <div class="col-12 pb-2">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="m_width_250p">
+              <a
+                @click="onSaveGroup()"
+                class="
+                  btn btn-block btn_hc_light_border btn_hcb_green_light
+                  h2dot5
+                  m_width_250p
+                "
+                >Save</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="m_width_400p">
+              <a
+                @click="openDeleteGroupModal()"
+                class="btn btn-block h2dot5 m_width_400p delete_group"
+                >Delete group</a
+              >
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-12">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="m_width_400p">
-            <a
-              @click="openDeleteGroupModal()"
-              class="btn btn-block h2dot5 m_width_400p delete_group"
-              >Delete group</a
-            >
-          </div>
-        </div>
-      </div>
     </div>
+
     <DeleteGroupModal
       :isOpen="isShowDeleteGroupModal"
       :onCancel="closeDeleteGroupModal"
@@ -237,10 +262,14 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   data: () => ({
+    groupName: '',
     isShowDeleteGroupModal: false,
     isLoading: false,
     question: '',
     value: 0,
+    allFeatureData: [],
+    allLineLogicData: [],
+    allGroupData: [],
     conditionOptions: [
       {
         label: 'yes',
@@ -250,7 +279,12 @@ export default {
         label: 'no',
         value: 'No',
       },
+      {
+        label: 'any',
+        value: 'Any',
+      },
     ],
+    conditionSelected: '',
     featureOptions: [
       {
         feature: 'มีไข้',
@@ -272,7 +306,12 @@ export default {
       return '/chatbot-training/group-management'
     },
   },
-  mounted() {
+  async mounted() {
+    this.groupName = this.$route.params.groupId
+    await this.getAllFeatureData()
+    await this.getAllGroupData()
+    await this.getAllLineLogicData()
+    await this.mergeData()
     this.isLoading = true
   },
   methods: {
@@ -307,6 +346,51 @@ export default {
         checkboxes.style.display = 'none'
         this.expanded = false
       }
+    },
+    //หลัก
+    async getAllFeatureData() {
+      let { data } = await this.$axios.get('feature')
+      this.allFeatureData = data.map((item) => {
+        return {
+          feature: item.Name,
+          id: item.id,
+        }
+      })
+    },
+    async getAllGroupData() {
+      let { data } = await this.$axios.get('group')
+      this.allGroupData = data.map((item) => {
+        item.data = item.data.replaceAll("'", '"')
+        let group = JSON.parse(item.data)
+        return group
+      })
+    },
+    // async getAllLineLogicData() {
+    //   let { data } = await this.$axios.get('logic/linelogic')
+    //   this.allLineLogicData = data
+    //   for (let [i, feature] of this.allFeatureData.entries()) {
+    //     console.log(this.allGroupData[i])
+    //     console.log(feature)
+    //   }
+    // },
+
+    mergeData() {
+      // console.log(this.allFeatureData)
+      // for (let group of this.allGroupData) {
+      //   for (let feature of this.allFeatureData) {
+      //     if (group.group === this.groupName) {
+      //       // console.log(Object.keys(group))
+      //       // console.log(feature)
+      //       let groupKey = Object.keys(group)
+      //       // if (groupKey.includes(feature.feature)) {
+      //       //   console.log(feature.feature)
+      //       // }
+      //       for (let key of groupKey) {
+      //         feature[key] = group[key]
+      //       }
+      //     }
+      //   }
+      // }
     },
   },
 }
