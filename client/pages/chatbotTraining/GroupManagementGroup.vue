@@ -267,6 +267,7 @@ export default {
     isLoading: false,
     question: '',
     value: 0,
+    orCondition: {},
     allFeatureData: [],
     allLineLogicData: [],
     allGroupData: [],
@@ -389,9 +390,10 @@ export default {
     },
     async getOrCondition(){
       let { data } = await this.$axios.get('group/orcondition')
-      for (let  feature of this.allFeatureData) {
-        feature['orCondition'] = data[0]
-      }
+        this.orCondition = data[0]
+        console.log(this.orCondition)
+
+
 
     },
 
@@ -405,6 +407,7 @@ export default {
                 feature['Type'] = 'input'
                 feature['value'] = group[feature.feature]
                 feature['condition'] = group.condition
+                
               } else {
                 feature['Type'] = group[feature.feature]
               }
