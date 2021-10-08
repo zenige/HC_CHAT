@@ -160,8 +160,6 @@
           :isOpen="isShowCreateNewFeatureModal"
           :onCancel="closeAddFeatureModal"
           @getFeatureData="getFeatureData"
-          :currentPage="currentPage"
-          :perPage="perPage"
         ></CreateNewFeatureModal>
       </div>
     </div>

@@ -52,7 +52,7 @@
           <div class="row d-flex align-items-center">
             <div class="txt_hc_head_total">
               Total group
-              <span class="txt_vla_grey">(0)</span>
+              <span class="txt_vla_grey">({{ groupData.length }})</span>
             </div>
           </div>
         </div>
@@ -150,13 +150,6 @@
           </div>
         </div>
 
-        <CreateGroupModal
-          :isOpen="isShowCreateGroupModal"
-          :onCancel="closeCreateGroupModal"
-          @getGroupData="getGroupData"
-          :currentPage="currentPage"
-          :perPage="perPage"
-        ></CreateGroupModal>
         <TrainModelModal
           :isOpen="isShowTrainModelModal"
           :onCancel="closeTrainModelModal"
@@ -170,6 +163,11 @@
           :onCancel="closeDeleteGroupModal"
           :onDelete="onDeleteGroup"
         ></DeleteGroupModal>
+        <CreateGroupModal
+          :isOpen="isShowCreateGroupModal"
+          :onCancel="closeCreateGroupModal"
+          @getGroupData="getGroupData"
+        ></CreateGroupModal>
       </div>
     </div>
   </div>
