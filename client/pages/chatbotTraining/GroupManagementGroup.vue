@@ -311,6 +311,7 @@ export default {
     await this.getAllFeatureData()
     await this.getAllGroupData()
     await this.getAllLineLogicData()
+    await this.getOrCondition()
     await this.mergeData()
     this.isLoading = true
   },
@@ -385,6 +386,13 @@ export default {
         // console.log(feature)
         // this.allFeatureData[i]['Question'] = feature.Question
       }
+    },
+    async getOrCondition(){
+      let { data } = await this.$axios.get('group/orcondition')
+      for (let  feature of this.allFeatureData) {
+        feature['orCondition'] = data[0]
+      }
+
     },
 
     mergeData() {
