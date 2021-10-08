@@ -408,9 +408,8 @@ export default {
     },
     async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
-      for (let feature of this.allFeatureData) {
-        feature['orCondition'] = data[0]
-      }
+      this.orCondition = data[0]
+      console.log(this.orCondition)
     },
 
     mergeData() {
