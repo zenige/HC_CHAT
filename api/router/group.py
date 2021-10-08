@@ -103,7 +103,8 @@ async def getUsers(id:str):
 @router.post("/")
 async def createGroupName(body:Feature):
     body = dict(body)
-    docs = db.collection(u'logics').document(body['Name']).set({"Name":body['Name']})
+    strBody = "{group:"+body['Name']+"}"
+    docs = db.collection(u'logics').document(body['Name']).set({"data":strBody})
 
 
     return "Create done"
