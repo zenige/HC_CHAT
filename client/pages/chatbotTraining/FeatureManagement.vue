@@ -305,7 +305,7 @@ export default {
     async saveFeature(data) {
       if (english.test(this.changedFeatureName)) {
         data.item.feature = this.changedFeatureName
-        this.$axios.patch('feature', {
+        await this.$axios.patch('feature', {
           id: data.item.id,
           Name: data.item.feature,
         })

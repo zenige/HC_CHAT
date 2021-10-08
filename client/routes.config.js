@@ -54,7 +54,7 @@ const CHATBOT_TRAINING_ROUTE = [
   },
   {
     name: 'Group management group',
-    path: '/chatbot-training/group-management/group/groupId',
+    path: '/chatbot-training/group-management/group/:groupId',
     component: 'pages/chatbotTraining/GroupManagementGroup.vue',
   },
 ]
