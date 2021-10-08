@@ -111,7 +111,7 @@ export default {
       const body = {
         Name: this.feature,
       }
-      if (this.feature !== '' || this.feature !== null) {
+      if (this.feature) {
         if (english.test(this.feature)) {
           await this.$axios.post('feature', body)
           this.$emit('getFeatureData')
@@ -125,7 +125,7 @@ export default {
           })
           this.feature = null
         }
-      } else {
+      } else if (!this.feature) {
         this.$bvToast.toast('Please fill feature name.', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
