@@ -414,8 +414,6 @@ export default {
         this.orCondition = data[0]
         console.log(this.orCondition)
 
-
-
     },
 
     mergeData() {
