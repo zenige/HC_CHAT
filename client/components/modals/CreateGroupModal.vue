@@ -34,9 +34,10 @@
           <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Group name</div>
             <input
-              v-model="feature"
+              v-model="groupName"
               type="text"
               class="form-control border-gray border"
+              @keydown.prevent.space
             />
           </div>
           <div class="row d-flex justify-content-center">
@@ -60,6 +61,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9]*$/
+
 export default {
   name: 'AddNewWordModal',
   props: {
@@ -86,7 +89,7 @@ export default {
   },
   data: () => ({
     isModalOpen: false,
-    feature: '',
+    groupName: '',
   }),
   watch: {
     isOpen(newVal) {
@@ -104,15 +107,24 @@ export default {
     },
     async onCreateNewGroup() {
       const body = {
-        feature: this.question,
+        Name: this.groupName,
       }
-      if (this.feature !== '') {
-        await this.$axios.post('train/trained', body)
-        this.$emit('getGroupData', this.currentPage, this.perPage, 'question')
-        this.feature = ''
-        this.onCancel()
-      } else {
-        this.$bvToast.toast('Please fill feature name', {
+      if (this.groupName) {
+        if (english.test(this.feature)) {
+          await this.$axios.post('feature', body)
+          this.$emit('getFeatureData')
+          this.feature = null
+          this.onCancel()
+        } else {
+          this.$bvToast.toast('Please fill in English only.', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+          this.feature = null
+        }
+      } else if (!this.groupName) {
+        this.$bvToast.toast('Please fill feature name.', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,
