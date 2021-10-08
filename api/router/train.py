@@ -95,13 +95,6 @@ async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = Non
             return query
 
 
-def streamToDict(stream):
-    obj = []
-    for doc in stream:
-        train_dict = doc.to_dict()
-        train_dict['id'] = doc.id
-        obj.append(train_dict)
-    return obj
 
 @router.post("/trained")
 async def createTrainWord(data: TrainedModel):
@@ -159,7 +152,7 @@ async def deleteTrainWordById(id: str):
 
 
 @router.get("/training")
-async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = None,sort_by: Optional[str] = "DESCENDING"):
+async def getTrainedWord(filter: Optional[str] = None,pages: Optional[int] = None,limit: Optional[int] = 0,order_by: Optional[str] = "question",sort_by: Optional[str] = "DESCENDING"):
 
     count = 0
     docs_ref = db.collection(u'training')
@@ -292,3 +285,11 @@ async def ttdasds():
     for doc in docs:
         print(doc.to_dict())
     return 0
+
+def streamToDict(stream):
+    obj = []
+    for doc in stream:
+        train_dict = doc.to_dict()
+        train_dict['id'] = doc.id
+        obj.append(train_dict)
+    return obj
