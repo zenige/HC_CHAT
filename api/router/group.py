@@ -108,3 +108,34 @@ async def createGroupName(body:Feature):
 
 
     return "Create done"
+
+
+
+@router.get("/orcondition")
+async def createGroupName():
+    docs_ref = db.collection(u'orCondition').stream()
+    orCondition =[]
+    for doc in docs_ref:
+        group = doc.to_dict()
+        group['id'] = doc.id
+        orCondition.append(group)
+    return orCondition
+
+
+@router.post("/orcondition")
+async def createGroupName(body:Dict):
+
+    docs = db.collection(u'orCondition').document().set(body)
+    return "done"
+
+@router.patch("/orcondition")
+async def createGroupName(body:Dict):
+
+    docs = db.collection(u'orCondition').document(body['id']).set(body)
+    return "done"
+
+@router.delete("/orcondition/{id}")
+async def createGroupName(id:str):
+
+    db.collection(u'orCondition').document(id).delete()
+    return "done"
