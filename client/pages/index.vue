@@ -61,17 +61,6 @@
               <span class="txt_vla_grey">({{ rows }})</span>
             </div>
           </div>
-          <div>
-            Sorting By: <b>{{ sortBy }}</b
-            >, Sort Direction:
-            <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
-          </div>
-          <div>
-            Current page: <b>{{ currentPage }}</b>
-          </div>
-          <div>
-            Data: <b>{{ newWordData.length }}</b>
-          </div>
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">

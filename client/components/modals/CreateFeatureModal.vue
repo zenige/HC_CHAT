@@ -10,7 +10,6 @@
     @ok="onAddNewFeature"
   >
     <template v-slot:modal-header="{ close }">
-      <!-- Emulate built in modal header close button action -->
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
         <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">
           Create a new feature

@@ -10,7 +10,6 @@
     @ok="onCreateNewGroup"
   >
     <template v-slot:modal-header="{ close }">
-      <!-- Emulate built in modal header close button action -->
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
         <h4 class="modal-title txt_hc_modaltitle mr-4 pr-2">Add a new group</h4>
         <button
@@ -110,10 +109,10 @@ export default {
         Name: this.groupName,
       }
       if (this.groupName) {
-        if (english.test(this.feature)) {
-          await this.$axios.post('feature', body)
-          this.$emit('getFeatureData')
-          this.feature = null
+        if (english.test(this.groupName)) {
+          await this.$axios.post('group', body)
+          this.$emit('getGroupData')
+          this.groupName = null
           this.onCancel()
         } else {
           this.$bvToast.toast('Please fill in English only.', {
@@ -121,10 +120,10 @@ export default {
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
           })
-          this.feature = null
+          this.groupName = null
         }
       } else if (!this.groupName) {
-        this.$bvToast.toast('Please fill feature name.', {
+        this.$bvToast.toast('Please fill group name.', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,
