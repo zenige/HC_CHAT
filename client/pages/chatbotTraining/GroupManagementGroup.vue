@@ -33,7 +33,18 @@
             <hr class="mt-1 mb-3" />
           </div>
         </div>
-        <div>Condition Selected: {{ conditionSelected }}</div>
+        <div>
+          <b>Selected:</b>
+          <p>{{ conditionSelected }}</p>
+        </div>
+        <div>
+          <b>More than or Less than Selected:</b>
+          <p>{{ moreLessSelected }}</p>
+        </div>
+        <div>
+          <b>value:</b>
+          <p>{{ moreLessValue }}</p>
+        </div>
         <div class="pt-1 pt-md-1">
           <!-- Feature card -->
           <div
@@ -88,9 +99,9 @@
                               >
                                 <b-form-select-option
                                   v-for="option in conditionOptions"
-                                  :key="option"
-                                  :value="option.label"
-                                  >{{ option.value }}</b-form-select-option
+                                  :key="option.label"
+                                  :value="option.value"
+                                  >{{ option.label }}</b-form-select-option
                                 >
                               </b-form-select>
                             </div>
@@ -101,15 +112,16 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="featureCondition"
+                                v-model="moreLessSelected"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
+                                :disabled="conditionSelected !== 'input'"
                               >
-                                <b-form-select-option value="a"
-                                  >More than</b-form-select-option
-                                >
-                                <b-form-select-option value="b"
-                                  >Less thans</b-form-select-option
+                                <b-form-select-option
+                                  v-for="option in moreLessOptions"
+                                  :key="option.label"
+                                  :value="option.value"
+                                  >{{ option.label }}</b-form-select-option
                                 >
                               </b-form-select>
                             </div>
@@ -124,9 +136,10 @@
                                 min="0"
                                 class="form-control border-gray border"
                                 placeholder=""
-                                v-model="value"
+                                v-model="moreLessValue"
                                 @copy.prevent
                                 @paste.prevent
+                                :disabled="!moreLessSelected"
                               />
                             </div>
                           </div>
@@ -135,37 +148,19 @@
                               Only one of these (Other features)
                             </div>
                             <div class="form-group mb-0 w-100">
-                              <div
-                                class="selectBox"
-                                @click="showCheckboxes()"
-                                style="cursor: pointer"
+                              <b-form-select
+                                v-model="moreLessSelected"
+                                class="form-control border-gray border"
+                                style="curser: pointer"
+                                :disabled="conditionSelected !== 'input'"
                               >
-                                <select
-                                  class="form-control border-gray border"
-                                ></select>
-                                <div class="overSelect"></div>
-                              </div>
-                              <div id="checkboxes">
-                                <b-form-group
-                                  v-slot="{ ariaDescribedby }"
-                                  class="group_radio"
+                                <b-form-select-option
+                                  v-for="option in moreLessOptions"
+                                  :key="option.label"
+                                  :value="option.value"
+                                  >{{ option.label }}</b-form-select-option
                                 >
-                                  <b-form-radio
-                                    v-model="selectedOnlyOneOfThese"
-                                    :aria-describedby="ariaDescribedby"
-                                    value="A"
-                                    class="onlyOneOfThese_label"
-                                    >Option A</b-form-radio
-                                  >
-
-                                  <b-form-radio
-                                    v-model="selectedOnlyOneOfThese"
-                                    :aria-describedby="ariaDescribedby"
-                                    value="B"
-                                    >Option B</b-form-radio
-                                  >
-                                </b-form-group>
-                              </div>
+                              </b-form-select>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 pb_me-4">
@@ -178,9 +173,9 @@
                                 @click="showCheckboxes2()"
                                 style="cursor: pointer"
                               >
-                                <select
+                                <b-form-select
                                   class="form-control border-gray border"
-                                ></select>
+                                ></b-form-select>
                                 <div class="overSelect"></div>
                               </div>
                               <div id="checkboxes2">
@@ -259,7 +254,7 @@
 export default {
   components: {
     DeleteGroupModal: () => import('~/components/modals/DeleteGroupModal.vue'),
-    Loader: () => import('~/components/Loader.vue')
+    Loader: () => import('~/components/Loader.vue'),
   },
   data: () => ({
     groupName: '',
@@ -268,44 +263,72 @@ export default {
     question: '',
     value: 0,
     orCondition: {},
+    moreLessValue: 0,
     allFeatureData: [],
     allLineLogicData: [],
     allGroupData: [],
     conditionOptions: [
       {
-        label: 'yes',
-        value: 'Yes'
+        label: 'Yes',
+        value: 'yes',
       },
       {
-        label: 'no',
-        value: 'No'
+        label: 'No',
+        value: 'no',
       },
       {
-        label: 'any',
-        value: 'Any'
-      }
+        label: 'Any',
+        value: 'any',
+      },
+      {
+        label: 'Input',
+        value: 'input',
+      },
     ],
     conditionSelected: '',
-    featureOptions: [
+    moreLessOptions: [
       {
-        feature: 'มีไข้',
-        value: 'มีไข้'
+        label: 'More than',
+        value: 'moreThan',
       },
       {
-        feature: 'ไอ',
-        value: 'ไอ'
-      }
+        label: 'Less than',
+        value: 'lessThan',
+      },
     ],
+    moreLessSelected: '',
+    onlyOneOfTheseFeatureOptions: [],
+    onlyOneOfTheseFeatureSelected: '',
+    orFeatureOptions: [],
+    orFeatureSelected: '',
     featureCondition: null,
     featureOnlyOneOfThese: null,
     expanded: false,
     selectedOnlyOneOfThese: null,
-    selectedOrFeature: null
+    selectedOrFeature: null,
   }),
+  watch: {
+    conditionSelected(value) {
+      if (value !== 'input') {
+        this.moreLessSelected = null
+        this.moreLessValue = null
+      }
+    },
+    moreLessValue(value) {
+      if (value < 0) {
+        this.$bvToast.toast('Value can not less than zero', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+        this.moreLessValue = 0
+      }
+    },
+  },
   computed: {
     previousUrl() {
       return '/chatbot-training/group-management'
-    }
+    },
   },
   async mounted() {
     this.groupName = this.$route.params.groupId
@@ -329,50 +352,48 @@ export default {
     onSaveGroup() {
       console.log('save group')
     },
-    showCheckboxes() {
-      let checkboxes = document.getElementById('checkboxes')
-      if (!this.expanded) {
-        checkboxes.style.display = 'flex'
-        this.expanded = true
-      } else {
-        checkboxes.style.display = 'none'
-        this.expanded = false
-      }
-    },
-    showCheckboxes2() {
-      let checkboxes = document.getElementById('checkboxes2')
-      if (!this.expanded) {
-        checkboxes.style.display = 'flex'
-        this.expanded = true
-      } else {
-        checkboxes.style.display = 'none'
-        this.expanded = false
-      }
-    },
-    //หลัก
+    // showCheckboxes(index) {
+    //   let checkboxes = document.getElementById(`checkboxes${index}`)
+    //   if (!this.expanded) {
+    //     checkboxes.style.display = 'flex'
+    //     this.expanded = true
+    //   } else {
+    //     checkboxes.style.display = 'none'
+    //     this.expanded = false
+    //   }
+    // },
+    // showCheckboxes2() {
+    //   let checkboxes = document.getElementById('checkboxes2')
+    //   if (!this.expanded) {
+    //     checkboxes.style.display = 'flex'
+    //     this.expanded = true
+    //   } else {
+    //     checkboxes.style.display = 'none'
+    //     this.expanded = false
+    //   }
+    // },
+
     async getAllFeatureData() {
       let { data } = await this.$axios.get('feature')
-      this.allFeatureData = data.map(item => {
+      this.allFeatureData = data.map((item) => {
         return {
           feature: item.Name,
-          id: item.id
+          id: item.id,
         }
       })
-  
     },
     async getAllGroupData() {
       let { data } = await this.$axios.get('group')
-      this.allGroupData = data.map(item => {
-
+      this.allGroupData = data.map((item) => {
         item.data = item.data.replaceAll("'", '"')
 
         let group = JSON.parse(item.data)
-        if(item.condition){
+        if (item.condition) {
           group['condition'] = item.condition
         }
         return group
       })
-
+      console.log(this.allGroupData)
     },
     async getAllLineLogicData() {
       let { data } = await this.$axios.get('logic/linelogic')
@@ -388,7 +409,7 @@ export default {
         // this.allFeatureData[i]['Question'] = feature.Question
       }
     },
-    async getOrCondition(){
+    async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
         this.orCondition = data[0]
         console.log(this.orCondition)
@@ -403,7 +424,6 @@ export default {
           if (group.group === this.groupName) {
             if (group[feature.feature]) {
               if (this.isNumeric(group[feature.feature])) {
-
                 feature['Type'] = 'input'
                 feature['value'] = group[feature.feature]
                 feature['condition'] = group.condition
@@ -413,7 +433,7 @@ export default {
               }
             } else if (group.Relation) {
               feature['Relation'] = group.Relation
-              feature['Type'] = "Relation"
+              feature['Type'] = 'Relation'
             }
           }
         }
@@ -422,8 +442,8 @@ export default {
     },
     isNumeric(value) {
       return /^-?\d+$/.test(value)
-    }
-  }
+    },
+  },
 }
 </script>
 
