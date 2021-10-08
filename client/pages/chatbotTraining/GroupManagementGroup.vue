@@ -259,7 +259,7 @@
 export default {
   components: {
     DeleteGroupModal: () => import('~/components/modals/DeleteGroupModal.vue'),
-    Loader: () => import('~/components/Loader.vue'),
+    Loader: () => import('~/components/Loader.vue')
   },
   data: () => ({
     groupName: '',
@@ -273,38 +273,38 @@ export default {
     conditionOptions: [
       {
         label: 'yes',
-        value: 'Yes',
+        value: 'Yes'
       },
       {
         label: 'no',
-        value: 'No',
+        value: 'No'
       },
       {
         label: 'any',
-        value: 'Any',
-      },
+        value: 'Any'
+      }
     ],
     conditionSelected: '',
     featureOptions: [
       {
         feature: 'มีไข้',
-        value: 'มีไข้',
+        value: 'มีไข้'
       },
       {
         feature: 'ไอ',
-        value: 'ไอ',
-      },
+        value: 'ไอ'
+      }
     ],
     featureCondition: null,
     featureOnlyOneOfThese: null,
     expanded: false,
     selectedOnlyOneOfThese: null,
-    selectedOrFeature: null,
+    selectedOrFeature: null
   }),
   computed: {
     previousUrl() {
       return '/chatbot-training/group-management'
-    },
+    }
   },
   async mounted() {
     this.groupName = this.$route.params.groupId
@@ -350,49 +350,69 @@ export default {
     //หลัก
     async getAllFeatureData() {
       let { data } = await this.$axios.get('feature')
-      this.allFeatureData = data.map((item) => {
+      this.allFeatureData = data.map(item => {
         return {
           feature: item.Name,
-          id: item.id,
+          id: item.id
         }
       })
+  
     },
     async getAllGroupData() {
       let { data } = await this.$axios.get('group')
-      this.allGroupData = data.map((item) => {
+      this.allGroupData = data.map(item => {
+
         item.data = item.data.replaceAll("'", '"')
+
         let group = JSON.parse(item.data)
+        if(item.condition){
+          group['condition'] = item.condition
+        }
         return group
       })
+
     },
     async getAllLineLogicData() {
       let { data } = await this.$axios.get('logic/linelogic')
       this.allLineLogicData = data
-      // for (let [i, feature] of this.allFeatureData.entries()) {
-      //   console.log(this.allGroupData[i])
-      //   console.log(feature)
-      // }
+
+      for (let [i, logic] of this.allLineLogicData.entries()) {
+        for (let feature of this.allFeatureData) {
+          if (logic.id === feature.feature) {
+            feature['Question'] = logic.Question
+          }
+        }
+        // console.log(feature)
+        // this.allFeatureData[i]['Question'] = feature.Question
+      }
     },
 
     mergeData() {
-      // console.log(this.allFeatureData)
-      // for (let group of this.allGroupData) {
-      //   for (let feature of this.allFeatureData) {
-      //     if (group.group === this.groupName) {
-      //       // console.log(Object.keys(group))
-      //       // console.log(feature)
-      //       let groupKey = Object.keys(group)
-      //       // if (groupKey.includes(feature.feature)) {
-      //       //   console.log(feature.feature)
-      //       // }
-      //       for (let key of groupKey) {
-      //         feature[key] = group[key]
-      //       }
-      //     }
-      //   }
-      // }
+      for (let [i, feature] of this.allFeatureData.entries()) {
+        for (let group of this.allGroupData) {
+          if (group.group === this.groupName) {
+            if (group[feature.feature]) {
+              if (this.isNumeric(group[feature.feature])) {
+
+                feature['Type'] = 'input'
+                feature['value'] = group[feature.feature]
+                feature['condition'] = group.condition
+              } else {
+                feature['Type'] = group[feature.feature]
+              }
+            } else if (group.Relation) {
+              feature['Relation'] = group.Relation
+              feature['Type'] = "Relation"
+            }
+          }
+        }
+      }
+      console.log(this.allFeatureData)
     },
-  },
+    isNumeric(value) {
+      return /^-?\d+$/.test(value)
+    }
+  }
 }
 </script>
 
