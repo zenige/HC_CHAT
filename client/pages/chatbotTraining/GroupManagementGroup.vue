@@ -149,13 +149,12 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="moreLessSelected"
+                                v-model="onlyOneOfTheseFeatureSelected"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
-                                :disabled="conditionSelected !== 'input'"
                               >
                                 <b-form-select-option
-                                  v-for="option in moreLessOptions"
+                                  v-for="option in allFeatureData"
                                   :key="option.label"
                                   :value="option.value"
                                   >{{ option.label }}</b-form-select-option
@@ -261,8 +260,6 @@ export default {
     isShowDeleteGroupModal: false,
     isLoading: false,
     question: '',
-    value: 0,
-    orCondition: {},
     moreLessValue: 0,
     allFeatureData: [],
     allLineLogicData: [],
@@ -393,7 +390,7 @@ export default {
         }
         return group
       })
-      console.log(this.allGroupData)
+      // console.log(this.allGroupData)
     },
     async getAllLineLogicData() {
       let { data } = await this.$axios.get('logic/linelogic')
@@ -411,11 +408,9 @@ export default {
     },
     async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
-        this.orCondition = data[0]
-        console.log(this.orCondition)
-
-
-
+      for (let feature of this.allFeatureData) {
+        feature['orCondition'] = data[0]
+      }
     },
 
     mergeData() {
@@ -427,7 +422,6 @@ export default {
                 feature['Type'] = 'input'
                 feature['value'] = group[feature.feature]
                 feature['condition'] = group.condition
-                
               } else {
                 feature['Type'] = group[feature.feature]
               }
