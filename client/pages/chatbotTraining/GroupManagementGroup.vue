@@ -38,6 +38,10 @@
           <p>{{ conditionSelected }}</p>
         </div>
         <div>
+          <b>Only one of these selected:</b>
+          <p>{{ onlyOneOfTheseFeatureSelected }}</p>
+        </div>
+        <div>
           <b>More than or Less than Selected:</b>
           <p>{{ moreLessSelected }}</p>
         </div>
@@ -82,7 +86,7 @@
                                   type="text"
                                   placeholder=""
                                   class="form-control border-gray border"
-                                  v-model="question"
+                                  v-model="feature.Question"
                                 />
                               </div>
                             </div>
@@ -93,7 +97,7 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="conditionSelected"
+                                v-model="feature.Type"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
                               >
@@ -115,7 +119,7 @@
                                 v-model="moreLessSelected"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
-                                :disabled="conditionSelected !== 'input'"
+                                :disabled="feature.Type !== 'input'"
                               >
                                 <b-form-select-option
                                   v-for="option in moreLessOptions"
@@ -149,12 +153,14 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="onlyOneOfTheseFeatureSelected"
+                                v-model="onlyOneOfTheseFeatureSelected[index]"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
                               >
                                 <b-form-select-option
-                                  v-for="option in allFeatureData"
+                                  v-for="option in eachFeatureOnlyOneOfTheseOptions[
+                                    index
+                                  ]"
                                   :key="option.label"
                                   :value="option.value"
                                   >{{ option.label }}</b-form-select-option
@@ -167,37 +173,18 @@
                               Or (Other features)
                             </div>
                             <div class="form-group mb-0 w-100">
-                              <div
-                                class="selectBox2"
-                                @click="showCheckboxes2()"
-                                style="cursor: pointer"
+                              <b-form-select
+                                v-model="onlyOneOfTheseFeatureSelected"
+                                class="form-control border-gray border"
+                                style="curser: pointer"
                               >
-                                <b-form-select
-                                  class="form-control border-gray border"
-                                ></b-form-select>
-                                <div class="overSelect"></div>
-                              </div>
-                              <div id="checkboxes2">
-                                <b-form-group
-                                  v-slot="{ ariaDescribedby }"
-                                  class="group_radio"
+                                <b-form-select-option
+                                  v-for="option in allFeatureData"
+                                  :key="option.label"
+                                  :value="option.value"
+                                  >{{ option.label }}</b-form-select-option
                                 >
-                                  <b-form-radio
-                                    v-model="selectedOrFeature"
-                                    :aria-describedby="ariaDescribedby"
-                                    value="A"
-                                    class="onlyOneOfThese_label"
-                                    >Option A</b-form-radio
-                                  >
-
-                                  <b-form-radio
-                                    v-model="selectedOrFeature"
-                                    :aria-describedby="ariaDescribedby"
-                                    value="B"
-                                    >Option B</b-form-radio
-                                  >
-                                </b-form-group>
-                              </div>
+                              </b-form-select>
                             </div>
                           </div>
                         </div>
@@ -260,22 +247,22 @@ export default {
     isShowDeleteGroupModal: false,
     isLoading: false,
     question: '',
-    moreLessValue: 0,
+    moreLessValue: null,
     allFeatureData: [],
     allLineLogicData: [],
     allGroupData: [],
     conditionOptions: [
       {
         label: 'Yes',
-        value: 'yes',
+        value: 'true',
       },
       {
         label: 'No',
-        value: 'no',
+        value: 'false',
       },
       {
         label: 'Any',
-        value: 'any',
+        value: 'ANY',
       },
       {
         label: 'Input',
@@ -294,10 +281,24 @@ export default {
       },
     ],
     moreLessSelected: '',
-    onlyOneOfTheseFeatureOptions: [],
-    onlyOneOfTheseFeatureSelected: '',
+    onlyOneOfTheseFeatureOptions: [
+      {
+        label: 'Please select a feature',
+        value: null,
+      },
+    ],
+    onlyOneOfTheseFeatureOptionsFeature: [
+      {
+        label: 'Please select a feature',
+        value: null,
+      },
+    ],
+    eachFeatureOnlyOneOfTheseOptions: [],
+    onlyOneOfTheseFeatureSelected: [],
     orFeatureOptions: [],
     orFeatureSelected: '',
+    isOnlyOneOfThese: false,
+    isOr: false,
     featureCondition: null,
     featureOnlyOneOfThese: null,
     expanded: false,
@@ -349,26 +350,6 @@ export default {
     onSaveGroup() {
       console.log('save group')
     },
-    // showCheckboxes(index) {
-    //   let checkboxes = document.getElementById(`checkboxes${index}`)
-    //   if (!this.expanded) {
-    //     checkboxes.style.display = 'flex'
-    //     this.expanded = true
-    //   } else {
-    //     checkboxes.style.display = 'none'
-    //     this.expanded = false
-    //   }
-    // },
-    // showCheckboxes2() {
-    //   let checkboxes = document.getElementById('checkboxes2')
-    //   if (!this.expanded) {
-    //     checkboxes.style.display = 'flex'
-    //     this.expanded = true
-    //   } else {
-    //     checkboxes.style.display = 'none'
-    //     this.expanded = false
-    //   }
-    // },
 
     async getAllFeatureData() {
       let { data } = await this.$axios.get('feature')
@@ -379,6 +360,7 @@ export default {
         }
       })
     },
+
     async getAllGroupData() {
       let { data } = await this.$axios.get('group')
       this.allGroupData = data.map((item) => {
@@ -392,6 +374,7 @@ export default {
       })
       // console.log(this.allGroupData)
     },
+
     async getAllLineLogicData() {
       let { data } = await this.$axios.get('logic/linelogic')
       this.allLineLogicData = data
@@ -410,6 +393,10 @@ export default {
       let { data } = await this.$axios.get('group/orcondition')
       this.orCondition = data[0]
       console.log(this.orCondition)
+    },
+
+    isNumeric(value) {
+      return /^-?\d+$/.test(value)
     },
 
     mergeData() {
@@ -431,10 +418,42 @@ export default {
           }
         }
       }
-      console.log(this.allFeatureData)
-    },
-    isNumeric(value) {
-      return /^-?\d+$/.test(value)
+      for (let i = 0; i < this.allFeatureData.length; i++) {
+        this.onlyOneOfTheseFeatureOptions.push(this.allFeatureData[i].feature)
+      }
+      for (let i = 0; i < this.allFeatureData.length; i++) {
+        this.onlyOneOfTheseFeatureOptionsFeature = [
+          {
+            label: 'Please select a feature',
+            value: null,
+          },
+        ]
+        for (let j = 1; j < this.onlyOneOfTheseFeatureOptions.length; j++) {
+          if (
+            this.onlyOneOfTheseFeatureOptions[j] !==
+            this.allFeatureData[i].feature
+          ) {
+            this.onlyOneOfTheseFeatureOptionsFeature.push(
+              this.onlyOneOfTheseFeatureOptions[j]
+            )
+          }
+          this.onlyOneOfTheseFeatureOptionsFeature =
+            this.onlyOneOfTheseFeatureOptionsFeature.map((item, index) => {
+              if (!item.label) {
+                return {
+                  label: item,
+                  value: item,
+                }
+              } else {
+                return item
+              }
+            })
+        }
+        this.eachFeatureOnlyOneOfTheseOptions.push(
+          this.onlyOneOfTheseFeatureOptionsFeature
+        )
+      }
+      console.log('this.kuy', this.eachFeatureOnlyOneOfTheseOptions)
     },
   },
 }
