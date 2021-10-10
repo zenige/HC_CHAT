@@ -52,8 +52,8 @@
         <div class="pt-1 pt-md-1">
           <!-- Feature card -->
           <div
-            v-for="(feature, index) in allFeatureData"
-            :key="feature.id"
+            v-for="(feature, index) in userData"
+            :key="index"
             class="pb-3 pt-1 card_vld_wrapper"
           >
             <div class="task-item pb_me-4">
@@ -72,7 +72,7 @@
                         <div class="col-12 col-md-6 pb_me-4 mb-2">
                           <div class="txt_vla_feature_title">
                             {{ index + 1 }}.) Feature:
-                            <span>{{ feature.feature }}</span>
+                            <span>{{ feature.featureName }}</span>
                           </div>
                         </div>
                         <div class="row col-12 col-md-12 px-4">
@@ -86,7 +86,7 @@
                                   type="text"
                                   placeholder=""
                                   class="form-control border-gray border"
-                                  v-model="feature.Question"
+                                  v-model="feature.question"
                                 />
                               </div>
                             </div>
@@ -97,9 +97,11 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="feature.Type"
+                                v-model="feature.condition"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
+                                :disabled="!feature.state.conditionState"
+                                @change="changeCondition(index)"
                               >
                                 <b-form-select-option
                                   v-for="option in conditionOptions"
@@ -116,10 +118,10 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="moreLessSelected"
+                                v-model="feature.moreLessOption"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
-                                :disabled="feature.Type !== 'input'"
+                                :disabled="!feature.state.moreLessOptionState"
                               >
                                 <b-form-select-option
                                   v-for="option in moreLessOptions"
@@ -140,10 +142,11 @@
                                 min="0"
                                 class="form-control border-gray border"
                                 placeholder=""
-                                v-model="moreLessValue"
+                                v-model="feature.moreLessValue"
                                 @copy.prevent
                                 @paste.prevent
-                                :disabled="!moreLessSelected"
+                                :disabled="!feature.moreLessOption"
+                                @change="changeMoreLessValue(index)"
                               />
                             </div>
                           </div>
@@ -153,14 +156,18 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="onlyOneOfTheseFeatureSelected[index]"
+                                v-model="feature.onlyOneOfTheseFeatureData"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
+                                :disabled="
+                                  !feature.state.onlyOneOfTheseFeatureState
+                                "
+                                @change="onChangeOnlyPairFeature(index)"
                               >
                                 <b-form-select-option
-                                  v-for="option in eachFeatureOnlyOneOfTheseOptions[
-                                    index
-                                  ]"
+                                  v-for="option in getOptionsFeatures(
+                                    feature.featureName
+                                  )"
                                   :key="option.label"
                                   :value="option.value"
                                   >{{ option.label }}</b-form-select-option
@@ -174,12 +181,16 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <b-form-select
-                                v-model="onlyOneOfTheseFeatureSelected"
+                                v-model="feature.orFeatureData"
                                 class="form-control border-gray border"
                                 style="curser: pointer"
+                                :disabled="!feature.state.orFeatureState"
+                                @change="onChangeOrPairFeature(index)"
                               >
                                 <b-form-select-option
-                                  v-for="option in allFeatureData"
+                                  v-for="option in getOptionsFeatures(
+                                    feature.featureName
+                                  )"
                                   :key="option.label"
                                   :value="option.value"
                                   >{{ option.label }}</b-form-select-option
@@ -281,21 +292,6 @@ export default {
       },
     ],
     moreLessSelected: '',
-    onlyOneOfTheseFeatureOptions: [
-      {
-        label: 'Please select a feature',
-        value: null,
-      },
-    ],
-    onlyOneOfTheseFeatureOptionsFeature: [
-      {
-        label: 'Please select a feature',
-        value: null,
-      },
-    ],
-    eachFeatureOnlyOneOfTheseOptions: [],
-    onlyOneOfTheseFeatureSelected: [],
-    orFeatureOptions: [],
     orFeatureSelected: '',
     isOnlyOneOfThese: false,
     isOr: false,
@@ -304,25 +300,19 @@ export default {
     expanded: false,
     selectedOnlyOneOfThese: null,
     selectedOrFeature: null,
+    userData: [],
+    dataOptions: [
+      {
+        label: 'Please select a feature',
+        value: null,
+      },
+    ],
+    pairOr1: '',
+    pairOr2: '',
+    pairOnly1: '',
+    pairOnly2: '',
   }),
-  watch: {
-    conditionSelected(value) {
-      if (value !== 'input') {
-        this.moreLessSelected = null
-        this.moreLessValue = null
-      }
-    },
-    moreLessValue(value) {
-      if (value < 0) {
-        this.$bvToast.toast('Value can not less than zero', {
-          variant: 'danger',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-        this.moreLessValue = 0
-      }
-    },
-  },
+  watch: {},
   computed: {
     previousUrl() {
       return '/chatbot-training/group-management'
@@ -335,6 +325,7 @@ export default {
     await this.getAllLineLogicData()
     await this.getOrCondition()
     await this.mergeData()
+    await this.setInitialUserData()
     this.isLoading = true
   },
   methods: {
@@ -351,6 +342,15 @@ export default {
       console.log('save group')
     },
 
+    getOptionsFeatures(label) {
+      if (this.dataOptions.length > 0) {
+        const result = this.dataOptions.filter((item) => item.label !== label)
+        return result
+      } else {
+        return []
+      }
+    },
+
     async getAllFeatureData() {
       let { data } = await this.$axios.get('feature')
       this.allFeatureData = data.map((item) => {
@@ -359,6 +359,7 @@ export default {
           id: item.id,
         }
       })
+      // console.log('All feature data', this.allFeatureData)
     },
 
     async getAllGroupData() {
@@ -372,7 +373,7 @@ export default {
         }
         return group
       })
-      // console.log(this.allGroupData)
+      // console.log('All group data', this.allGroupData)
     },
 
     async getAllLineLogicData() {
@@ -385,13 +386,14 @@ export default {
             feature['Question'] = logic.Question
           }
         }
-        // console.log(feature)
-        // this.allFeatureData[i]['Question'] = feature.Question
       }
+      // console.log('All Line Logic data', this.allLineLogicData)
     },
     async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
       this.orCondition = data[0]
+      const key = 'id'
+      delete this.orCondition[key]
       console.log(this.orCondition)
     },
 
@@ -418,42 +420,186 @@ export default {
           }
         }
       }
+
       for (let i = 0; i < this.allFeatureData.length; i++) {
-        this.onlyOneOfTheseFeatureOptions.push(this.allFeatureData[i].feature)
+        this.dataOptions.push({
+          label: this.allFeatureData[i].feature,
+          value: this.allFeatureData[i].feature,
+        })
       }
+    },
+
+    setInitialUserData() {
       for (let i = 0; i < this.allFeatureData.length; i++) {
-        this.onlyOneOfTheseFeatureOptionsFeature = [
-          {
-            label: 'Please select a feature',
-            value: null,
+        const feature = {
+          question: this.allFeatureData[i].Question,
+          condition: this.allFeatureData[i].Type,
+          featureName: this.allFeatureData[i].feature,
+          moreLessOption: null,
+          moreLessValue: null,
+          onlyOneOfTheseFeatureData: null,
+          orFeatureData: null,
+          state: {
+            conditionState: true,
+            moreLessOptionState: false,
+            moreLessValueState: false,
+            onlyOneOfTheseFeatureState: true,
+            orFeatureState: true,
           },
-        ]
-        for (let j = 1; j < this.onlyOneOfTheseFeatureOptions.length; j++) {
-          if (
-            this.onlyOneOfTheseFeatureOptions[j] !==
-            this.allFeatureData[i].feature
-          ) {
-            this.onlyOneOfTheseFeatureOptionsFeature.push(
-              this.onlyOneOfTheseFeatureOptions[j]
-            )
-          }
-          this.onlyOneOfTheseFeatureOptionsFeature =
-            this.onlyOneOfTheseFeatureOptionsFeature.map((item, index) => {
-              if (!item.label) {
-                return {
-                  label: item,
-                  value: item,
-                }
-              } else {
-                return item
-              }
-            })
         }
-        this.eachFeatureOnlyOneOfTheseOptions.push(
-          this.onlyOneOfTheseFeatureOptionsFeature
-        )
+        this.userData.push(feature)
       }
-      console.log('this.kuy', this.eachFeatureOnlyOneOfTheseOptions)
+      this.setPairOrFeature()
+    },
+    setPairOrFeature() {
+      this.pairOr1 = Object.keys(this.orCondition)[0]
+      this.pairOr2 = Object.keys(this.orCondition)[1]
+      this.userData = this.userData.map((item) => {
+        if (item.featureName === this.pairOr1) {
+          return {
+            ...item, // copy all data
+            orFeatureData: this.pairOr2,
+          }
+        } else if (item.featureName === this.pairOr2) {
+          return {
+            ...item,
+            orFeatureData: this.pairOr1,
+          }
+        } else {
+          return {
+            ...item,
+            state: {
+              ...item.state,
+              orFeatureState: false,
+            },
+          }
+        }
+      })
+    },
+    onChangeOnlyPairFeature(index) {
+      // เก็บค่าของ only feature ที่ user เลือก ของ index นั้น ๆ
+      this.pairOnly1 = this.userData[index].onlyOneOfTheseFeatureData
+      // ถ้ามีค่า
+      if (this.pairOnly1) {
+        this.userData = this.userData.map((item) => {
+          if (item.featureName === this.pairOnly1) {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: this.userData[index].featureName,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+              },
+            }
+          } else if (item.featureName === this.userData[index].featureName) {
+            this.pairOnly2 = item.featureName
+            return {
+              ...item,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+              },
+            }
+          } else {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+              },
+            }
+          }
+        })
+      } else {
+        this.userData = this.userData.map((item) => {
+          return {
+            ...item,
+            onlyOneOfTheseFeatureData: null,
+            state: {
+              ...item.state,
+              onlyOneOfTheseFeatureState: true,
+            },
+          }
+        })
+      }
+      if (this.userData[index].onlyOneOfTheseFeatureData !== null) {
+        this.userData[index].condition = null
+        this.userData[index].state.conditionState = false
+        this.userData[index].state.orFeatureState = false
+      }
+    },
+    onChangeOrPairFeature(index) {
+      // เก็บค่าของ or feature ที่ user เลือก ของ index นั้น ๆ
+      this.pairOr1 = this.userData[index].orFeatureData
+      // ถ้ามีค่า
+      if (this.pairOr1) {
+        this.userData = this.userData.map((item) => {
+          if (item.featureName === this.pairOr1) {
+            return {
+              ...item,
+              orFeatureData: this.userData[index].featureName,
+              state: {
+                ...item.state,
+                orFeatureState: true,
+              },
+            }
+          } else if (item.featureName === this.userData[index].featureName) {
+            this.pairOr2 = item.featureName
+            return {
+              ...item,
+              state: {
+                ...item.state,
+                orFeatureState: true,
+              },
+            }
+          } else {
+            return {
+              ...item,
+              orFeatureData: null,
+              state: {
+                ...item.state,
+                orFeatureState: false,
+              },
+            }
+          }
+        })
+      } else {
+        this.userData = this.userData.map((item) => {
+          return {
+            ...item,
+            orFeatureData: null,
+            state: {
+              ...item.state,
+              orFeatureState: true,
+            },
+          }
+        })
+      }
+      if (this.userData[index].orFeatureData !== null) {
+        this.userData[index].state.onlyOneOfTheseFeatureState = false
+        this.userData[index].onlyOneOfTheseFeatureData = null
+      }
+    },
+
+    changeCondition(index) {
+      if (this.userData[index].condition === 'input') {
+        this.userData[index].state.moreLessOptionState = true
+      } else {
+        this.userData[index].state.moreLessOptionState = false
+        this.userData[index].moreLessOption = null
+        this.userData[index].moreLessValue = null
+      }
+    },
+    changeMoreLessValue(index) {
+      if (this.userData[index].moreLessValue < 0) {
+        this.$bvToast.toast('Value can not less than zero', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+        this.userData[index].moreLessValue = 0
+      }
     },
   },
 }
