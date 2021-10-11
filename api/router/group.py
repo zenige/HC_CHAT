@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,Request
 from Project import db
 import requests
 from pydantic import BaseModel
@@ -139,3 +139,16 @@ async def createGroupName(id:str):
 
     db.collection(u'orCondition').document(id).delete()
     return "done"
+
+@router.post("/groupid/{id}")
+async def createGroupName(id:str,request: Request):
+    data = await request.json()
+    dataStr = str(data[0]['data'])
+    print(len(data))
+    if len(data) >1:
+        docs = db.collection(u'logics').document(id).set({"data": dataStr,"condition":data[1]['condition']})
+    else :
+        docs = db.collection(u'logics').document(id).set({"data": dataStr})     
+
+
+    return "Create  done"
