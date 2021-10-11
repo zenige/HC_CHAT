@@ -1,6 +1,6 @@
 import csv
 import pandas as pd
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix,classification_report
 import pickle
 
 def testModelSVM(df):
@@ -79,3 +79,4 @@ def testModelRF(df):
     print(res)
     print(f"Test Set: {len(X_test)}")
     print(f"RF Accuracy = {percentage*100} %")
+    print(classification_report(y_test, predictions))

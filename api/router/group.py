@@ -124,7 +124,13 @@ async def createGroupName():
 
 @router.post("/orcondition")
 async def createGroupName(body:Dict):
-
+    docs_ref = db.collection(u'orCondition').stream()
+    group = {}
+    for doc in docs_ref:
+        group = doc.to_dict()
+        group['id'] = doc.id
+    if group :
+        db.collection(u'orCondition').document(group['id']).delete()
     docs = db.collection(u'orCondition').document().set(body)
     return "done"
 
@@ -144,7 +150,7 @@ async def createGroupName(id:str):
 async def createGroupName(id:str,request: Request):
     data = await request.json()
     dataStr = str(data[0]['data'])
-    print(len(data))
+
     if len(data) >1:
         docs = db.collection(u'logics').document(id).set({"data": dataStr,"condition":data[1]['condition']})
     else :
