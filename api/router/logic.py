@@ -57,6 +57,7 @@ async def createLineLogic(data: Logic):
         if i['Next'] == None:
             lastLogic = i 
             break
+
     lastLogic['Next'] = data.id
     newLogic = dict(data)
 

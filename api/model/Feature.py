@@ -3,6 +3,7 @@ from typing import List, Optional
 class Feature(BaseModel):
     id: Optional[str] = None
     Name: str
+    Type: str
 
 
 class updateFeature(BaseModel):
