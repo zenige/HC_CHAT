@@ -4,6 +4,7 @@ class Feature(BaseModel):
     id: Optional[str] = None
     Name: Optional[str]
     Type: Optional[str]
+    Question:Optional[str]
 
 
 class updateFeature(BaseModel):

@@ -81,6 +81,7 @@ async def getUsers(body:Feature):
         print(feature['group'])
         # db.collection(u'logics').document(feature['group']).delete()
         db.collection(u'logics').document(feature['group']).set({"data":featureStr})
+    await createLineLogic(body)
     return "update done"
 
 @router.delete("/{id}/{featName}")
