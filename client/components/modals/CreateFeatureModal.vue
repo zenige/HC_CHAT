@@ -41,6 +41,31 @@
               @keydown.prevent.space
             />
           </div>
+          <div class="d-flex flex-column text-left mb-3">
+            <div class="learning-area-title">Condition type</div>
+            <b-form-select
+              v-model="changedConditionType"
+              class="form-control border-gray border"
+              style="curser: pointer"
+              autofocus
+            >
+              <b-form-select-option
+                v-for="option in conditionTypeOption"
+                :key="option.label"
+                :value="option.value"
+                >{{ option.label }}</b-form-select-option
+              >
+            </b-form-select>
+          </div>
+          <div class="d-flex flex-column text-left mb-3">
+            <div class="learning-area-title">Question</div>
+            <input
+              v-model="changedQuestion"
+              type="text"
+              class="form-control border-gray border"
+              @keydown.prevent.space
+            />
+          </div>
           <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-4 col-lg-4 mt-3">
               <div class="pt-2">
@@ -91,6 +116,18 @@ export default {
   data: () => ({
     isModalOpen: false,
     feature: '',
+    changedConditionType: null,
+    changedQuestion: '',
+    conditionTypeOption: [
+      {
+        label: 'boolean',
+        value: 'boolean',
+      },
+      {
+        label: 'input',
+        value: 'input',
+      },
+    ],
   }),
   watch: {
     isOpen(newVal) {
@@ -109,23 +146,26 @@ export default {
     async onAddNewFeature() {
       const body = {
         Name: this.feature,
+        Type: this.changedConditionType,
+        Question: this.changedQuestion,
       }
-      if (this.feature) {
+      if (this.feature && this.changedConditionType && this.changedQuestion) {
         if (english.test(this.feature)) {
-          // await this.$axios.post('feature', body)
+          await this.$axios.post('feature', body)
           this.$emit('getFeatureData')
           this.feature = null
+          this.changedConditionType = null
+          this.changedQuestion = null
           this.onCancel()
         } else {
-          this.$bvToast.toast('Please fill in English only.', {
+          this.$bvToast.toast('Feature name must be only in English', {
             variant: 'danger',
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
           })
-          this.feature = null
         }
-      } else if (!this.feature) {
-        this.$bvToast.toast('Please fill feature name.', {
+      } else {
+        this.$bvToast.toast('Please fill all required fields', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,

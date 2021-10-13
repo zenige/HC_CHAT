@@ -207,13 +207,6 @@ export default {
           tdClass: 'grouptdGroup-Class',
         },
         {
-          key: 'status',
-          label: 'Status',
-          sortable: true,
-          thClass: 'groupthStatus-Class',
-          tdClass: 'grouptdStatus-Class',
-        },
-        {
           key: 'action',
           label: 'Action',
           sortable: false,
@@ -325,11 +318,7 @@ export default {
 <style lang="scss">
 .groupthGroup-Class,
 .grouptdGroup-Class {
-  width: 32.5%;
-}
-.groupthStatus-Class,
-.grouptdStatus-Class {
-  width: 47.5%;
+  width: 80%;
 }
 .groupthAction-Class,
 .grouptdAction-Class {

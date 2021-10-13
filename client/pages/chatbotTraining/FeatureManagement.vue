@@ -330,12 +330,12 @@ export default {
         (item) => item.selected === true
       )
       for (let i = 0; i < this.deleteSelected.length; i++) {
-        // await this.$axios.delete(
-        //   'feature/' +
-        //     this.deleteSelected[i].id +
-        //     '/' +
-        //     this.deleteSelected[i].feature
-        // )
+        await this.$axios.delete(
+          'feature/' +
+            this.deleteSelected[i].id +
+            '/' +
+            this.deleteSelected[i].feature
+        )
       }
       await this.getFeatureData()
       if (this.featureData.length === 0) {
@@ -360,8 +360,9 @@ export default {
         data.item.feature = this.changedFeatureName
         data.item.conditionType = this.changedConditionType
         data.item.question = this.changedQuestion
-        await this.$axios.post('logic/linelogic/update', {
+        await this.$axios.patch('feature', {
           id: data.item.feature,
+          Name: data.item.feature,
           Type: data.item.conditionType,
           Question: data.item.question,
         })
@@ -375,6 +376,9 @@ export default {
       }
     },
     async getFeatureData() {
+      let featureNameIdData = await this.$axios.get('feature')
+      let featureNameIdDataArray = featureNameIdData.data
+
       let { data } = await this.$axios.get('logic/linelogic')
 
       let sortedFeatureData = []
@@ -391,6 +395,7 @@ export default {
           sortedFeatureData.push(data[nextFeatureIndex])
         }
       }
+      console.log('sortedFeatureData', sortedFeatureData)
 
       this.featureData = sortedFeatureData.map((item) => {
         return {
@@ -403,6 +408,19 @@ export default {
           editable: false,
         }
       })
+
+      console.log('featureNameIdDataArray', featureNameIdDataArray)
+      console.log('featureData', this.featureData)
+
+      for (let j = 0; j < this.featureData.length; j++) {
+        for (let i = 0; i < featureNameIdDataArray.length; i++) {
+          if (featureNameIdDataArray[i].Name === this.featureData[j].feature) {
+            this.featureData[j]['id'] = featureNameIdDataArray[i].id
+          }
+        }
+      }
+
+      console.log('feature data after push Id', this.featureData)
 
       if (this.featureData.length === 0) {
         this.totalFeature = 0

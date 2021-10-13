@@ -381,7 +381,6 @@ export default {
         this.filter,
         this.currentPage,
         10,
-        orderBy,
         'question',
         ASCENDING
       )
