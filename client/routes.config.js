@@ -67,7 +67,7 @@ const DASHBOARD_ROUTE = [
   },
   {
     name: 'Patient in group',
-    path: '/dashboard/patient-group/group-number',
+    path: '/dashboard/patient-group/:groupId',
     component: 'pages/dashboard/PatientInGroup.vue',
   },
 ]

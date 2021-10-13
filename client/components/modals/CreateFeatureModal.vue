@@ -112,7 +112,7 @@ export default {
       }
       if (this.feature) {
         if (english.test(this.feature)) {
-          await this.$axios.post('feature', body)
+          // await this.$axios.post('feature', body)
           this.$emit('getFeatureData')
           this.feature = null
           this.onCancel()

@@ -1,6 +1,7 @@
 <template>
   <div class="hc_navbar content p-0 group-management-group">
-    <div class="container fitscreen pt-3 pt-md-3 pb-0 plr_15p">
+    <Loader v-if="!isLoading" />
+    <div v-else class="container fitscreen pt-3 pt-md-3 pb-0 plr_15p">
       <div class="row">
         <div class="col-md-12">
           <div class="row d-flex justify-content-between">
@@ -69,17 +70,6 @@
           </NuxtLink>
         </div>
       </div>
-      <!-- <div style="margin-top: 0.5rem">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          first-number
-          last-number
-          align="center"
-          class="myPaginattion"
-        ></b-pagination>
-      </div> -->
     </div>
   </div>
 </template>
@@ -91,7 +81,21 @@ export default {
       rows: 100,
       perPage: 10,
       currentPage: 1,
+      isLoading: false,
+      groupName: null,
+      dashboardGroup: [],
     }
+  },
+  async mounted() {
+    await this.getDashboardData()
+    this.isLoading = true
+  },
+  methods: {
+    async getDashboardData() {
+      let { data } = await this.$axios.get('dashboard')
+      this.dashboardGroup.push(data)
+      console.log(this.dashboardGroup)
+    },
   },
 }
 </script>

@@ -7,7 +7,7 @@
             <div class="">
               <nuxt-link
                 :to="previousUrl"
-                class="txt_grey_light arrow_back_2 d-none d-xl-block"
+                class="txt_grey_light arrow_back_2 d-xl-block"
                 ><img
                   src="~assets/hc-libs/images/vl/arrow_back.png"
                   class="w-50p"
@@ -158,6 +158,7 @@ export default {
   props: {},
   data() {
     return {
+      groupName: null,
       isLoading: false,
       isShowPatientInfoModal: false,
       isShowTrainWordModal: false,
@@ -233,6 +234,7 @@ export default {
     },
   },
   async mounted() {
+    this.groupName = this.$route.params.groupId
     await this.getNewWordData(1, 10, 'question')
     this.isLoading = true
   },
