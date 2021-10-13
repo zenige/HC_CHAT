@@ -43,7 +43,7 @@ async def getUsers(body:Feature):
     return "update done"
 
 @router.patch("/")
-async def getUsers(body:Feature):
+async def UpdateFeatureNameandLogic(body:Feature):
     body = dict(body)
     docs = db.collection(u'feature').document(body['id']).get()
 
@@ -72,8 +72,6 @@ async def getUsers(body:Feature):
                     if i == old_key:
                         group['Relation'][0].remove(i)
                         group['Relation'][0].append(new_key)
-
-
         features.append(group)
     for feature in features:
         featureStr = str(feature)
@@ -81,7 +79,7 @@ async def getUsers(body:Feature):
         print(feature['group'])
         # db.collection(u'logics').document(feature['group']).delete()
         db.collection(u'logics').document(feature['group']).set({"data":featureStr})
-    await createLineLogic(body)
+    await updateLineLogic(body)
     return "update done"
 
 @router.delete("/{id}/{featName}")
@@ -108,6 +106,15 @@ async def getUsers(id:str,featName:str):
         print(feature['group'])
         # db.collection(u'logics').document(feature['group']).delete()
         db.collection(u'logics').document(feature['group']).set({"data":featureStr})
+    db.collection(u'pre-lineLogic').document(featName).delete()
+    docs = db.collection("pre-lineLogic").stream()
+    for doc in docs:
+        data =  doc.to_dict()
+        if data['Next'] == featName:
+            data['Next'] = None
+            break
+    db.collection(u'pre-lineLogic').document(data['id']).delete()
+    db.collection(u'pre-lineLogic').document(data['id']).set(data)
     # db.collection(u'feature').document(body['Name']).set(body)
     return "delete done"
 
@@ -203,3 +210,31 @@ async def createLineLogic(data):
     db.collection("pre-lineLogic").document(newLogic['Name']).set(newLogic)
     # print(newLogic)
     return newLogic
+
+# @router.patch("/dasdasdasdasdsa")
+# async def UpdateFeatureNameandLogic(body:Feature):
+#     body = dict(body)
+#     body['oldName']
+#     await updateLineLogic(body)
+
+# async def updateLineLogic(data):
+#     print(data)
+#     docs = db.collection("pre-lineLogic").stream()
+#     logic = []
+#     for doc in docs:
+
+#         fakedict = doc.to_dict()
+#         logic.append(fakedict)
+    
+#     for i in logic :
+#         if i['id'] == data['oldName']:
+#             currentLogic = i 
+#             break
+#     if currentLogic:
+#         currentLogic['id'] = data['Name']
+#         currentLogic['Question'] = data['Question']
+#         currentLogic['Type'] = data['Type']
+#         db.collection("pre-lineLogic").document(currentLogic['id']).set(currentLogic)
+#         return 'done'
+#     else :
+#         return {"err": "no logic id"}
