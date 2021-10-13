@@ -52,3 +52,16 @@ def defineGroupName():
             groupName.append(i['group'])
     groupName.sort()
     return groupName
+
+
+
+@router.get("/group")
+async def getUsersByGroup(group: Optional[str] = None):
+    docs = db.collection("users").where('group', '==', group).stream()
+    group = []
+    
+    for doc in docs:
+        group.append(doc.to_dict())
+
+
+    return group

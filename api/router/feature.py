@@ -9,6 +9,7 @@ import datetime
 from typing import Any, Dict, AnyStr, List, Union
 import ast
 from model.Feature import Feature,updateFeature
+
 router = APIRouter()
 
 
@@ -37,7 +38,7 @@ async def getUsers(body:Feature):
         if feat['Name'] == body['Name']:
             return "Duplicate Name"
     db.collection(u'feature').document().set({"Name":body['Name']})
-
+    await createLineLogic(body)
     
     return "update done"
 
@@ -48,7 +49,6 @@ async def getUsers(body:Feature):
 
     # db.collection(u'feature').document(body['Name']).set(body)
     feat = docs.to_dict()
-
     new_key = body['Name']
     old_key = feat['Name']
     docs = db.collection(u'feature').document(body['id'])
@@ -176,3 +176,29 @@ def updateLogicAfterUpdateFeaTure():
         features.append(group)
         
     return features
+
+
+async def createLineLogic(data):
+    print(data)
+    docs = db.collection("pre-lineLogic").stream()
+    logic = []
+    lastLogic={}
+    for doc in docs:
+
+        fakedict = doc.to_dict()
+        logic.append(fakedict)
+
+    for i in logic :
+        if i['Next'] == None:
+            lastLogic = i 
+            break
+
+    lastLogic['Next'] = data['Name']
+    newLogic = data
+    newLogic['id'] = data['Name']
+    newLogic['Next'] = None
+    newLogic['Previous'] = lastLogic['id']
+    db.collection("pre-lineLogic").document(lastLogic['id']).set(lastLogic)
+    db.collection("pre-lineLogic").document(newLogic['Name']).set(newLogic)
+    # print(newLogic)
+    return newLogic
