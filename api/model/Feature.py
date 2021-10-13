@@ -2,8 +2,8 @@ from pydantic import BaseModel,HttpUrl
 from typing import List, Optional
 class Feature(BaseModel):
     id: Optional[str] = None
-    Name: str
-    Type: str
+    Name: Optional[str]
+    Type: Optional[str]
 
 
 class updateFeature(BaseModel):
