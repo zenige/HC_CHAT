@@ -86,21 +86,49 @@
                 </b-form-checkbox>
               </template>
               <template #cell(feature)="data">
-                <div
-                  v-if="data.item.editable === false"
-                  style="max-width: 32.5%"
-                >
+                <div v-if="data.item.editable === false">
                   <div>
                     {{ data.item.feature }}
                   </div>
                 </div>
-                <div
-                  v-if="data.item.editable === true"
-                  style="max-width: 32.5%"
-                >
+                <div v-if="data.item.editable === true">
                   <b-form-input
                     autofocus
                     v-model="changedFeatureName"
+                    @keydown.prevent.space
+                  />
+                </div>
+              </template>
+              <template #cell(conditionType)="data">
+                <div v-if="data.item.editable === false">
+                  <div>{{ data.item.conditionType }}</div>
+                </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-select
+                    v-model="changedConditionType"
+                    class="form-control border-gray border"
+                    style="curser: pointer"
+                    autofocus
+                  >
+                    <b-form-select-option
+                      v-for="option in conditionTypeOption"
+                      :key="option.label"
+                      :value="option.value"
+                      >{{ option.label }}</b-form-select-option
+                    >
+                  </b-form-select>
+                </div>
+              </template>
+              <template #cell(question)="data">
+                <div v-if="data.item.editable === false">
+                  <div>
+                    {{ data.item.question }}
+                  </div>
+                </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-input
+                    autofocus
+                    v-model="changedQuestion"
                     @keydown.prevent.space
                   />
                 </div>
@@ -194,6 +222,8 @@ export default {
       deleteSelected: [],
       totalFeature: null,
       changedFeatureName: '',
+      changedConditionType: null,
+      changedQuestion: '',
       oldFeatureName: '',
       fields: [
         {
@@ -205,31 +235,50 @@ export default {
         {
           key: 'feature',
           label: 'Feature name',
-          sortable: true,
+          sortable: false,
           thClass: 'featurethFeature-Class',
           tdClass: 'featuretdFeature-Class',
         },
         {
+          key: 'conditionType',
+          label: 'Condition type',
+          sortable: false,
+          thClass: 'featurethConditionType-Class',
+          tdClass: 'featuretdConditionType-Class',
+        },
+        {
+          key: 'question',
+          label: 'Question',
+          sortable: false,
+          thClass: 'featurethQuestion-Class',
+          tdClass: 'featuretdQuestion-Class',
+        },
+        {
           key: 'action',
           label: 'Action',
-          sortable: false,
           thClass: 'featurethAction-Class',
           tdClass: 'featuretdAction-Class',
         },
       ],
       featureData: [],
+      conditionTypeOption: [
+        {
+          label: 'boolean',
+          value: 'boolean',
+        },
+        {
+          label: 'input',
+          value: 'input',
+        },
+      ],
     }
   },
   watch: {
     selectAll(value) {
       this.featureData.map(function (item) {
         item.selected = value
-        // return item
       })
     },
-    // currentPage(value) {
-    //   this.getFeatureData(value, this.perPage, 'question')
-    // },
   },
   async mounted() {
     await this.getFeatureData()
@@ -281,12 +330,12 @@ export default {
         (item) => item.selected === true
       )
       for (let i = 0; i < this.deleteSelected.length; i++) {
-        await this.$axios.delete(
-          'feature/' +
-            this.deleteSelected[i].id +
-            '/' +
-            this.deleteSelected[i].feature
-        )
+        // await this.$axios.delete(
+        //   'feature/' +
+        //     this.deleteSelected[i].id +
+        //     '/' +
+        //     this.deleteSelected[i].feature
+        // )
       }
       await this.getFeatureData()
       if (this.featureData.length === 0) {
@@ -295,17 +344,26 @@ export default {
     },
     editFeature(data) {
       this.changedFeatureName = data.item.feature
+      this.changedConditionType = data.item.conditionType
+      this.changedQuestion = data.item.question
       data.item.editable = true
     },
     cancleEditFeature(data) {
       data.item.editable = false
     },
     async saveFeature(data) {
-      if (english.test(this.changedFeatureName)) {
+      if (
+        english.test(this.changedFeatureName) &&
+        this.changedConditionType &&
+        this.changedQuestion
+      ) {
         data.item.feature = this.changedFeatureName
-        await this.$axios.patch('feature', {
-          id: data.item.id,
-          Name: data.item.feature,
+        data.item.conditionType = this.changedConditionType
+        data.item.question = this.changedQuestion
+        await this.$axios.post('logic/linelogic/update', {
+          id: data.item.feature,
+          Type: data.item.conditionType,
+          Question: data.item.question,
         })
         data.item.editable = false
       } else {
@@ -317,19 +375,35 @@ export default {
       }
     },
     async getFeatureData() {
-      let { data } = await this.$axios.get('feature')
-      this.featureData = data.map((item) => {
+      let { data } = await this.$axios.get('logic/linelogic')
+
+      let sortedFeatureData = []
+
+      for (let i = 0; i < data.length; i++) {
+        if (i === 0) {
+          sortedFeatureData.push(data[i])
+        } else {
+          const nextFeature =
+            sortedFeatureData[sortedFeatureData.length - 1].Next
+          const nextFeatureIndex = data.findIndex(
+            (item) => item.id === nextFeature
+          )
+          sortedFeatureData.push(data[nextFeatureIndex])
+        }
+      }
+
+      this.featureData = sortedFeatureData.map((item) => {
         return {
-          feature: item.Name,
-          id: item.id,
+          feature: item.id,
+          question: item.Question,
+          conditionType: item.Type,
+          next: item.Next,
+          previous: item.Previous,
           selected: false,
           editable: false,
         }
       })
-      // remove undefined item
-      this.featureData = this.featureData.filter(function (element) {
-        return element.id !== undefined
-      })
+
       if (this.featureData.length === 0) {
         this.totalFeature = 0
       } else {
@@ -347,7 +421,15 @@ export default {
 }
 .featurethFeature-Class,
 .featuretdFeature-Class {
-  width: 65%;
+  width: 20%;
+}
+.featurethConditionType-Class,
+.featuretdConditionType-Class {
+  width: 15%;
+}
+.featurethQuestion-Class,
+.featurethQuestion-Class {
+  width: 25%;
 }
 .featurethAction-Class,
 .featuretdAction-Class {
