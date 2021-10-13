@@ -7,7 +7,7 @@
             <div class="">
               <nuxt-link
                 :to="previousUrl"
-                class="txt_grey_light arrow_back_2 d-none d-xl-block"
+                class="txt_grey_light arrow_back_2 d-xl-block"
                 ><img
                   src="~assets/hc-libs/images/vl/arrow_back.png"
                   class="w-50p"
@@ -37,10 +37,7 @@
           <b>Selected:</b>
           <p>{{ conditionSelected }}</p>
         </div>
-        <div>
-          <b>Only one of these selected:</b>
-          <p>{{ onlyOneOfTheseFeatureSelected }}</p>
-        </div>
+
         <div>
           <b>More than or Less than Selected:</b>
           <p>{{ moreLessSelected }}</p>
@@ -311,6 +308,7 @@ export default {
     pairOr2: '',
     pairOnly1: '',
     pairOnly2: '',
+    orConditionId: null,
   }),
   watch: {},
   computed: {
@@ -335,12 +333,6 @@ export default {
     closeDeleteGroupModal() {
       this.isShowDeleteGroupModal = false
     },
-    onDeleteGroup() {
-      console.log('delete group')
-    },
-    onSaveGroup() {
-      console.log('save group')
-    },
 
     getOptionsFeatures(label) {
       if (this.dataOptions.length > 0) {
@@ -359,7 +351,7 @@ export default {
           id: item.id,
         }
       })
-      // console.log('All feature data', this.allFeatureData)
+      console.log('All feature data', this.allFeatureData)
     },
 
     async getAllGroupData() {
@@ -373,7 +365,7 @@ export default {
         }
         return group
       })
-      // console.log('All group data', this.allGroupData)
+      console.log('All group data', this.allGroupData)
     },
 
     async getAllLineLogicData() {
@@ -387,14 +379,17 @@ export default {
           }
         }
       }
-      // console.log('All Line Logic data', this.allLineLogicData)
+      console.log('All Line Logic data', this.allLineLogicData)
     },
     async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
-      this.orCondition = data[0]
-      const key = 'id'
-      delete this.orCondition[key]
-      console.log(this.orCondition)
+      if (data.length > 0) {
+        this.orCondition = data[0]
+        this.orConditionId = this.orCondition.id
+        const key = 'id'
+        delete this.orCondition[key]
+        console.log(this.orCondition)
+      }
     },
 
     isNumeric(value) {
@@ -427,6 +422,9 @@ export default {
           value: this.allFeatureData[i].feature,
         })
       }
+
+      console.log('all feature data after mergeData', this.allFeatureData)
+      console.log('all group data after mergeData', this.allGroupData)
     },
 
     setInitialUserData() {
@@ -452,29 +450,44 @@ export default {
       this.setPairOrFeature()
     },
     setPairOrFeature() {
-      this.pairOr1 = Object.keys(this.orCondition)[0]
-      this.pairOr2 = Object.keys(this.orCondition)[1]
-      this.userData = this.userData.map((item) => {
-        if (item.featureName === this.pairOr1) {
-          return {
-            ...item, // copy all data
-            orFeatureData: this.pairOr2,
+      if (this.orCondition) {
+        let keyobject = Object.keys(this.orCondition)
+        this.pairOr1 = keyobject[0]
+        this.pairOr2 = keyobject[1]
+        this.userData = this.userData.map((item) => {
+          if (item.featureName === this.pairOr1) {
+            return {
+              ...item, // copy all data
+              orFeatureData: this.pairOr2,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+                orFeatureState: true,
+              },
+            }
+          } else if (item.featureName === this.pairOr2) {
+            return {
+              ...item,
+              orFeatureData: this.pairOr1,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+                orFeatureState: true,
+              },
+            }
+          } else {
+            return {
+              ...item,
+              state: {
+                ...item.state,
+                orFeatureState: false,
+              },
+            }
           }
-        } else if (item.featureName === this.pairOr2) {
-          return {
-            ...item,
-            orFeatureData: this.pairOr1,
-          }
-        } else {
-          return {
-            ...item,
-            state: {
-              ...item.state,
-              orFeatureState: false,
-            },
-          }
-        }
-      })
+        })
+      }
     },
     onChangeOnlyPairFeature(index) {
       // เก็บค่าของ only feature ที่ user เลือก ของ index นั้น ๆ
@@ -523,13 +536,13 @@ export default {
           }
         })
       }
-      if (this.userData[index].onlyOneOfTheseFeatureData !== null) {
+      if (this.userData[index].onlyOneOfTheseFeatureData) {
         this.userData[index].condition = null
         this.userData[index].state.conditionState = false
         this.userData[index].state.orFeatureState = false
       }
     },
-    onChangeOrPairFeature(index) {
+    async onChangeOrPairFeature(index) {
       // เก็บค่าของ or feature ที่ user เลือก ของ index นั้น ๆ
       this.pairOr1 = this.userData[index].orFeatureData
       // ถ้ามีค่า
@@ -542,6 +555,7 @@ export default {
               state: {
                 ...item.state,
                 orFeatureState: true,
+                onlyOneOfTheseFeatureState: false,
               },
             }
           } else if (item.featureName === this.userData[index].featureName) {
@@ -551,6 +565,7 @@ export default {
               state: {
                 ...item.state,
                 orFeatureState: true,
+                onlyOneOfTheseFeatureState: false,
               },
             }
           } else {
@@ -564,19 +579,27 @@ export default {
             }
           }
         })
+        let body = {
+          [this.pairOr1]: 'true',
+          [this.pairOr2]: 'true',
+        }
+        await this.$axios.post('group/orcondition/', body)
       } else {
         this.userData = this.userData.map((item) => {
           return {
             ...item,
             orFeatureData: null,
+            onlyOneOfTheseFeatureData: null,
             state: {
               ...item.state,
               orFeatureState: true,
+              onlyOneOfTheseFeatureState: true,
             },
           }
         })
+        await this.$axios.delete('group/orcondition/' + this.orConditionId)
       }
-      if (this.userData[index].orFeatureData !== null) {
+      if (this.userData[index].orFeatureData) {
         this.userData[index].state.onlyOneOfTheseFeatureState = false
         this.userData[index].onlyOneOfTheseFeatureData = null
       }
@@ -600,6 +623,36 @@ export default {
         })
         this.userData[index].moreLessValue = 0
       }
+    },
+    onSaveGroup() {
+      let newMoreLessvalue = []
+
+      for (let i = 0; i < this.userData.length; i++) {
+        //check more less value
+        if (this.userData[i].moreLessValue) {
+          if (
+            this.userData[i].moreLessValue < 22 &&
+            this.userData[i].moreLessValue >= 0
+          ) {
+            newMoreLessvalue[i] = 2
+          } else if (this.userData[i].moreLessValue <= 30) {
+            newMoreLessvalue[i] = 3
+          } else if (this.userData[i].moreLessValue <= 40) {
+            newMoreLessvalue[i] = 4
+          } else if (this.userData[i].moreLessValue <= 50) {
+            newMoreLessvalue[i] = 5
+          } else if (this.userData[i].moreLessValue <= 60) {
+            newMoreLessvalue[i] = 6
+          } else if (this.userData[i].moreLessValue > 60) {
+            newMoreLessvalue[i] = 7
+          }
+        }
+      }
+
+      for (let i = 0; i < this.userData.length; i++) {}
+    },
+    onDeleteGroup() {
+      console.log('delete group')
     },
   },
 }
