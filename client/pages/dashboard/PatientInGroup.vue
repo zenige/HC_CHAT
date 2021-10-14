@@ -195,11 +195,35 @@ export default {
           tdClass: 'PatientInGrouptdGender-Class',
         },
         {
-          key: 'age',
+          key: 'profile.birthday',
           label: 'ช่วงอายุ',
           sortable: true,
           thClass: 'PatientInGroupthAge-Class',
           tdClass: 'PatientInGrouptdAge-Class',
+          formatter: (key,item) => {
+              let d = new Date(key);
+              let n = d.getFullYear();
+              new Date().getFullYear() - n
+              if(n < 11) {
+                return `0 - 10`
+              } else if (10 < n < 21) {
+                return `11 - 20`
+              } else if (20 < n < 31) {
+                return `21 - 30`
+              } else if (30 < n < 41) {
+                return `31 - 40`
+              } else if (40 < n < 51) {
+                return `41 - 50`
+              } else if (50 < n < 61) {
+                return `51 - 60`
+              } else if (60 < n < 71) {
+                return `61 - 70`
+              } else if (70 < n < 81) {
+                return `71 - 80`
+              } else {
+                return ` > 80`
+              }
+            }
         },
 
         {
@@ -240,12 +264,11 @@ export default {
   },
   async mounted() {
     this.groupName = this.$route.params.groupId
+    console.log('idgro', this.groupName)
     await this.getNewWordData(1, 10, 'question')
     this.isLoading = true
-    this.bgbg = await this.$axios.get('http://localhost:200/dashboard/group?group=group4')
+    this.bgbg = await this.$axios.get(`http://localhost:200/dashboard/group?group=${this.groupName}`)
     this.bgbg = this.bgbg.data
-    console.log('bgbgbg', this.bgbg[0].profile.real_name + " " + this.bgbg[0].profile.last_name)
-    console.log('ff', this.bgbg[0].profile.phone )
   },
   computed: {
     rows() {

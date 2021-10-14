@@ -37,11 +37,11 @@
             ชื่อ-นามสกุล: {{detailmodal.profile.real_name}}  {{detailmodal.profile.last_name}}
           </div>
           <div class="txt_patientInfo_13px">เพศ: ชาย</div>
-          <div class="txt_patientInfo_13px">ช่วงอายุ: 21-30 ปี</div>
+          <div class="txt_patientInfo_13px">ช่วงอายุ: {{formatB(detailmodal.profile.birthday)}} ปี</div>
           <div class="txt_patientInfo_13px">เบอร์โทรศัพท์: {{detailmodal.profile.phone}}</div>
           <div class="txt_patientInfo_13px">อัพเดทเมื่อ: 22/09/2021</div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
-            Group: <span>Group name</span>
+            Group: <span>{{detailmodal.group}}</span>
           </div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
             แบบสอบถาม
@@ -115,12 +115,36 @@ export default {
     },
   },
   mounted() {
-    // console.log('bgbgb', this.bgbg)
   },
   methods: {
     onModalHide() {
       this.$emit('onModalHide', false)
     },
+    formatB(value) {
+      let d = new Date(value);
+      let n = d.getFullYear();
+      n = new Date().getFullYear() - n
+      if(n < 11) {
+        return `0 - 10`
+      } else if (10 < n < 21) {
+        return `11 - 20`
+      } else if (20 < n < 31) {
+        return `21 - 30`
+      } else if (30 < n < 41) {
+        return `31 - 40`
+      } else if (40 < n < 51) {
+        return `41 - 50`
+      } else if (50 < n < 61) {
+        return `51 - 60`
+      } else if (60 < n < 71) {
+        return `61 - 70`
+      } else if (70 < n < 81) {
+        return `71 - 80`
+      } else {
+        return ` > 80`
+      }
+       
+    }
   },
 }
 </script>
