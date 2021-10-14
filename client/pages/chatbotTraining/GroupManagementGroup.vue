@@ -343,13 +343,16 @@ export default {
     },
 
     getConditionOptions(index) {
-      if (this.userData[index].orFeatureData !== null) {
+      if (this.userData[index].conditionType === 'input') {
         const resultOr = this.conditionOptions.filter(
-          (item) => item.label !== 'Any' && item.label !== 'Input'
+          (item) => item.label === 'Input'
         )
         return resultOr
       } else {
-        return this.conditionOptions
+        const resultOr = this.conditionOptions.filter(
+          (item) => item.label !== 'Input'
+        )
+        return resultOr
       }
     },
 
@@ -412,19 +415,55 @@ export default {
           if (group.group === this.groupName) {
             if (group[feature.feature]) {
               if (this.isNumeric(group[feature.feature])) {
-                feature['Type'] = 'input'
+                feature['TypeValue'] = 'input'
                 feature['value'] = group[feature.feature]
                 feature['condition'] = group.condition
               } else {
-                feature['Type'] = group[feature.feature]
+                feature['TypeValue'] = group[feature.feature]
               }
             } else if (group.Relation) {
               feature['Relation'] = group.Relation
-              feature['Type'] = 'Relation'
+              feature['TypeValue'] = 'Relation'
             }
+            const dataFromAllLineLogicData = this.allLineLogicData.find(
+              (f) => f.id === feature.feature
+            )
+            feature['Next'] = dataFromAllLineLogicData.Next
+            feature['Previous'] = dataFromAllLineLogicData.Previous
+            feature['Type'] = dataFromAllLineLogicData.Type
           }
         }
       }
+
+      console.log('all feature before sorted', this.allFeatureData)
+
+      let sortedFeatureData = []
+
+      const firstFeatureDataSorted = this.allFeatureData.find(
+        (item) => item.Previous === null
+      )
+      sortedFeatureData.push(firstFeatureDataSorted)
+
+      const lastFeatureDataSorted = this.allFeatureData.find(
+        (item) => item.Next === null
+      )
+
+      this.allFeatureData = this.allFeatureData.filter(
+        (item) => item.Previous !== null && item.Next !== null
+      )
+
+      for (let i = 0; i < this.allFeatureData.length; i++) {
+        const nextFeature = sortedFeatureData[sortedFeatureData.length - 1].Next
+        const currentFeature = this.allFeatureData.find(
+          (item) => item.feature === nextFeature
+        )
+        sortedFeatureData.push(currentFeature)
+      }
+      sortedFeatureData.push(lastFeatureDataSorted)
+
+      console.log('sortedFeatureData', sortedFeatureData)
+
+      this.allFeatureData = sortedFeatureData
 
       for (let i = 0; i < this.allFeatureData.length; i++) {
         this.dataOptions.push({
@@ -438,9 +477,10 @@ export default {
 
     setInitialUserData() {
       for (let i = 0; i < this.allFeatureData.length; i++) {
-        const feature = {
+        let feature = {
           question: this.allFeatureData[i].Question,
-          condition: this.allFeatureData[i].Type,
+          conditionType: this.allFeatureData[i].Type,
+          condition: this.allFeatureData[i].TypeValue,
           featureName: this.allFeatureData[i].feature,
           moreLessOption: null,
           moreLessValue: null,
@@ -454,6 +494,16 @@ export default {
             orFeatureState: true,
           },
         }
+        // if feature have relation
+        if (this.allFeatureData[i].Relation) {
+          const relation = this.allFeatureData[i].Relation[0]
+          const relation_filter = relation.filter(
+            (name) => name !== this.allFeatureData[i].feature
+          ) // result filter -> [travel]
+          feature.onlyOneOfTheseFeatureData = relation_filter[0]
+          feature.state.conditionState = false
+          feature.condition = null
+        }
         this.userData.push(feature)
         if (this.userData[i].condition === 'input') {
           this.userData[i].state.moreLessOptionState = true
@@ -463,6 +513,7 @@ export default {
           this.userData[i].moreLessValue = null
         }
       }
+      console.log('user data', this.userData)
       this.setPairOrFeature()
     },
     setPairOrFeature() {
@@ -641,23 +692,6 @@ export default {
       }
     },
     async onSaveGroup() {
-      // let notNullCondition = this.userData.every(
-      //   (item) => item.condition && item.condition !== null
-      // )
-      // if (notNullCondition) {
-      //   this.$bvToast.toast('Saved successfully', {
-      //     variant: 'success',
-      //     toaster: 'b-toaster-bottom-left',
-      //     noCloseButton: true,
-      //   })
-      //   console.log('user data', this.userData)
-      // } else {
-      //   this.$bvToast.toast('Please fill all Condition fields', {
-      //     variant: 'danger',
-      //     toaster: 'b-toaster-bottom-left',
-      //     noCloseButton: true,
-      //   })
-      // }
       let moreLessOptionFlag = false
       let moreOrLess = ''
       let relationArr = [[]]
@@ -709,9 +743,10 @@ export default {
         toaster: 'b-toaster-bottom-left',
         noCloseButton: true,
       })
+      console.log(this.finalUserData)
     },
     onDeleteGroup() {
-      console.log('delete group')
+      console.log('all feature data')
     },
   },
 }

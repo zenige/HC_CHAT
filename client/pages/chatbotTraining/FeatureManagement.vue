@@ -94,7 +94,7 @@
                 <div v-if="data.item.editable === true">
                   <b-form-input
                     autofocus
-                    v-model="changedFeatureName"
+                    v-model="changedFeatureName[data.index]"
                     @keydown.prevent.space
                   />
                 </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-select
-                    v-model="changedConditionType"
+                    v-model="changedConditionType[data.index]"
                     class="form-control border-gray border"
                     style="curser: pointer"
                     autofocus
@@ -128,7 +128,7 @@
                 <div v-if="data.item.editable === true">
                   <b-form-input
                     autofocus
-                    v-model="changedQuestion"
+                    v-model="changedQuestion[data.index]"
                     @keydown.prevent.space
                   />
                 </div>
@@ -221,9 +221,9 @@ export default {
       currentPage: 1,
       deleteSelected: [],
       totalFeature: null,
-      changedFeatureName: '',
-      changedConditionType: null,
-      changedQuestion: '',
+      changedFeatureName: [],
+      changedConditionType: [],
+      changedQuestion: [],
       oldFeatureName: '',
       fields: [
         {
@@ -343,9 +343,10 @@ export default {
       }
     },
     editFeature(data) {
-      this.changedFeatureName = data.item.feature
-      this.changedConditionType = data.item.conditionType
-      this.changedQuestion = data.item.question
+      console.log(data)
+      this.changedFeatureName[data.index] = data.item.feature
+      this.changedConditionType[data.index] = data.item.conditionType
+      this.changedQuestion[data.index] = data.item.question
       data.item.editable = true
     },
     cancleEditFeature(data) {
@@ -353,22 +354,30 @@ export default {
     },
     async saveFeature(data) {
       if (
-        english.test(this.changedFeatureName) &&
-        this.changedConditionType &&
-        this.changedQuestion
-      ) {
-        data.item.feature = this.changedFeatureName
-        data.item.conditionType = this.changedConditionType
-        data.item.question = this.changedQuestion
-        await this.$axios.patch('feature', {
-          id: data.item.feature,
-          Name: data.item.feature,
-          Type: data.item.conditionType,
-          Question: data.item.question,
-        })
-        data.item.editable = false
-      } else {
-        this.$bvToast.toast('Please fill in English only.', {
+        this.changedFeatureName[data.index] &&
+        this.changedConditionType[data.index] &&
+        this.changedQuestion[data.index]
+      )
+        if (english.test(this.changedFeatureName[data.index])) {
+          data.item.feature = this.changedFeatureName[data.index]
+          data.item.conditionType = this.changedConditionType[data.index]
+          data.item.question = this.changedQuestion[data.index]
+          await this.$axios.patch('feature', {
+            id: data.item.feature,
+            Name: data.item.feature,
+            Type: data.item.conditionType,
+            Question: data.item.question,
+          })
+          data.item.editable = false
+        } else {
+          this.$bvToast.toast('Please fill in English only', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+        }
+      else {
+        this.$bvToast.toast('Please fill all required fills', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,
