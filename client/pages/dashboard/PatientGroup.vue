@@ -26,12 +26,12 @@
       >
         <!-- Group card -->
         <div
-          v-for="(group, index) in dashboardGroup"
+          v-for="(group, index) in groupNamenew"
           :key="index"
           class="col-md-4 pb_me-4"
         >
           <NuxtLink
-            :to="localePath(`/dashboard/patient-group/${group[index]}`)"
+            :to="localePath(`/dashboard/patient-group/${group.name}`)"
             class="card h-100 mb-0 px-3 py-2 group-card"
           >
             <div class="card-body p_card pb-0">
@@ -41,10 +41,10 @@
                     <li class="media d-flex align-items-center text-left">
                       <div class="media-body">
                         <div class="txt_hc_head_groupName minheight_head">
-                          Group: {{ group[index] }}
+                          Group: {{ group.name }}
                         </div>
                         <div class="txt_hc_head_patientNumber minheight_head">
-                          100 คน
+                          {{ group.total }} คน
                         </div>
                       </div>
                     </li>
@@ -89,7 +89,7 @@ export default {
       groupName: null,
       dashboardGroup: [],
       allGroup: [],
-      new: [],
+      groupNamenew: [],
     }
   },
   async mounted() {
@@ -102,11 +102,8 @@ export default {
     async getDashboardData() {
       let { data } = await this.$axios.get('dashboard')
       this.dashboardGroup.push(data)
-
-      for (let i = 0; i < data.length; i++) {
-        this.dashboardGroup[0] = Object.keys(this.dashboardGroup[0])
-      }
-      console.log('hh', this.dashboardGroup)
+      this.groupNamenew = this.dashboardGroup[0]
+      console.log('bhhhhhhg', this.groupNamenew)
     },
   },
 }
