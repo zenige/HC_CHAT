@@ -74,7 +74,7 @@
                     {{ data.item.group }}
                   </div>
                 </div>
-                <div v-if="data.item.editable === true">
+                <div v-if="data.item.editable === true" style="width: 35%">
                   <b-form-input
                     autofocus
                     v-model="changedGroupData"

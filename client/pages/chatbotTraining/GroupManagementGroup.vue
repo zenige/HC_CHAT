@@ -67,11 +67,12 @@
                             </div>
                             <div class="form-group mb-0 w-100">
                               <div class="d-flex" style="width: 100%">
-                                <b-form-textarea
+                                <b-form-input
                                   type="text"
                                   placeholder=""
                                   class="form-control border-gray border"
                                   v-model="feature.question"
+                                  disabled
                                 />
                               </div>
                             </div>
@@ -360,7 +361,6 @@ export default {
           id: item.id,
         }
       })
-      console.log('All feature data', this.allFeatureData)
     },
 
     async getAllGroupData() {
@@ -390,6 +390,7 @@ export default {
       }
       console.log('All Line Logic data', this.allLineLogicData)
     },
+
     async getOrCondition() {
       let { data } = await this.$axios.get('group/orcondition')
       if (data.length > 0) {
@@ -397,7 +398,7 @@ export default {
         this.orConditionId = this.orCondition.id
         const key = 'id'
         delete this.orCondition[key]
-        console.log(this.orCondition)
+        // console.log('or condition', this.orCondition)
       }
     },
 
@@ -431,10 +432,8 @@ export default {
           value: this.allFeatureData[i].feature,
         })
       }
-      console.log('data option', this.dataOptions)
 
       console.log('all feature data after mergeData', this.allFeatureData)
-      console.log('all group data after mergeData', this.allGroupData)
     },
 
     setInitialUserData() {
@@ -711,7 +710,6 @@ export default {
         noCloseButton: true,
       })
     },
-
     onDeleteGroup() {
       console.log('delete group')
     },
