@@ -89,7 +89,9 @@ export default {
       groupName: null,
       dashboardGroup: [],
       allGroup: [],
-      new: [],
+      new: [{
+        name: ''
+      }],
     }
   },
   async mounted() {
@@ -102,11 +104,11 @@ export default {
     async getDashboardData() {
       let { data } = await this.$axios.get('dashboard')
       this.dashboardGroup.push(data)
-
-      for (let i = 0; i < data.length; i++) {
-        this.dashboardGroup[0] = Object.keys(this.dashboardGroup[0])
+      console.log('bhhhhhhg', this.dashboardGroup)
+      for (let i = 0; i < this.dashboardGroup.length; i++) {
+        this.dashboardGroup[i] = Object.keys(this.dashboardGroup[i])
       }
-      console.log('hh', this.dashboardGroup)
+      console.log('bhhhhhhg', this.dashboardGroup)
     },
   },
 }

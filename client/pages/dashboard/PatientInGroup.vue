@@ -78,7 +78,7 @@
           <b-table
             responsive
             id="group-table"
-            :items="patientInGroupData"
+            :items="bgbg"
             :per-page="0"
             :current-page="currentPage"
             :fields="fields"
@@ -88,7 +88,7 @@
             <template #cell(name)="data">
               <div class="d-flex justify-content-start">
                 <div>
-                  {{ data.item.name }}
+                  {{ data.value.real_name }}
                 </div>
               </div>
             </template>
@@ -106,7 +106,7 @@
             </template>
             <template #cell(tel)="data">
               <div class="d-flex justify-content-start">
-                {{ data.item.tel }}
+                {{ data.item.phone }}
               </div>
             </template>
             <template #head(info)>
@@ -114,11 +114,11 @@
                 รายละเอียดเพิ่มเติม
               </div>
             </template>
-            <template #cell(info)>
+            <template #cell(info)="row">
               <div class="row d-flex justify-content-center align-items-center">
                 <button
                   class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                  @click="openPatientInfoModal"
+                  @click="openPatientInfoModal(row.item)"
                 >
                   Show info
                 </button>
@@ -145,19 +145,23 @@
       :isOpen="isShowPatientInfoModal"
       :onCancel="closeShowPatientInfoModal"
       :onShowInfo="onShowInfo"
+      :detailmodal = "detailmodal"
     ></PatientInfoModal>
   </div>
 </template>
 
 <script>
+
 export default {
   components: {
     PatientInfoModal: () => import('~/components/modals/PatientInfoModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
-  props: {},
   data() {
     return {
+      detailmodal: [],
+      bgbg: [],
+      listuser: [],
       groupName: null,
       isLoading: false,
       isShowPatientInfoModal: false,
@@ -176,11 +180,12 @@ export default {
       changedAnswerData: '',
       fields: [
         {
-          key: 'name',
+          key: 'profile',
           label: 'ชื่อ-นามสกุล',
           sortable: true,
           thClass: 'PatientInGroupthName-Class',
           tdClass: 'PatientInGrouptdName-Class',
+          formatter: 'fullName'
         },
         {
           key: 'gender',
@@ -198,7 +203,7 @@ export default {
         },
 
         {
-          key: 'tel',
+          key: 'profile.phone',
           label: 'เบอร์โทรศัพท์',
           sortable: true,
           thClass: 'PatientInGroupthTel-Class',
@@ -237,6 +242,10 @@ export default {
     this.groupName = this.$route.params.groupId
     await this.getNewWordData(1, 10, 'question')
     this.isLoading = true
+    this.bgbg = await this.$axios.get('http://localhost:200/dashboard/group?group=group4')
+    this.bgbg = this.bgbg.data
+    console.log('bgbgbg', this.bgbg[0].profile.real_name + " " + this.bgbg[0].profile.last_name)
+    console.log('ff', this.bgbg[0].profile.phone )
   },
   computed: {
     rows() {
@@ -247,8 +256,13 @@ export default {
     },
   },
   methods: {
-    openPatientInfoModal() {
+    fullName(value) {
+        return `${value.real_name} ${value.last_name}`
+    },
+    openPatientInfoModal(value) {
+      console.log('abc', value)
       this.isShowPatientInfoModal = true
+      this.detailmodal = value
     },
     onShowInfo() {
       console.log('show info')

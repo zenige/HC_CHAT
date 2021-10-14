@@ -34,11 +34,11 @@
         <div class="d-flex flex-column justify-content-start">
           <div class="txt_patientInfo_16px">ข้อมูลส่วนตัว</div>
           <div class="txt_patientInfo_13px">
-            ชื่อ-นามสกุล: บวรศักดิ์ เหลือจันทร์
+            ชื่อ-นามสกุล: {{detailmodal.profile.real_name}}  {{detailmodal.profile.last_name}}
           </div>
           <div class="txt_patientInfo_13px">เพศ: ชาย</div>
           <div class="txt_patientInfo_13px">ช่วงอายุ: 21-30 ปี</div>
-          <div class="txt_patientInfo_13px">เบอร์โทรศัพท์: 21-30 ปี</div>
+          <div class="txt_patientInfo_13px">เบอร์โทรศัพท์: {{detailmodal.profile.phone}}</div>
           <div class="txt_patientInfo_13px">อัพเดทเมื่อ: 22/09/2021</div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
             Group: <span>Group name</span>
@@ -74,6 +74,7 @@
             </div>
           </div>
         </div> -->
+        
       </div>
     </template>
   </b-modal>
@@ -83,6 +84,10 @@
 export default {
   name: 'DeleteWordModal',
   props: {
+    detailmodal: {
+      type: Array,
+      default: () => {},
+    },
     isOpen: {
       type: Boolean,
       default: false,
@@ -109,7 +114,9 @@ export default {
       }
     },
   },
-
+  mounted() {
+    // console.log('bgbgb', this.bgbg)
+  },
   methods: {
     onModalHide() {
       this.$emit('onModalHide', false)
