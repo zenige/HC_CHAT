@@ -75,7 +75,11 @@
                   </div>
                 </div>
                 <div v-if="data.item.editable === true">
-                  <b-form-input autofocus v-model="changedGroupData" />
+                  <b-form-input
+                    autofocus
+                    v-model="changedGroupData"
+                    @keydown.prevent.space
+                  />
                 </div>
               </template>
               <template #head(action)>

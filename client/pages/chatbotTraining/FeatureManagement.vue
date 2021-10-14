@@ -195,7 +195,7 @@
 </template>
 
 <script>
-const english = /^[A-Za-z0-9]*$/
+const english = /^[A-Za-z]*$/
 
 export default {
   components: {
@@ -216,7 +216,7 @@ export default {
       edit: false,
       selectAll: false,
       selectedRow: {},
-      filter: null,
+      filter: '',
       perPage: 10,
       currentPage: 1,
       deleteSelected: [],
