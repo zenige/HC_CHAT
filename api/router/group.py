@@ -73,37 +73,15 @@ async def UpdateGroupName(body:Feature):
 @router.delete("/{id}")
 async def getUsers(id:str):
 
-    # docs = db.collection(u'feature').document(body['id'])
-    # docs.update({u'Name': body['Name']})
-    # db.collection(u'feature').document(body['Name']).set(body)
-    
-    # new_key = body['Name']
-    # old_key = body['old_Name']
-    # docs = db.collection("logics").document(old_key).get()
     db.collection(u'logics').document(id).delete()
-    # # users = []
-    # features = []
-    # data =  docs.to_dict()
-    # dataStr = data['data']
-    # group = ast.literal_eval(dataStr)
 
-  
-    # group['group'] = new_key
-
-    # features.append(group)
-    # for feature in features:
-    #     featureStr = str(feature)
-    #     # print(featureStr)
-    #     # print(feature['group'])
-    #     # db.collection(u'logics').document(feature['group']).delete()
-    #     db.collection(u'logics').document(feature['group']).set({"data":featureStr})
     return "update done"
 
 
 @router.post("/")
 async def createGroupName(body:Feature):
     body = dict(body)
-    strBody = "{'group':"+"'"+body['Name']+"'"+"}"
+    strBody = "{group:"+body['Name']+"}"
     docs = db.collection(u'logics').document(body['Name']).set({"data":strBody})
 
 
@@ -149,11 +127,13 @@ async def createGroupName(id:str):
 @router.post("/groupid/{id}")
 async def createGroupName(id:str,request: Request):
     data = await request.json()
-    dataStr = str(data[0]['data'])
-
-    if len(data) >1:
-        docs = db.collection(u'logics').document(id).set({"data": dataStr,"condition":data[1]['condition']})
+    dataStr = str(data['data'])
+    print(data)
+    if "condition" in data.keys():
+        print("IN IF")
+        docs = db.collection(u'logics').document(id).set({"data": dataStr,"condition":data['condition'],"value":data['value']})
     else :
+        print(" in else")
         docs = db.collection(u'logics').document(id).set({"data": dataStr})     
 
 
