@@ -97,7 +97,7 @@
                 <div v-if="data.item.editable === true">
                   <b-form-textarea
                     autofocus
-                    v-model="changedQuestionData"
+                    v-model="changedQuestionData[data.index]"
                     rows="3"
                     max-rows="6"
                     no-auto-shrink
@@ -113,7 +113,7 @@
                 <b-form-textarea
                   autofocus
                   v-if="data.item.editable === true"
-                  v-model="changedAnswerData"
+                  v-model="changedAnswerData[data.index]"
                   rows="3"
                   max-rows="6"
                   no-auto-shrink
@@ -211,8 +211,8 @@ export default {
       currentPage: 1,
       deleteSelected: [],
       totalTrainedWord: 0,
-      changedQuestionData: '',
-      changedAnswerData: '',
+      changedQuestionData: [],
+      changedAnswerData: [],
       fields: [
         {
           key: 'selected',
@@ -381,7 +381,6 @@ export default {
         this.filter,
         this.currentPage,
         10,
-        orderBy,
         'question',
         ASCENDING
       )
@@ -390,16 +389,16 @@ export default {
       }
     },
     editWord(data) {
-      this.changedQuestionData = data.item.question
-      this.changedAnswerData = data.item.answer
+      this.changedQuestionData[data.index] = data.item.question
+      this.changedAnswerData[data.index] = data.item.answer
       data.item.editable = true
     },
     cancleEditWord(data) {
       data.item.editable = false
     },
     async saveWord(data) {
-      data.item.question = this.changedQuestionData
-      data.item.answer = this.changedAnswerData
+      data.item.question = this.changedQuestionData[data.index]
+      data.item.answer = this.changedAnswerData[data.index]
       data.item.editable = false
       await this.$axios.patch('train/trained/' + data.item.id, {
         question: data.item.question,

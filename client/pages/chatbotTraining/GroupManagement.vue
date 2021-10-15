@@ -74,8 +74,12 @@
                     {{ data.item.group }}
                   </div>
                 </div>
-                <div v-if="data.item.editable === true">
-                  <b-form-input autofocus v-model="changedGroupData" />
+                <div v-if="data.item.editable === true" style="width: 35%">
+                  <b-form-input
+                    autofocus
+                    v-model="changedGroupData"
+                    @keydown.prevent.space
+                  />
                 </div>
               </template>
               <template #head(action)>
@@ -207,13 +211,6 @@ export default {
           tdClass: 'grouptdGroup-Class',
         },
         {
-          key: 'status',
-          label: 'Status',
-          sortable: true,
-          thClass: 'groupthStatus-Class',
-          tdClass: 'grouptdStatus-Class',
-        },
-        {
           key: 'action',
           label: 'Action',
           sortable: false,
@@ -325,11 +322,7 @@ export default {
 <style lang="scss">
 .groupthGroup-Class,
 .grouptdGroup-Class {
-  width: 32.5%;
-}
-.groupthStatus-Class,
-.grouptdStatus-Class {
-  width: 47.5%;
+  width: 80%;
 }
 .groupthAction-Class,
 .grouptdAction-Class {

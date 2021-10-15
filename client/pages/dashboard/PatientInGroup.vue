@@ -7,7 +7,7 @@
             <div class="">
               <nuxt-link
                 :to="previousUrl"
-                class="txt_grey_light arrow_back_2 d-none d-xl-block"
+                class="txt_grey_light arrow_back_2 d-xl-block"
                 ><img
                   src="~assets/hc-libs/images/vl/arrow_back.png"
                   class="w-50p"
@@ -78,7 +78,7 @@
           <b-table
             responsive
             id="group-table"
-            :items="patientInGroupData"
+            :items="bgbg"
             :per-page="0"
             :current-page="currentPage"
             :fields="fields"
@@ -88,7 +88,7 @@
             <template #cell(name)="data">
               <div class="d-flex justify-content-start">
                 <div>
-                  {{ data.item.name }}
+                  {{ data.value.real_name }}
                 </div>
               </div>
             </template>
@@ -106,7 +106,7 @@
             </template>
             <template #cell(tel)="data">
               <div class="d-flex justify-content-start">
-                {{ data.item.tel }}
+                {{ data.item.phone }}
               </div>
             </template>
             <template #head(info)>
@@ -114,11 +114,11 @@
                 รายละเอียดเพิ่มเติม
               </div>
             </template>
-            <template #cell(info)>
+            <template #cell(info)="row">
               <div class="row d-flex justify-content-center align-items-center">
                 <button
                   class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                  @click="openPatientInfoModal"
+                  @click="openPatientInfoModal(row.item)"
                 >
                   Show info
                 </button>
@@ -145,19 +145,24 @@
       :isOpen="isShowPatientInfoModal"
       :onCancel="closeShowPatientInfoModal"
       :onShowInfo="onShowInfo"
+      :detailmodal = "detailmodal"
     ></PatientInfoModal>
   </div>
 </template>
 
 <script>
+
 export default {
   components: {
     PatientInfoModal: () => import('~/components/modals/PatientInfoModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
   },
-  props: {},
   data() {
     return {
+      detailmodal: [],
+      bgbg: [],
+      listuser: [],
+      groupName: null,
       isLoading: false,
       isShowPatientInfoModal: false,
       isShowTrainWordModal: false,
@@ -175,11 +180,12 @@ export default {
       changedAnswerData: '',
       fields: [
         {
-          key: 'name',
+          key: 'profile',
           label: 'ชื่อ-นามสกุล',
           sortable: true,
           thClass: 'PatientInGroupthName-Class',
           tdClass: 'PatientInGrouptdName-Class',
+          formatter: 'fullName'
         },
         {
           key: 'gender',
@@ -189,15 +195,39 @@ export default {
           tdClass: 'PatientInGrouptdGender-Class',
         },
         {
-          key: 'age',
+          key: 'profile.birthday',
           label: 'ช่วงอายุ',
           sortable: true,
           thClass: 'PatientInGroupthAge-Class',
           tdClass: 'PatientInGrouptdAge-Class',
+          formatter: (key,item) => {
+              let d = new Date(key);
+              let n = d.getFullYear();
+              new Date().getFullYear() - n
+              if(n < 11) {
+                return `0 - 10`
+              } else if (10 < n < 21) {
+                return `11 - 20`
+              } else if (20 < n < 31) {
+                return `21 - 30`
+              } else if (30 < n < 41) {
+                return `31 - 40`
+              } else if (40 < n < 51) {
+                return `41 - 50`
+              } else if (50 < n < 61) {
+                return `51 - 60`
+              } else if (60 < n < 71) {
+                return `61 - 70`
+              } else if (70 < n < 81) {
+                return `71 - 80`
+              } else {
+                return ` > 80`
+              }
+            }
         },
 
         {
-          key: 'tel',
+          key: 'profile.phone',
           label: 'เบอร์โทรศัพท์',
           sortable: true,
           thClass: 'PatientInGroupthTel-Class',
@@ -233,8 +263,12 @@ export default {
     },
   },
   async mounted() {
+    this.groupName = this.$route.params.groupId
+    console.log('idgro', this.groupName)
     await this.getNewWordData(1, 10, 'question')
     this.isLoading = true
+    this.bgbg = await this.$axios.get(`http://localhost:200/dashboard/group?group=${this.groupName}`)
+    this.bgbg = this.bgbg.data
   },
   computed: {
     rows() {
@@ -245,8 +279,13 @@ export default {
     },
   },
   methods: {
-    openPatientInfoModal() {
+    fullName(value) {
+        return `${value.real_name} ${value.last_name}`
+    },
+    openPatientInfoModal(value) {
+      console.log('abc', value)
       this.isShowPatientInfoModal = true
+      this.detailmodal = value
     },
     onShowInfo() {
       console.log('show info')

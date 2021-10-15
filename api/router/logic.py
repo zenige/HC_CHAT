@@ -57,6 +57,7 @@ async def createLineLogic(data: Logic):
         if i['Next'] == None:
             lastLogic = i 
             break
+
     lastLogic['Next'] = data.id
     newLogic = dict(data)
 
@@ -142,7 +143,7 @@ async def updateLineLogic(data: Logic):
 
 
 @router.get("/updateLogic")
-async def updateData():
+async def updateDataBeforeTrain():
     docs = db.collection("pre-lineLogic").stream()
     logic = []
     for doc in docs:

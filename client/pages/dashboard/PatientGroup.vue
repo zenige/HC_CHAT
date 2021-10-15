@@ -1,6 +1,7 @@
 <template>
   <div class="hc_navbar content p-0 group-management-group">
-    <div class="container fitscreen pt-3 pt-md-3 pb-0 plr_15p">
+    <Loader v-if="!isLoading" />
+    <div v-else class="container fitscreen pt-3 pt-md-3 pb-0 plr_15p">
       <div class="row">
         <div class="col-md-12">
           <div class="row d-flex justify-content-between">
@@ -24,9 +25,13 @@
         "
       >
         <!-- Group card -->
-        <div class="col-md-4 pb_me-4">
+        <div
+          v-for="(group, index) in groupNamenew"
+          :key="index"
+          class="col-md-4 pb_me-4"
+        >
           <NuxtLink
-            :to="localePath('/dashboard/patient-group/group-number')"
+            :to="localePath(`/dashboard/patient-group/${group.name}`)"
             class="card h-100 mb-0 px-3 py-2 group-card"
           >
             <div class="card-body p_card pb-0">
@@ -36,10 +41,10 @@
                     <li class="media d-flex align-items-center text-left">
                       <div class="media-body">
                         <div class="txt_hc_head_groupName minheight_head">
-                          Group: Group 1
+                          Group: {{ group.name }}
                         </div>
                         <div class="txt_hc_head_patientNumber minheight_head">
-                          100 คน
+                          {{ group.total }} คน
                         </div>
                       </div>
                     </li>
@@ -69,17 +74,6 @@
           </NuxtLink>
         </div>
       </div>
-      <!-- <div style="margin-top: 0.5rem">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          first-number
-          last-number
-          align="center"
-          class="myPaginattion"
-        ></b-pagination>
-      </div> -->
     </div>
   </div>
 </template>
@@ -91,7 +85,26 @@ export default {
       rows: 100,
       perPage: 10,
       currentPage: 1,
+      isLoading: false,
+      groupName: null,
+      dashboardGroup: [],
+      allGroup: [],
+      groupNamenew: [],
     }
+  },
+  async mounted() {
+    await this.getDashboardData()
+    this.allGroup = await this.$axios.get('group')
+    this.allGroup = this.allGroup.data
+    this.isLoading = true
+  },
+  methods: {
+    async getDashboardData() {
+      let { data } = await this.$axios.get('dashboard')
+      this.dashboardGroup.push(data)
+      this.groupNamenew = this.dashboardGroup[0]
+      console.log('bhhhhhhg', this.groupNamenew)
+    },
   },
 }
 </script>
