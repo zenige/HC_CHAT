@@ -21,33 +21,44 @@
       <span>Chatbot Training</span>
     </div>
     <div class="collapse-chatbot-sidebar">
-      <div class="sidebar-menu-main-item" @click="linkTo('/')">New Word</div>
+      <div
+        class="sidebar-menu-main-item"
+        @click="linkTo('/')"
+        @click.stop="onSetHideDrawer()"
+      >
+        New Word
+      </div>
       <div
         class="sidebar-menu-main-item"
         @click="linkTo('/chatbot-training/trained-word')"
+        @click.stop="onSetHideDrawer()"
       >
         Trained Word
       </div>
       <div
         class="sidebar-menu-main-item"
         @click="linkTo('/chatbot-training/feature-management')"
+        @click.stop="onSetHideDrawer()"
       >
         Feature Management
       </div>
       <div
         class="sidebar-menu-main-item"
         @click="linkTo('/chatbot-training/group-management')"
+        @click.stop="onSetHideDrawer()"
       >
         Group Management
       </div>
     </div>
-    <NuxtLink
-      :to="localePath('/dashboard/all-patient-group')"
-      class="sidebar-menu-main"
-    >
-      <i class="mi-dashboard sidebar-menu-main-icon"></i>
-      <span>Dashboard</span>
-    </NuxtLink>
+    <div @click.stop="onSetHideDrawer()">
+      <nuxt-link
+        :to="localePath('/dashboard/all-patient-group')"
+        class="sidebar-menu-main"
+      >
+        <i class="mi-dashboard sidebar-menu-main-icon"></i>
+        <span>Dashboard</span>
+      </nuxt-link>
+    </div>
     <div class="sidebar-menu-main-signout">
       <a href="#">
         <img

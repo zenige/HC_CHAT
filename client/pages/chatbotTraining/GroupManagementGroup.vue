@@ -243,8 +243,6 @@ export default {
     groupName: '',
     isShowDeleteGroupModal: false,
     isLoading: false,
-    question: '',
-    moreLessValue: null,
     allFeatureData: [],
     allLineLogicData: [],
     allGroupData: [],
@@ -335,7 +333,9 @@ export default {
 
     getOptionsFeatures(label) {
       if (this.dataOptions.length > 0) {
-        const result = this.dataOptions.filter((item) => item.label !== label)
+        const result = this.dataOptions.filter(
+          (item) => item.label !== label && item.conditionType !== 'input'
+        )
         return result
       } else {
         return []
@@ -348,11 +348,18 @@ export default {
           (item) => item.label === 'Input'
         )
         return resultOr
-      } else {
-        const resultOr = this.conditionOptions.filter(
-          (item) => item.label !== 'Input'
-        )
-        return resultOr
+      } else if (this.userData[index].conditionType !== 'input') {
+        if (this.userData[index].orFeatureData) {
+          const resultOr = this.conditionOptions.filter(
+            (item) => item.label !== 'Input' && item.label !== 'Any'
+          )
+          return resultOr
+        } else {
+          const resultOr = this.conditionOptions.filter(
+            (item) => item.label !== 'Input'
+          )
+          return resultOr
+        }
       }
     },
 
@@ -401,7 +408,7 @@ export default {
         this.orConditionId = this.orCondition.id
         const key = 'id'
         delete this.orCondition[key]
-        // console.log('or condition', this.orCondition)
+        console.log('or condition', this.orCondition)
       }
     },
 
@@ -469,6 +476,7 @@ export default {
         this.dataOptions.push({
           label: this.allFeatureData[i].feature,
           value: this.allFeatureData[i].feature,
+          conditionType: this.allFeatureData[i].Type,
         })
       }
 
@@ -478,10 +486,10 @@ export default {
     setInitialUserData() {
       for (let i = 0; i < this.allFeatureData.length; i++) {
         let feature = {
+          featureName: this.allFeatureData[i].feature,
           question: this.allFeatureData[i].Question,
           conditionType: this.allFeatureData[i].Type,
           condition: this.allFeatureData[i].TypeValue,
-          featureName: this.allFeatureData[i].feature,
           moreLessOption: null,
           moreLessValue: null,
           onlyOneOfTheseFeatureData: null,
@@ -504,9 +512,15 @@ export default {
           feature.state.conditionState = false
           feature.condition = null
         }
+        if ('condition' in this.allFeatureData[i]) {
+          feature.moreLessOption = this.allFeatureData[i].condition
+          feature.moreLessValue = this.allFeatureData[i].value
+        }
         this.userData.push(feature)
-        if (this.userData[i].condition === 'input') {
+        if (this.userData[i].conditionType === 'input') {
           this.userData[i].state.moreLessOptionState = true
+          this.userData[i].state.onlyOneOfTheseFeatureState = false
+          this.userData[i].state.orFeatureState = false
         } else {
           this.userData[i].state.moreLessOptionState = false
           this.userData[i].moreLessOption = null
@@ -540,6 +554,14 @@ export default {
               state: {
                 ...item.state,
                 orFeatureState: true,
+              },
+            }
+          } else if (item.conditionType === 'input') {
+            return {
+              ...item,
+              state: {
+                ...item.state,
+                orFeatureState: false,
               },
             }
           } else {
@@ -582,6 +604,16 @@ export default {
                 ...item.state,
                 onlyOneOfTheseFeatureState: true,
                 conditionState: false,
+              },
+            }
+          } else if (item.conditionType === 'input') {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+                conditionState: true,
               },
             }
           } else {
@@ -638,6 +670,15 @@ export default {
                 conditionState: true,
               },
             }
+          } else if (item.conditionType === 'input') {
+            return {
+              ...item,
+              orFeatureData: null,
+              state: {
+                ...item.state,
+                orFeatureState: false,
+              },
+            }
           } else {
             return {
               ...item,
@@ -673,8 +714,10 @@ export default {
     },
 
     changeCondition(index) {
-      if (this.userData[index].condition === 'input') {
+      if (this.userData[index].conditionType === 'input') {
         this.userData[index].state.moreLessOptionState = true
+        this.userData[index].state.onlyOneOfTheseFeatureState = false
+        this.userData[index].state.orFeatureState = false
       } else {
         this.userData[index].state.moreLessOptionState = false
         this.userData[index].moreLessOption = null
@@ -699,7 +742,7 @@ export default {
         if (i.onlyOneOfTheseFeatureData) {
           relationArr[0].push(i.featureName)
           this.finalUserData['Relation'] = relationArr
-        } else if (i.condition === 'input') {
+        } else if (i.conditionType === 'input') {
           let transformValue = 0
           if (i.moreLessValue >= 0 && i.moreLessValue < 22) {
             transformValue = 2
@@ -743,7 +786,8 @@ export default {
         toaster: 'b-toaster-bottom-left',
         noCloseButton: true,
       })
-      console.log(this.finalUserData)
+      console.log('final user data', this.finalUserData)
+      // window.location.reload()
     },
     onDeleteGroup() {
       console.log('all feature data')

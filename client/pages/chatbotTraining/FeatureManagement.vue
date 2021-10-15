@@ -362,12 +362,12 @@ export default {
           data.item.feature = this.changedFeatureName[data.index]
           data.item.conditionType = this.changedConditionType[data.index]
           data.item.question = this.changedQuestion[data.index]
-          await this.$axios.patch('feature', {
-            id: data.item.feature,
-            Name: data.item.feature,
-            Type: data.item.conditionType,
-            Question: data.item.question,
-          })
+          // await this.$axios.patch('feature', {
+          //   id: data.item.feature,
+          //   Name: data.item.feature,
+          //   Type: data.item.conditionType,
+          //   Question: data.item.question,
+          // })
           data.item.editable = false
         } else {
           this.$bvToast.toast('Please fill in English only', {
