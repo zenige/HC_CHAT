@@ -38,7 +38,6 @@
               type="text"
               v-model="feature"
               class="form-control border-gray border"
-              oninput="this.value = this.value.replace(/[ก-๏\s]/g, '').replace(/[0-9]/g, '').replace(/[+,*,/,!,#,$,%,^,&,(,),-,_,=]/g, '').replace(/(\..*?)\..*/g, '$1');"
             />
           </div>
           <div class="d-flex flex-column text-left mb-3">
@@ -87,7 +86,7 @@
 </template>
 
 <script>
-// const english = /^[A-Za-z]*$/
+const english = /^[A-Za-z]*$/
 
 export default {
   name: 'AddNewWordModal',
@@ -150,12 +149,20 @@ export default {
         Question: this.changedQuestion,
       }
       if (this.feature && this.changedConditionType && this.changedQuestion) {
-        await this.$axios.post('feature', body)
-        this.$emit('getFeatureData')
-        this.feature = null
-        this.changedConditionType = null
-        this.changedQuestion = null
-        this.onCancel()
+        if (english.test(this.feature)) {
+          await this.$axios.post('feature', body)
+          this.$emit('getFeatureData')
+          this.feature = null
+          this.changedConditionType = null
+          this.changedQuestion = null
+          this.onCancel()
+        } else {
+          this.$bvToast.toast('Feature name must be in English only', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+        }
       } else {
         this.$bvToast.toast('Please fill all required fields', {
           variant: 'danger',

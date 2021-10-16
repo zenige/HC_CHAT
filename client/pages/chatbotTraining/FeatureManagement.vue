@@ -261,6 +261,7 @@ export default {
         },
       ],
       featureData: [],
+      allFeatureData: [],
       conditionTypeOption: [
         {
           label: 'boolean',
@@ -386,27 +387,49 @@ export default {
     },
     async getFeatureData() {
       let featureNameIdData = await this.$axios.get('feature')
-      let featureNameIdDataArray = featureNameIdData.data
+      this.allFeatureData = featureNameIdData.data.map((item) => {
+        return {
+          feature: item.Name,
+          id: item.id,
+        }
+      })
 
       let { data } = await this.$axios.get('logic/linelogic')
+      this.featureData = data
+      console.log(this.featureData)
 
       let sortedFeatureData = []
 
-      for (let i = 0; i < data.length; i++) {
-        if (i === 0) {
-          sortedFeatureData.push(data[i])
-        } else {
-          const nextFeature =
-            sortedFeatureData[sortedFeatureData.length - 1].Next
-          const nextFeatureIndex = data.findIndex(
-            (item) => item.id === nextFeature
-          )
-          sortedFeatureData.push(data[nextFeatureIndex])
-        }
-      }
+      let firstFeatureDataSorted = this.featureData.find(
+        (item) => item.Previous === null
+      )
+      sortedFeatureData.push(firstFeatureDataSorted)
+
+      let lastFeatureDataSorted = this.featureData.find(
+        (item) => item.Next === null
+      )
       console.log('sortedFeatureData', sortedFeatureData)
 
-      this.featureData = sortedFeatureData.map((item) => {
+      this.featureData = data.filter(
+        (item) => item.Previous !== null && item.Next !== null
+      )
+
+      for (let i = 0; i < this.featureData.length; i++) {
+        let nextFeature = sortedFeatureData[sortedFeatureData.length - 1].Next
+        let currentFeature = this.featureData.find(
+          (item) => item.id === nextFeature
+        )
+        sortedFeatureData.push(currentFeature)
+      }
+
+      sortedFeatureData.push(lastFeatureDataSorted)
+
+      console.log('sortedFeatureData', sortedFeatureData)
+
+      this.featureData = sortedFeatureData
+      console.log('feature data after sorted', this.featureData)
+
+      this.featureData = this.featureData.map((item) => {
         return {
           feature: item.id,
           question: item.Question,
@@ -418,13 +441,10 @@ export default {
         }
       })
 
-      console.log('featureNameIdDataArray', featureNameIdDataArray)
-      console.log('featureData', this.featureData)
-
       for (let j = 0; j < this.featureData.length; j++) {
-        for (let i = 0; i < featureNameIdDataArray.length; i++) {
-          if (featureNameIdDataArray[i].Name === this.featureData[j].feature) {
-            this.featureData[j]['id'] = featureNameIdDataArray[i].id
+        for (let i = 0; i < this.allFeatureData.length; i++) {
+          if (this.allFeatureData[i].feature === this.featureData[j].feature) {
+            this.featureData[j]['id'] = this.allFeatureData[i].id
           }
         }
       }
@@ -436,6 +456,7 @@ export default {
       } else {
         this.totalFeature = this.featureData.length
       }
+      console.log(this.featureData)
     },
   },
 }

@@ -112,6 +112,11 @@ export default {
         if (english.test(this.groupName)) {
           await this.$axios.post('group', body)
           this.$emit('getGroupData')
+          this.$router.push(
+            this.localePath(
+              '/chatbot-training/group-management/group/' + this.groupName
+            )
+          )
           this.groupName = null
           this.onCancel()
         } else {

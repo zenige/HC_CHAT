@@ -5,13 +5,16 @@
         <div class="col-12 text-center">
           <div class="d-flex justify-content-start">
             <div class="">
-              <nuxt-link
-                :to="previousUrl"
+              <div
+                @click="previousUrl()"
                 class="txt_grey_light arrow_back_2 d-xl-block"
-                ><img
+                style="cursor: pointer"
+              >
+                <img
                   src="~assets/hc-libs/images/vl/arrow_back.png"
                   class="w-50p"
-              /></nuxt-link>
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -128,7 +131,7 @@
                                 min="0"
                                 class="form-control border-gray border"
                                 placeholder=""
-                                v-model="feature.moreLessValue"
+                                v-model="feature.moreLessUserValue"
                                 @copy.prevent
                                 @paste.prevent
                                 :disabled="!feature.moreLessOption"
@@ -308,11 +311,7 @@ export default {
     finalUserData: {},
   }),
   watch: {},
-  computed: {
-    previousUrl() {
-      return '/chatbot-training/group-management'
-    },
-  },
+  computed: {},
   async mounted() {
     this.groupName = this.$route.params.groupId
     await this.getAllFeatureData()
@@ -324,6 +323,22 @@ export default {
     this.isLoading = true
   },
   methods: {
+    previousUrl() {
+      if (this.userData.every((item) => item.condition)) {
+        this.$bvToast.toast('Save successfully', {
+          variant: 'success',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+        this.$router.push(this.localePath('/chatbot-training/group-management'))
+      } else {
+        this.$bvToast.toast('Please fill all Condition fields', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
+    },
     openDeleteGroupModal() {
       this.isShowDeleteGroupModal = true
     },
@@ -375,12 +390,16 @@ export default {
 
     async getAllGroupData() {
       let { data } = await this.$axios.get('group')
+      console.log(data)
       this.allGroupData = data.map((item) => {
         item.data = item.data.replaceAll("'", '"')
 
         let group = JSON.parse(item.data)
         if (item.condition) {
           group['condition'] = item.condition
+        }
+        if (item.value) {
+          group['value'] = item.value
         }
         return group
       })
@@ -425,6 +444,7 @@ export default {
                 feature['TypeValue'] = 'input'
                 feature['value'] = group[feature.feature]
                 feature['condition'] = group.condition
+                feature['userValue'] = group.value
               } else {
                 feature['TypeValue'] = group[feature.feature]
               }
@@ -492,6 +512,7 @@ export default {
           condition: this.allFeatureData[i].TypeValue,
           moreLessOption: null,
           moreLessValue: null,
+          moreLessUserValue: null,
           onlyOneOfTheseFeatureData: null,
           orFeatureData: null,
           state: {
@@ -515,6 +536,7 @@ export default {
         if ('condition' in this.allFeatureData[i]) {
           feature.moreLessOption = this.allFeatureData[i].condition
           feature.moreLessValue = this.allFeatureData[i].value
+          feature.moreLessUserValue = this.allFeatureData[i].userValue
         }
         this.userData.push(feature)
         if (this.userData[i].conditionType === 'input') {
@@ -630,14 +652,26 @@ export default {
         })
       } else {
         this.userData = this.userData.map((item) => {
-          return {
-            ...item,
-            onlyOneOfTheseFeatureData: null,
-            state: {
-              ...item.state,
-              onlyOneOfTheseFeatureState: true,
-              conditionState: true,
-            },
+          if (item.conditionType === 'input') {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+                conditionState: true,
+              },
+            }
+          } else {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+                conditionState: true,
+              },
+            }
           }
         })
       }
@@ -697,6 +731,16 @@ export default {
         await this.$axios.post('group/orcondition/', body)
       } else {
         this.userData = this.userData.map((item) => {
+          if (item.conditionType === 'input') {
+            return {
+              ...item,
+              orFeatureData: null,
+              state: {
+                ...item.state,
+                orFeatureState: false,
+              },
+            }
+          }
           return {
             ...item,
             orFeatureData: null,
@@ -708,9 +752,6 @@ export default {
         })
         await this.$axios.delete('group/orcondition/' + this.orConditionId)
       }
-      // if (this.userData[index].orFeatureData) {
-      //   this.userData[index].onlyOneOfTheseFeatureData = null
-      // }
     },
 
     changeCondition(index) {
@@ -737,6 +778,7 @@ export default {
     async onSaveGroup() {
       let moreLessOptionFlag = false
       let moreOrLess = ''
+      let moreOrLessVal = 0
       let relationArr = [[]]
       for (let i of this.userData) {
         if (i.onlyOneOfTheseFeatureData) {
@@ -744,49 +786,55 @@ export default {
           this.finalUserData['Relation'] = relationArr
         } else if (i.conditionType === 'input') {
           let transformValue = 0
-          if (i.moreLessValue >= 0 && i.moreLessValue < 22) {
+          if (i.moreLessUserValue >= 0 && i.moreLessUserValue < 22) {
             transformValue = 2
-          } else if (i.moreLessValue <= 30) {
+          } else if (i.moreLessUserValue <= 30) {
             transformValue = 3
-          } else if (i.moreLessValue <= 40) {
+          } else if (i.moreLessUserValue <= 40) {
             transformValue = 4
-          } else if (i.moreLessValue <= 50) {
+          } else if (i.moreLessUserValue <= 50) {
             transformValue = 5
-          } else if (i.moreLessValue <= 60) {
+          } else if (i.moreLessUserValue <= 60) {
             transformValue = 6
-          } else if (i.moreLessValue > 60) {
+          } else if (i.moreLessUserValue > 60) {
             transformValue = 7
           }
           this.finalUserData[i.featureName] = transformValue
           if (i.moreLessOption) {
             moreLessOptionFlag = true
             moreOrLess = i.moreLessOption
+            moreOrLessVal = i.moreLessUserValue
           }
         } else {
           this.finalUserData[i.featureName] = i.condition
           this.finalUserData['group'] = this.groupName
         }
       }
-      let bodyGroup = []
+      let bodyGroup = {}
       if (moreLessOptionFlag === true) {
-        bodyGroup.push({
-          data: this.finalUserData,
-        })
-        bodyGroup.push({
-          condition: moreOrLess,
-        })
+        bodyGroup['data'] = this.finalUserData
+        bodyGroup['condition'] = moreOrLess
+        bodyGroup['value'] = moreOrLessVal
       } else {
-        bodyGroup.push({
-          data: this.finalUserData,
+        bodyGroup['data'] = this.finalUserData
+      }
+
+      if (this.userData.every((item) => item.condition)) {
+        await this.$axios.post('group/groupid/' + this.groupName, bodyGroup)
+        this.$bvToast.toast('Saved successfully', {
+          variant: 'success',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+        console.log('saved', this.finalUserData)
+      } else {
+        this.$bvToast.toast('Please fill all Condition fields', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
         })
       }
-      await this.$axios.post('group/groupid/' + this.groupName, bodyGroup)
-      this.$bvToast.toast('Saved successfully', {
-        variant: 'success',
-        toaster: 'b-toaster-bottom-left',
-        noCloseButton: true,
-      })
-      console.log('final user data', this.finalUserData)
+
       // window.location.reload()
     },
     onDeleteGroup() {

@@ -397,13 +397,24 @@ export default {
       data.item.editable = false
     },
     async saveWord(data) {
-      data.item.question = this.changedQuestionData[data.index]
-      data.item.answer = this.changedAnswerData[data.index]
-      data.item.editable = false
-      await this.$axios.patch('train/trained/' + data.item.id, {
-        question: data.item.question,
-        answer: data.item.answer,
-      })
+      if (
+        this.changedQuestionData[data.index] &&
+        this.changedAnswerData[data.index]
+      ) {
+        data.item.question = this.changedQuestionData[data.index]
+        data.item.answer = this.changedAnswerData[data.index]
+        await this.$axios.patch('train/trained/' + data.item.id, {
+          question: data.item.question,
+          answer: data.item.answer,
+        })
+        data.item.editable = false
+      } else {
+        this.$bvToast.toast('Please fill all required fields', {
+          variant: 'danger',
+          toaster: 'b-toaster-bottom-left',
+          noCloseButton: true,
+        })
+      }
     },
     async getTrainedWordData(filter, page, limit, orderBy, sortBy) {
       let { data } = await this.$axios.get('train/trained', {
