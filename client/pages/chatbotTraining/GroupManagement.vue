@@ -75,11 +75,7 @@
                   </div>
                 </div>
                 <div v-if="data.item.editable === true" style="width: 35%">
-                  <b-form-input
-                    autofocus
-                    v-model="changedGroupData"
-                    @keydown.prevent.space
-                  />
+                  <b-form-input autofocus v-model="changedGroupData" />
                 </div>
               </template>
               <template #head(action)>
@@ -271,18 +267,6 @@ export default {
     closeTrainModelModal() {
       this.isShowTrainModelModal = false
     },
-    async onCreateGroup() {
-      this.deleteSelected = this.groupData.filter(
-        (item) => item.selected === true
-      )
-      await this.$axios.delete('train/trained/delete/many', {
-        data: this.deleteSelected,
-      })
-      await this.getGroupData(this.currentPage, 10, 'question')
-      if (this.groupData.length === 0) {
-        this.totalGroup = 0
-      }
-    },
     editGroup(data) {
       this.changedGroupData = data.item.group
       data.item.editable = true
@@ -292,11 +276,12 @@ export default {
     },
     async saveGroup(data) {
       data.item.group = this.changedGroupData
-      data.item.editable = false
       await this.$axios.patch('group', {
         id: data.item.id,
         Name: data.item.group,
       })
+      this.getGroupData()
+      data.item.editable = false
     },
     async getGroupData() {
       let { data } = await this.$axios.get('group')

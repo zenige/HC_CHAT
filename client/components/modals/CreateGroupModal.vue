@@ -36,7 +36,6 @@
               v-model="groupName"
               type="text"
               class="form-control border-gray border"
-              @keydown.prevent.space
             />
           </div>
           <div class="row d-flex justify-content-center">
@@ -60,7 +59,7 @@
 </template>
 
 <script>
-const english = /^[A-Za-z0-9]*$/
+const english = /^[A-Za-z0-9" "]*$/
 
 export default {
   name: 'AddNewWordModal',

@@ -111,7 +111,9 @@
                     autofocus
                   >
                     <b-form-select-option
-                      v-for="option in conditionTypeOption"
+                      v-for="option in conditionTypeOptionFunction(
+                        data.item.conditionType
+                      )"
                       :key="option.label"
                       :value="option.value"
                       >{{ option.label }}</b-form-select-option
@@ -187,6 +189,7 @@
         <CreateNewFeatureModal
           :isOpen="isShowCreateNewFeatureModal"
           :onCancel="closeAddFeatureModal"
+          :featureData="featureData"
           @getFeatureData="getFeatureData"
         ></CreateNewFeatureModal>
       </div>
@@ -283,10 +286,28 @@ export default {
   },
   async mounted() {
     await this.getFeatureData()
+    // this.conditionTypeOptionFunction()
     this.isLoading = true
   },
   computed: {},
   methods: {
+    conditionTypeOptionFunction(conditionTypeInput) {
+      if (conditionTypeInput === 'input') {
+        return this.conditionTypeOption
+      } else {
+        // find feature that have input type in feature data
+        let inputTypefeature = this.featureData.find(
+          (item) => item.conditionType === 'input'
+        )
+        if (inputTypefeature) {
+          return this.conditionTypeOption.filter(
+            (item) => item.label !== 'input'
+          )
+        } else {
+          return this.conditionTypeOption
+        }
+      }
+    },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },

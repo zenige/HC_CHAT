@@ -631,6 +631,7 @@ export default {
           } else if (item.conditionType === 'input') {
             return {
               ...item,
+              orFeatureData: null,
               onlyOneOfTheseFeatureData: null,
               state: {
                 ...item.state,
@@ -641,6 +642,7 @@ export default {
           } else {
             return {
               ...item,
+              orFeatureData: null,
               onlyOneOfTheseFeatureData: null,
               state: {
                 ...item.state,
@@ -707,6 +709,7 @@ export default {
           } else if (item.conditionType === 'input') {
             return {
               ...item,
+              onlyOneOfTheseFeatureData: null,
               orFeatureData: null,
               state: {
                 ...item.state,
@@ -716,10 +719,12 @@ export default {
           } else {
             return {
               ...item,
+              onlyOneOfTheseFeatureData: null,
               orFeatureData: null,
               state: {
                 ...item.state,
                 orFeatureState: true,
+                conditionState: true,
               },
             }
           }
