@@ -153,3 +153,9 @@ async def updateDataBeforeTrain():
     for i in logic:
         db.collection("lineLogic").document(i['id']).set(i)
     return "ok"
+
+@router.get("/mockprelineLogic")
+async def updateDataBeforeTrain():
+    data=[
+        {"AGE":{"Next":"disase","Previous":None,"Question":"คนไข้อายุเท่าไรครับ","Type":"input","id":"AGE"}}
+    ]

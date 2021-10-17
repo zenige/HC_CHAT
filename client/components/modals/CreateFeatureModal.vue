@@ -49,7 +49,7 @@
               autofocus
             >
               <b-form-select-option
-                v-for="option in conditionTypeOption"
+                v-for="option in conditionTypeOptionFunction()"
                 :key="option.label"
                 :value="option.value"
                 >{{ option.label }}</b-form-select-option
@@ -111,6 +111,10 @@ export default {
       type: Number,
       default: 10,
     },
+    featureData: {
+      type: Array,
+      default: [],
+    },
   },
   data: () => ({
     isModalOpen: false,
@@ -141,6 +145,17 @@ export default {
   methods: {
     onModalHide() {
       this.$emit('onModalHide', false)
+    },
+    conditionTypeOptionFunction() {
+      // find feature that have input type in feature data
+      let inputTypefeature = this.featureData.find(
+        (item) => item.conditionType === 'input'
+      )
+      if (inputTypefeature) {
+        return this.conditionTypeOption.filter((item) => item.label !== 'input')
+      } else {
+        return this.conditionTypeOption
+      }
     },
     async onAddNewFeature() {
       const body = {

@@ -79,6 +79,7 @@ async def UpdateFeatureNameandLogic(body:Feature):
         print(feature['group'])
         # db.collection(u'logics').document(feature['group']).delete()
         db.collection(u'logics').document(feature['group']).set({"data":featureStr})
+    body["oldname"] = feat['Name']
     await updateLineLogic(body)
     return "update done"
 
@@ -211,30 +212,39 @@ async def createLineLogic(data):
     # print(newLogic)
     return newLogic
 
-# @router.patch("/dasdasdasdasdsa")
-# async def UpdateFeatureNameandLogic(body:Feature):
-#     body = dict(body)
-#     body['oldName']
-#     await updateLineLogic(body)
+@router.patch("/dasdasdasdasdsa")
+async def UpdateFeatureNameandLogic(body:Feature):
+    body = dict(body)
 
-# async def updateLineLogic(data):
-#     print(data)
-#     docs = db.collection("pre-lineLogic").stream()
-#     logic = []
-#     for doc in docs:
+    await updateLineLogic(body)
+    return 0
 
-#         fakedict = doc.to_dict()
-#         logic.append(fakedict)
+async def updateLineLogic(data):
+
+    data['oldname'] = "close2"
+    docs = db.collection("pre-lineLogic").stream()
+    for doc in docs:
+        newData =  doc.to_dict()
+        print(newData)
+        if newData['id'] == data['oldname']:
+            newData['id'] = data['Name']
+            newData['Type'] = data['Type']
+
+        
+        #     newData['Question'] = data['Question']
+        #     db.collection(u'pre-lineLogic').document( data['oldname']).delete()
+        #     db.collection(u'pre-lineLogic').document(newData['id']).set(newData)
+        if newData['Next'] == data['oldname']:
+            newData['Next'] =  data['Name']
+            print("SEC ")
+            print(newData)
+        if newData['Previous'] == data['oldname']:
+            print("th ")
+            print(newData)
+            # db.collection(u'pre-lineLogic').document(newData['id']).delete()
+            # db.collection(u'pre-lineLogic').document(newData['id']).set(doc)
+        # if newData['Previous'] == data['oldname']:
+        #     newData['Previous'] =  data['Name']
+        #     db.collection(u'pre-lineLogic').document(newData['id']).delete()
+        #     db.collection(u'pre-lineLogic').document(newData['id']).set(doc)
     
-#     for i in logic :
-#         if i['id'] == data['oldName']:
-#             currentLogic = i 
-#             break
-#     if currentLogic:
-#         currentLogic['id'] = data['Name']
-#         currentLogic['Question'] = data['Question']
-#         currentLogic['Type'] = data['Type']
-#         db.collection("pre-lineLogic").document(currentLogic['id']).set(currentLogic)
-#         return 'done'
-#     else :
-#         return {"err": "no logic id"}
