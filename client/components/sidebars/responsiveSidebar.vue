@@ -33,7 +33,7 @@
         @click="linkTo('/chatbot-training/trained-word')"
         @click.stop="onSetHideDrawer()"
       >
-        Trained Word
+        Learned Word
       </div>
       <div
         class="sidebar-menu-main-item"

@@ -6,7 +6,7 @@
           <div class="d-flex justify-content-between">
             <div class="">
               <nuxt-link
-                :to="previousUrl"
+                :to="localePath('/dashboard/all-patient-group')"
                 class="txt_grey_light arrow_back_2 d-xl-block"
                 ><img
                   src="~assets/hc-libs/images/vl/arrow_back.png"
@@ -22,7 +22,7 @@
               "
             >
               <div class="pt-2 pt-md-0 pl-2 pl-md-0">
-                <div class="txt_hc_bighead_20p">Group name</div>
+                <div class="txt_hc_bighead_20p">{{ groupName }}</div>
               </div>
             </div>
             <div class=""></div>
@@ -68,7 +68,7 @@
         <div class="row d-flex align-items-center">
           <div class="txt_hc_head_total">
             Total patient
-            <span class="txt_vla_grey">(45)</span>
+            <span class="txt_vla_grey">({{ patientInGroupData.length }})</span>
           </div>
         </div>
       </div>
@@ -78,35 +78,37 @@
           <b-table
             responsive
             id="group-table"
-            :items="bgbg"
+            :items="patientInGroupProfileData"
             :per-page="0"
             :current-page="currentPage"
             :fields="fields"
             :filter="filter"
             :tbody-tr-class="selectedRowClass"
           >
-            <template #cell(name)="data">
+            <!-- <template #cell(Fullname)="data">
               <div class="d-flex justify-content-start">
                 <div>
-                  {{ data.value.real_name }}
+                  {{ data.item.FullName }}
                 </div>
               </div>
-            </template>
-            <template #cell(gender)="data">
+            </template> -->
+            <!-- <template #cell(Age)="data">
               <div class="d-flex justify-content-start">
                 <div>
-                  {{ data.item.gender }}
+                  {{ data.item.Age }}
                 </div>
               </div>
-            </template>
-            <template #cell(age)="data">
+            </template> -->
+            <!-- <template #cell(DateOfBirth)="data">
               <div class="d-flex justify-content-start">
-                {{ data.item.age }}
+                <div>
+                  {{ data.item.DateOfBirth }}
+                </div>
               </div>
-            </template>
-            <template #cell(tel)="data">
+            </template> -->
+            <template #cell(Tel)="data">
               <div class="d-flex justify-content-start">
-                {{ data.item.phone }}
+                {{ data.item.Tel }}
               </div>
             </template>
             <template #head(info)>
@@ -114,11 +116,11 @@
                 รายละเอียดเพิ่มเติม
               </div>
             </template>
-            <template #cell(info)="row">
+            <template #cell(info)="data">
               <div class="row d-flex justify-content-center align-items-center">
                 <button
                   class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                  @click="openPatientInfoModal(row.item)"
+                  @click="openPatientInfoModal(data.item)"
                 >
                   Show info
                 </button>
@@ -144,13 +146,13 @@
     <PatientInfoModal
       :isOpen="isShowPatientInfoModal"
       :onCancel="closeShowPatientInfoModal"
-      :onShowInfo="onShowInfo"
-      :detailmodal = "detailmodal"
+      :userInfoDataModal="userInfoDataModal"
     ></PatientInfoModal>
   </div>
 </template>
 
 <script>
+import dayjs from 'dayjs'
 
 export default {
   components: {
@@ -159,75 +161,65 @@ export default {
   },
   data() {
     return {
-      detailmodal: [],
-      bgbg: [],
+      userInfoDataModal: {},
       listuser: [],
       groupName: null,
       isLoading: false,
       isShowPatientInfoModal: false,
-      isShowTrainWordModal: false,
-      edit: false,
-      selectAll: false,
-      selectedRow: {},
       filter: '',
       perPage: 10,
       currentPage: 1,
-      trainSelected: [],
-      deleteSelected: [],
       totalPatient: 0,
-      totalPatient: 10,
       changedQuestionData: '',
       changedAnswerData: '',
       fields: [
         {
-          key: 'profile',
+          key: 'Fullname',
           label: 'ชื่อ-นามสกุล',
           sortable: true,
           thClass: 'PatientInGroupthName-Class',
           tdClass: 'PatientInGrouptdName-Class',
-          formatter: 'fullName'
         },
         {
-          key: 'gender',
-          label: 'เพศ',
-          sortable: true,
-          thClass: 'PatientInGroupthGender-Class',
-          tdClass: 'PatientInGrouptdGender-Class',
-        },
-        {
-          key: 'profile.birthday',
+          key: 'Age',
           label: 'ช่วงอายุ',
           sortable: true,
           thClass: 'PatientInGroupthAge-Class',
           tdClass: 'PatientInGrouptdAge-Class',
-          formatter: (key,item) => {
-              let d = new Date(key);
-              let n = d.getFullYear();
-              new Date().getFullYear() - n
-              if(n < 11) {
-                return `0 - 10`
-              } else if (10 < n < 21) {
-                return `11 - 20`
-              } else if (20 < n < 31) {
-                return `21 - 30`
-              } else if (30 < n < 41) {
-                return `31 - 40`
-              } else if (40 < n < 51) {
-                return `41 - 50`
-              } else if (50 < n < 61) {
-                return `51 - 60`
-              } else if (60 < n < 71) {
-                return `61 - 70`
-              } else if (70 < n < 81) {
-                return `71 - 80`
-              } else {
-                return ` > 80`
-              }
+          formatter: (key, item) => {
+            let d = new Date(key)
+            let n = d.getFullYear()
+            new Date().getFullYear() - n
+            if (n < 11) {
+              return `0 - 10 ปี`
+            } else if (10 < n < 21) {
+              return `11 - 20 ปี`
+            } else if (20 < n < 31) {
+              return `21 - 30 ปี`
+            } else if (30 < n < 41) {
+              return `31 - 40 ปี`
+            } else if (40 < n < 51) {
+              return `41 - 50 ปี`
+            } else if (50 < n < 61) {
+              return `51 - 60 ปี`
+            } else if (60 < n < 71) {
+              return `61 - 70 ปี`
+            } else if (70 < n < 81) {
+              return `71 - 80 ปี`
+            } else {
+              return ` > 80 ปี`
             }
+          },
         },
-
         {
-          key: 'profile.phone',
+          key: 'DateOfBirth',
+          label: 'วัน/เดือน/ปี เกิด',
+          sortable: true,
+          thClass: 'PatientInGroupthBirthdate-Class',
+          tdClass: 'PatientInGrouptdBirthdate-Class',
+        },
+        {
+          key: 'Tel',
           label: 'เบอร์โทรศัพท์',
           sortable: true,
           thClass: 'PatientInGroupthTel-Class',
@@ -241,161 +233,107 @@ export default {
           tdClass: 'PatientInGrouptdInfo-Class',
         },
       ],
-      patientInGroupData: [
-        {
-          name: 'บวรศักดิ์ เหลือจันทร์',
-          gender: 'ชาย',
-          age: '21-30',
-          tel: '0930239802',
-        },
-      ],
+      patientInGroupData: [],
+      patientInGroupProfileData: [],
+      allFeatureData: [],
+      userInfoObjects: [],
     }
   },
-  watch: {
-    selectAll(value) {
-      this.newWordData.map(function (item) {
-        item.selected = value
-        return item
-      })
-    },
-    currentPage(value) {
-      this.getNewWordData(value, this.perPage, 'question')
-    },
-  },
+  watch: {},
   async mounted() {
     this.groupName = this.$route.params.groupId
-    console.log('idgro', this.groupName)
-    await this.getNewWordData(1, 10, 'question')
     this.isLoading = true
-    this.bgbg = await this.$axios.get(`http://localhost:200/dashboard/group?group=${this.groupName}`)
-    this.bgbg = this.bgbg.data
+    this.patientInGroupData = await this.$axios.get(
+      `/dashboard/group?group=${this.groupName}`
+    )
+    this.patientInGroupData = this.patientInGroupData.data
+    this.allFeatureData = await this.$axios.get('logic/linelogic')
+    this.allFeatureData = this.allFeatureData.data
+    await this.sortfeatureData()
+    await this.mergePatientdata()
+    await this.mergeFeatureData()
+
+    this.patientInGroupProfileData = this.patientInGroupProfileData.map(
+      (item, index) => {
+        const symptom = item.symptom
+        return {
+          Fullname: item.profile.real_name + ' ' + item.profile.last_name,
+          Age: item.profile.birthday,
+          DateOfBirth: dayjs(item.profile.birthday).format('DD/MM/YYYY'),
+          Tel: item.profile.phone,
+          Group: item.group,
+          UserId: item.userId,
+          profileImg: item.pictureUrl,
+          SurveyData: this.mergeFeatureData(symptom),
+        }
+      }
+    )
+    this.totalPatient = this.patientInGroupProfileData.length
+    console.log('patient profile after map', this.patientInGroupProfileData)
   },
+
   computed: {
-    rows() {
-      return this.totalPatient
-    },
     previousUrl() {
-      return '/chatbot-training/group-management'
+      return '/dashboard/all-patient-group'
     },
   },
   methods: {
-    fullName(value) {
-        return `${value.real_name} ${value.last_name}`
+    mergeFeatureData(objectSymptom) {
+      if (objectSymptom) {
+        let keyFeature = Object.keys(objectSymptom)
+        keyFeature.map((featureName) => {
+          const currentIndex = this.allFeatureData.findIndex(
+            (item) => item.id === featureName
+          )
+          this.allFeatureData[currentIndex].Value = objectSymptom[featureName]
+        })
+        return this.allFeatureData
+      } else {
+        return []
+      }
     },
-    openPatientInfoModal(value) {
-      console.log('abc', value)
-      this.isShowPatientInfoModal = true
-      this.detailmodal = value
-    },
-    onShowInfo() {
-      console.log('show info')
+    mergePatientdata() {
+      for (let i = 0; i < this.patientInGroupData.length; i++) {
+        this.patientInGroupProfileData[i] = this.patientInGroupData[i]
+      }
+      console.log('patientInGroupProfileData', this.patientInGroupProfileData)
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
     },
-    // openDeleteWordModal() {
-    //   this.deleteSelected = this.newWordData.filter(
-    //     (item) => item.selected === true
-    //   )
-    //   if (this.deleteSelected.length >= 1) {
-    //     this.isShowPatientInfoModal = true
-    //   } else {
-    //     ;(this.isShowPatientInfoModal = false),
-    //       this.$bvToast.toast('Please select any word', {
-    //         variant: 'danger',
-    //         toaster: 'b-toaster-bottom-left',
-    //         noCloseButton: true,
-    //       })
-    //   }
-    // },
     closeShowPatientInfoModal() {
       this.isShowPatientInfoModal = false
     },
-    async onTrainWord() {
-      this.trainSelected = this.newWordData.filter(
-        (item) => item.selected === true
-      )
-      await this.$axios.post('train/trained/many', this.trainSelected)
-      this.onDeleteWord()
+    openPatientInfoModal(value) {
+      this.isShowPatientInfoModal = true
+      this.userInfoDataModal = value
     },
-    openTrainWordModal() {
-      this.trainSelected = this.newWordData.filter(
-        (item) => item.selected === true
+    sortfeatureData() {
+      let sortedFeatureData = []
+      let firstFeatureDataSorted = this.allFeatureData.find(
+        (item) => item.Previous === null
       )
-      if (this.trainSelected.length >= 1) {
-        this.isShowTrainWordModal = true
-      } else {
-        ;(this.isShowTrainWordModal = false),
-          this.$bvToast.toast('Please select any word', {
-            variant: 'danger',
-            toaster: 'b-toaster-bottom-left',
-            noCloseButton: true,
-          })
+      sortedFeatureData.push(firstFeatureDataSorted)
+      let lastFeatureDataSorted = this.allFeatureData.find(
+        (item) => item.Next === null
+      )
+      this.allFeatureData = this.allFeatureData.filter(
+        (item) => item.Previous !== null && item.Next !== null
+      )
+      for (let i = 0; i < this.allFeatureData.length; i++) {
+        let nextFeature = sortedFeatureData[sortedFeatureData.length - 1].Next
+        let currentFeature = this.allFeatureData.find(
+          (item) => item.id === nextFeature
+        )
+        sortedFeatureData.push(currentFeature)
       }
+      sortedFeatureData.push(lastFeatureDataSorted)
+      this.allFeatureData = sortedFeatureData
+
+      console.log('all feature data', this.allFeatureData)
     },
-    closeTrainWordModal() {
-      this.isShowTrainWordModal = false
-    },
-    async onDeleteWord() {
-      this.deleteSelected = this.newWordData.filter(
-        (item) => item.selected === true
-      )
-      await this.$axios.delete('train/training/delete/many', {
-        data: this.deleteSelected,
-      })
-      await this.getNewWordData(this.currentPage, 10, 'question')
-      this.selectAll = false
-    },
-    editWord(data) {
-      this.changedQuestionData = data.item.question
-      this.changedAnswerData = data.item.answer
-      data.item.editable = true
-    },
-    cancleEditWord(data) {
-      data.item.editable = false
-    },
-    async saveWord(data) {
-      data.item.question = this.changedQuestionData
-      data.item.answer = this.changedAnswerData
-      data.item.editable = false
-      await this.$axios.patch(`/train/training/` + data.item.id, {
-        question: data.item.question,
-        answer: data.item.answer,
-      })
-    },
-    async getNewWordData(page, limit, orderBy) {
-      let { data } = await this.$axios.get(
-        `train/training?pages=${page}&limit=${limit}&order_by=${orderBy}`
-      )
-      this.newWordData = data.map((item) => {
-        // collect total new word data
-        if (item.total) {
-          return (
-            {
-              id: undefined,
-            },
-            (this.totalPatient = item.total)
-          )
-          // it will return undefined item
-        } else {
-          return {
-            answer: item.answer,
-            time: item.time,
-            count: item.count,
-            confident: item.confident,
-            question: item.question,
-            id: item.id,
-            selected: false,
-            editable: false,
-          }
-        }
-      })
-      // remove undefined item
-      this.newWordData = this.newWordData.filter(function (element) {
-        return element.id !== undefined
-      })
-      // console.log(this.totalPatient)
-      // console.log(this.newWordData)
+    onShowInfo() {
+      console.log('show info')
     },
   },
 }
@@ -404,19 +342,19 @@ export default {
 <style lang="scss">
 .PatientInGroupthName-Class,
 .PatientInGrouptdQuestion-Class {
-  width: 25%;
+  width: 35%;
 }
 .PatientInGroupthTel-Class,
 .PatientInGrouptdTel-Class {
-  width: 25%;
+  width: 15%;
 }
-.PatientInGroupthGender-Class,
-.PatientInGrouptdGender-Class {
+.PatientInGroupthBirthdate-Class,
+.PatientInGrouptdBirthdate-Class {
   width: 15%;
 }
 .PatientInGroupthAge-Class,
 .PatientInGrouptdAge-Class {
-  width: 15%;
+  width: 10%;
 }
 .PatientInGroupthInfo-Class,
 .PatientInGrouptdInfo-Class {

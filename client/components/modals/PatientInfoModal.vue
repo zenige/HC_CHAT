@@ -7,7 +7,6 @@
     hide-footer
     @close="onCancel"
     @hidden="onCancel"
-    @ok="onShowInfo"
   >
     <template v-slot:modal-header="{ close }">
       <div class="modal-header bg-white py-2 px-0 mx-3 mt-2">
@@ -29,52 +28,46 @@
       </div>
     </template>
 
-    <template v-slot:default="{ close, ok }">
+    <template>
       <div class="modal-body px-3 px-md-3">
         <div class="d-flex flex-column justify-content-start">
           <div class="txt_patientInfo_16px">ข้อมูลส่วนตัว</div>
           <div class="txt_patientInfo_13px">
-            ชื่อ-นามสกุล: {{detailmodal.profile.real_name}}  {{detailmodal.profile.last_name}}
+            ชื่อ-นามสกุล: {{ userInfoDataModal.Fullname }}
           </div>
-          <div class="txt_patientInfo_13px">เพศ: ชาย</div>
-          <div class="txt_patientInfo_13px">ช่วงอายุ: {{formatB(detailmodal.profile.birthday)}} ปี</div>
-          <div class="txt_patientInfo_13px">เบอร์โทรศัพท์: {{detailmodal.profile.phone}}</div>
-          <div class="txt_patientInfo_13px">อัพเดทเมื่อ: 22/09/2021</div>
+          <!-- <div class="txt_patientInfo_13px">เพศ: ชาย</div> -->
+          <div class="txt_patientInfo_13px">
+            ช่วงอายุ: {{ formatAge(userInfoDataModal.Age) }}
+          </div>
+          <div class="txt_patientInfo_13px">
+            วัน/เดือน/ปี เกิด: {{ userInfoDataModal.DateOfBirth }}
+          </div>
+          <div class="txt_patientInfo_13px">
+            เบอร์โทรศัพท์: {{ userInfoDataModal.Tel }}
+          </div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
-            Group: <span>{{detailmodal.group}}</span>
+            Group: <span>{{ userInfoDataModal.Group }}</span>
           </div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
             แบบสอบถาม
           </div>
-          <div class="txt_patientInfo_13px">คุณมีโรคประจำตัวหรือไม่: ไม่</div>
+          <div
+            v-for="(itemSurvey, index) in userInfoDataModal.SurveyData"
+            :key="index"
+            class="txt_patientInfo_13px"
+          >
+            {{ itemSurvey.Question }}:
+            {{
+              itemSurvey.Value === 'true'
+                ? 'ใช่'
+                : itemSurvey.Value === 'false'
+                ? 'ไม่'
+                : itemSurvey.Value === 'ANY'
+                ? 'บ้าง'
+                : itemSurvey.Value
+            }}
+          </div>
         </div>
-        <!-- <div class="row d-flex justify-content-center">
-          <div class="col-12 col-md-4 col-lg-4">
-            <div class="pt-2">
-              <div class="form-group mb-0">
-                <button
-                  class="btn btn_red_modal h2dot5 btn-block py-2"
-                  @click="close()"
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 col-lg-4">
-            <div class="pt-2">
-              <div class="form-group mb-0">
-                <button
-                  class="btn btn_green_modal h2dot5 btn-block py-2"
-                  @click="ok()"
-                >
-                  Yes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        
       </div>
     </template>
   </b-modal>
@@ -82,10 +75,10 @@
 
 <script>
 export default {
-  name: 'DeleteWordModal',
+  name: 'patientInfoModal',
   props: {
-    detailmodal: {
-      type: Array,
+    userInfoDataModal: {
+      type: Object,
       default: () => {},
     },
     isOpen: {
@@ -93,10 +86,6 @@ export default {
       default: false,
     },
     onCancel: {
-      type: Function,
-      default: () => {},
-    },
-    onShowInfo: {
       type: Function,
       default: () => {},
     },
@@ -114,37 +103,35 @@ export default {
       }
     },
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     onModalHide() {
       this.$emit('onModalHide', false)
     },
-    formatB(value) {
-      let d = new Date(value);
-      let n = d.getFullYear();
+    formatAge(value) {
+      let d = new Date(value)
+      let n = d.getFullYear()
       n = new Date().getFullYear() - n
-      if(n < 11) {
-        return `0 - 10`
+      if (n < 11) {
+        return `0 - 10 ปี`
       } else if (10 < n < 21) {
-        return `11 - 20`
+        return `11 - 20 ปี`
       } else if (20 < n < 31) {
-        return `21 - 30`
+        return `21 - 30 ปี`
       } else if (30 < n < 41) {
-        return `31 - 40`
+        return `31 - 40 ปี`
       } else if (40 < n < 51) {
-        return `41 - 50`
+        return `41 - 50 ปี`
       } else if (50 < n < 61) {
-        return `51 - 60`
+        return `51 - 60 ปี`
       } else if (60 < n < 71) {
-        return `61 - 70`
+        return `61 - 70 ปี`
       } else if (70 < n < 81) {
-        return `71 - 80`
+        return `71 - 80 ปี`
       } else {
-        return ` > 80`
+        return ` > 80 ปี`
       }
-       
-    }
+    },
   },
 }
 </script>
