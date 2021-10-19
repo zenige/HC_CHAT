@@ -177,6 +177,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9^*()_+=[/\]{}|\\,.?: -]*$/
+
 export default {
   components: {
     CreateGroupModal: () => import('~/components/modals/CreateGroupModal.vue'),
@@ -284,11 +286,19 @@ export default {
       if (data.item.id === data.item.group) {
         await this.getGroupData()
       } else {
-        await this.$axios.patch('group', {
-          id: data.item.id,
-          Name: data.item.group,
-        })
-        await this.getGroupData()
+        if (english.test(data.item.id)) {
+          await this.$axios.patch('group', {
+            id: data.item.id,
+            Name: data.item.group,
+          })
+          await this.getGroupData()
+        } else {
+          this.$bvToast.toast('Please fill in matching text.', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+        }
       }
     },
     async getGroupData() {

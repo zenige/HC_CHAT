@@ -330,20 +330,7 @@ export default {
   },
   methods: {
     previousUrl() {
-      if (this.formValid) {
-        this.$bvToast.toast('Save successfully', {
-          variant: 'success',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-        this.$router.push(this.localePath('/chatbot-training/group-management'))
-      } else {
-        this.$bvToast.toast('Please fill all Condition fields', {
-          variant: 'danger',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-      }
+      this.$router.push(this.localePath('/chatbot-training/group-management'))
     },
     openDeleteGroupModal() {
       this.isShowDeleteGroupModal = true
@@ -375,7 +362,7 @@ export default {
       } else if (feature.conditionType !== 'input') {
         if (feature.orFeatureData) {
           const resultOr = this.conditionOptions.filter(
-            (item) => item.label !== 'Input' || item.label !== 'Any'
+            (item) => item.label !== 'Input' && item.label !== 'Any'
           )
           return resultOr
         } else {
@@ -621,108 +608,54 @@ export default {
       this.pairOnly1 = this.userData[index].onlyOneOfTheseFeatureData
       // ถ้ามีค่า
       if (this.pairOnly1) {
-        if (this.pairOnly1 === this.pairOr1) {
-          await this.$axios.delete('group/orcondition/' + this.orConditionId)
-          this.userData = this.userData.map((item) => {
-            if (item.featureName === this.pairOnly1) {
-              return {
-                ...item,
-                onlyOneOfTheseFeatureData: this.userData[index].featureName,
-                orFeatureData: null,
-                condition: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: false,
-                },
-              }
-            } else if (item.featureName === this.userData[index].featureName) {
-              this.pairOnly2 = item.featureName
-              return {
-                ...item,
-                orFeatureData: null,
-                condition: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: false,
-                },
-              }
-            } else if (item.conditionType === 'input') {
-              return {
-                ...item,
-                orFeatureData: null,
-                onlyOneOfTheseFeatureData: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: false,
-                  conditionState: true,
-                },
-              }
-            } else {
-              return {
-                ...item,
-                orFeatureData: null,
-                onlyOneOfTheseFeatureData: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: true,
-                },
-              }
+        this.userData = this.userData.map((item) => {
+          if (item.featureName === this.pairOnly1) {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: this.userData[index].featureName,
+              orFeatureData: null,
+              condition: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+                conditionState: false,
+              },
             }
-          })
-        } else {
-          this.userData = this.userData.map((item) => {
-            if (item.featureName === this.pairOnly1) {
-              return {
-                ...item,
-                onlyOneOfTheseFeatureData: this.userData[index].featureName,
-                orFeatureData: null,
-                condition: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: false,
-                },
-              }
-            } else if (item.featureName === this.userData[index].featureName) {
-              this.pairOnly2 = item.featureName
-              return {
-                ...item,
-                orFeatureData: null,
-                condition: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: false,
-                },
-              }
-            } else if (item.conditionType === 'input') {
-              return {
-                ...item,
-                orFeatureData: null,
-                onlyOneOfTheseFeatureData: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: false,
-                  conditionState: true,
-                },
-              }
-            } else {
-              return {
-                ...item,
-                orFeatureData: null,
-                onlyOneOfTheseFeatureData: null,
-                state: {
-                  ...item.state,
-                  onlyOneOfTheseFeatureState: true,
-                  conditionState: true,
-                },
-              }
+          } else if (item.featureName === this.userData[index].featureName) {
+            this.pairOnly2 = item.featureName
+            return {
+              ...item,
+              orFeatureData: null,
+              condition: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+                conditionState: false,
+              },
             }
-          })
-        }
+          } else if (item.conditionType === 'input') {
+            return {
+              ...item,
+              orFeatureData: null,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: false,
+                conditionState: true,
+              },
+            }
+          } else {
+            return {
+              ...item,
+              onlyOneOfTheseFeatureData: null,
+              state: {
+                ...item.state,
+                onlyOneOfTheseFeatureState: true,
+                conditionState: true,
+              },
+            }
+          }
+        })
       } else {
         this.userData = this.userData.map((item) => {
           if (item.conditionType === 'input') {
@@ -876,7 +809,8 @@ export default {
         if (i.onlyOneOfTheseFeatureData) {
           relationArr[0].push(i.featureName)
           this.finalUserData['Relation'] = relationArr
-        } else if (i.conditionType === 'input') {
+          console.log(this.finalUserData)
+        } else if (i.condition === 'input') {
           let transformValue = 0
           if (i.moreLessUserValue >= 0 && i.moreLessUserValue < 22) {
             transformValue = 2
@@ -896,6 +830,8 @@ export default {
             moreLessOptionFlag = true
             moreOrLess = i.moreLessOption
             moreOrLessVal = i.moreLessUserValue
+          } else {
+            moreLessOptionFlag = false
           }
         } else {
           this.finalUserData[i.featureName] = i.condition
@@ -916,6 +852,8 @@ export default {
         toaster: 'b-toaster-bottom-left',
         noCloseButton: true,
       })
+      console.log(this.finalUserData)
+      window.location.reload()
     },
     async onSubmitForm() {
       await new Promise((resolve) => {
@@ -976,7 +914,10 @@ export default {
           })
         }
       })
-      console.log('form valid', this.formValid)
+      console.log('pair only1', this.pairOnly1)
+      console.log('pair only2', this.pairOnly2)
+      console.log('pair or1', this.pairOr1)
+      console.log('pair or2', this.pairOr2)
     },
     async onDeleteGroup() {
       await this.$axios.delete('group/' + this.groupName)
