@@ -612,9 +612,6 @@ export default {
           this.pairOnly1 === this.pairOr1 ||
           this.pairOnly1 === this.pairOr2
         ) {
-          this.pairOr1 = null
-          this.pairOr2 = null
-          await this.$axios.delete('group/orcondition/' + this.orConditionId)
           this.userData = this.userData.map((item) => {
             if (item.featureName === this.pairOnly1) {
               return {
@@ -654,6 +651,7 @@ export default {
             } else {
               return {
                 ...item,
+                orFeatureData: null,
                 onlyOneOfTheseFeatureData: null,
                 state: {
                   ...item.state,
@@ -663,6 +661,9 @@ export default {
               }
             }
           })
+          this.pairOr1 = null
+          this.pairOr2 = null
+          await this.$axios.delete('group/orcondition/' + this.orConditionId)
         } else {
           this.userData = this.userData.map((item) => {
             if (item.featureName === this.pairOnly1) {
@@ -703,6 +704,7 @@ export default {
             } else {
               return {
                 ...item,
+
                 onlyOneOfTheseFeatureData: null,
                 state: {
                   ...item.state,
@@ -971,10 +973,6 @@ export default {
           })
         }
       })
-      console.log('pair only1', this.pairOnly1)
-      console.log('pair only2', this.pairOnly2)
-      console.log('pair or1', this.pairOr1)
-      console.log('pair or2', this.pairOr2)
     },
     async onDeleteGroup() {
       await this.$axios.delete('group/' + this.groupName)
