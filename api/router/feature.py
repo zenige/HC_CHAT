@@ -42,46 +42,7 @@ async def getUsers(body:Feature):
     
     return "update done"
 
-@router.patch("/")
-async def UpdateFeatureNameandLogic(body:Feature):
-    body = dict(body)
-    docs = db.collection(u'feature').document(body['id']).get()
 
-    # db.collection(u'feature').document(body['Name']).set(body)
-    feat = docs.to_dict()
-    new_key = body['Name']
-    old_key = feat['Name']
-    docs = db.collection(u'feature').document(body['id'])
-    docs.update({u'Name': body['Name']})
-    docs = db.collection("logics").stream()
-    # users = []
-    features = []
-    for doc in docs:
-        data =  doc.to_dict()
-        dataStr = data['data']
-        group = ast.literal_eval(dataStr)
-
-        flag = True
-        if old_key in group.keys():
-            group[new_key] = group.pop(old_key)
-        #     del group[featName]
-            flag = False
-        if flag:
-            if "Relation" in group.keys():
-                for i in  group['Relation'][0]:
-                    if i == old_key:
-                        group['Relation'][0].remove(i)
-                        group['Relation'][0].append(new_key)
-        features.append(group)
-    for feature in features:
-        featureStr = str(feature)
-        print(featureStr)
-        print(feature['group'])
-        # db.collection(u'logics').document(feature['group']).delete()
-        db.collection(u'logics').document(feature['group']).set({"data":featureStr})
-    body["oldname"] = feat['Name']
-    await updateLineLogic(body)
-    return "update done"
 
 @router.delete("/{id}/{featName}")
 async def getUsers(id:str,featName:str):
@@ -212,37 +173,92 @@ async def createLineLogic(data):
     # print(newLogic)
     return newLogic
 
-@router.patch("/dasdasdasdasdsa")
+@router.patch("/")
 async def UpdateFeatureNameandLogic(body:Feature):
     body = dict(body)
+    docs = db.collection(u'feature').document(body['id']).get()
 
+    # db.collection(u'feature').document(body['Name']).set(body)
+    feat = docs.to_dict()
+    new_key = body['Name']
+    old_key = feat['Name']
+    docs = db.collection(u'feature').document(body['id'])
+    docs.update({u'Name': body['Name']})
+    docs = db.collection("logics").stream()
+    # users = []
+    features = []
+    for doc in docs:
+        data =  doc.to_dict()
+        dataStr = data['data']
+        group = ast.literal_eval(dataStr)
+
+        flag = True
+        if old_key in group.keys():
+            group[new_key] = group.pop(old_key)
+        #     del group[featName]
+            flag = False
+        if flag:
+            if "Relation" in group.keys():
+                for i in  group['Relation'][0]:
+                    if i == old_key:
+                        group['Relation'][0].remove(i)
+                        group['Relation'][0].append(new_key)
+        features.append(group)
+    for feature in features:
+        featureStr = str(feature)
+        print(featureStr)
+        print(feature['group'])
+        # db.collection(u'logics').document(feature['group']).delete()
+        db.collection(u'logics').document(feature['group']).set({"data":featureStr})
+    body["oldname"] = feat['Name']
     await updateLineLogic(body)
-    return 0
+    await updateLineLogicandOr(body)
+    return "update done"
+
+
+
+async def updateLineLogicandOr(data):
+    docs = db.collection("orCondition").stream()
+    for doc in docs:
+        dict =  doc.to_dict()
+        if  data['oldname'] in dict.keys() :
+            dict[data['Name']] = True
+            del dict[data['oldname']]
+ 
+            # doc_ref = db.collection(u'orCondition').document(dict.id)
+            # doc_ref.update({""})
+            db.collection(u'orCondition').document(doc.id).delete()
+            db.collection(u'orCondition').document().set(dict)
 
 async def updateLineLogic(data):
 
-    data['oldname'] = "close2"
+
+
     docs = db.collection("pre-lineLogic").stream()
     for doc in docs:
         newData =  doc.to_dict()
-        print(newData)
+ 
+        # print(newData)
         if newData['id'] == data['oldname']:
             newData['id'] = data['Name']
             newData['Type'] = data['Type']
+            newData['Question'] = data['Question']
 
         
-        #     newData['Question'] = data['Question']
-        #     db.collection(u'pre-lineLogic').document( data['oldname']).delete()
-        #     db.collection(u'pre-lineLogic').document(newData['id']).set(newData)
+
+            db.collection(u'pre-lineLogic').document( data['oldname']).delete()
+            db.collection(u'pre-lineLogic').document(newData['id']).set(newData)
         if newData['Next'] == data['oldname']:
             newData['Next'] =  data['Name']
-            print("SEC ")
-            print(newData)
+
+            db.collection(u'pre-lineLogic').document(newData['id']).delete()
+            db.collection(u'pre-lineLogic').document(newData['id']).set(newData)
         if newData['Previous'] == data['oldname']:
+            newData['Previous']=  data['Name']
             print("th ")
-            print(newData)
-            # db.collection(u'pre-lineLogic').document(newData['id']).delete()
-            # db.collection(u'pre-lineLogic').document(newData['id']).set(doc)
+
+            db.collection(u'pre-lineLogic').document(newData['id']).delete()
+            db.collection(u'pre-lineLogic').document(newData['id']).set(newData)
         # if newData['Previous'] == data['oldname']:
         #     newData['Previous'] =  data['Name']
         #     db.collection(u'pre-lineLogic').document(newData['id']).delete()
