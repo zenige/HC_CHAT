@@ -29,6 +29,7 @@
           v-for="(group, index) in groupNamenew"
           :key="index"
           class="col-md-4 pb_me-4"
+          @click="getCurrentDate(index)"
         >
           <NuxtLink
             :to="localePath(`/dashboard/patient-group/${group.name}`)"
@@ -63,8 +64,11 @@
               "
             >
               <div class="d-flex justify-content-between">
-                <div class="txt_hc_title line-height-1 text-truncate">
-                  10/1/2021
+                <div
+                  class="txt_hc_title line-height-1 text-truncate"
+                  id="groupDate"
+                >
+                  {{ currentGroupDate[index] }}
                 </div>
                 <div class="txt_hc_title line-height-1 text-truncate">
                   See detailed
@@ -79,6 +83,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
   data() {
     return {
@@ -90,6 +96,7 @@ export default {
       dashboardGroup: [],
       allGroup: [],
       groupNamenew: [],
+      currentGroupDate: [],
     }
   },
   async mounted() {
@@ -98,12 +105,24 @@ export default {
     this.allGroup = this.allGroup.data
     this.isLoading = true
   },
+  computed: {
+    // getCurrentDate() {
+    //   let currentDate = new Date()
+    //   currentDate = dayjs(currentDate).format('DD/MM/YYYY')
+    //   document.getElementById('groupDate').innerHTML = currentDate
+    // },
+  },
   methods: {
+    getCurrentDate(index) {
+      let currentDate = new Date()
+      currentDate = dayjs(currentDate).format('DD/MM/YYYY')
+      this.currentGroupDate[index] = currentDate
+      console.log(currentDate)
+    },
     async getDashboardData() {
       let { data } = await this.$axios.get('dashboard')
       this.dashboardGroup.push(data)
       this.groupNamenew = this.dashboardGroup[0]
-      console.log('bhhhhhhg', this.groupNamenew)
     },
   },
 }

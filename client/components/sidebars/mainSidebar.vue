@@ -28,7 +28,7 @@
         class="sidebar-menu-main-item"
         @click="linkTo('/chatbot-training/trained-word')"
       >
-        Trained Word
+        Learned Word
       </div>
       <div
         class="sidebar-menu-main-item"

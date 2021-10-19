@@ -417,7 +417,6 @@ export default {
 
       let { data } = await this.$axios.get('logic/linelogic')
       this.featureData = data
-      console.log(this.featureData)
 
       let sortedFeatureData = []
 
@@ -444,8 +443,6 @@ export default {
       }
 
       sortedFeatureData.push(lastFeatureDataSorted)
-
-      console.log('sortedFeatureData', sortedFeatureData)
 
       this.featureData = sortedFeatureData
       console.log('feature data after sorted', this.featureData)

@@ -75,7 +75,10 @@
                   </div>
                 </div>
                 <div v-if="data.item.editable === true" style="width: 35%">
-                  <b-form-input autofocus v-model="changedGroupData" />
+                  <b-form-input
+                    autofocus
+                    v-model="changedGroupData[data.index]"
+                  />
                 </div>
               </template>
               <template #head(action)>
@@ -174,6 +177,8 @@
 </template>
 
 <script>
+const english = /^[A-Za-z0-9^*()_+=[/\]{}|\\,.?: -]*$/
+
 export default {
   components: {
     CreateGroupModal: () => import('~/components/modals/CreateGroupModal.vue'),
@@ -215,6 +220,7 @@ export default {
         },
       ],
       groupData: [],
+      changedGroupData: [],
     }
   },
   watch: {
@@ -268,20 +274,32 @@ export default {
       this.isShowTrainModelModal = false
     },
     editGroup(data) {
-      this.changedGroupData = data.item.group
+      this.changedGroupData[data.index] = data.item.group
       data.item.editable = true
     },
     cancleEditGroup(data) {
       data.item.editable = false
     },
     async saveGroup(data) {
-      data.item.group = this.changedGroupData
-      await this.$axios.patch('group', {
-        id: data.item.id,
-        Name: data.item.group,
-      })
-      this.getGroupData()
+      data.item.group = this.changedGroupData[data.index]
       data.item.editable = false
+      if (data.item.id === data.item.group) {
+        await this.getGroupData()
+      } else {
+        if (english.test(data.item.id)) {
+          await this.$axios.patch('group', {
+            id: data.item.id,
+            Name: data.item.group,
+          })
+          await this.getGroupData()
+        } else {
+          this.$bvToast.toast('Please fill in matching text.', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+        }
+      }
     },
     async getGroupData() {
       let { data } = await this.$axios.get('group')

@@ -59,7 +59,7 @@
 </template>
 
 <script>
-const english = /^[A-Za-z0-9" "]*$/
+const english = /^[A-Za-z0-9^*()_+=[/\]{}|\\,.?: -]*$/
 
 export default {
   name: 'AddNewWordModal',
@@ -119,7 +119,7 @@ export default {
           this.groupName = null
           this.onCancel()
         } else {
-          this.$bvToast.toast('Please fill in English only.', {
+          this.$bvToast.toast('Please fill in matching text.', {
             variant: 'danger',
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,

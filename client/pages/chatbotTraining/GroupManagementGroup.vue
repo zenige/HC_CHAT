@@ -42,7 +42,11 @@
           <div
             v-for="(feature, index) in userData"
             :key="index"
-            class="pb-3 pt-1 card_vld_wrapper"
+            :id="feature.refId"
+            :class="[
+              'pb-3 pt-1 card_vld_wrapper',
+              { inValidaFeature: feature.state.validData === false },
+            ]"
           >
             <div class="task-item pb_me-4">
               <div class="card h-100 mb-0 position-relative">
@@ -93,7 +97,7 @@
                                 @change="changeCondition(index)"
                               >
                                 <b-form-select-option
-                                  v-for="option in getConditionOptions(index)"
+                                  v-for="option in getConditionOptions(feature)"
                                   :key="option.label"
                                   :value="option.value"
                                   >{{ option.label }}</b-form-select-option
@@ -111,6 +115,7 @@
                                 class="form-control border-gray border"
                                 style="curser: pointer"
                                 :disabled="!feature.state.moreLessOptionState"
+                                @change="changeMoreLessOption(index)"
                               >
                                 <b-form-select-option
                                   v-for="option in moreLessOptions"
@@ -203,7 +208,7 @@
           <div class="d-flex justify-content-center align-items-center">
             <div class="m_width_250p">
               <a
-                @click="onSaveGroup()"
+                @click="onSubmitForm()"
                 class="
                   btn btn-block btn_hc_light_border btn_hcb_green_light
                   h2dot5
@@ -309,6 +314,7 @@ export default {
     orConditionId: null,
     newMoreLessvalue: [],
     finalUserData: {},
+    formValid: false,
   }),
   watch: {},
   computed: {},
@@ -324,20 +330,7 @@ export default {
   },
   methods: {
     previousUrl() {
-      if (this.userData.every((item) => item.condition)) {
-        this.$bvToast.toast('Save successfully', {
-          variant: 'success',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-        this.$router.push(this.localePath('/chatbot-training/group-management'))
-      } else {
-        this.$bvToast.toast('Please fill all Condition fields', {
-          variant: 'danger',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-      }
+      this.$router.push(this.localePath('/chatbot-training/group-management'))
     },
     openDeleteGroupModal() {
       this.isShowDeleteGroupModal = true
@@ -357,14 +350,17 @@ export default {
       }
     },
 
-    getConditionOptions(index) {
-      if (this.userData[index].conditionType === 'input') {
+    getConditionOptions(feature) {
+      if (feature.conditionType === 'input') {
         const resultOr = this.conditionOptions.filter(
-          (item) => item.label === 'Input'
+          (item) =>
+            item.label === 'Input' ||
+            item.label === 'Any' ||
+            item.label === 'Please select a condition'
         )
         return resultOr
-      } else if (this.userData[index].conditionType !== 'input') {
-        if (this.userData[index].orFeatureData) {
+      } else if (feature.conditionType !== 'input') {
+        if (feature.orFeatureData) {
           const resultOr = this.conditionOptions.filter(
             (item) => item.label !== 'Input' && item.label !== 'Any'
           )
@@ -515,12 +511,14 @@ export default {
           moreLessUserValue: null,
           onlyOneOfTheseFeatureData: null,
           orFeatureData: null,
+          refId: this.generateID(),
           state: {
             conditionState: true,
             moreLessOptionState: false,
             moreLessValueState: false,
             onlyOneOfTheseFeatureState: true,
             orFeatureState: true,
+            validData: true,
           },
         }
         // if feature have relation
@@ -540,9 +538,16 @@ export default {
         }
         this.userData.push(feature)
         if (this.userData[i].conditionType === 'input') {
-          this.userData[i].state.moreLessOptionState = true
-          this.userData[i].state.onlyOneOfTheseFeatureState = false
-          this.userData[i].state.orFeatureState = false
+          if (this.userData[i].condition === 'input') {
+            this.userData[i].state.moreLessOptionState = true
+            this.userData[i].state.onlyOneOfTheseFeatureState = false
+            this.userData[i].state.orFeatureState = false
+          } else {
+            this.userData[i].moreLessOption = false
+            this.userData[i].state.moreLessOptionState = false
+            this.userData[i].state.onlyOneOfTheseFeatureState = false
+            this.userData[i].state.orFeatureState = false
+          }
         } else {
           this.userData[i].state.moreLessOptionState = false
           this.userData[i].moreLessOption = null
@@ -603,55 +608,111 @@ export default {
       this.pairOnly1 = this.userData[index].onlyOneOfTheseFeatureData
       // ถ้ามีค่า
       if (this.pairOnly1) {
-        this.userData = this.userData.map((item) => {
-          if (item.featureName === this.pairOnly1) {
-            return {
-              ...item,
-              onlyOneOfTheseFeatureData: this.userData[index].featureName,
-              orFeatureData: null,
-              condition: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: false,
-              },
+        if (
+          this.pairOnly1 === this.pairOr1 ||
+          this.pairOnly1 === this.pairOr2
+        ) {
+          this.pairOr1 = null
+          this.pairOr2 = null
+          await this.$axios.delete('group/orcondition/' + this.orConditionId)
+          this.userData = this.userData.map((item) => {
+            if (item.featureName === this.pairOnly1) {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: this.userData[index].featureName,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.featureName === this.userData[index].featureName) {
+              this.pairOnly2 = item.featureName
+              return {
+                ...item,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.conditionType === 'input') {
+              return {
+                ...item,
+                orFeatureData: null,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: false,
+                  conditionState: true,
+                },
+              }
+            } else {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: true,
+                },
+              }
             }
-          } else if (item.featureName === this.userData[index].featureName) {
-            this.pairOnly2 = item.featureName
-            return {
-              ...item,
-              orFeatureData: null,
-              condition: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: false,
-              },
+          })
+        } else {
+          this.userData = this.userData.map((item) => {
+            if (item.featureName === this.pairOnly1) {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: this.userData[index].featureName,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.featureName === this.userData[index].featureName) {
+              this.pairOnly2 = item.featureName
+              return {
+                ...item,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.conditionType === 'input') {
+              return {
+                ...item,
+                orFeatureData: null,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: false,
+                  conditionState: true,
+                },
+              }
+            } else {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: true,
+                },
+              }
             }
-          } else if (item.conditionType === 'input') {
-            return {
-              ...item,
-              orFeatureData: null,
-              onlyOneOfTheseFeatureData: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: false,
-                conditionState: true,
-              },
-            }
-          } else {
-            return {
-              ...item,
-              orFeatureData: null,
-              onlyOneOfTheseFeatureData: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: true,
-              },
-            }
-          }
-        })
+          })
+        }
       } else {
         this.userData = this.userData.map((item) => {
           if (item.conditionType === 'input') {
@@ -758,26 +819,42 @@ export default {
         await this.$axios.delete('group/orcondition/' + this.orConditionId)
       }
     },
-
     changeCondition(index) {
       if (this.userData[index].conditionType === 'input') {
-        this.userData[index].state.moreLessOptionState = true
-        this.userData[index].state.onlyOneOfTheseFeatureState = false
-        this.userData[index].state.orFeatureState = false
+        if (this.userData[index].condition === 'input') {
+          this.userData[index].state.moreLessOptionState = true
+          this.userData[index].state.onlyOneOfTheseFeatureState = false
+          this.userData[index].state.orFeatureState = false
+          this.userData[index].state.moreLessValueState = true
+        } else {
+          this.userData[index].moreLessOption = null
+          this.userData[index].state.moreLessOptionState = false
+          this.userData[index].moreLessUserValue = null
+          this.userData[index].state.onlyOneOfTheseFeatureState = false
+          this.userData[index].state.orFeatureState = false
+          this.userData[index].state.moreLessValueState = false
+        }
       } else {
         this.userData[index].state.moreLessOptionState = false
         this.userData[index].moreLessOption = null
         this.userData[index].moreLessValue = null
+        this.userData[index].moreLessUserValue = null
+      }
+    },
+    changeMoreLessOption(index) {
+      if (!this.userData[index].moreLessOption) {
+        this.userData[index].state.moreLessValueState = false
+        this.userData[index].moreLessUserValue = null
       }
     },
     changeMoreLessValue(index) {
-      if (this.userData[index].moreLessValue < 0) {
+      if (this.userData[index].moreLessUserValue < 0) {
         this.$bvToast.toast('Value can not less than zero', {
           variant: 'danger',
           toaster: 'b-toaster-bottom-left',
           noCloseButton: true,
         })
-        this.userData[index].moreLessValue = 0
+        this.userData[index].moreLessUserValue = 0
       }
     },
     async onSaveGroup() {
@@ -789,7 +866,8 @@ export default {
         if (i.onlyOneOfTheseFeatureData) {
           relationArr[0].push(i.featureName)
           this.finalUserData['Relation'] = relationArr
-        } else if (i.conditionType === 'input') {
+          console.log(this.finalUserData)
+        } else if (i.condition === 'input') {
           let transformValue = 0
           if (i.moreLessUserValue >= 0 && i.moreLessUserValue < 22) {
             transformValue = 2
@@ -809,6 +887,8 @@ export default {
             moreLessOptionFlag = true
             moreOrLess = i.moreLessOption
             moreOrLessVal = i.moreLessUserValue
+          } else {
+            moreLessOptionFlag = false
           }
         } else {
           this.finalUserData[i.featureName] = i.condition
@@ -823,33 +903,105 @@ export default {
       } else {
         bodyGroup['data'] = this.finalUserData
       }
-
-      if (this.userData.every((item) => item.condition)) {
-        await this.$axios.post('group/groupid/' + this.groupName, bodyGroup)
-        this.$bvToast.toast('Saved successfully', {
-          variant: 'success',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-        console.log('saved', this.finalUserData)
-      } else {
-        this.$bvToast.toast('Please fill all Condition fields', {
-          variant: 'danger',
-          toaster: 'b-toaster-bottom-left',
-          noCloseButton: true,
-        })
-      }
-
-      // window.location.reload()
+      await this.$axios.post('group/groupid/' + this.groupName, bodyGroup)
+      this.$bvToast.toast('Saved successfully', {
+        variant: 'success',
+        toaster: 'b-toaster-bottom-left',
+        noCloseButton: true,
+      })
+      console.log(this.finalUserData)
+      window.location.reload()
     },
-    onDeleteGroup() {
-      console.log('all feature data')
+    async onSubmitForm() {
+      await new Promise((resolve) => {
+        this.formValid = this.userData
+          .map((item, index) => {
+            if (item.onlyOneOfTheseFeatureData) {
+              if (!item.condition) {
+                this.userData[index].state.validData = true
+                return this.userData[index]
+              } else {
+                this.userData[index].state.validData = false
+                document.getElementById(item.refId).scrollIntoView()
+                return this.userData[index]
+              }
+            } else {
+              if (item.condition) {
+                if (item.condition === 'input') {
+                  if (item.moreLessOption) {
+                    if (item.moreLessUserValue) {
+                      this.userData[index].state.validData = true
+                      return this.userData[index]
+                    } else {
+                      this.userData[index].state.validData = false
+                      document.getElementById(item.refId).scrollIntoView()
+                      return this.userData[index]
+                    }
+                  } else {
+                    this.userData[index].state.validData = false
+                    document.getElementById(item.refId).scrollIntoView()
+                    return this.userData[index]
+                  }
+                }
+                this.userData[index].state.validData = true
+                return this.userData[index]
+              } else {
+                this.userData[index].state.validData = false
+                document.getElementById(item.refId).scrollIntoView()
+                return this.userData[index]
+              }
+            }
+          })
+          .every((item) => {
+            if (item.state.validData === true) {
+              return true
+            } else {
+              return false
+            }
+          })
+        resolve(this.formValid)
+      }).then((valid) => {
+        if (valid) {
+          this.onSaveGroup()
+        } else {
+          this.$bvToast.toast('Please fill all required fields', {
+            variant: 'danger',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+        }
+      })
+      console.log('pair only1', this.pairOnly1)
+      console.log('pair only2', this.pairOnly2)
+      console.log('pair or1', this.pairOr1)
+      console.log('pair or2', this.pairOr2)
+    },
+    async onDeleteGroup() {
+      await this.$axios.delete('group/' + this.groupName)
+      this.$router.push(this.localePath('/chatbot-training/group-management'))
+    },
+    generateID() {
+      let result_id = ''
+      const length = 10
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+      for (let i = 0; i < length; i++) {
+        result_id += characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        )
+      }
+      return result_id
     },
   },
 }
 </script>
 
 <style lang="scss">
+.inValidaFeature {
+  border: 2px solid rgb(255, 93, 93);
+  box-shadow: 1px 1px 5px rgb(255, 121, 121);
+  border-radius: 10px;
+}
+
 .txt_vla_feature_title {
   font-size: 16px;
 }
