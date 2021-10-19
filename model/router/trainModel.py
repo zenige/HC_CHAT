@@ -96,11 +96,30 @@ async def createModelRF():
         dataDict = ast.literal_eval(dataStr)
         datas.append(dataDict)
     groupName = []
+    groupArr = []
+    detailArr = []
+    groupDict = {}
     for i in datas:
         if i['group'] not in groupName:
             groupName.append(i['group'])
-    print(groupName)
-    newDF = await create_model(datas)
+
+    for i in datas:
+        groupDict = {}
+        if "group" in i.keys():
+            groupDict['group'] = i['group']
+        del i["group"]
+        keys = i.keys()
+
+        for key in keys:
+            groupDict[key] = i[key]
+        groupArr.append(groupDict)
+ 
+
+    # print(groupArr)
+    # print("__________________")
+    # print(detailArr)
+    # print(groupName)
+    newDF = await create_model(groupArr)
 
     newDF = cleanData(newDF, groupName)
 
