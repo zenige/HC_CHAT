@@ -608,54 +608,111 @@ export default {
       this.pairOnly1 = this.userData[index].onlyOneOfTheseFeatureData
       // ถ้ามีค่า
       if (this.pairOnly1) {
-        this.userData = this.userData.map((item) => {
-          if (item.featureName === this.pairOnly1) {
-            return {
-              ...item,
-              onlyOneOfTheseFeatureData: this.userData[index].featureName,
-              orFeatureData: null,
-              condition: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: false,
-              },
+        if (
+          this.pairOnly1 === this.pairOr1 ||
+          this.pairOnly1 === this.pairOr2
+        ) {
+          this.pairOr1 = null
+          this.pairOr2 = null
+          await this.$axios.delete('group/orcondition/' + this.orConditionId)
+          this.userData = this.userData.map((item) => {
+            if (item.featureName === this.pairOnly1) {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: this.userData[index].featureName,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.featureName === this.userData[index].featureName) {
+              this.pairOnly2 = item.featureName
+              return {
+                ...item,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.conditionType === 'input') {
+              return {
+                ...item,
+                orFeatureData: null,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: false,
+                  conditionState: true,
+                },
+              }
+            } else {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: true,
+                },
+              }
             }
-          } else if (item.featureName === this.userData[index].featureName) {
-            this.pairOnly2 = item.featureName
-            return {
-              ...item,
-              orFeatureData: null,
-              condition: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: false,
-              },
+          })
+        } else {
+          this.userData = this.userData.map((item) => {
+            if (item.featureName === this.pairOnly1) {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: this.userData[index].featureName,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.featureName === this.userData[index].featureName) {
+              this.pairOnly2 = item.featureName
+              return {
+                ...item,
+                orFeatureData: null,
+                condition: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: false,
+                },
+              }
+            } else if (item.conditionType === 'input') {
+              return {
+                ...item,
+                orFeatureData: null,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: false,
+                  conditionState: true,
+                },
+              }
+            } else {
+              return {
+                ...item,
+                onlyOneOfTheseFeatureData: null,
+                state: {
+                  ...item.state,
+                  onlyOneOfTheseFeatureState: true,
+                  conditionState: true,
+                },
+              }
             }
-          } else if (item.conditionType === 'input') {
-            return {
-              ...item,
-              orFeatureData: null,
-              onlyOneOfTheseFeatureData: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: false,
-                conditionState: true,
-              },
-            }
-          } else {
-            return {
-              ...item,
-              onlyOneOfTheseFeatureData: null,
-              state: {
-                ...item.state,
-                onlyOneOfTheseFeatureState: true,
-                conditionState: true,
-              },
-            }
-          }
-        })
+          })
+        }
       } else {
         this.userData = this.userData.map((item) => {
           if (item.conditionType === 'input') {
