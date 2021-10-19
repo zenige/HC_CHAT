@@ -38,6 +38,7 @@
               type="text"
               v-model="feature"
               class="form-control border-gray border"
+              @keydown.prevent.space
             />
           </div>
           <div class="d-flex flex-column text-left mb-3">
