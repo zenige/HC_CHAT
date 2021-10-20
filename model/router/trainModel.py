@@ -124,9 +124,9 @@ async def createModelRF():
 
     TrainModelRF(newDF)
 
-    return "newDF"
+    return "done"
 
-
+ 
 @router.get("/test")
 async def test():
     checkOr()
