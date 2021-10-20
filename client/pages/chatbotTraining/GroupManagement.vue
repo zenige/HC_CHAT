@@ -255,7 +255,7 @@ export default {
       this.isShowDeleteGroupModal = false
     },
     trainModel() {
-      console.log('train model')
+      // console.log('train model')
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
@@ -316,7 +316,7 @@ export default {
       if (this.groupData.length === 0) {
         this.totalGroup = 0
       }
-      console.log(this.groupData)
+      // console.log(this.groupData)
     },
   },
 }

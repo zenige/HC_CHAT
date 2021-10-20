@@ -290,7 +290,7 @@ export default {
       }
     },
     sortBy(value) {
-      console.log(value)
+      // console.log(value)
       if (value) {
         this.getTrainedWordData(
           this.filter,

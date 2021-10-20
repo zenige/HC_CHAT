@@ -36,7 +36,7 @@ export default {
   // middleware: 'isPortal',
   methods: {
     async handleSubmit(values) {
-      console.log('Register')
+      // console.log('Register')
     },
     // openChooseLanguageModal() {
     //   this.isShowingChooseLanguageModal = true

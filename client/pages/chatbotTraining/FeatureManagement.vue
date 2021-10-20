@@ -366,7 +366,7 @@ export default {
       }
     },
     editFeature(data) {
-      console.log(data)
+      // console.log(data)
       this.changedFeatureName[data.index] = data.item.feature
       this.changedConditionType[data.index] = data.item.conditionType
       this.changedQuestion[data.index] = data.item.question
@@ -429,7 +429,7 @@ export default {
       let lastFeatureDataSorted = this.featureData.find(
         (item) => item.Next === null
       )
-      console.log('sortedFeatureData', sortedFeatureData)
+      // console.log('sortedFeatureData', sortedFeatureData)
 
       this.featureData = data.filter(
         (item) => item.Previous !== null && item.Next !== null
@@ -446,7 +446,7 @@ export default {
       sortedFeatureData.push(lastFeatureDataSorted)
 
       this.featureData = sortedFeatureData
-      console.log('feature data after sorted', this.featureData)
+      // console.log('feature data after sorted', this.featureData)
 
       this.featureData = this.featureData.map((item) => {
         return {
@@ -468,14 +468,14 @@ export default {
         }
       }
 
-      console.log('feature data after push Id', this.featureData)
+      // console.log('feature data after push Id', this.featureData)
 
       if (this.featureData.length === 0) {
         this.totalFeature = 0
       } else {
         this.totalFeature = this.featureData.length
       }
-      console.log(this.featureData)
+      // console.log(this.featureData)
     },
   },
 }

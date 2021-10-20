@@ -117,7 +117,7 @@ export default {
       let currentDate = new Date()
       currentDate = dayjs(currentDate).format('DD/MM/YYYY')
       this.currentGroupDate[index] = currentDate
-      console.log(currentDate)
+      // console.log(currentDate)
     },
     async getDashboardData() {
       let { data } = await this.$axios.get('dashboard')
