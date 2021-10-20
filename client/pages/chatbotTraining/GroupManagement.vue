@@ -253,7 +253,10 @@ export default {
     },
     async TrainModel() {
       await this.$axios.get('logic/updateLogic')
-      await this.$axios.get('http://localhost:500/trainModel/createModelRF')
+      await this.$axios.post(
+        'http://localhost:500/trainModel/createModelRF',
+        {}
+      )
       this.$bvToast.toast('Trained successfully', {
         variant: 'success',
         toaster: 'b-toaster-bottom-left',
