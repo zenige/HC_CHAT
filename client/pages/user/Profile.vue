@@ -47,7 +47,7 @@ export default {
         toaster: 'b-toaster-bottom-left',
         noCloseButton: true,
       })
-      console.log('saved' + values)
+      // console.log('saved' + values)
     },
     handleDelete() {
       // this.$store.dispatch('modal/openDeleteModal', {
@@ -61,11 +61,11 @@ export default {
       //     } catch (_) {}
       //   },
       // })
-      console.log('saved')
+      // console.log('saved')
     },
     handleChangePassword() {
       // this.$router.push(this.localePath('/change-password'))
-      console.log('changed password')
+      // console.log('changed password')
     },
   },
 }

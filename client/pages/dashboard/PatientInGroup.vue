@@ -269,7 +269,7 @@ export default {
       }
     )
     this.totalPatient = this.patientInGroupProfileData.length
-    console.log('patient profile after map', this.patientInGroupProfileData)
+    // console.log('patient profile after map', this.patientInGroupProfileData)
   },
 
   computed: {
@@ -296,7 +296,7 @@ export default {
       for (let i = 0; i < this.patientInGroupData.length; i++) {
         this.patientInGroupProfileData[i] = this.patientInGroupData[i]
       }
-      console.log('patientInGroupProfileData', this.patientInGroupProfileData)
+      // console.log('patientInGroupProfileData', this.patientInGroupProfileData)
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
@@ -330,10 +330,7 @@ export default {
       sortedFeatureData.push(lastFeatureDataSorted)
       this.allFeatureData = sortedFeatureData
 
-      console.log('all feature data', this.allFeatureData)
-    },
-    onShowInfo() {
-      console.log('show info')
+      // console.log('all feature data', this.allFeatureData)
     },
   },
 }

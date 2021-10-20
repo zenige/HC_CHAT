@@ -291,22 +291,23 @@ export default {
   },
   computed: {},
   methods: {
-    conditionTypeOptionFunction(conditionTypeInput) {
-      if (conditionTypeInput === 'input') {
-        return this.conditionTypeOption
-      } else {
-        // find feature that have input type in feature data
-        let inputTypefeature = this.featureData.find(
-          (item) => item.conditionType === 'input'
-        )
-        if (inputTypefeature) {
-          return this.conditionTypeOption.filter(
-            (item) => item.label !== 'input'
-          )
-        } else {
-          return this.conditionTypeOption
-        }
-      }
+    conditionTypeOptionFunction(conditionType) {
+      // if (conditionType === 'input') {
+      //   return this.conditionTypeOption
+      // } else {
+      //   // find feature that have input type in feature data
+      //   let inputTypefeature = this.featureData.find(
+      //     (item) => item.conditionType === 'input'
+      //   )
+      //   if (inputTypefeature) {
+      //     return this.conditionTypeOption.filter(
+      //       (item) => item.label !== 'input'
+      //     )
+      //   } else {
+      //     return this.conditionTypeOption
+      //   }
+      // }
+      return this.conditionTypeOption
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
@@ -365,7 +366,7 @@ export default {
       }
     },
     editFeature(data) {
-      console.log(data)
+      // console.log(data)
       this.changedFeatureName[data.index] = data.item.feature
       this.changedConditionType[data.index] = data.item.conditionType
       this.changedQuestion[data.index] = data.item.question
@@ -384,12 +385,12 @@ export default {
           data.item.feature = this.changedFeatureName[data.index]
           data.item.conditionType = this.changedConditionType[data.index]
           data.item.question = this.changedQuestion[data.index]
-          // await this.$axios.patch('feature', {
-          //   id: data.item.feature,
-          //   Name: data.item.feature,
-          //   Type: data.item.conditionType,
-          //   Question: data.item.question,
-          // })
+          await this.$axios.patch('feature', {
+            id: data.item.id,
+            Name: data.item.feature,
+            Type: data.item.conditionType,
+            Question: data.item.question,
+          })
           data.item.editable = false
         } else {
           this.$bvToast.toast('Please fill in English only', {
@@ -428,7 +429,7 @@ export default {
       let lastFeatureDataSorted = this.featureData.find(
         (item) => item.Next === null
       )
-      console.log('sortedFeatureData', sortedFeatureData)
+      // console.log('sortedFeatureData', sortedFeatureData)
 
       this.featureData = data.filter(
         (item) => item.Previous !== null && item.Next !== null
@@ -445,7 +446,7 @@ export default {
       sortedFeatureData.push(lastFeatureDataSorted)
 
       this.featureData = sortedFeatureData
-      console.log('feature data after sorted', this.featureData)
+      // console.log('feature data after sorted', this.featureData)
 
       this.featureData = this.featureData.map((item) => {
         return {
@@ -467,14 +468,14 @@ export default {
         }
       }
 
-      console.log('feature data after push Id', this.featureData)
+      // console.log('feature data after push Id', this.featureData)
 
       if (this.featureData.length === 0) {
         this.totalFeature = 0
       } else {
         this.totalFeature = this.featureData.length
       }
-      console.log(this.featureData)
+      // console.log(this.featureData)
     },
   },
 }

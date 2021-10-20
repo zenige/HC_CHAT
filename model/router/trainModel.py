@@ -113,7 +113,6 @@ async def createModelRF():
         for key in keys:
             groupDict[key] = i[key]
         groupArr.append(groupDict)
- 
 
     # print(groupArr)
     # print("__________________")

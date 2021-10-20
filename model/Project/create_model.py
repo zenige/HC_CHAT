@@ -1,17 +1,15 @@
 
+import pickle
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import numpy as np
+from Project import db
+from sklearn.datasets import load_iris
 import ttg
 import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
-from sklearn.datasets import load_iris
-from Project import db
-import numpy as np
-import matplotlib.pyplot as plt
-
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-
-import pickle
 
 
 async def create_model(datas):
@@ -30,12 +28,12 @@ async def create_model(datas):
         for i in data:
             if data[i] == 'ANY':
                 Any.append(i)
-            elif i != 'ANY' and i !=  "Relation" :
+            elif i != 'ANY' and i != "Relation":
                 notYet.append(i)
             elif i == "Relation":
                 relation.append(data[i])
 
-        if len(Any) > 0 :
+        if len(Any) > 0:
             truthTable = ttg.Truths(Any)
             df = truthTable.as_pandas()
         if flag == False:
@@ -47,7 +45,7 @@ async def create_model(datas):
     #         print(cols)
             flag = True
             for arr in notYet:
-                df[arr] =data[arr]
+                df[arr] = data[arr]
                 head = list(df.columns)
         else:
             cols2 = df.columns
@@ -60,7 +58,7 @@ async def create_model(datas):
     #         print(notYet)
     #         print(data)
     #         print(list2)
-            if len(relation) >0:
+            if len(relation) > 0:
                 list2.sort()
                 print(list2)
 
@@ -71,7 +69,6 @@ async def create_model(datas):
 # ['disease', 'cough', 'Fever', 'tired', 'group', 'close', 'Travel']
                 for i in list2:
                     if i in relation[0][0]:
-       
 
                         list2.remove(i)
 
@@ -85,7 +82,7 @@ async def create_model(datas):
                 else:
 
                     data_series = pd.Series([data[arr]])
-                    df[arr] = data[arr] #2
+                    df[arr] = data[arr]  # 2
             df = df.reindex(sorted(df.columns), axis=1)
             # print("00000000000000000000000000000")
             # print(df)
@@ -98,11 +95,10 @@ async def create_model(datas):
 
             for i in range(len(relation)):
                 for idxJ, j in enumerate(relation[i]):
-                    head = head +j
+                    head = head + j
                     listDF = df.to_numpy()
                     newList = []
                     for idxK, k in enumerate(listDF):
-
 
                         for idx, val in enumerate(j):
 
@@ -111,29 +107,28 @@ async def create_model(datas):
                                 if idx == idxM:
                                     newList.append("true")
 
-                                else :
+                                else:
                                     newList.append("false")
 
     #                         print(k)
 
-                            newList = np.append(k,newList)
+                            newList = np.append(k, newList)
                             # print(newList)
                             # print(head)
-                            newDF2 = pd.DataFrame([newList], 
-                            columns=head)
+                            newDF2 = pd.DataFrame([newList],
+                                                  columns=head)
                             # newDF2.columns = newDF2.columns.droplevel()
 
                             # newDF2 = newDF2.reindex(sorted(newDF2.columns), axis=1)
 
-  
                             if newDF.empty:
-    
-                                newDF = pd.DataFrame([newList], 
-                            columns=[head])
+
+                                newDF = pd.DataFrame([newList],
+                                                     columns=[head])
 
                                 # newDF = newDF.reindex(sorted(newDF.columns), axis=1)
 
-                            else :
+                            else:
                                 newDF = newDF.append(newDF2)
 
                                 # # newDF = pd.concat(frames)
@@ -154,18 +149,18 @@ async def create_model(datas):
                                 # print("_______________________")
                                 # newDF = newDF.reindex(sorted(newDF.columns), axis=1)
 
-
                             newList = []
         else:
             df = df.reindex(sorted(df.columns), axis=1)
             if newDF.empty:
                 newDF = df
             else:
-                newDF = newDF.append(df,ignore_index=True)
+                newDF = newDF.append(df, ignore_index=True)
 
     newDF = await checkOr(newDF)
 
     return newDF
+
 
 async def checkOr(newDF):
 
@@ -184,49 +179,49 @@ async def checkOr(newDF):
         #     newDF = newDF.drop(columns=[i])
 
         rows.append(i)
-    if rows :
+    if rows:
         for index, row in newDF.iterrows():
 
-            arr.append(row[rows[0]] or  row[rows[1]] )
+            arr.append(row[rows[0]] or row[rows[1]])
         str = rows[0] + "OR" + rows[1]
-  
-        newDF[str]  = arr
+
+        newDF[str] = arr
     for i in sorted_items:
         newDF = newDF.drop(columns=[i])
 
-
-
     return newDF
+
 
 async def checkOrPredict(newDF):
     newDF = newDF.replace("true", True)
     newDF = newDF.replace("false", False)
     arr = []
-    docs =  db.collection('orCondition').stream()
+    docs = db.collection('orCondition').stream()
     orDict = {}
     rows = []
     for doc in docs:
-        orDict =  doc.to_dict()
+        orDict = doc.to_dict()
     sorted_items = sorted(orDict)
 
     for i in sorted_items:
         rows.append(i)
 
-    if rows :
+    if rows:
         for index, row in newDF.iterrows():
 
-            result = row[rows[0]] or  row[rows[1]]
+            result = row[rows[0]] or row[rows[1]]
 
             arr.append(result)
         str = rows[0] + "OR" + rows[1]
-  
-        newDF[str]  = arr
+
+        newDF[str] = arr
     for i in sorted_items:
         newDF = newDF.drop(columns=[i])
- 
+
     return newDF
 
-def cleanData(newDF,groupName):
+
+def cleanData(newDF, groupName):
 
     newDF = newDF.replace("true", 1)
     newDF = newDF.replace("false", 0)
@@ -240,12 +235,12 @@ def cleanData(newDF,groupName):
     # print(groupName)
     if groupName:
         groupName.sort()
-    
+
         for idx, val in enumerate(groupName):
             newDF = newDF.replace(val, idx)
 
-
     return newDF
+
 
 def TrainModelSVM(newDF):
     newDF = newDF.reindex(sorted(newDF.columns), axis=1)
@@ -259,8 +254,8 @@ def TrainModelSVM(newDF):
 
     filename = 'SVM_model.sav'
     pickle.dump(model, open(filename, 'wb'))
-    
+
 
 def NormalizeAge(age):
-    
+
     return age

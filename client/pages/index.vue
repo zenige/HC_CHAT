@@ -313,7 +313,7 @@ export default {
       }
     },
     sortBy(value) {
-      console.log(value)
+      // console.log(value)
       if (value) {
         this.getNewWordData(
           this.filter,

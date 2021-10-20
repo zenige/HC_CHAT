@@ -352,13 +352,32 @@ export default {
 
     getConditionOptions(feature) {
       if (feature.conditionType === 'input') {
-        const resultOr = this.conditionOptions.filter(
-          (item) =>
-            item.label === 'Input' ||
-            item.label === 'Any' ||
-            item.label === 'Please select a condition'
-        )
-        return resultOr
+        if (feature.condition === 'input') {
+          const resultOr = this.conditionOptions.filter(
+            (item) =>
+              item.label === 'Input' ||
+              item.label === 'Any' ||
+              item.label === 'Please select a condition'
+          )
+          return resultOr
+        } else {
+          // find feature that have input type in feature data
+          let inputTypefeature = this.userData.find(
+            (item) => item.condition === 'input'
+          )
+          if (inputTypefeature) {
+            return this.conditionOptions.filter(
+              (item) =>
+                item.label !== 'Input' &&
+                item.label !== 'Yes' &&
+                item.label !== 'No'
+            )
+          } else {
+            return this.conditionOptions.filter(
+              (item) => item.label !== 'Yes' && item.label !== 'No'
+            )
+          }
+        }
       } else if (feature.conditionType !== 'input') {
         if (feature.orFeatureData) {
           const resultOr = this.conditionOptions.filter(
@@ -386,7 +405,7 @@ export default {
 
     async getAllGroupData() {
       let { data } = await this.$axios.get('group')
-      console.log(data)
+
       this.allGroupData = data.map((item) => {
         item.data = item.data.replaceAll("'", '"')
 
@@ -399,7 +418,6 @@ export default {
         }
         return group
       })
-      console.log('All group data', this.allGroupData)
     },
 
     async getAllLineLogicData() {
@@ -413,7 +431,6 @@ export default {
           }
         }
       }
-      console.log('All Line Logic data', this.allLineLogicData)
     },
 
     async getOrCondition() {
@@ -423,7 +440,6 @@ export default {
         this.orConditionId = this.orCondition.id
         const key = 'id'
         delete this.orCondition[key]
-        console.log('or condition', this.orCondition)
       }
     },
 
@@ -458,8 +474,6 @@ export default {
         }
       }
 
-      console.log('all feature before sorted', this.allFeatureData)
-
       let sortedFeatureData = []
 
       const firstFeatureDataSorted = this.allFeatureData.find(
@@ -484,8 +498,6 @@ export default {
       }
       sortedFeatureData.push(lastFeatureDataSorted)
 
-      console.log('sortedFeatureData', sortedFeatureData)
-
       this.allFeatureData = sortedFeatureData
 
       for (let i = 0; i < this.allFeatureData.length; i++) {
@@ -495,8 +507,6 @@ export default {
           conditionType: this.allFeatureData[i].Type,
         })
       }
-
-      console.log('all feature data after mergeData', this.allFeatureData)
     },
 
     setInitialUserData() {
@@ -554,7 +564,6 @@ export default {
           this.userData[i].moreLessValue = null
         }
       }
-      console.log('user data', this.userData)
       this.setPairOrFeature()
     },
     setPairOrFeature() {
@@ -868,7 +877,6 @@ export default {
         if (i.onlyOneOfTheseFeatureData) {
           relationArr[0].push(i.featureName)
           this.finalUserData['Relation'] = relationArr
-          console.log(this.finalUserData)
         } else if (i.condition === 'input') {
           let transformValue = 0
           if (i.moreLessUserValue >= 0 && i.moreLessUserValue < 22) {
@@ -911,7 +919,6 @@ export default {
         toaster: 'b-toaster-bottom-left',
         noCloseButton: true,
       })
-      console.log(this.finalUserData)
       window.location.reload()
     },
     async onSubmitForm() {

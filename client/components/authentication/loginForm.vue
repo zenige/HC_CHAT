@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     async logined(e) {
-      console.log('logined')
+      // console.log('logined')
     },
 
     async validate(field) {
