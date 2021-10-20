@@ -291,22 +291,23 @@ export default {
   },
   computed: {},
   methods: {
-    conditionTypeOptionFunction(conditionTypeInput) {
-      if (conditionTypeInput === 'input') {
-        return this.conditionTypeOption
-      } else {
-        // find feature that have input type in feature data
-        let inputTypefeature = this.featureData.find(
-          (item) => item.conditionType === 'input'
-        )
-        if (inputTypefeature) {
-          return this.conditionTypeOption.filter(
-            (item) => item.label !== 'input'
-          )
-        } else {
-          return this.conditionTypeOption
-        }
-      }
+    conditionTypeOptionFunction(conditionType) {
+      // if (conditionType === 'input') {
+      //   return this.conditionTypeOption
+      // } else {
+      //   // find feature that have input type in feature data
+      //   let inputTypefeature = this.featureData.find(
+      //     (item) => item.conditionType === 'input'
+      //   )
+      //   if (inputTypefeature) {
+      //     return this.conditionTypeOption.filter(
+      //       (item) => item.label !== 'input'
+      //     )
+      //   } else {
+      //     return this.conditionTypeOption
+      //   }
+      // }
+      return this.conditionTypeOption
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
@@ -384,12 +385,12 @@ export default {
           data.item.feature = this.changedFeatureName[data.index]
           data.item.conditionType = this.changedConditionType[data.index]
           data.item.question = this.changedQuestion[data.index]
-          // await this.$axios.patch('feature', {
-          //   id: data.item.feature,
-          //   Name: data.item.feature,
-          //   Type: data.item.conditionType,
-          //   Question: data.item.question,
-          // })
+          await this.$axios.patch('feature', {
+            id: data.item.id,
+            Name: data.item.feature,
+            Type: data.item.conditionType,
+            Question: data.item.question,
+          })
           data.item.editable = false
         } else {
           this.$bvToast.toast('Please fill in English only', {

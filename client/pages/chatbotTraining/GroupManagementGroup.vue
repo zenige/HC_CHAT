@@ -352,13 +352,32 @@ export default {
 
     getConditionOptions(feature) {
       if (feature.conditionType === 'input') {
-        const resultOr = this.conditionOptions.filter(
-          (item) =>
-            item.label === 'Input' ||
-            item.label === 'Any' ||
-            item.label === 'Please select a condition'
-        )
-        return resultOr
+        if (feature.condition === 'input') {
+          const resultOr = this.conditionOptions.filter(
+            (item) =>
+              item.label === 'Input' ||
+              item.label === 'Any' ||
+              item.label === 'Please select a condition'
+          )
+          return resultOr
+        } else {
+          // find feature that have input type in feature data
+          let inputTypefeature = this.userData.find(
+            (item) => item.condition === 'input'
+          )
+          if (inputTypefeature) {
+            return this.conditionOptions.filter(
+              (item) =>
+                item.label !== 'input' &&
+                item.label !== 'Yes' &&
+                item.label !== 'No'
+            )
+          } else {
+            return this.conditionOptions.filter(
+              (item) => item.label !== 'Yes' && item.label !== 'No'
+            )
+          }
+        }
       } else if (feature.conditionType !== 'input') {
         if (feature.orFeatureData) {
           const resultOr = this.conditionOptions.filter(

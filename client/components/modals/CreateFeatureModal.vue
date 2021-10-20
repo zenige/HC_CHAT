@@ -63,7 +63,6 @@
               v-model="changedQuestion"
               type="text"
               class="form-control border-gray border"
-              @keydown.prevent.space
             />
           </div>
           <div class="row d-flex justify-content-center">
@@ -148,15 +147,16 @@ export default {
       this.$emit('onModalHide', false)
     },
     conditionTypeOptionFunction() {
-      // find feature that have input type in feature data
-      let inputTypefeature = this.featureData.find(
-        (item) => item.conditionType === 'input'
-      )
-      if (inputTypefeature) {
-        return this.conditionTypeOption.filter((item) => item.label !== 'input')
-      } else {
-        return this.conditionTypeOption
-      }
+      // // find feature that have input type in feature data
+      // let inputTypefeature = this.featureData.find(
+      //   (item) => item.conditionType === 'input'
+      // )
+      // if (inputTypefeature) {
+      //   return this.conditionTypeOption.filter((item) => item.label !== 'input')
+      // } else {
+      //   return this.conditionTypeOption
+      // }
+      return this.conditionTypeOption
     },
     async onAddNewFeature() {
       const body = {
