@@ -31,8 +31,8 @@
       <div class="modal-body px-3 px-md-3">
         <div class="text-center">
           <div style="font-size: 18px" class="mb-3">
-            This action cannot undo later.<br />
-            Do you want to train model?
+            Please complete each group before training the model.<br />
+            Do you want to train the model?
           </div>
         </div>
         <div class="row d-flex justify-content-center">

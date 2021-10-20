@@ -157,9 +157,6 @@
           :isOpen="isShowTrainModelModal"
           :onCancel="closeTrainModelModal"
           :onTrain="TrainModel"
-          @getGroupData="getGroupData"
-          :currentPage="currentPage"
-          :perPage="perPage"
         ></TrainModelModal>
         <DeleteGroupModal
           :isOpen="isShowDeleteGroupModal"
@@ -254,8 +251,14 @@ export default {
     closeDeleteGroupModal() {
       this.isShowDeleteGroupModal = false
     },
-    trainModel() {
-      // console.log('train model')
+    async TrainModel() {
+      await this.$axios.get('logic/updateLogic')
+      await this.$axios.get('http://localhost:500/trainModel/createModelRF')
+      this.$bvToast.toast('Trained successfully', {
+        variant: 'success',
+        toaster: 'b-toaster-bottom-left',
+        noCloseButton: true,
+      })
     },
     selectedRowClass(item) {
       if (item.selected === true) return 'row-selected'
