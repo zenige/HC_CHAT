@@ -51,26 +51,39 @@ async def create_model(datas):
                 head = list(df.columns)
         else:
             cols2 = df.columns
+
             cols2 = list(cols2)
             for i in cols:
                 if i not in cols2:
 
                     list2.append(i)
-
     #         print(notYet)
     #         print(data)
     #         print(list2)
             if len(relation) >0:
+                list2.sort()
+                print(list2)
+
+# ['AGE', 'disease', 'cough', 'Fever', 'tired', 'group', 'close', 'Travel']
+
+
+# ['AGE', 'disease', 'cough', 'Fever', 'tired', 'group', 'close', 'Travel']
+# ['disease', 'cough', 'Fever', 'tired', 'group', 'close', 'Travel']
                 for i in list2:
                     if i in relation[0][0]:
+       
+
                         list2.remove(i)
+
             for arr in list2:
+
                 if df.empty:
                     d = data[arr]
                     df = df.append({arr: d}, ignore_index=True)
     #             print(df)
     #             print("_____")
                 else:
+
                     data_series = pd.Series([data[arr]])
                     df[arr] = data[arr] #2
             df = df.reindex(sorted(df.columns), axis=1)
