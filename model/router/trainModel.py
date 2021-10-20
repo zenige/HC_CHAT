@@ -73,7 +73,7 @@ async def createModel():
     return "newDF"
 
 
-@router.get("/createModelRF")
+@router.post("/createModelRF")
 async def createModelRF():
     # datas = [{"group": "group0", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "ANY", "tired": "ANY", "close": "false", "Travel": "false"},
     #         {"group": "group1", "AGE": "ANY", 'disease': "ANY", "cough": "ANY", "Fever": "false", "tired": "ANY", "close": "true", "Travel": "true"}, {
