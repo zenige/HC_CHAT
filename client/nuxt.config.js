@@ -125,7 +125,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:200/',
+    baseURL: 'http://localhost:1025/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

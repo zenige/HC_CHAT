@@ -20,19 +20,21 @@ async def getUsers():
         users.append(fakedict)
     groupName = defineGroupName()
     groups = []
+
     for i in groupName :
         group = {}
         count = 0
         for user in users:
-            if "group" in user.keys():
-                if user['group'] == i:
-                    count = count+1
-                    group['name'] = user['group']
-                    group['total'] = count
-                    groups.append(group)
+            if user['group'] == i:
+                group['name'] = i
+                count = count+1
+        group['total'] = count
 
+        
+        if "name" in group.keys():
+            groups.append(group)
 
-    print(groups)
+    # print(groups)
     # for i in users:
     #     if i['']
     return groups
