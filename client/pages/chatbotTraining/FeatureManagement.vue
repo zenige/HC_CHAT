@@ -360,6 +360,16 @@ export default {
             this.deleteSelected[i].feature
         )
       }
+      this.$bvToast.toast('Please go back to setting of all groups again', {
+        variant: 'success',
+        toaster: 'b-toaster-bottom-left',
+        noCloseButton: true,
+      })
+      this.$bvToast.toast('Deleted successfully', {
+        variant: 'success',
+        toaster: 'b-toaster-bottom-left',
+        noCloseButton: true,
+      })
       await this.getFeatureData()
       if (this.featureData.length === 0) {
         this.totalFeature = 0
@@ -390,6 +400,16 @@ export default {
             Name: data.item.feature,
             Type: data.item.conditionType,
             Question: data.item.question,
+          })
+          this.$bvToast.toast('Please go back to setting of all groups again', {
+            variant: 'success',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+          this.$bvToast.toast('Saved successfully', {
+            variant: 'success',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
           })
           data.item.editable = false
         } else {
@@ -475,7 +495,7 @@ export default {
       } else {
         this.totalFeature = this.featureData.length
       }
-      // console.log(this.featureData)
+      console.log('feature data after push Id', this.featureData)
     },
   },
 }

@@ -401,6 +401,7 @@ export default {
           id: item.id,
         }
       })
+      // console.log('feature data:', this.allFeatureData)
     },
 
     async getAllGroupData() {
@@ -460,6 +461,14 @@ export default {
               } else {
                 feature['TypeValue'] = group[feature.feature]
               }
+            } else if (
+              !group[feature.feature] &&
+              group.Relation &&
+              !group.Relation[0].includes(feature.feature)
+            ) {
+              feature['TypeValue'] = null
+            } else if (!group[feature.feature] && !group.Relation) {
+              feature['TypeValue'] = null
             } else if (group.Relation) {
               feature['Relation'] = group.Relation
               feature['TypeValue'] = 'Relation'
@@ -473,6 +482,7 @@ export default {
           }
         }
       }
+      console.log('all feature data: ', this.allFeatureData)
 
       let sortedFeatureData = []
 
@@ -507,6 +517,7 @@ export default {
           conditionType: this.allFeatureData[i].Type,
         })
       }
+      // console.log('all feature data:', this.allFeatureData)
     },
 
     setInitialUserData() {
@@ -565,6 +576,7 @@ export default {
         }
       }
       this.setPairOrFeature()
+      // console.log('userData:', this.userData)
     },
     setPairOrFeature() {
       if (this.orCondition) {
@@ -713,7 +725,6 @@ export default {
             } else {
               return {
                 ...item,
-
                 onlyOneOfTheseFeatureData: null,
                 state: {
                   ...item.state,

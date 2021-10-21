@@ -279,15 +279,31 @@ export default {
   },
   methods: {
     mergeFeatureData(objectSymptom) {
+      let _allFeatureData = this.allFeatureData
       if (objectSymptom) {
         let keyFeature = Object.keys(objectSymptom)
         keyFeature.map((featureName) => {
-          const currentIndex = this.allFeatureData.findIndex(
+          const currentIndex = _allFeatureData.findIndex(
             (item) => item.id === featureName
           )
-          this.allFeatureData[currentIndex].Value = objectSymptom[featureName]
+          // console.log(
+          //   'current index',
+          //   currentIndex,
+          //   'feature name',
+          //   featureName
+          // )
+          if (currentIndex >= 0) {
+            _allFeatureData[currentIndex].Value = objectSymptom[featureName]
+          }
+          // else {
+          //   _allFeatureData.push({
+          //     Question: featureName,
+          //     Value: objectSymptom[featureName],
+          //   })
+          // }
         })
-        return this.allFeatureData
+        console.log('_all feature', _allFeatureData)
+        return _allFeatureData
       } else {
         return []
       }

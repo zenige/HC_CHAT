@@ -171,6 +171,16 @@ export default {
           this.feature = null
           this.changedConditionType = null
           this.changedQuestion = null
+          this.$bvToast.toast('Please go back to setting of all groups again', {
+            variant: 'success',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
+          this.$bvToast.toast('Created successfully', {
+            variant: 'success',
+            toaster: 'b-toaster-bottom-left',
+            noCloseButton: true,
+          })
           this.onCancel()
         } else {
           this.$bvToast.toast('Feature name must be in English only', {

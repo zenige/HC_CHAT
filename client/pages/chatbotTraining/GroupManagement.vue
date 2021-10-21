@@ -322,7 +322,7 @@ export default {
       if (this.groupData.length === 0) {
         this.totalGroup = 0
       }
-      // console.log(this.groupData)
+      // console.log('all group data: ', this.groupData)
     },
   },
 }
