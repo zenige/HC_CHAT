@@ -16,7 +16,6 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
-                  name="Search"
                   v-model="filter"
                   type="search"
                   class="

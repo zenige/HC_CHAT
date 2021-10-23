@@ -26,7 +26,7 @@
       <div class="sidebar-menu-main-item" @click="linkTo('/')">New Word</div>
       <div
         class="sidebar-menu-main-item"
-        @click="linkTo('/chatbot-training/trained-word')"
+        @click="linkTo('/chatbot-training/learned-word')"
       >
         Learned Word
       </div>
