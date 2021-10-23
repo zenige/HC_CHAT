@@ -16,6 +16,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
+                  name="Search"
                   v-model="filter"
                   type="search"
                   class="
@@ -96,6 +97,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-textarea
+                    name="question"
                     autofocus
                     v-model="changedQuestionData[data.index]"
                     rows="3"
@@ -111,6 +113,7 @@
                   </div>
                 </div>
                 <b-form-textarea
+                  name="answer"
                   autofocus
                   v-if="data.item.editable === true"
                   v-model="changedAnswerData[data.index]"

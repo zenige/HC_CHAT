@@ -44,6 +44,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <input
+                  name="search"
                   v-model="filter"
                   type="search"
                   class="

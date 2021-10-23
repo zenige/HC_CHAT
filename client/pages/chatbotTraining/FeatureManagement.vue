@@ -16,6 +16,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
+                  name="Search"
                   v-model="filter"
                   type="search"
                   class="
@@ -93,6 +94,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-input
+                    name="feature"
                     autofocus
                     v-model="changedFeatureName[data.index]"
                     @keydown.prevent.space
@@ -129,6 +131,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-input
+                    name="question"
                     autofocus
                     v-model="changedQuestion[data.index]"
                     @keydown.prevent.space

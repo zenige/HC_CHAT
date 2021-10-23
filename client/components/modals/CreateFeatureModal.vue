@@ -35,6 +35,7 @@
           <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Feature name</div>
             <input
+              name="feature"
               type="text"
               v-model="feature"
               class="form-control border-gray border"
@@ -60,6 +61,7 @@
           <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Question</div>
             <input
+              name="question"
               v-model="changedQuestion"
               type="text"
               class="form-control border-gray border"
