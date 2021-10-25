@@ -247,7 +247,7 @@ export default {
         },
         {
           key: 'confident',
-          label: 'Confident',
+          label: 'Confidence',
           sortable: true,
           thClass: 'newWordthConfident-Class',
           tdClass: 'newWordtdConfident-Class',

@@ -34,6 +34,7 @@
           <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Question</div>
             <input
+              name="question"
               v-model="question"
               type="text"
               class="form-control border-gray border"
@@ -42,6 +43,7 @@
           <div class="d-flex flex-column text-left">
             <div class="learning-area-title">Answer</div>
             <input
+              name="answer"
               v-model="answer"
               type="text"
               class="form-control border-gray border"

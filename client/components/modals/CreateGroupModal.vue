@@ -33,6 +33,7 @@
           <div class="d-flex flex-column text-left mb-3">
             <div class="learning-area-title">Group name</div>
             <input
+              name="groupName"
               v-model="groupName"
               type="text"
               class="form-control border-gray border"

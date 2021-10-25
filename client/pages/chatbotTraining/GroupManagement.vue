@@ -76,6 +76,7 @@
                 </div>
                 <div v-if="data.item.editable === true" style="width: 35%">
                   <b-form-input
+                    name="groupName"
                     autofocus
                     v-model="changedGroupData[data.index]"
                   />
@@ -112,6 +113,7 @@
                           </NuxtLink>
                           <div class="dropdown-divider"></div>
                           <span
+                            name="deleteGroup"
                             class="dropdown-item txt_red"
                             @click="openDeleteGroupModal(data)"
                           >
