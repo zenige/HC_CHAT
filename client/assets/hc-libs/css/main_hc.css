@@ -3709,6 +3709,10 @@ font-weight: 500;*/
   .border-right-md-1 {
     border-right: 1px solid #dee2e6;
   }
+  .modal-dialog {
+    max-width: auto;
+    margin: 1.75rem auto;
+  }
 }
 .btn_fb_light {
   color: #1877f2 !important;
@@ -4932,6 +4936,13 @@ font-weight: 400;*/
     width: 95%;
   }
 */
+
+  .modal-xl {
+    max-width: 1080px;
+    width: auto;
+    max-height: auto;
+    height: auto;
+  }
 }
 .p_10p_15p {
   padding: 10px 15px;

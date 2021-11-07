@@ -73,6 +73,14 @@
   line-height: 1.35em;
   overflow: hidden;
 }
+.txt_hc_bighead_sub_16p {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  font-size: 16px;
+  color: #90a0b7;
+  line-height: 1.35em;
+  overflow: hidden;
+}
 .txt_hc_bighead_sm_regular {
   font-family: 'Prompt-Regular';
   font-style: normal;

@@ -66,9 +66,14 @@ const DASHBOARD_ROUTE = [
     component: 'pages/dashboard/PatientGroup.vue',
   },
   {
-    name: 'Patient in group',
-    path: '/dashboard/patient-group/:groupId',
-    component: 'pages/dashboard/PatientInGroup.vue',
+    name: 'Patient in COVID-19 group',
+    path: '/dashboard/patient-covid-19-group/:groupId',
+    component: 'pages/dashboard/PatientCOVID19Group.vue',
+  },
+  {
+    name: 'Patient in skin disease group',
+    path: '/dashboard/patient-skin-disease-group/:groupId',
+    component: 'pages/dashboard/PatientSkinDiseaseGroup.vue',
   },
 ]
 

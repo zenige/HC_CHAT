@@ -37,6 +37,7 @@ export default {
     { src: 'assets/hc-libs/js/main/bootstrap.bundle.min.js' },
     { src: 'assets/hc-libs/js/plugins/loaders/blockui.min.js' },
     { src: 'assets/hc-libs/js/app.js' },
+    { src: 'assets/hc-libs/js/swiper.js' },
   ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
