@@ -65,6 +65,7 @@
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
             <b-table
+              v-sortable="sortableOptions"
               responsive
               id="Feature-table"
               :items="featureData"
@@ -75,6 +76,7 @@
               :tbody-tr-class="selectedRowClass"
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
+              :sort-direction="sortDirection"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -201,7 +203,27 @@
 </template>
 
 <script>
+import Sortable from 'sortablejs'
+
 const english = /^[A-Za-z]*$/
+
+const createSortable = (el, options, vnode) => {
+  return Sortable.create(el, {
+    ...options,
+  })
+}
+
+const sortable = {
+  name: 'sortable',
+  bind(el, binding, vnode) {
+    const table = el
+    table._sortable = createSortable(
+      table.querySelector('tbody'),
+      binding.value,
+      vnode
+    )
+  },
+}
 
 export default {
   components: {
@@ -212,8 +234,12 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},
+  directives: { sortable },
   data() {
     return {
+      sortableOptions: {
+        chosenClass: 'is-selected',
+      },
       sortBy: null,
       sortDesc: false,
       isLoading: false,
@@ -505,6 +531,17 @@ export default {
 </script>
 
 <style lang="scss">
+#Feature-table > tbody > tr {
+  cursor: pointer;
+  border: none;
+}
+#Feature-table > tbody > tr:hover {
+  background-color: #ebeff2;
+}
+#Feature-table > tbody > tr:active {
+  background-color: #ebeff2;
+}
+
 .featurethSelect-Class,
 .featuretdSelect-Class {
   width: 15%;

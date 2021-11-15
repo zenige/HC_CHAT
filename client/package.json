@@ -23,6 +23,7 @@
     "nuxt": "^2.15.7",
     "nuxt-i18n": "^6.28.1",
     "nuxt-vuex-localstorage": "^1.3.0",
+    "sortablejs": "^1.14.0",
     "vue": "^2.6.14",
     "vue-cookies": "^1.7.4",
     "vue-debounce": "^3.0.1",

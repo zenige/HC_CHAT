@@ -117,7 +117,7 @@ Vue.use(VueEasyLightbox)
 export default {
   components: {
     SkinDiseaseImgModal: () =>
-      import('~/components/dashboard/SkinDiseaseImgModal.vue'),
+      import('~/components/dashboard/UserImgModal.vue'),
   },
   name: 'patientInfoModal',
   props: {
