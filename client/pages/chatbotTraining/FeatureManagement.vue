@@ -76,7 +76,6 @@
               :tbody-tr-class="selectedRowClass"
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
-              :sort-direction="sortDirection"
             >
               <template #head(selected)>
                 <div class="d-flex align-items-center">
@@ -208,6 +207,7 @@ import Sortable from 'sortablejs'
 const english = /^[A-Za-z]*$/
 
 const createSortable = (el, options, vnode) => {
+  console.log(el)
   return Sortable.create(el, {
     ...options,
   })
@@ -216,12 +216,15 @@ const createSortable = (el, options, vnode) => {
 const sortable = {
   name: 'sortable',
   bind(el, binding, vnode) {
+    console.log(binding)
+
     const table = el
     table._sortable = createSortable(
       table.querySelector('tbody'),
       binding.value,
       vnode
     )
+    console.log(table.querySelector('tbody'))
   },
 }
 
@@ -237,6 +240,7 @@ export default {
   directives: { sortable },
   data() {
     return {
+      test: false,
       sortableOptions: {
         chosenClass: 'is-selected',
       },
@@ -524,7 +528,7 @@ export default {
       } else {
         this.totalFeature = this.featureData.length
       }
-      console.log('feature data after push Id', this.featureData)
+      // console.log('feature data after push Id', this.featureData)
     },
   },
 }
