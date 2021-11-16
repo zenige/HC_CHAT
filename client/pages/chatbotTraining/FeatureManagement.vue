@@ -66,6 +66,7 @@
           <div class="row d-flex align-items-center justify-content-center">
             <b-table
               v-sortable="sortableOptions"
+              v-model="featureData"
               responsive
               id="Feature-table"
               :items="featureData"
@@ -208,8 +209,23 @@ const english = /^[A-Za-z]*$/
 
 const createSortable = (el, options, vnode) => {
   console.log(el)
+  let order = []
   return Sortable.create(el, {
     ...options,
+    onStart: function (evt) {
+      order = this.toArray();
+      console.log('order', order)
+    },
+    onEnd: function (evt) {
+      this.sort(order);
+      const data = vnode.context.featureData;
+      console.log('data', data)
+      data.splice(evt.newIndex, 0, ...data.splice(evt.oldIndex, 1));
+      data.forEach((o, i) => {
+        o.order = i + 1;
+      });
+      
+    }
   })
 }
 
