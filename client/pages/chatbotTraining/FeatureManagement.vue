@@ -64,7 +64,6 @@
         </div>
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
-<<<<<<< HEAD
             <b-table
               v-sortable="sortableOptions"
               responsive
@@ -92,211 +91,85 @@
                 <div v-if="data.item.editable === false">
                   <div>
                     {{ data.item.feature }}
-=======
-              <b-table
-                v-sortable="sortableOptions" striped hover
-                responsive
-                id="Feature-table"
-                :items="featureData"
-                :fields="fields"
-                :per-page="0"
-                :filter="filter"
-                :current-page="currentPage"
-                :tbody-tr-class="selectedRowClass"
-                :sort-by.sync="sortBy"
-                :sort-desc.sync="sortDesc"
-              >
-                <template #head(selected)>
-                  <div class="d-flex align-items-center">
-                    <b-form-checkbox v-model="selectAll"> </b-form-checkbox>
-                    <span>Select All</span>
->>>>>>> d104bf8b216b2f6e61ccb547204376863ccee13a
                   </div>
-                </template>
-                <template #cell(selected)="data">
-                  <b-form-checkbox v-model="data.item.selected">
-                  </b-form-checkbox>
-                </template>
-                <template #cell(feature)="data">
-                  <div v-if="data.item.editable === false">
-                    <div>
-                      {{ data.item.feature }}
-                    </div>
-                  </div>
-                  <div v-if="data.item.editable === true">
-                    <b-form-input
-                      name="feature"
-                      autofocus
-                      v-model="changedFeatureName[data.index]"
-                      @keydown.prevent.space
-                    />
-                  </div>
-                </template>
-                <template #cell(conditionType)="data">
-                  <div v-if="data.item.editable === false">
-                    <div>{{ data.item.conditionType }}</div>
-                  </div>
-                  <div v-if="data.item.editable === true">
-                    <b-form-select
-                      v-model="changedConditionType[data.index]"
-                      class="form-control border-gray border"
-                      style="curser: pointer"
-                      autofocus
-                    >
-                      <b-form-select-option
-                        v-for="option in conditionTypeOptionFunction(
-                          data.item.conditionType
-                        )"
-                        :key="option.label"
-                        :value="option.value"
-                        >{{ option.label }}</b-form-select-option
-                      >
-                    </b-form-select>
-                  </div>
-                </template>
-                <template #cell(question)="data">
-                  <div v-if="data.item.editable === false">
-                    <div>
-                      {{ data.item.question }}
-                    </div>
-                  </div>
-                  <div v-if="data.item.editable === true">
-                    <b-form-input
-                      name="question"
-                      autofocus
-                      v-model="changedQuestion[data.index]"
-                      @keydown.prevent.space
-                    />
-                  </div>
-                </template>
-                <template #head(action)>
-                  <div class="d-flex justify-content-center">Action</div>
-                </template>
-                <template #cell(action)="data">
-                  <div
-                    v-if="data.item.editable === false"
-                    class="d-flex justify-content-center"
-                  >
-                    <button
-                      @click="editFeature(data)"
-                      class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <div
-                    class="row d-flex justify-content-center align-items-center"
-                    v-if="data.item.editable === true"
-                  >
-                    <button
-                      @click="saveFeature(data)"+
-                      class="hcb-btn-light btn btn_hcb_green_light mr-2 btn-block"
-                    >
-                      Save
-                    </button>
-                    <div @click="cancleEditFeature(data)" class="txt_grey_cancel">
-                      Cancel
-                    </div>
-                  </div>
-                </template>
-              </b-table>
-              <div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td><b-form-checkbox v-model="selectAll"> </b-form-checkbox>Select All</td>
-                      <td>Feature name</td>
-                      <td>Condition type</td>
-                      <td>Question</td>
-                      <td>Action</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table
-                  id="Feature-table"
-                >
-                  <tbody>
-                    <draggable v-model="featureData" @change="bg">
-                      <tr  v-for="(item, index) in featureData.slice(pageX, pageY)" :key="index">
-                        <th scope="row">
-                          <b-form-checkbox v-model="item.selected"></b-form-checkbox>
-                          </th>  
-                        <td >
-                          <div v-if="item.editable === false">
-                            {{item.feature}}
-                          </div>
-                          <div v-if="item.editable === true">
-                            <b-form-input
-                              name="feature"
-                              autofocus
-                              v-model="changedFeatureName[index]"
-                              @keydown.prevent.space
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <div v-if="item.editable === false">
-                            {{item.conditionType}}
-                          </div>
-                          <div v-if="item.editable === true">
-                            <b-form-input
-                              name="conditionType"
-                              autofocus
-                              v-model="changedConditionType[index]"
-                              @keydown.prevent.space
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <div v-if="item.editable === false">
-                            {{item.question}}
-                          </div>
-                          <div v-if="item.editable === true">
-                            <b-form-input
-                              name="question"
-                              autofocus
-                              v-model="changedQuestion[index]"
-                              @keydown.prevent.space
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <div
-                            v-if="item.editable === false"
-                            class="d-flex justify-content-center"
-                          >
-                            <button
-                              @click="editFeature(item)"
-                              class="hcb-btn-light btn btn_hcb_blue_light btn-block"
-                            >
-                              Edit
-                            </button>
-                          </div>
-                          <div
-                            class="row d-flex justify-content-center align-items-center"
-                            v-if="item.editable === true"
-                          >
-                            <button
-                              @click="saveFeature(item)"
-                              class="hcb-btn-light btn btn_hcb_green_light mr-2 btn-block"
-                            >
-                              Save
-                            </button>
-                            <div @click="cancleEditFeature(item)" class="txt_grey_cancel">
-                              Cancel
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </draggable>
-                  </tbody>
-                </table>
-                <div>
-                  <p @click="pageBack">back</p>
-                  <p>{{ page }}</p>
-                  <p @click="pageNext">next</p>
                 </div>
-              </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-input
+                    name="feature"
+                    autofocus
+                    v-model="changedFeatureName[data.index]"
+                    @keydown.prevent.space
+                  />
+                </div>
+              </template>
+              <template #cell(conditionType)="data">
+                <div v-if="data.item.editable === false">
+                  <div>{{ data.item.conditionType }}</div>
+                </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-select
+                    v-model="changedConditionType[data.index]"
+                    class="form-control border-gray border"
+                    style="curser: pointer"
+                    autofocus
+                  >
+                    <b-form-select-option
+                      v-for="option in conditionTypeOptionFunction(
+                        data.item.conditionType
+                      )"
+                      :key="option.label"
+                      :value="option.value"
+                      >{{ option.label }}</b-form-select-option
+                    >
+                  </b-form-select>
+                </div>
+              </template>
+              <template #cell(question)="data">
+                <div v-if="data.item.editable === false">
+                  <div>
+                    {{ data.item.question }}
+                  </div>
+                </div>
+                <div v-if="data.item.editable === true">
+                  <b-form-input
+                    name="question"
+                    autofocus
+                    v-model="changedQuestion[data.index]"
+                    @keydown.prevent.space
+                  />
+                </div>
+              </template>
+              <template #head(action)>
+                <div class="d-flex justify-content-center">Action</div>
+              </template>
+              <template #cell(action)="data">
+                <div
+                  v-if="data.item.editable === false"
+                  class="d-flex justify-content-center"
+                >
+                  <button
+                    @click="editFeature(data)"
+                    class="hcb-btn-light btn btn_hcb_blue_light btn-block"
+                  >
+                    Edit
+                  </button>
+                </div>
+                <div
+                  class="row d-flex justify-content-center align-items-center"
+                  v-if="data.item.editable === true"
+                >
+                  <button
+                    @click="saveFeature(data)"
+                    class="hcb-btn-light btn btn_hcb_green_light mr-2 btn-block"
+                  >
+                    Save
+                  </button>
+                  <div @click="cancleEditFeature(data)" class="txt_grey_cancel">
+                    Cancel
+                  </div>
+                </div>
+              </template>
+            </b-table>
             <div style="margin-top: 0.5rem">
               <b-pagination
                 v-model="currentPage"
@@ -332,22 +205,6 @@
 import Sortable from 'sortablejs'
 
 const english = /^[A-Za-z]*$/
-import draggable from 'vuedraggable'
-
-const createSortable = (el, options, vnode) => {
-
-  return Sortable.create(el, {
-    ...options
-  });
-};
-
-const sortable = {
-  name: 'sortable',
-  bind(el, binding, vnode) {
-    const table = el.querySelector('table');
-    table._sortable = createSortable(el.querySelector("tbody"), binding.value, vnode);
-  }
-};
 
 const createSortable = (el, options, vnode) => {
   console.log(el)
@@ -378,21 +235,15 @@ export default {
     CreateNewFeatureModal: () =>
       import('~/components/modals/CreateFeatureModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
-    draggable
   },
   props: {},
   directives: { sortable },
   data() {
     return {
-<<<<<<< HEAD
       test: false,
       sortableOptions: {
         chosenClass: 'is-selected',
       },
-=======
-      pageX: 0,
-      pageY: 10,
->>>>>>> d104bf8b216b2f6e61ccb547204376863ccee13a
       sortBy: null,
       sortDesc: false,
       isLoading: false,
@@ -473,23 +324,6 @@ export default {
   },
   computed: {},
   methods: {
-    pageNext() {
-      if (this.pageX === 0 || this.pageX <= 0) {
-        this.pageX +=10
-        this.pageY +=10
-      }
-    },
-    pageBack() {
-      if (this.pageX === 0 || this.pageX <= 0) {
-        console.log('bb')
-      } else {
-        this.pageX -=10
-        this.pageY -=10
-      }
-    },
-    bg() {
-      console.log('hh', this.featureData)
-    },
     conditionTypeOptionFunction(conditionType) {
       // if (conditionType === 'input') {
       //   return this.conditionTypeOption
@@ -575,15 +409,14 @@ export default {
       }
     },
     editFeature(data) {
-      console.log('bgbgbg', data)
-      this.changedFeatureName[data.index] = data.feature
-      this.changedConditionType[data.index] = data.conditionType
-      this.changedQuestion[data.index] = data.question
-      // data.item.editable = true
-      data.editable = true
+      // console.log(data)
+      this.changedFeatureName[data.index] = data.item.feature
+      this.changedConditionType[data.index] = data.item.conditionType
+      this.changedQuestion[data.index] = data.item.question
+      data.item.editable = true
     },
     cancleEditFeature(data) {
-      data.editable = false
+      data.item.editable = false
     },
     async saveFeature(data) {
       if (
@@ -592,14 +425,14 @@ export default {
         this.changedQuestion[data.index]
       )
         if (english.test(this.changedFeatureName[data.index])) {
-          data.feature = this.changedFeatureName[data.index]
-          data.conditionType = this.changedConditionType[data.index]
-          data.question = this.changedQuestion[data.index]
+          data.item.feature = this.changedFeatureName[data.index]
+          data.item.conditionType = this.changedConditionType[data.index]
+          data.item.question = this.changedQuestion[data.index]
           await this.$axios.patch('feature', {
-            id: data.id,
-            Name: data.feature,
-            Type: data.conditionType,
-            Question: data.question,
+            id: data.item.id,
+            Name: data.item.feature,
+            Type: data.item.conditionType,
+            Question: data.item.question,
           })
           this.$bvToast.toast('Please go back to setting of all groups again', {
             variant: 'success',
@@ -611,7 +444,7 @@ export default {
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
           })
-          data.editable = false
+          data.item.editable = false
         } else {
           this.$bvToast.toast('Please fill in English only', {
             variant: 'danger',
@@ -732,17 +565,5 @@ export default {
 .featurethAction-Class,
 .featuretdAction-Class {
   width: 20%;
-}
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border-bottom: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
 }
 </style>
