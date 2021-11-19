@@ -170,7 +170,7 @@
               </template>
             </b-table>
 
-            <div class="table-responsive">
+            <div  style="width: 1000px;">
               <table class="table">
                 <tbody>
                   <draggable v-model="mockData">
@@ -182,6 +182,100 @@
                   </draggable>
                 </tbody>
               </table>
+              <b-container class="bv-example-row">
+                <b-row style="border-bottom: 1px solid #6666; padding-top: 10px; padding-bottom: 10px;">
+                  <b-col>
+                    <b-form-checkbox v-model="selectAll"> selectAll</b-form-checkbox>
+                  </b-col>
+                  <b-col>feature</b-col>
+                  <b-col>question</b-col>
+                  <b-col>conditionType</b-col>
+                  <b-col>edit</b-col>
+                </b-row>
+                <draggable v-model="featureData">
+                  <b-row v-for="(item, index) in featureData" :key="index" style="border-bottom: 1px solid #6666; padding-top: 10px; padding-bottom: 10px;">
+                    <b-col>
+                      <b-form-checkbox v-model="item.selected">
+                      </b-form-checkbox>
+                    </b-col>
+                    <b-col>
+                      <div v-if="item.editable === false"> 
+                        {{ item.feature }}
+                      </div>
+                      <div v-if="item.editable === true">
+                        <b-form-input
+                          name="feature"
+                          autofocus
+                          v-model="changedFeatureName[item.index]"
+                          @keydown.prevent.space
+                        />
+                      </div>
+                    </b-col>
+                    <b-col>
+                      <div v-if="item.editable === false"> 
+                        {{ item.question }}
+                      </div>
+                      <div v-if="item.editable === true">
+                        <b-form-input
+                          name="question"
+                          autofocus
+                          v-model="changedQuestion[item.index]"
+                          @keydown.prevent.space
+                        />
+                      </div>
+                    </b-col>
+                    <b-col>
+                      <div v-if="item.editable === false">
+                        {{ item.conditionType }}
+                      </div>
+                      <div v-if="item.editable === true">
+                        <b-form-select
+                          v-model="changedConditionType[item.index]"
+                          class="form-control border-gray border"
+                          style="curser: pointer"
+                          autofocus
+                        >
+                          <b-form-select-option
+                            v-for="option in conditionTypeOptionFunction(
+                              item.conditionType
+                            )"
+                            :key="option.label"
+                            :value="option.value"
+                            >{{ option.label }}</b-form-select-option
+                          >
+                        </b-form-select>
+                      </div>
+                    </b-col>
+                    <b-col>
+                      <div
+                        v-if="item.editable === false"
+                        class="d-flex justify-content-center"
+                      >
+                        <button
+                          @click="editFeature(item)"
+                          class="hcb-btn-light btn btn_hcb_blue_light btn-block"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <div
+                        class="row d-flex justify-content-center align-items-center"
+                        v-if="item.editable === true"
+                      >
+                        <button
+                          @click="saveFeature(item)"
+                          class="hcb-btn-light btn btn_hcb_green_light mr-2 btn-block"
+                        >
+                          Save
+                        </button>
+                        <div @click="cancleEditFeature(item)" class="txt_grey_cancel">
+                          Cancel
+                        </div>
+                      </div>
+                    </b-col>
+                  </b-row>
+                </draggable>
+              </b-container>
             </div>
 
             <div style="margin-top: 0.5rem">
@@ -518,13 +612,17 @@ export default {
     },
     editFeature(data) {
       // console.log(data)
-      this.changedFeatureName[data.index] = data.item.feature
-      this.changedConditionType[data.index] = data.item.conditionType
-      this.changedQuestion[data.index] = data.item.question
-      data.item.editable = true
+      // this.changedFeatureName[data.index] = data.item.feature
+      // this.changedConditionType[data.index] = data.item.conditionType
+      // this.changedQuestion[data.index] = data.item.question
+      // data.item.editable = true
+      this.changedFeatureName[data.index] = data.feature
+      this.changedConditionType[data.index] = data.conditionType
+      this.changedQuestion[data.index] = data.question
+      data.editable = true
     },
     cancleEditFeature(data) {
-      data.item.editable = false
+      data.editable = false
     },
     async saveFeature(data) {
       if (
@@ -533,14 +631,14 @@ export default {
         this.changedQuestion[data.index]
       )
         if (english.test(this.changedFeatureName[data.index])) {
-          data.item.feature = this.changedFeatureName[data.index]
-          data.item.conditionType = this.changedConditionType[data.index]
-          data.item.question = this.changedQuestion[data.index]
+          data.feature = this.changedFeatureName[data.index]
+          data.conditionType = this.changedConditionType[data.index]
+          data.question = this.changedQuestion[data.index]
           await this.$axios.patch('feature', {
-            id: data.item.id,
-            Name: data.item.feature,
-            Type: data.item.conditionType,
-            Question: data.item.question,
+            id: data.id,
+            Name: data.feature,
+            Type: data.conditionType,
+            Question: data.question,
           })
           this.$bvToast.toast('Please go back to setting of all groups again', {
             variant: 'success',
@@ -552,7 +650,7 @@ export default {
             toaster: 'b-toaster-bottom-left',
             noCloseButton: true,
           })
-          data.item.editable = false
+          data.editable = false
         } else {
           this.$bvToast.toast('Please fill in English only', {
             variant: 'danger',

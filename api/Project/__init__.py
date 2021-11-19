@@ -7,7 +7,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 from fastapi import FastAPI
-from router import train,logic,dashboard,group,feature
+from router import train,logic,dashboard,group,feature,modelimage
 
 app = FastAPI()
 app.include_router(
@@ -32,5 +32,10 @@ app.include_router(
 app.include_router(
     feature.router,
     prefix="/feature"
+)
+
+app.include_router(
+    modelimage.router,
+    prefix="/modelimage"
 )
 
