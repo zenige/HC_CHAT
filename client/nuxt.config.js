@@ -37,6 +37,7 @@ export default {
     { src: 'assets/hc-libs/js/main/bootstrap.bundle.min.js' },
     { src: 'assets/hc-libs/js/plugins/loaders/blockui.min.js' },
     { src: 'assets/hc-libs/js/app.js' },
+    { src: 'assets/hc-libs/js/swiper.js' },
   ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -125,7 +126,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:2200/',
+    baseURL: 'http://localhost:200/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

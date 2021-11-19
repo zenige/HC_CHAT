@@ -44,6 +44,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <input
+                  name="search"
                   v-model="filter"
                   type="search"
                   class="
@@ -189,7 +190,7 @@ export default {
           formatter: (key, item) => {
             let d = new Date(key)
             let n = d.getFullYear()
-            new Date().getFullYear() - n
+            n = new Date().getFullYear() - n
             if (n < 11) {
               return `0 - 10 ปี`
             } else if (10 < n < 21) {
@@ -323,6 +324,7 @@ export default {
     openPatientInfoModal(value) {
       this.isShowPatientInfoModal = true
       this.userInfoDataModal = value
+      console.log(this.userInfoDataModal)
     },
     sortfeatureData() {
       let sortedFeatureData = []

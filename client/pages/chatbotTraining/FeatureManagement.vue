@@ -16,6 +16,7 @@
                     ><i class="icon-search4 txt_grey mr-2"></i></span
                 ></span>
                 <b-form-input
+                  name="Search"
                   v-model="filter"
                   type="search"
                   class="
@@ -64,6 +65,8 @@
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
             <b-table
+              v-sortable="sortableOptions"
+              v-model="featureData"
               responsive
               id="Feature-table"
               :items="featureData"
@@ -93,6 +96,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-input
+                    name="feature"
                     autofocus
                     v-model="changedFeatureName[data.index]"
                     @keydown.prevent.space
@@ -129,6 +133,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-input
+                    name="question"
                     autofocus
                     v-model="changedQuestion[data.index]"
                     @keydown.prevent.space
@@ -198,7 +203,46 @@
 </template>
 
 <script>
+import Sortable from 'sortablejs'
+
 const english = /^[A-Za-z]*$/
+
+const createSortable = (el, options, vnode) => {
+  console.log(el)
+  let order = []
+  return Sortable.create(el, {
+    ...options,
+    onStart: function (evt) {
+      order = this.toArray();
+      console.log('order', order)
+    },
+    onEnd: function (evt) {
+      this.sort(order);
+      const data = vnode.context.featureData;
+      console.log('data', data)
+      data.splice(evt.newIndex, 0, ...data.splice(evt.oldIndex, 1));
+      data.forEach((o, i) => {
+        o.order = i + 1;
+      });
+      
+    }
+  })
+}
+
+const sortable = {
+  name: 'sortable',
+  bind(el, binding, vnode) {
+    console.log(binding)
+
+    const table = el
+    table._sortable = createSortable(
+      table.querySelector('tbody'),
+      binding.value,
+      vnode
+    )
+    console.log(table.querySelector('tbody'))
+  },
+}
 
 export default {
   components: {
@@ -209,8 +253,13 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   props: {},
+  directives: { sortable },
   data() {
     return {
+      test: false,
+      sortableOptions: {
+        chosenClass: 'is-selected',
+      },
       sortBy: null,
       sortDesc: false,
       isLoading: false,
@@ -495,13 +544,24 @@ export default {
       } else {
         this.totalFeature = this.featureData.length
       }
-      console.log('feature data after push Id', this.featureData)
+      // console.log('feature data after push Id', this.featureData)
     },
   },
 }
 </script>
 
 <style lang="scss">
+#Feature-table > tbody > tr {
+  cursor: pointer;
+  border: none;
+}
+#Feature-table > tbody > tr:hover {
+  background-color: #ebeff2;
+}
+#Feature-table > tbody > tr:active {
+  background-color: #ebeff2;
+}
+
 .featurethSelect-Class,
 .featuretdSelect-Class {
   width: 15%;

@@ -96,6 +96,7 @@
                 </div>
                 <div v-if="data.item.editable === true">
                   <b-form-textarea
+                    name="question"
                     autofocus
                     v-model="changedQuestionData[data.index]"
                     rows="3"
@@ -111,6 +112,7 @@
                   </div>
                 </div>
                 <b-form-textarea
+                  name="answer"
                   autofocus
                   v-if="data.item.editable === true"
                   v-model="changedAnswerData[data.index]"
@@ -245,7 +247,7 @@ export default {
         },
         {
           key: 'confident',
-          label: 'Confident',
+          label: 'Confidence',
           sortable: true,
           thClass: 'newWordthConfident-Class',
           tdClass: 'newWordtdConfident-Class',

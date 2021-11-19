@@ -38,8 +38,8 @@ const HEALTHCARE_ROUTE = [
 
 const CHATBOT_TRAINING_ROUTE = [
   {
-    name: 'Trained word',
-    path: '/chatbot-training/trained-word',
+    name: 'Learned word',
+    path: '/chatbot-training/learned-word',
     component: 'pages/chatbotTraining/TrainedWord.vue',
   },
   {
@@ -67,7 +67,7 @@ const DASHBOARD_ROUTE = [
   },
   {
     name: 'Patient in group',
-    path: '/dashboard/patient-group/:groupId',
+    path: '/dashboard/patient-in-group/:groupId',
     component: 'pages/dashboard/PatientInGroup.vue',
   },
 ]
