@@ -5,7 +5,7 @@ import json
 
 def getAnswer(message, confident, sender_id):
 
-    url = 'http://127.0.0.1:400/nlp/getconfident'
+    url = 'http://127.0.0.1:1400/nlp/getconfident'
     myobj = {'message': message,
              'confident': confident, 'sender_id': sender_id}
     json_object = json.dumps(myobj)
@@ -18,7 +18,7 @@ def getAnswer(message, confident, sender_id):
 
 def predict(userId):
 
-    url = 'http://127.0.0.1:500/trainModel/predictRF'
+    url = 'http://127.0.0.1:2500/trainModel/predictRF'
     myobj = userId
     json_object = json.dumps(myobj)
 

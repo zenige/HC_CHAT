@@ -17,7 +17,8 @@ import datetime
 from Project.process import basicEventHandler
 from Project.mainState import stateHandler
 from fastapi.responses import HTMLResponse
-
+from PIL import Image
+import cv2
 class TrainedModel(BaseModel):
     question: str
     answer: str
@@ -39,6 +40,7 @@ async def test():
 
 @router.post("/webhook")
 async def webhook(payload: Dict):
+    isAlreadyReply = False
     line_bot_api = LineBotApi(
         '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU=')
     print(payload)
@@ -57,6 +59,13 @@ async def webhook(payload: Dict):
     # else :
     #     res = {"message":"ขอโทษครับ ผมรับเป็นตัวหนังสือเท่านั้น"}
     defineSender(sender['userId'], profile)
+    # message_content = line_bot_api.get_message_content(payload['events'][0]['message']['id'])
+    # print(message_content)
+    # with open("/Users/zenige/Desktop/HC_CHAT/chat-server/file_path.jpg", 'wb') as fd:
+    #     for chunk in message_content.iter_content():
+    #         fd.write(chunk)
+
+    res = {"message":"TEST"}
 
     if message_type == 'text':
         data = {"message": payload['events'][0]['message']['text']}
@@ -74,6 +83,10 @@ async def webhook(payload: Dict):
         else :
             res = stateHandler(
                 sender_id=sender['userId'], postback=data)
+    elif message_type == 'image':
+        data = {'imageId':payload['events'][0]['message']['id']}
+        print("IMAGE ID",data)
+        res = stateHandler(sender_id=sender['userId'], image=data ,line_bot_api=line_bot_api)
     if "message" in res.keys():
         response = [TextSendMessage(text=res['message'])]
 
@@ -83,6 +96,21 @@ async def webhook(payload: Dict):
             contents=res['flex']
 
         )
+
+    elif 'group' in res.keys():
+        response = []
+        # isAlreadyReply = True
+        for i in res['group']:
+            print(i)
+            if "message" in i.keys():
+                response.append(TextSendMessage(text = i['message']))
+
+            elif 'flex' in i.keys():
+                response.append(FlexSendMessage(
+                    alt_text=i['alt'],
+                    contents=i['flex']
+                ))
+               
 #                     response = TemplateSendMessage(
 #     alt_text='Confirm template',
 #     template=ConfirmTemplate(
@@ -102,7 +130,7 @@ async def webhook(payload: Dict):
 #         ]
 #     )
 # )
-
+    print(response)
     line_bot_api.reply_message(Reply_token, response)
 
 
