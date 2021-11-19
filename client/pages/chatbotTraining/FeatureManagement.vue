@@ -65,8 +65,6 @@
         <div class="col-md-12">
           <div class="row d-flex align-items-center justify-content-center">
             <b-table
-              v-sortable="sortableOptions"
-              v-model="featureData"
               responsive
               id="Feature-table"
               :items="featureData"
@@ -171,6 +169,21 @@
                 </div>
               </template>
             </b-table>
+
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <draggable v-model="mockData">
+                    <tr v-for="(item, index) in mockData" :key="index">
+                      <td>{{ item.feature }}</td>
+                      <td>{{ item.question }}</td>
+                      <td>{{ item.conditionType }}</td>
+                    </tr>
+                  </draggable>
+                </tbody>
+              </table>
+            </div>
+
             <div style="margin-top: 0.5rem">
               <b-pagination
                 v-model="currentPage"
@@ -185,6 +198,10 @@
             </div>
           </div>
         </div>
+
+        <pre>
+          {{ mockData }}
+        </pre>
 
         <DeleteFeatureModal
           :isOpen="isShowDeleteFeatureModal"
@@ -203,46 +220,9 @@
 </template>
 
 <script>
-import Sortable from 'sortablejs'
+import draggable from 'vuedraggable'
 
 const english = /^[A-Za-z]*$/
-
-const createSortable = (el, options, vnode) => {
-  console.log(el)
-  let order = []
-  return Sortable.create(el, {
-    ...options,
-    onStart: function (evt) {
-      order = this.toArray();
-      console.log('order', order)
-    },
-    onEnd: function (evt) {
-      this.sort(order);
-      const data = vnode.context.featureData;
-      console.log('data', data)
-      data.splice(evt.newIndex, 0, ...data.splice(evt.oldIndex, 1));
-      data.forEach((o, i) => {
-        o.order = i + 1;
-      });
-      
-    }
-  })
-}
-
-const sortable = {
-  name: 'sortable',
-  bind(el, binding, vnode) {
-    console.log(binding)
-
-    const table = el
-    table._sortable = createSortable(
-      table.querySelector('tbody'),
-      binding.value,
-      vnode
-    )
-    console.log(table.querySelector('tbody'))
-  },
-}
 
 export default {
   components: {
@@ -251,12 +231,124 @@ export default {
     CreateNewFeatureModal: () =>
       import('~/components/modals/CreateFeatureModal.vue'),
     Loader: () => import('~/components/Loader.vue'),
+    draggable,
   },
   props: {},
-  directives: { sortable },
+  // directives: { sortable },
   data() {
     return {
-      test: false,
+      mockData: [
+        {
+          feature: 'AGE',
+          question: 'คุณอายุเท่าไหร่?',
+          conditionType: 'input',
+          next: 'disease',
+          previous: null,
+          selected: false,
+          editable: false,
+          id: 'PBv6PDeV9NcZaadCfm6z',
+        },
+        {
+          feature: 'disease',
+          question: 'คุณมีโรคประจำตัวหรือไม่?',
+          conditionType: 'boolean',
+          next: 'cough',
+          previous: 'AGE',
+          selected: false,
+          editable: false,
+          id: 'Gf0sHKIBBhEw8V7ESgYZ',
+        },
+        {
+          feature: 'cough',
+          question: 'คุณมีอาการไอหรือไม่?',
+          conditionType: 'boolean',
+          next: 'tired',
+          previous: 'disease',
+          selected: false,
+          editable: false,
+          id: 'BV9RwRC24fYWzSt3z0Hz',
+        },
+        {
+          feature: 'tired',
+          question: 'คุณรู้สึกเหนื่อยล้าหรือไม่?',
+          conditionType: 'boolean',
+          next: 'close',
+          previous: 'cough',
+          selected: false,
+          editable: false,
+          id: '09VoKlmBcQLikQObUEzr',
+        },
+        {
+          feature: 'close',
+          question: 'คุณได้อยู่ใกล้ชิดผู้ป่วยหรือผู้ติดเชื้อหรือไม่?',
+          conditionType: 'boolean',
+          next: 'Fever',
+          previous: 'tired',
+          selected: false,
+          editable: false,
+          id: 'beW9GD8YaYSmSS3bCyhE',
+        },
+        {
+          feature: 'Fever',
+          question: 'คุณมีไข้หรือไม่?',
+          conditionType: 'boolean',
+          next: 'Travel',
+          previous: 'close',
+          selected: false,
+          editable: false,
+          id: 'UfnGmsMkVeniRhrlCxVZ',
+        },
+        {
+          feature: 'Travel',
+          question: 'คุณได้เดินทางไปประเทศเสี่ยงมาหรือไม่?',
+          conditionType: 'boolean',
+          next: 'vomit',
+          previous: 'Fever',
+          selected: false,
+          editable: false,
+          id: '1DZaa1e8H2uABc0Nr59v',
+        },
+        {
+          feature: 'vomit',
+          question: 'คุณมีอาการอ๊วกบ่อยไหม',
+          conditionType: 'boolean',
+          next: 'nhnhgn',
+          previous: 'Travel',
+          selected: false,
+          editable: false,
+          id: 'psLEdtg74iTZPWh7zDkG',
+        },
+        {
+          feature: 'nhnhgn',
+          question: 'คุณอายุเท่าไหร่?',
+          conditionType: 'input',
+          next: 'rgergwert',
+          previous: 'vomit',
+          selected: false,
+          editable: false,
+          id: 'lzikqAI8Fm39EdIw8hiw',
+        },
+        {
+          feature: 'rgergwert',
+          question: 'คุณอายุเท่าไหร่?',
+          conditionType: 'boolean',
+          next: 'vvvvv',
+          previous: 'nhnhgn',
+          selected: false,
+          editable: false,
+          id: 'tO4UjpPEoEXL3oOHrRa7',
+        },
+        {
+          feature: 'vvvvv',
+          question: 'คุณอายุเท่าไหร่?',
+          conditionType: 'input',
+          next: null,
+          previous: 'rgergwert',
+          selected: false,
+          editable: false,
+          id: 'umuoWlnzRmcyhxcFV0UV',
+        },
+      ],
       sortableOptions: {
         chosenClass: 'is-selected',
       },
@@ -335,7 +427,7 @@ export default {
   },
   async mounted() {
     await this.getFeatureData()
-    // this.conditionTypeOptionFunction()
+
     this.isLoading = true
   },
   computed: {},
