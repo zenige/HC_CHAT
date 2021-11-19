@@ -34,39 +34,144 @@ def basicEventHandler(**kwargs):
             return {'flex': event,'alt':"กรุณากรอกชื่อจริงของท่าน"}
     elif kwargs['message']['message'] == 'ยกเลิก': #command for cancel
         return {'message':"ยกเลิกการทำงาน"}
-    elif  kwargs['message']['message'] == "test":
-            content =  {
+    elif kwargs['message']['message'] == 'ช่วยเหลือ': #command for cancel
+        replay_message = getReplyMessage('helpingMessage')
+        content = {
   "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "กรุณาใส่วันเกิดของคุณ"
-      }
-    ]
+  "hero": {
+    "type": "image",
+    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    }
   },
   "footer": {
     "type": "box",
     "layout": "vertical",
+    "spacing": "sm",
     "contents": [
       {
         "type": "button",
-        "style": "primary",
-        "color": "#905c44",
+        "style": "link",
+        "height": "sm",
         "action": {
-          "type": "datetimepicker",
-          "label": "action",
-          "data": "hello",
-          "mode": "date"
+          "type": "postback",
+          "label": "โรคทั่วไป",
+          "data": "action=%=common"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "postback",
+          "label": "โรคผิวหนัง",
+          "data": "action=%=skin"
         }
       }
-    ]
+    ],
+    "flex": 0
   }
 }
-            print(content)
+        return {'group': [{'message':replay_message},{'flex':content,"alt":"skin detail"}]}
+    elif  kwargs['message']['message'] == "test":
+            content =  {
+        "type": "bubble",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "กรุณาใส่วันเกิดของคุณ"
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#905c44",
+              "action": {
+                "type": "datetimepicker",
+                "label": "action",
+                "data": "hello",
+                "mode": "date"
+              }
+            }
+          ]
+        }
+      }
+
             return {"flex":content,"alt":"ยืนยันที่อยู่"}
+    elif kwargs['message']['message'] == "โรคผิวหนัง":
+        doc_ref.update({"mainState": "skin","subState":None})
+        content =  {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover",
+            "action": {
+              "type": "uri",
+              "uri": "http://linecorp.com/"
+            }
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เริ่มการวินิจฉัยโรคผิวหนัง",
+                "size": "xl",
+                "style": "normal",
+                "weight": "bold",
+                "decoration": "underline",
+                "position": "relative"
+              },
+              {
+                "type": "text",
+                "text": "กรุณาส่งรูปภาพหรือถ่ายภาพจากกล้อง",
+                "size": "xs",
+                "margin": "none",
+                "weight": "regular",
+                "maxLines": 3,
+                "contents": [
+                  {
+                    "type": "span",
+                    "text": "กรุณาส่งรูปภาพหรือถ่ายภาพจาก"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "hello, world",
+                "contents": [
+                  {
+                    "type": "span",
+                    "text": "กล้องโทรศัพท์ของคุณเพื่อให้ระบบนำไปวินิจฉัย"
+                  }
+                ],
+                "size": "xs",
+                "style": "normal",
+                "weight": "regular"
+              }
+            ]
+          }
+        }
+        replay_message = getReplyMessage('skinMessage')
+        return {'group': [{'message':replay_message},{'flex':content,"alt":"skin detail"}]}
     else :
         res = stateHandler(sender_id = kwargs['sender_id'],message = kwargs['message'],confident = kwargs['confident'])
         return res
@@ -87,7 +192,23 @@ def checkProfile(doc_ref):
     #   newList.append(seq.to_dict())
     # return newList
 
+def getReplyMessage(event):
+    if event == 'helpingMessage':
+      return """สวัสดีครับ ผมชื่อน้องสุขภาพดี ผมเป็นระบบแชทบอทช่วยวินิจฉัยอาการป่วยเบื้องต้นและจำแนกโรคทางผิวหนังทั่วไปจากรูปภาพของคุณ
 
+กรุณาพิมพ์คำสั่งต่อไปนี้หรือกดดที่แถบเมนูด้านล่างข้อความนี้เพื่อให้ผมเริ่มวินิจฉัยอาการป่วยของคุณ
+
+"โรคทั่วไป" เพื่อเรื่มการวินิจฉัยอาการป่วยของคุณ
+"โรคผิวหนัง" เพื่อเริ่มการวินิจฉัยอาการป่วยของโรคทางผิวหนังจากรูปภาพหรือภาพถ่ายของคุณ
+"ชวยเหลือ" เพื่อแสดงข้อความนี้อีกครั้ง"""
+    elif event == 'skinMessage':
+      return """สำหรับการวินิจฉัยอาการป่วยของโรคผิวหนัง ระบบจะให้คุณส่งรูปภาพหรือถ่ายภาพจากโทรศัพท์ของคุณมายังแชทบอท จากนั้นระบบจะใช้เวลาประมวลผลจากรูปภาพของคุณสักครู่ เมื่อประมวลผลเวร็จสิ้นแล้ว ระบบจะส่งผลการวินิจฉัยออกมาว่าท่านอยู่ในกลุ่มเสี่ยงของโรคผิวหนังชนิดใดจาก 3 โรค ซึ่งใดแก่
+
+1.) โรคผื่นแพ้อักเสบ (Eczema)
+2.) โรคผื่นภูมิแพ้ผิวหนัง (Atopic Dermatitis)
+3.) โรคกลากเกลื้อนและการติดเชื้อราอื่น ๆ (Tinea Ringworm Candidiasis and Fungal Infections)
+
+กรุณาพิมคำสั่ง "วินิจฉัยโรคผิวหนัง" เพื่อเริ่มการวินิจฉัย หรือกดจากแถบเมนูด้านล่างข้อความนี้ """
 # def handleSequence(subState = 'none',next = False):
 #     seqs = getSequence() # get logic from db
 #     res = {}

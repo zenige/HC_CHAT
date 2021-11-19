@@ -4,11 +4,12 @@ import json
 from Project.extensions import getAnswer,predict
 from Project.extensions import getAnswer
 from Project.helper import handleSequence,getSequence,createFlex
+from datetime import datetime
 def stateHandler(**kwargs):
     doc_ref = db.collection(u'users').document(kwargs['sender_id'])
     doc = doc_ref.get()
     user_define = doc.to_dict()
-
+    print("kwargs",kwargs)
 
     #customer_define = customer_collection.find_one({'$and':[{"userID": kwargs['sender_id']},{"botID": ObjectId(kwargs['botID'])}]})
     res = {"message": "เกิดข้อผิดพลาดโปรดลองใหม่หรือทำกระบวนการที่ทำอยู่ให้เสร็จก่อนครับ"}
@@ -50,6 +51,16 @@ def stateHandler(**kwargs):
         else :
              res = commandsHandler(commands = kwargs['postback'], sender_id = kwargs['sender_id']  ,user_define=user_define)
         #res = process_message(kwargs['message'],kwargs['confident'],kwargs['sender_id'])
+    elif 'image' in kwargs.keys():
+        if user_define['mainState'] == "skin":
+            now = datetime.now()
+            message_content = kwargs['line_bot_api'].get_message_content(kwargs['image']['imageId'])
+            print(message_content)
+            with open("./static/img/"+kwargs['sender_id']+'&&'+str(now)+".jpg", 'wb') as fd:
+                for chunk in message_content.iter_content():
+                    fd.write(chunk)
+        else:
+            res = {"message":"หากต้องการส่งรูปกรุณาพิมพ์ โรคผิวหนัง เพื่อเข้าสู่การวินิฉัยโรคผิวหนัง"}
     # elif 'postback' in kwargs.keys():
     #     res = commandsHandler(commands = kwargs['postback'], sender_id = kwargs['sender_id'], botID=kwargs['botID'])
     return res
