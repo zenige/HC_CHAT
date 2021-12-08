@@ -72,6 +72,24 @@ const DASHBOARD_ROUTE = [
   },
 ]
 
+const NEW_PAGE = [
+  {
+    name: 'Newpage1',
+    path: '/newpage/newpage1',
+    component: 'pages/newpage/newpage1.vue',
+  },
+  {
+    name: 'Newpage2',
+    path: '/newpage/newpage2',
+    component: 'pages/newpage/newpage2.vue',
+  },
+  {
+    name: 'Newpage3',
+    path: '/newpage/newpage3',
+    component: 'pages/newpage/newpage3.vue',
+  }
+]
+
 const USER = [
   // {
   //   name: 'My Course',
@@ -90,6 +108,7 @@ const routesConfig = [
   ...HEALTHCARE_ROUTE,
   ...DASHBOARD_ROUTE,
   ...USER,
+  ...NEW_PAGE,
 ]
 
 export { CHATBOT_TRAINING_ROUTE, HEALTHCARE_ROUTE }

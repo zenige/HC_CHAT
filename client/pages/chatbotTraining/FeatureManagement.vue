@@ -183,7 +183,7 @@
                 </tbody>
               </table>
               <b-container class="bv-example-row">
-                <b-row style="border-bottom: 1px solid #6666; padding-top: 10px; padding-bottom: 10px;">
+                <b-row style="border-bottom: 1px solid #6666; padding-top: 15px; padding-bottom: 15px;">
                   <b-col>
                     <b-form-checkbox v-model="selectAll"> selectAll</b-form-checkbox>
                   </b-col>
@@ -193,7 +193,7 @@
                   <b-col>edit</b-col>
                 </b-row>
                 <draggable v-model="featureData">
-                  <b-row v-for="(item, index) in featureData" :key="index" style="border-bottom: 1px solid #6666; padding-top: 10px; padding-bottom: 10px;">
+                  <b-row v-for="(item, index) in featureData" :key="index" style="border-bottom: 1px solid #6666; padding-top: 15px; padding-bottom: 15px;">
                     <b-col>
                       <b-form-checkbox v-model="item.selected">
                       </b-form-checkbox>
