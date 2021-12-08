@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container container_short mt-4">
-      <b-progress :value="30" :max="100"></b-progress>
+      <b-progress :value="ans.length" :max="quiz.questions.length"></b-progress>
     </div>
     <div class="container container_short">
       <div class="row">
@@ -11,7 +11,7 @@
               <div class="col-12 mt-3 mb-2 px-0">
                 <div class="ck-content">
                   <p class="question_txt">
-                    1.) คุณเป็นผื่นที่บริเวณ ศีรษะ/คอ หรือไม่?
+                    {{quiz.questions[questionIndex - 1].text}}
                   </p>
                   <figure class="image">
                     <img
@@ -20,23 +20,21 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-12">
-                <a href="#">
-                  <div class="card bg_green">
+              <div class="col-12" v-for="(item, index) in quiz.questions[questionIndex - 1].answers" :key="index">
+                <a href="#" v-if="index === quiz.questions[questionIndex - 1].checkpoint">
+                  <div class="card bg_green" @click="checkpointbg(index, item.value)">
                     <div class="card-body">
                       <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt" style="color: #fff">เป็น</div>
+                        <div class="answer_txt" style="color: #fff">{{ item.text }}</div>
                       </div>
                     </div>
                   </div>
                 </a>
-              </div>
-              <div class="col-12">
-                <a href="#">
-                  <div class="card card-list-hover">
+                <a href="#" v-if="index !== quiz.questions[questionIndex - 1].checkpoint">
+                  <div class="card card-list-hover" @click="checkpointbg(index, item.value)">
                     <div class="card-body">
                       <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt">ไม่เป็น</div>
+                        <div class="answer_txt">{{ item.text }}</div>
                       </div>
                     </div>
                   </div>
@@ -147,7 +145,16 @@
         </b-container>
       </b-card> -->
     </div>
-    <div class="container container_short footer">
+    <div class="container container_short footerV2" v-if="quiz.questions[questionIndex - 1].check === false" disabled>
+      <div class="row mt-3 mb-3">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <div class="m_width_120p">
+            <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container container_short footer" v-if="quiz.questions[questionIndex - 1].check === true" @click="next">
       <div class="row mt-3 mb-3">
         <div class="col-12 d-flex align-items-center justify-content-center">
           <div class="m_width_120p">
@@ -164,19 +171,15 @@ var quiz = {
   title: 'quiz sample',
   questions: [
     {
-      text: 'Question 1 description',
+      text: '1.) คุณเป็นผื่นที่บริเวณ ศีรษะ/คอ หรือไม่?',
       answers: [
         {
-          text: 'Answer 1',
+          text: 'เป็น',
           value: 1,
         },
         {
-          text: 'Answer 2',
+          text: 'ไม่เป็น',
           value: 2,
-        },
-        {
-          text: 'Answer 3',
-          value: 3,
         },
       ],
       checkpoint: '',
@@ -317,9 +320,18 @@ export default {
   position: fixed;
   bottom: 0%;
   max-width: 100%;
-  background-color: #10c4cc;
+  background-color: #105862;
   cursor: pointer;
 }
+
+.footerV2 {
+  position: fixed;
+  bottom: 0%;
+  max-width: 100%;
+  background-color: #C2CFE0;
+  cursor: pointer;
+}
+
 .footer:hover {
   background-color: #10b4bd;
 }
