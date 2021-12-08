@@ -74,6 +74,11 @@ const DASHBOARD_ROUTE = [
 
 const NEW_PAGE = [
   {
+    name: 'Assesment Eczema',
+    path: '/Assesment/Eczema',
+    component: 'pages/newpage/assesment_eczema.vue',
+  },
+  {
     name: 'Newpage1',
     path: '/newpage/newpage1',
     component: 'pages/newpage/newpage1.vue',
@@ -87,7 +92,7 @@ const NEW_PAGE = [
     name: 'Newpage3',
     path: '/newpage/newpage3',
     component: 'pages/newpage/newpage3.vue',
-  }
+  },
 ]
 
 const USER = [
