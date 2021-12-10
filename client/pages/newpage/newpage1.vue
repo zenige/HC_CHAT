@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="container container_short pg-bar">
-      <b-progress :value="ans.length" :max="quiz.questions.length"></b-progress>
+      <div class="text-center">
+        <b-progress
+          :value="ans.length"
+          :max="quiz.questions.length"
+        ></b-progress>
+      </div>
     </div>
     <div class="container container_short skin-content">
       <div class="row">
@@ -26,6 +31,7 @@
                 </div>
               </div>
               <div
+                style="cursor: pointer"
                 class="col-12"
                 v-for="(item, index) in quiz.questions[questionIndex - 1]
                   .answers"
@@ -106,31 +112,31 @@ var quiz = {
         '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.png',
       answers: [
         {
-          text: '0%',
+          text: '0% (ไม่เป็นผื่น)',
           value: 0,
         },
         {
-          text: '1-9%',
+          text: 'ประมาณ 1-9%',
           value: 1,
         },
         {
-          text: '10-29%',
+          text: 'ประมาณ 10-29%',
           value: 2,
         },
         {
-          text: '30-49%',
+          text: 'ประมาณ 30-49%',
           value: 3,
         },
         {
-          text: '50-69%',
+          text: 'ประมาณ 50-69%',
           value: 4,
         },
         {
-          text: '70-89%',
+          text: 'ประมาณ 70-89%',
           value: 5,
         },
         {
-          text: '90-100%',
+          text: 'ประมาณ 90-100%',
           value: 6,
         },
       ],
@@ -138,30 +144,136 @@ var quiz = {
       check: false,
     },
     {
-      text: 'Question 2 description',
+      text: '1.1) คุณเป็นผื่นแดงในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
       answers: [
         {
-          text: 'Answer 1a',
+          text: 'None (ไม่เป็นผื่นแดง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย บาง ๆ หรือมีสีชมพู)',
           value: 1,
         },
         {
-          text: 'Answer 2a',
+          text: 'Moderate (ปานกลาง มีสีแดงหม่น ๆ ที่มองเห็นได้ชัด)',
           value: 2,
         },
         {
-          text: 'Answer 3a',
+          text: 'Severe (มาก มีสีแดงเข้ม มองเห็นได้ชัดเจน)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '1.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย แทบมองไม่เห็น)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มองเห็นได้ชัด แต่ไม่เด่นชัดมาก)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มองเห็นได้เด่นชัดเจนมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '1.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย มีไม่กี่จุด มองเห็นแค่ผิวเผิน)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มีหลายจุด มองเห็นได้ชัดและ/หรือมีความลึกของแผลเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก มีหลายจุดอย่างกว้างขวาง มองเห็นได้ชัดและ/หรือมีความลึกของแผลมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '1.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+      answers: [
+        {
+          text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย ผิวหนังมีรอยหนาขึ้นเล็กน้อย)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง ผิวหนังหนาขึ้นอย่างเห็นได้ชัดและ/หรือมีอาการคันเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก ผิวหนังหนาขึ้นอย่างเห็นได้ชัด มีร่องลึกที่เห็นได้ชัดและ/หรือมีอาการคันมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '2.) คุณเป็นผื่นในบริเวณ ลำตัว คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม2.png',
+      answers: [
+        {
+          text: '0% (ไม่เป็นผื่น)',
+          value: 0,
+        },
+        {
+          text: 'ประมาณ 1-9%',
+          value: 1,
+        },
+        {
+          text: 'ประมาณ 10-29%',
+          value: 2,
+        },
+        {
+          text: 'ประมาณ 30-49%',
           value: 3,
         },
         {
-          text: 'Answer 4a',
+          text: 'ประมาณ 50-69%',
           value: 4,
         },
         {
-          text: 'Answer 5a',
+          text: 'ประมาณ 70-89%',
           value: 5,
         },
         {
-          text: 'Answer 6a',
+          text: 'ประมาณ 90-100%',
           value: 6,
         },
       ],
@@ -169,18 +281,24 @@ var quiz = {
       check: false,
     },
     {
-      text: 'Question 3 description',
+      text: '2.1) คุณเป็นผื่นแดงในบริเวณ ลำตัว มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
       answers: [
         {
-          text: 'Answer 1b',
+          text: 'None (ไม่เป็นผื่นแดง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย บาง ๆ หรือมีสีชมพู)',
           value: 1,
         },
         {
-          text: 'Answer 2b',
+          text: 'Moderate (ปานกลาง มีสีแดงหม่น ๆ ที่มองเห็นได้ชัด)',
           value: 2,
         },
         {
-          text: 'Answer 3b',
+          text: 'Severe (มาก มีสีแดงเข้ม มองเห็นได้ชัดเจน)',
           value: 3,
         },
       ],
@@ -188,30 +306,349 @@ var quiz = {
       check: false,
     },
     {
-      text: 'Question 4 description',
+      text: '2.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
       answers: [
         {
-          text: 'Answer 1n',
+          text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย แทบมองไม่เห็น)',
           value: 1,
         },
         {
-          text: 'Answer 2n',
+          text: 'Moderate (ปานกลาง มองเห็นได้ชัด แต่ไม่เด่นชัดมาก)',
           value: 2,
+        },
+        {
+          text: 'Severe (มองเห็นได้เด่นชัดเจนมาก)',
+          value: 3,
         },
       ],
       checkpoint: '',
       check: false,
     },
     {
-      text: 'Question 5 description',
+      text: '2.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
       answers: [
         {
-          text: 'Answer 1i',
+          text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย มีไม่กี่จุด มองเห็นแค่ผิวเผิน)',
           value: 1,
         },
         {
-          text: 'Answer 2i',
+          text: 'Moderate (ปานกลาง มีหลายจุด มองเห็นได้ชัดและ/หรือมีความลึกของแผลเล็กน้อย)',
           value: 2,
+        },
+        {
+          text: 'Severe (มาก มีหลายจุดอย่างกว้างขวาง มองเห็นได้ชัดและ/หรือมีความลึกของแผลมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '2.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ลำตัว มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+      answers: [
+        {
+          text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย ผิวหนังมีรอยหนาขึ้นเล็กน้อย)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง ผิวหนังหนาขึ้นอย่างเห็นได้ชัดและ/หรือมีอาการคันเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก ผิวหนังหนาขึ้นอย่างเห็นได้ชัด มีร่องลึกที่เห็นได้ชัดและ/หรือมีอาการคันมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '3.) คุณเป็นผื่นในบริเวณ แขน คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม3.png',
+      answers: [
+        {
+          text: '0% (ไม่เป็นผื่น)',
+          value: 0,
+        },
+        {
+          text: 'ประมาณ 1-9%',
+          value: 1,
+        },
+        {
+          text: 'ประมาณ 10-29%',
+          value: 2,
+        },
+        {
+          text: 'ประมาณ 30-49%',
+          value: 3,
+        },
+        {
+          text: 'ประมาณ 50-69%',
+          value: 4,
+        },
+        {
+          text: 'ประมาณ 70-89%',
+          value: 5,
+        },
+        {
+          text: 'ประมาณ 90-100%',
+          value: 6,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '3.1) คุณเป็นผื่นแดงในบริเวณ แขน มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นผื่นแดง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย บาง ๆ หรือมีสีชมพู)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มีสีแดงหม่น ๆ ที่มองเห็นได้ชัด)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก มีสีแดงเข้ม มองเห็นได้ชัดเจน)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '3.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย แทบมองไม่เห็น)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มองเห็นได้ชัด แต่ไม่เด่นชัดมาก)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มองเห็นได้เด่นชัดเจนมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '3.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย มีไม่กี่จุด มองเห็นแค่ผิวเผิน)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มีหลายจุด มองเห็นได้ชัดและ/หรือมีความลึกของแผลเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก มีหลายจุดอย่างกว้างขวาง มองเห็นได้ชัดและ/หรือมีความลึกของแผลมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '3.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ แขน มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+      answers: [
+        {
+          text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย ผิวหนังมีรอยหนาขึ้นเล็กน้อย)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง ผิวหนังหนาขึ้นอย่างเห็นได้ชัดและ/หรือมีอาการคันเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก ผิวหนังหนาขึ้นอย่างเห็นได้ชัด มีร่องลึกที่เห็นได้ชัดและ/หรือมีอาการคันมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '4.) คุณเป็นผื่นในบริเวณ ขา คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม4.png',
+      answers: [
+        {
+          text: '0% (ไม่เป็นผื่น)',
+          value: 0,
+        },
+        {
+          text: 'ประมาณ 1-9%',
+          value: 1,
+        },
+        {
+          text: 'ประมาณ 10-29%',
+          value: 2,
+        },
+        {
+          text: 'ประมาณ 30-49%',
+          value: 3,
+        },
+        {
+          text: 'ประมาณ 50-69%',
+          value: 4,
+        },
+        {
+          text: 'ประมาณ 70-89%',
+          value: 5,
+        },
+        {
+          text: 'ประมาณ 90-100%',
+          value: 6,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '4.1) คุณเป็นผื่นแดงในบริเวณ ขา มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นผื่นแดง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย บาง ๆ หรือมีสีชมพู)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มีสีแดงหม่น ๆ ที่มองเห็นได้ชัด)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก มีสีแดงเข้ม มองเห็นได้ชัดเจน)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '4.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย แทบมองไม่เห็น)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มองเห็นได้ชัด แต่ไม่เด่นชัดมาก)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มองเห็นได้เด่นชัดเจนมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '4.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+      answers: [
+        {
+          text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย มีไม่กี่จุด มองเห็นแค่ผิวเผิน)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง มีหลายจุด มองเห็นได้ชัดและ/หรือมีความลึกของแผลเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก มีหลายจุดอย่างกว้างขวาง มองเห็นได้ชัดและ/หรือมีความลึกของแผลมาก)',
+          value: 3,
+        },
+      ],
+      checkpoint: '',
+      check: false,
+    },
+    {
+      text: '4.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ขา มากน้อยระดับไหน?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+      answers: [
+        {
+          text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
+          value: 0,
+        },
+        {
+          text: 'Mild (เล็กน้อย ผิวหนังมีรอยหนาขึ้นเล็กน้อย)',
+          value: 1,
+        },
+        {
+          text: 'Moderate (ปานกลาง ผิวหนังหนาขึ้นอย่างเห็นได้ชัดและ/หรือมีอาการคันเล็กน้อย)',
+          value: 2,
+        },
+        {
+          text: 'Severe (มาก ผิวหนังหนาขึ้นอย่างเห็นได้ชัด มีร่องลึกที่เห็นได้ชัดและ/หรือมีอาการคันมาก)',
+          value: 3,
         },
       ],
       checkpoint: '',
@@ -282,7 +719,7 @@ export default {
   top: 0;
   padding-top: 1rem;
   height: 40px;
-  width: 100%;
+  max-width: 100%;
   z-index: 100;
   background-color: #fff;
 }
@@ -315,7 +752,7 @@ export default {
 .footerBtn {
   font-family: 'Prompt-Medium';
   color: #fff;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 30px;
 }
 .txt_title {
@@ -408,13 +845,13 @@ export default {
   .question_txt {
     font-family: 'Prompt-Medium';
     font-style: normal;
-    font-size: 22px;
+    font-size: 20px;
     color: #333333;
   }
   .answer_txt {
     font-family: 'Prompt-Regular';
     font-style: normal;
-    font-size: 18px;
+    font-size: 16px;
     color: #333333;
     line-height: 33px;
   }
