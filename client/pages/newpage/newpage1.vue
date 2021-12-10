@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container container_short mt-4">
+    <div class="container container_short pg-bar">
       <b-progress :value="ans.length" :max="quiz.questions.length"></b-progress>
     </div>
-    <div class="container container_short">
+    <div class="container container_short skin-content">
       <div class="row">
         <div class="col-12 mb-2 pb_me-4">
           <div class="pt-3">
@@ -11,7 +11,7 @@
               <div class="col-12 mt-3 mb-2 px-0">
                 <div class="ck-content">
                   <p class="question_txt">
-                    {{quiz.questions[questionIndex - 1].text}}
+                    {{ quiz.questions[questionIndex - 1].text }}
                   </p>
                   <figure class="image">
                     <img
@@ -20,18 +20,35 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-12" v-for="(item, index) in quiz.questions[questionIndex - 1].answers" :key="index">
-                <a href="#" v-if="index === quiz.questions[questionIndex - 1].checkpoint">
-                  <div class="card bg_green" @click="checkpointbg(index, item.value)">
+              <div
+                class="col-12"
+                v-for="(item, index) in quiz.questions[questionIndex - 1]
+                  .answers"
+                :key="index"
+              >
+                <a
+                  v-if="index === quiz.questions[questionIndex - 1].checkpoint"
+                >
+                  <div
+                    class="card bg_green"
+                    @click="checkpointbg(index, item.value)"
+                  >
                     <div class="card-body">
                       <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt" style="color: #fff">{{ item.text }}</div>
+                        <div class="answer_txt" style="color: #fff">
+                          {{ item.text }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </a>
-                <a href="#" v-if="index !== quiz.questions[questionIndex - 1].checkpoint">
-                  <div class="card card-list-hover" @click="checkpointbg(index, item.value)">
+                <a
+                  v-if="index !== quiz.questions[questionIndex - 1].checkpoint"
+                >
+                  <div
+                    class="card card-list-hover"
+                    @click="checkpointbg(index, item.value)"
+                  >
                     <div class="card-body">
                       <div class="col-12 d-flex align-items-center">
                         <div class="answer_txt">{{ item.text }}</div>
@@ -44,108 +61,12 @@
           </div>
         </div>
       </div>
-      <!-- <b-card title="newpage1">
-        <b-container class="bv-example-row">
-          <b-row>
-            <b-col cols="4"></b-col>
-            <b-col cols="4">
-              <center>
-                <button
-                  v-if="questionIndex === 1"
-                  class="btn btn-primary"
-                  @click="prev"
-                  disabled
-                >
-                  prev
-                </button>
-                <button
-                  v-if="questionIndex !== 1"
-                  class="btn btn-primary"
-                  @click="prev"
-                >
-                  prev
-                </button>
-                <span> {{ this.questionIndex }} </span>
-                <button
-                  v-if="questionIndex === quiz.questions.length"
-                  class="btn btn-secondary"
-                  @click="next"
-                  disabled
-                >
-                  next
-                </button>
-                <button
-                  v-if="questionIndex !== quiz.questions.length"
-                  class="btn btn-secondary"
-                  @click="next"
-                >
-                  next
-                </button>
-              </center>
-            </b-col>
-            <b-col cols="4">
-              <center>
-                <button
-                  class="btn btn-success"
-                  @click="show"
-                  v-if="this.showg === false"
-                >
-                  show
-                </button>
-                <button
-                  class="btn btn-success"
-                  @click="close"
-                  v-if="this.showg === true"
-                >
-                  close
-                </button>
-              </center>
-            </b-col>
-          </b-row>
-          <b-row v-if="this.showg === true">
-            <div v-for="(item, index) in quiz.questions" :key="index">
-              <button
-                v-if="item.check === true"
-                class="btn btn-success"
-                @click="perpage(index)"
-              >
-                {{ index + 1 }}
-              </button>
-              <button
-                v-if="item.check === false"
-                class="btn btn-secondary"
-                @click="perpage(index)"
-              >
-                {{ index + 1 }}
-              </button>
-            </div>
-          </b-row>
-          <b-row>
-            <p>{{ quiz.questions[questionIndex - 1].text }}</p>
-          </b-row>
-          <b-row
-            v-for="(item, index) in quiz.questions[questionIndex - 1].answers"
-            :key="index"
-          >
-            <button
-              v-if="index === quiz.questions[questionIndex - 1].checkpoint"
-              class="btn btn-success"
-              @click="checkpointbg(index, item.value)"
-            >
-              {{ item.text }} {{ index }}
-            </button>
-            <button
-              v-if="index !== quiz.questions[questionIndex - 1].checkpoint"
-              class="btn btn-secondary"
-              @click="checkpointbg(index, item.value)"
-            >
-              {{ item.text }} {{ index }}
-            </button>
-          </b-row>
-        </b-container>
-      </b-card> -->
     </div>
-    <div class="container container_short footerV2" v-if="quiz.questions[questionIndex - 1].check === false" disabled>
+    <div
+      class="container container_short footerV2"
+      v-if="quiz.questions[questionIndex - 1].check === false"
+      disabled
+    >
       <div class="row mt-3 mb-3">
         <div class="col-12 d-flex align-items-center justify-content-center">
           <div class="m_width_120p">
@@ -154,7 +75,11 @@
         </div>
       </div>
     </div>
-    <div class="container container_short footer" v-if="quiz.questions[questionIndex - 1].check === true" @click="next">
+    <div
+      class="container container_short footer"
+      v-if="quiz.questions[questionIndex - 1].check === true"
+      @click="next"
+    >
       <div class="row mt-3 mb-3">
         <div class="col-12 d-flex align-items-center justify-content-center">
           <div class="m_width_120p">
@@ -199,6 +124,18 @@ var quiz = {
         {
           text: 'Answer 3a',
           value: 3,
+        },
+        {
+          text: 'Answer 4a',
+          value: 4,
+        },
+        {
+          text: 'Answer 5a',
+          value: 5,
+        },
+        {
+          text: 'Answer 6a',
+          value: 6,
         },
       ],
       checkpoint: '',
@@ -313,6 +250,19 @@ export default {
 </script>
 
 <style scoped>
+.pg-bar {
+  position: fixed;
+  top: 0;
+  padding-top: 1rem;
+  height: 40px;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+}
+.skin-content {
+  margin-bottom: 70px;
+  margin-top: 20px;
+}
 .bg_green {
   background-color: #10c4cc;
 }
@@ -320,7 +270,7 @@ export default {
   position: fixed;
   bottom: 0%;
   max-width: 100%;
-  background-color: #105862;
+  background-color: #10c4cc;
   cursor: pointer;
 }
 
@@ -328,7 +278,7 @@ export default {
   position: fixed;
   bottom: 0%;
   max-width: 100%;
-  background-color: #C2CFE0;
+  background-color: #c2cfe0;
   cursor: pointer;
 }
 
