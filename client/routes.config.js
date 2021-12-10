@@ -72,26 +72,21 @@ const DASHBOARD_ROUTE = [
   },
 ]
 
-const NEW_PAGE = [
+const SKIN_DISEASE = [
   {
-    name: 'Assesment Eczema',
-    path: '/Assesment/Eczema',
-    component: 'pages/newpage/assesment_eczema.vue',
+    name: 'Eczema',
+    path: '/Questionnaire/Eczema',
+    component: 'pages/skinDisease/Eczema.vue',
   },
   {
-    name: 'Newpage1',
-    path: '/newpage/newpage1',
-    component: 'pages/newpage/newpage1.vue',
+    name: 'Atopic Dermatitis',
+    path: '/Questionnaire/AtopicDermatitis',
+    component: 'pages/skinDisease/AtopicDermatitis.vue',
   },
   {
-    name: 'Newpage2',
-    path: '/newpage/newpage2',
-    component: 'pages/newpage/newpage2.vue',
-  },
-  {
-    name: 'Newpage3',
-    path: '/newpage/newpage3',
-    component: 'pages/newpage/newpage3.vue',
+    name: 'Tinea Ringworm Candidiasis',
+    path: '/Questionnaire/TineaRingworm',
+    component: 'pages/skinDisease/TineaRingworm.vue',
   },
 ]
 
@@ -113,7 +108,7 @@ const routesConfig = [
   ...HEALTHCARE_ROUTE,
   ...DASHBOARD_ROUTE,
   ...USER,
-  ...NEW_PAGE,
+  ...SKIN_DISEASE,
 ]
 
 export { CHATBOT_TRAINING_ROUTE, HEALTHCARE_ROUTE }
