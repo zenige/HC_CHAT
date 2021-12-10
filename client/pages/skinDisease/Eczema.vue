@@ -73,28 +73,58 @@
         </div>
       </div>
     </div>
-    <div
-      class="container container_short footerV2"
-      v-if="quiz.questions[questionIndex - 1].check === false"
-      disabled
-    >
-      <div class="row mt-3 mb-3">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-          <div class="m_width_120p">
-            <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+    <div v-if="end === false">
+      <div
+        class="container container_short footerV2"
+        v-if="quiz.questions[questionIndex - 1].check === false"
+        disabled
+      >
+        <div class="row mt-3 mb-3">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="m_width_120p">
+              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container container_short footer"
+        v-if="quiz.questions[questionIndex - 1].check === true"
+        @click="next"
+      >
+        <div class="row mt-3 mb-3">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="m_width_120p">
+              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="container container_short footer"
-      v-if="quiz.questions[questionIndex - 1].check === true"
-      @click="next"
-    >
-      <div class="row mt-3 mb-3">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-          <div class="m_width_120p">
-            <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+    <div v-if="end === true">
+      <div
+        class="container container_short footerV2"
+        v-if="quiz.questions[questionIndex - 1].check === false"
+        disabled
+      >
+        <div class="row mt-3 mb-3">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="m_width_120p">
+              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container container_short footer"
+        v-if="quiz.questions[questionIndex - 1].check === true"
+        @click="math"
+      >
+        <div class="row mt-3 mb-3">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="m_width_120p">
+              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+            </div>
           </div>
         </div>
       </div>
@@ -665,9 +695,21 @@ export default {
       questionIndex: 1,
       showg: false,
       ans: [],
+      final: 0,
+      end: false
     }
   },
   methods: {
+     math(){
+      let head = (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) * this.ans[0] * 0.1 
+      let U_limbs = (this.ans[6] + this.ans[7] + this.ans[8] + this.ans[9]) * this.ans[5] * 0.2 
+      let trunk = (this.ans[11] + this.ans[12] + this.ans[13] + this.ans[14]) * this.ans[10] * 0.3
+      let L_limbs = (this.ans[16] + this.ans[17] + this.ans[18] + this.ans[19]) * this.ans[15] * 0.4 
+
+      let sum = head + U_limbs + trunk + L_limbs
+      this.final = sum.toFixed(2)
+      console.log('คำตอบ', this.final)
+    },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
       this.quiz.questions[this.questionIndex - 1].check = true
@@ -676,6 +718,9 @@ export default {
       console.log(value)
       this.ans[this.questionIndex - 1] = score
       console.log('sc', this.ans)
+      if(this.ans.length === this.quiz.questions.length){
+        this.end = true
+      }
     },
     prev() {
       if (this.questionIndex > 1) {
