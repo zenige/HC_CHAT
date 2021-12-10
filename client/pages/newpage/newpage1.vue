@@ -13,9 +13,14 @@
                   <p class="question_txt">
                     {{ quiz.questions[questionIndex - 1].text }}
                   </p>
-                  <figure class="image">
+                  <figure
+                    class="image"
+                    v-if="quiz.questions[questionIndex - 1].questionImage"
+                  >
                     <img
-                      src="~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.png"
+                      v-bind:src="
+                        quiz.questions[questionIndex - 1].questionImage
+                      "
                     />
                   </figure>
                 </div>
@@ -96,15 +101,37 @@ var quiz = {
   title: 'quiz sample',
   questions: [
     {
-      text: '1.) คุณเป็นผื่นที่บริเวณ ศีรษะ/คอ หรือไม่?',
+      text: '1.) คุณเป็นผื่นในบริเวณ ศีรษะ/คอ คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
+      questionImage:
+        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.png',
       answers: [
         {
-          text: 'เป็น',
+          text: '0%',
+          value: 0,
+        },
+        {
+          text: '1-9%',
           value: 1,
         },
         {
-          text: 'ไม่เป็น',
+          text: '10-29%',
           value: 2,
+        },
+        {
+          text: '30-49%',
+          value: 3,
+        },
+        {
+          text: '50-69%',
+          value: 4,
+        },
+        {
+          text: '70-89%',
+          value: 5,
+        },
+        {
+          text: '90-100%',
+          value: 6,
         },
       ],
       checkpoint: '',
