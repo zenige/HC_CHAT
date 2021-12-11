@@ -1833,12 +1833,11 @@ font-weight: 300;*/
   flex-direction: column;
   -ms-flex-pack: center;
   justify-content: center;
-  font-family: 'trueplookpanyaround-Bold';
   font-size: 22px;
   color: #fff;
   text-align: right;
   white-space: nowrap;
-  background-color: #007bff;
+  background-color: #10c4cc;
   transition: width 0.6s ease;
   padding-right: 15px;
   border-radius: 5em;

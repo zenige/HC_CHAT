@@ -74,18 +74,23 @@ const DASHBOARD_ROUTE = [
 
 const SKIN_DISEASE = [
   {
+    name: 'Submit Answer',
+    path: '/questionnaire/submit-answer',
+    component: 'pages/skinDisease/submitAnswer.vue',
+  },
+  {
     name: 'Eczema',
-    path: '/Questionnaire/Eczema',
+    path: '/questionnaire/eczema',
     component: 'pages/skinDisease/Eczema.vue',
   },
   {
     name: 'Atopic Dermatitis',
-    path: '/Questionnaire/AtopicDermatitis',
+    path: '/questionnaire/atopicDermatitis',
     component: 'pages/skinDisease/AtopicDermatitis.vue',
   },
   {
     name: 'Tinea Ringworm Candidiasis',
-    path: '/Questionnaire/TineaRingworm',
+    path: '/questionnaire/tineaRingworm',
     component: 'pages/skinDisease/TineaRingworm.vue',
   },
 ]

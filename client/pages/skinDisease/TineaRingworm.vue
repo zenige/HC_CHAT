@@ -758,15 +758,16 @@ export default {
       showg: false,
       ans: [],
       final: 0,
-      end: false
+      end: false,
     }
   },
   methods: {
-     math(){
+    math() {
       let body = this.ans[0] * this.ans[1]
       let foot = (this.ans[2] + this.ans[3]) * this.ans[4]
-      let head = (this.ans[5] + this.ans[7] + this.ans[8] + this.ans[9]) * this.ans[6]
-      let face = (this.ans[10] + this.ans[12]) * this.ans[11] 
+      let head =
+        (this.ans[5] + this.ans[7] + this.ans[8] + this.ans[9]) * this.ans[6]
+      let face = (this.ans[10] + this.ans[12]) * this.ans[11]
       let hand = (this.ans[13] + this.ans[14]) * this.ans[15]
       let nail = this.ans[16] + this.ans[17] + this.ans[18] + this.ans[19]
       let Groin = (this.ans[20] + this.ans[21] + this.ans[22]) * this.ans[23]
@@ -774,9 +775,11 @@ export default {
       let arm = this.ans[26] * this.ans[27]
       let back = this.ans[28] * this.ans[29]
 
-      let sum = body + foot + head + face + hand + nail + Groin + leg + arm + back 
+      let sum =
+        body + foot + head + face + hand + nail + Groin + leg + arm + back
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
+      this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -786,7 +789,7 @@ export default {
       console.log(value)
       this.ans[this.questionIndex - 1] = score
       console.log('sc', this.ans)
-      if(this.ans.length === this.quiz.questions.length){
+      if (this.ans.length === this.quiz.questions.length) {
         this.end = true
       }
     },
@@ -923,7 +926,7 @@ export default {
 .question_txt {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  font-size: 16px;
+  font-size: 20px;
   color: #333333;
 }
 .answer_txt {

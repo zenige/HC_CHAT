@@ -701,6 +701,7 @@ export default {
       let sum = head + U_limbs + trunk + L_limbs
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
+      this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -847,7 +848,7 @@ export default {
 .question_txt {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  font-size: 16px;
+  font-size: 20px;
   color: #333333;
 }
 .answer_txt {
