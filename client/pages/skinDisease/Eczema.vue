@@ -139,7 +139,7 @@ var quiz = {
     {
       text: '1.) คุณเป็นผื่นในบริเวณ ศีรษะ/คอ คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.png',
+        'https://i.ibb.co/QJFL59y/1.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -176,7 +176,7 @@ var quiz = {
     {
       text: '1.1) คุณเป็นผื่นแดงในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+        'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -201,7 +201,7 @@ var quiz = {
     {
       text: '1.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+        'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -226,7 +226,7 @@ var quiz = {
     {
       text: '1.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+        'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -251,7 +251,7 @@ var quiz = {
     {
       text: '1.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+        'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -276,7 +276,7 @@ var quiz = {
     {
       text: '2.) คุณเป็นผื่นในบริเวณ ลำตัว คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม2.png',
+        'https://i.ibb.co/ThhgjLg/2.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -313,7 +313,7 @@ var quiz = {
     {
       text: '2.1) คุณเป็นผื่นแดงในบริเวณ ลำตัว มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+        'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -338,7 +338,7 @@ var quiz = {
     {
       text: '2.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+        'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -363,7 +363,7 @@ var quiz = {
     {
       text: '2.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+        'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -388,7 +388,7 @@ var quiz = {
     {
       text: '2.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ลำตัว มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+        'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -413,7 +413,7 @@ var quiz = {
     {
       text: '3.) คุณเป็นผื่นในบริเวณ แขน คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม3.png',
+        'https://i.ibb.co/jRP3MHw/3.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -450,7 +450,7 @@ var quiz = {
     {
       text: '3.1) คุณเป็นผื่นแดงในบริเวณ แขน มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+        'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -475,7 +475,7 @@ var quiz = {
     {
       text: '3.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+        'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -500,7 +500,7 @@ var quiz = {
     {
       text: '3.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+        'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -525,7 +525,7 @@ var quiz = {
     {
       text: '3.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ แขน มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+        'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -550,7 +550,7 @@ var quiz = {
     {
       text: '4.) คุณเป็นผื่นในบริเวณ ขา คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม4.png',
+        'https://i.ibb.co/3kDjC4F/4.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -587,7 +587,7 @@ var quiz = {
     {
       text: '4.1) คุณเป็นผื่นแดงในบริเวณ ขา มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.1.png',
+        'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -612,7 +612,7 @@ var quiz = {
     {
       text: '4.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.2.png',
+        'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -637,7 +637,7 @@ var quiz = {
     {
       text: '4.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.3.png',
+        'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -662,7 +662,7 @@ var quiz = {
     {
       text: '4.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ขา มากน้อยระดับไหน?',
       questionImage:
-        '~assets/hc-libs/images/skinDiseaseImages/Eczema/คำถาม1.4.png',
+        'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
