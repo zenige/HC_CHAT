@@ -763,16 +763,16 @@ export default {
   },
   methods: {
      math(){
-      let body = (this.ans[0] + this.ans[2]) * this.ans[1] * 0.1 
-      let foot = (this.ans[3] + this.ans[4]) * this.ans[5] * 0.2 
-      let head = (this.ans[6] + this.ans[8] + this.ans[9] + this.ans[10]) * this.ans[7] * 0.3
-      let face = (this.ans[11] + this.ans[13]) * this.ans[12] * 0.4 
-      let hand = (this.ans[14] + this.ans[15]) * this.ans[16] * 0.5
-      let nail = (this.ans[17] + this.ans[18] + this.ans[19] + this.ans[20]) * 0.6
-      let Groin = (this.ans[21] + this.ans[22] + this.ans[23]) * this.ans[24] * 0.7
-      let leg = (this.ans[25]) * this.ans[26] * 0.8 
-      let arm = (this.ans[27]) * this.ans[28] * 0.9 
-      let back = (this.ans[29]) * this.ans[30] * 1.0 
+      let body = this.ans[0] * this.ans[1]
+      let foot = (this.ans[2] + this.ans[3]) * this.ans[4]
+      let head = (this.ans[5] + this.ans[7] + this.ans[8] + this.ans[9]) * this.ans[6]
+      let face = (this.ans[10] + this.ans[12]) * this.ans[11] 
+      let hand = (this.ans[13] + this.ans[14]) * this.ans[15]
+      let nail = this.ans[16] + this.ans[17] + this.ans[18] + this.ans[19]
+      let Groin = (this.ans[20] + this.ans[21] + this.ans[22]) * this.ans[23]
+      let leg = this.ans[24] * this.ans[25]
+      let arm = this.ans[26] * this.ans[27]
+      let back = this.ans[28] * this.ans[29]
 
       let sum = body + foot + head + face + hand + nail + Groin + leg + arm + back 
       this.final = sum.toFixed(2)
