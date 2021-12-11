@@ -110,7 +110,7 @@
         <div class="row mt-3 mb-3">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+              <div class="m_width_120p text-center footerBtn">ส่งแบบสอบถาม</div>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
         <div class="row mt-3 mb-3">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+              <div class="m_width_120p text-center footerBtn">ส่งแบบสอบถาม</div>
             </div>
           </div>
         </div>
@@ -138,8 +138,7 @@ var quiz = {
   questions: [
     {
       text: '1.) คุณเป็นผื่นในบริเวณ ศีรษะ/คอ คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
-      questionImage:
-        'https://i.ibb.co/QJFL59y/1.png',
+      questionImage: 'https://i.ibb.co/QJFL59y/1.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -175,8 +174,7 @@ var quiz = {
     },
     {
       text: '1.1) คุณเป็นผื่นแดงในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -200,8 +198,7 @@ var quiz = {
     },
     {
       text: '1.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -225,8 +222,7 @@ var quiz = {
     },
     {
       text: '1.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -250,8 +246,7 @@ var quiz = {
     },
     {
       text: '1.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -275,8 +270,7 @@ var quiz = {
     },
     {
       text: '2.) คุณเป็นผื่นในบริเวณ ลำตัว คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
-      questionImage:
-        'https://i.ibb.co/ThhgjLg/2.png',
+      questionImage: 'https://i.ibb.co/ThhgjLg/2.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -312,8 +306,7 @@ var quiz = {
     },
     {
       text: '2.1) คุณเป็นผื่นแดงในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -337,8 +330,7 @@ var quiz = {
     },
     {
       text: '2.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -362,8 +354,7 @@ var quiz = {
     },
     {
       text: '2.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -387,8 +378,7 @@ var quiz = {
     },
     {
       text: '2.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -412,8 +402,7 @@ var quiz = {
     },
     {
       text: '3.) คุณเป็นผื่นในบริเวณ แขน คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
-      questionImage:
-        'https://i.ibb.co/jRP3MHw/3.png',
+      questionImage: 'https://i.ibb.co/jRP3MHw/3.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -449,8 +438,7 @@ var quiz = {
     },
     {
       text: '3.1) คุณเป็นผื่นแดงในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -474,8 +462,7 @@ var quiz = {
     },
     {
       text: '3.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -499,8 +486,7 @@ var quiz = {
     },
     {
       text: '3.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -524,8 +510,7 @@ var quiz = {
     },
     {
       text: '3.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -549,8 +534,7 @@ var quiz = {
     },
     {
       text: '4.) คุณเป็นผื่นในบริเวณ ขา คิดเป็นสัดส่วนประมาณกี่เปอร์เซ็นต์ของพื้นที่ในบริเวณนี้ทั้งหมด?',
-      questionImage:
-        'https://i.ibb.co/3kDjC4F/4.png',
+      questionImage: 'https://i.ibb.co/3kDjC4F/4.png',
       answers: [
         {
           text: '0% (ไม่เป็นผื่น)',
@@ -586,8 +570,7 @@ var quiz = {
     },
     {
       text: '4.1) คุณเป็นผื่นแดงในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -611,8 +594,7 @@ var quiz = {
     },
     {
       text: '4.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -636,8 +618,7 @@ var quiz = {
     },
     {
       text: '4.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -661,8 +642,7 @@ var quiz = {
     },
     {
       text: '4.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage:
-        'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -696,15 +676,27 @@ export default {
       showg: false,
       ans: [],
       final: 0,
-      end: false
+      end: false,
     }
   },
   methods: {
-     math(){
-      let head = (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) * this.ans[0] * 0.1 
-      let U_limbs = (this.ans[6] + this.ans[7] + this.ans[8] + this.ans[9]) * this.ans[5] * 0.2 
-      let trunk = (this.ans[11] + this.ans[12] + this.ans[13] + this.ans[14]) * this.ans[10] * 0.3
-      let L_limbs = (this.ans[16] + this.ans[17] + this.ans[18] + this.ans[19]) * this.ans[15] * 0.4 
+    math() {
+      let head =
+        (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) *
+        this.ans[0] *
+        0.1
+      let U_limbs =
+        (this.ans[6] + this.ans[7] + this.ans[8] + this.ans[9]) *
+        this.ans[5] *
+        0.2
+      let trunk =
+        (this.ans[11] + this.ans[12] + this.ans[13] + this.ans[14]) *
+        this.ans[10] *
+        0.3
+      let L_limbs =
+        (this.ans[16] + this.ans[17] + this.ans[18] + this.ans[19]) *
+        this.ans[15] *
+        0.4
 
       let sum = head + U_limbs + trunk + L_limbs
       this.final = sum.toFixed(2)
@@ -718,7 +710,7 @@ export default {
       console.log(value)
       this.ans[this.questionIndex - 1] = score
       console.log('sc', this.ans)
-      if(this.ans.length === this.quiz.questions.length){
+      if (this.ans.length === this.quiz.questions.length) {
         this.end = true
       }
     },
