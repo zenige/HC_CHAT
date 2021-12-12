@@ -1,129 +1,146 @@
 <template>
   <div>
-    <div class="container container_short pg-bar">
-      <div class="text-center">
-        <b-progress
-          :value="ans.length"
-          :max="quiz.questions.length"
-        ></b-progress>
+    <Loader v-if="isLoading" />
+    <div v-else>
+      <div class="container container_short pg-bar">
+        <div class="text-center">
+          <b-progress
+            :value="ans.length"
+            :max="quiz.questions.length"
+          ></b-progress>
+        </div>
       </div>
-    </div>
-    <div class="container container_short skin-content">
-      <div class="row">
-        <div class="col-12 mb-2 pb_me-4">
-          <div class="pt-3">
-            <div class="card-body">
-              <div class="col-12 mt-3 mb-2 px-0">
-                <div class="ck-content">
-                  <p class="question_txt">
-                    {{ quiz.questions[questionIndex - 1].text }}
-                  </p>
-                  <figure
-                    class="image"
-                    v-if="quiz.questions[questionIndex - 1].questionImage"
-                  >
-                    <img
-                      v-bind:src="
-                        quiz.questions[questionIndex - 1].questionImage
-                      "
-                    />
-                  </figure>
+      <div class="container container_short skin-content">
+        <div class="row">
+          <div class="col-12 mb-2 pb_me-4">
+            <div class="pt-3">
+              <div class="card-body">
+                <div class="col-12 mt-3 mb-2 px-0">
+                  <div class="ck-content">
+                    <p class="question_txt">
+                      {{ quiz.questions[questionIndex - 1].text }}
+                    </p>
+                    <figure
+                      class="image"
+                      v-if="quiz.questions[questionIndex - 1].questionImage"
+                    >
+                      <img
+                        v-bind:src="
+                          quiz.questions[questionIndex - 1].questionImage
+                        "
+                      />
+                    </figure>
+                  </div>
                 </div>
-              </div>
-              <div
-                style="cursor: pointer"
-                class="col-12"
-                v-for="(item, index) in quiz.questions[questionIndex - 1]
-                  .answers"
-                :key="index"
-              >
-                <a
-                  v-if="index === quiz.questions[questionIndex - 1].checkpoint"
-                >
+                <div class="mt-4">
                   <div
-                    class="card bg_green"
-                    @click="checkpointbg(index, item.value)"
+                    style="cursor: pointer"
+                    class="col-12"
+                    v-for="(item, index) in quiz.questions[questionIndex - 1]
+                      .answers"
+                    :key="index"
                   >
-                    <div class="card-body">
-                      <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt" style="color: #fff">
-                          {{ item.text }}
+                    <a
+                      v-if="
+                        index === quiz.questions[questionIndex - 1].checkpoint
+                      "
+                    >
+                      <div
+                        class="card bg_green"
+                        @click="checkpointbg(index, item.value)"
+                      >
+                        <div class="card-body">
+                          <div class="col-12 d-flex align-items-center">
+                            <div class="answer_txt" style="color: #fff">
+                              {{ item.text }}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </a>
-                <a
-                  v-if="index !== quiz.questions[questionIndex - 1].checkpoint"
-                >
-                  <div
-                    class="card card-list-hover"
-                    @click="checkpointbg(index, item.value)"
-                  >
-                    <div class="card-body">
-                      <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt">{{ item.text }}</div>
+                    </a>
+                    <a
+                      v-if="
+                        index !== quiz.questions[questionIndex - 1].checkpoint
+                      "
+                    >
+                      <div
+                        class="card card-list-hover"
+                        @click="checkpointbg(index, item.value)"
+                      >
+                        <div class="card-body">
+                          <div class="col-12 d-flex align-items-center">
+                            <div class="answer_txt">{{ item.text }}</div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div v-if="end === false">
-      <div
-        class="container container_short footerV2"
-        v-if="quiz.questions[questionIndex - 1].check === false"
-        disabled
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+      <div v-if="end === false">
+        <div
+          class="container container_short footerV2"
+          v-if="quiz.questions[questionIndex - 1].check === false"
+          disabled
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="container container_short footer"
+          v-if="quiz.questions[questionIndex - 1].check === true"
+          @click="next"
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="container container_short footer"
-        v-if="quiz.questions[questionIndex - 1].check === true"
-        @click="next"
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+      <div v-if="end === true">
+        <div
+          class="container container_short footerV2"
+          v-if="quiz.questions[questionIndex - 1].check === false"
+          disabled
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div v-if="end === true">
-      <div
-        class="container container_short footerV2"
-        v-if="quiz.questions[questionIndex - 1].check === false"
-        disabled
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="container container_short footer"
-        v-if="quiz.questions[questionIndex - 1].check === true"
-        @click="math"
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+        <div
+          class="container container_short footer"
+          v-if="quiz.questions[questionIndex - 1].check === true"
+          @click="math"
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ส่งต่อ</div>
+              </div>
             </div>
           </div>
         </div>
@@ -759,7 +776,15 @@ export default {
       ans: [],
       final: 0,
       end: false,
+      isLoading: false,
     }
+  },
+  components: {
+    Loader: () => import('~/components/Loader.vue'),
+  },
+  async mounted() {
+    this.isLoading = true
+    this.isLoading = false
   },
   methods: {
     math() {
@@ -784,11 +809,7 @@ export default {
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
       this.quiz.questions[this.questionIndex - 1].check = true
-      console.log(this.quiz.questions[this.questionIndex - 1])
-      console.log('nn', this.quiz.questions)
-      console.log(value)
       this.ans[this.questionIndex - 1] = score
-      console.log('sc', this.ans)
       if (this.ans.length === this.quiz.questions.length) {
         this.end = true
       }
@@ -807,20 +828,17 @@ export default {
       }
     },
     perpage(value) {
-      console.log(value)
       this.questionIndex = value + 1
     },
     show() {
       if (this.showg == false) {
         this.showg = true
       }
-      console.log('be', this.showg)
     },
     close() {
       if (this.showg == true) {
         this.showg = false
       }
-      console.log('be', this.showg)
     },
     playAgain() {
       this.questionIndex = 0

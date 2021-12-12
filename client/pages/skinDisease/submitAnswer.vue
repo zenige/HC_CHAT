@@ -147,14 +147,16 @@ export default {
 .question_txt {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  font-size: 16px;
+  font-size: 22px;
   color: #333333;
+  line-height: 33px;
 }
 .answer_txt {
   font-family: 'Prompt-Regular';
   font-style: normal;
-  font-size: 15px;
-  color: #333333;
+  font-size: 16px;
+  color: #808080;
+  line-height: 33px;
 }
 .card-list-hover:hover {
   background-color: #f3f3f3;

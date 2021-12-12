@@ -1,129 +1,150 @@
 <template>
   <div>
-    <div class="container container_short pg-bar">
-      <div class="text-center">
-        <b-progress
-          :value="ans.length"
-          :max="quiz.questions.length"
-        ></b-progress>
+    <Loader v-if="isLoading" />
+    <div v-else>
+      <div class="container container_short pg-bar">
+        <div class="text-center">
+          <b-progress
+            :value="ans.length"
+            :max="quiz.questions.length"
+          ></b-progress>
+        </div>
       </div>
-    </div>
-    <div class="container container_short skin-content">
-      <div class="row">
-        <div class="col-12 mb-2 pb_me-4">
-          <div class="pt-3">
-            <div class="card-body">
-              <div class="col-12 mt-3 mb-2 px-0">
-                <div class="ck-content">
-                  <p class="question_txt">
-                    {{ quiz.questions[questionIndex - 1].text }}
-                  </p>
-                  <figure
-                    class="image"
-                    v-if="quiz.questions[questionIndex - 1].questionImage"
-                  >
-                    <img
-                      v-bind:src="
-                        quiz.questions[questionIndex - 1].questionImage
-                      "
-                    />
-                  </figure>
+      <div class="container container_short skin-content">
+        <div class="row">
+          <div class="col-12 mb-2 pb_me-4">
+            <div class="pt-3">
+              <div class="card-body">
+                <div class="col-12 mt-3 mb-2 px-0">
+                  <div class="ck-content">
+                    <p class="question_txt">
+                      {{ quiz.questions[questionIndex - 1].text }}
+                    </p>
+                    <figure
+                      class="image mt-3"
+                      v-if="quiz.questions[questionIndex - 1].questionImage"
+                    >
+                      <img
+                        v-bind:src="
+                          quiz.questions[questionIndex - 1].questionImage
+                        "
+                      />
+                    </figure>
+                  </div>
                 </div>
-              </div>
-              <div
-                style="cursor: pointer"
-                class="col-12"
-                v-for="(item, index) in quiz.questions[questionIndex - 1]
-                  .answers"
-                :key="index"
-              >
-                <a
-                  v-if="index === quiz.questions[questionIndex - 1].checkpoint"
-                >
+                <div class="mt-4">
                   <div
-                    class="card bg_green"
-                    @click="checkpointbg(index, item.value)"
+                    style="cursor: pointer"
+                    class="col-12"
+                    v-for="(item, index) in quiz.questions[questionIndex - 1]
+                      .answers"
+                    :key="index"
                   >
-                    <div class="card-body">
-                      <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt" style="color: #fff">
-                          {{ item.text }}
+                    <a
+                      v-if="
+                        index === quiz.questions[questionIndex - 1].checkpoint
+                      "
+                    >
+                      <div
+                        class="card bg_green"
+                        @click="checkpointbg(index, item.value)"
+                      >
+                        <div class="card-body">
+                          <div class="col-12 d-flex align-items-center">
+                            <div class="answer_txt" style="color: #fff">
+                              {{ item.text }}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </a>
-                <a
-                  v-if="index !== quiz.questions[questionIndex - 1].checkpoint"
-                >
-                  <div
-                    class="card card-list-hover"
-                    @click="checkpointbg(index, item.value)"
-                  >
-                    <div class="card-body">
-                      <div class="col-12 d-flex align-items-center">
-                        <div class="answer_txt">{{ item.text }}</div>
+                    </a>
+                    <a
+                      v-if="
+                        index !== quiz.questions[questionIndex - 1].checkpoint
+                      "
+                    >
+                      <div
+                        class="card card-list-hover"
+                        @click="checkpointbg(index, item.value)"
+                      >
+                        <div class="card-body">
+                          <div class="col-12 d-flex align-items-center">
+                            <div class="answer_txt">{{ item.text }}</div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div v-if="end === false">
-      <div
-        class="container container_short footerV2"
-        v-if="quiz.questions[questionIndex - 1].check === false"
-        disabled
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+      <div v-if="end === false">
+        <div
+          class="container container_short footerV2"
+          v-if="quiz.questions[questionIndex - 1].check === false"
+          disabled
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="container container_short footer"
+          v-if="quiz.questions[questionIndex - 1].check === true"
+          @click="next"
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="container container_short footer"
-        v-if="quiz.questions[questionIndex - 1].check === true"
-        @click="next"
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ต่อไป</div>
+      <div v-if="end === true">
+        <div
+          class="container container_short footerV2"
+          v-if="quiz.questions[questionIndex - 1].check === false"
+          disabled
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">
+                  ส่งแบบสอบถาม
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div v-if="end === true">
-      <div
-        class="container container_short footerV2"
-        v-if="quiz.questions[questionIndex - 1].check === false"
-        disabled
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งแบบสอบถาม</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="container container_short footer"
-        v-if="quiz.questions[questionIndex - 1].check === true"
-        @click="math"
-      >
-        <div class="row mt-3 mb-3">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="m_width_120p">
-              <div class="m_width_120p text-center footerBtn">ส่งแบบสอบถาม</div>
+        <div
+          class="container container_short footer"
+          v-if="quiz.questions[questionIndex - 1].check === true"
+          @click="math"
+        >
+          <div class="row mt-3 mb-3">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
+              <div class="m_width_120p">
+                <div class="m_width_120p text-center footerBtn">
+                  ส่งแบบสอบถาม
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -174,7 +195,7 @@ var quiz = {
     },
     {
       text: '1.1) คุณเป็นผื่นแดงในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/s13Sjg3/redness.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -198,7 +219,7 @@ var quiz = {
     },
     {
       text: '1.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/fS7xfQF/edema.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -222,7 +243,7 @@ var quiz = {
     },
     {
       text: '1.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/f4VBYtp/excoriation.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -246,7 +267,7 @@ var quiz = {
     },
     {
       text: '1.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ศีรษะ/คอ มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/G9cvQ5w/lichenification.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -306,7 +327,7 @@ var quiz = {
     },
     {
       text: '2.1) คุณเป็นผื่นแดงในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/s13Sjg3/redness.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -330,7 +351,7 @@ var quiz = {
     },
     {
       text: '2.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/fS7xfQF/edema.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -354,7 +375,7 @@ var quiz = {
     },
     {
       text: '2.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/f4VBYtp/excoriation.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -378,7 +399,7 @@ var quiz = {
     },
     {
       text: '2.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ลำตัว มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/G9cvQ5w/lichenification.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -438,7 +459,7 @@ var quiz = {
     },
     {
       text: '3.1) คุณเป็นผื่นแดงในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/s13Sjg3/redness.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -462,7 +483,7 @@ var quiz = {
     },
     {
       text: '3.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/fS7xfQF/edema.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -486,7 +507,7 @@ var quiz = {
     },
     {
       text: '3.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/f4VBYtp/excoriation.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -510,7 +531,7 @@ var quiz = {
     },
     {
       text: '3.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ แขน มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/G9cvQ5w/lichenification.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -570,7 +591,7 @@ var quiz = {
     },
     {
       text: '4.1) คุณเป็นผื่นแดงในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/tbSvm5N/1-1.png',
+      questionImage: 'https://i.ibb.co/s13Sjg3/redness.png',
       answers: [
         {
           text: 'None (ไม่เป็นผื่นแดง)',
@@ -594,7 +615,7 @@ var quiz = {
     },
     {
       text: '4.2) คุณเป็นตุ่มหรือมีรอยนูนของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/myzjx9p/1-2.png',
+      questionImage: 'https://i.ibb.co/fS7xfQF/edema.png',
       answers: [
         {
           text: 'None (ไม่เป็นตุ่มหรือมีรอยนูน)',
@@ -618,7 +639,7 @@ var quiz = {
     },
     {
       text: '4.3) คุณมีรอยถลอกหรือรอยผิวหนังที่แตกเป็นแผลของผื่นในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/V3ps1Hb/1-3.png',
+      questionImage: 'https://i.ibb.co/f4VBYtp/excoriation.png',
       answers: [
         {
           text: 'None (ไม่เป็นรอยถลอกหรือมีรอยผิวหนังที่แตก)',
@@ -642,7 +663,7 @@ var quiz = {
     },
     {
       text: '4.4) คุณมีความหนาหรือความแข็งตัวของผิวหนังในบริเวณ ขา มากน้อยระดับไหน?',
-      questionImage: 'https://i.ibb.co/kX6sBq8/1-4.png',
+      questionImage: 'https://i.ibb.co/G9cvQ5w/lichenification.png',
       answers: [
         {
           text: 'None (ไม่มีความหนาหรือความแข็งตัวของผิวหนัง)',
@@ -677,7 +698,15 @@ export default {
       ans: [],
       final: 0,
       end: false,
+      isLoading: false,
     }
+  },
+  components: {
+    Loader: () => import('~/components/Loader.vue'),
+  },
+  async mounted() {
+    this.isLoading = true
+    this.isLoading = false
   },
   methods: {
     math() {
@@ -706,11 +735,7 @@ export default {
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
       this.quiz.questions[this.questionIndex - 1].check = true
-      console.log(this.quiz.questions[this.questionIndex - 1])
-      console.log('nn', this.quiz.questions)
-      console.log(value)
       this.ans[this.questionIndex - 1] = score
-      console.log('sc', this.ans)
       if (this.ans.length === this.quiz.questions.length) {
         this.end = true
       }
@@ -729,20 +754,17 @@ export default {
       }
     },
     perpage(value) {
-      console.log(value)
       this.questionIndex = value + 1
     },
     show() {
       if (this.showg == false) {
         this.showg = true
       }
-      console.log('be', this.showg)
     },
     close() {
       if (this.showg == true) {
         this.showg = false
       }
-      console.log('be', this.showg)
     },
     playAgain() {
       this.questionIndex = 0
