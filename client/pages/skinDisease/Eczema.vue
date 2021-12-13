@@ -10,6 +10,7 @@
           ></b-progress>
         </div>
       </div>
+
       <div class="container container_short skin-content">
         <div class="row">
           <div class="col-12 mb-2 pb_me-4">
@@ -703,6 +704,7 @@ export default {
       final: 0,
       end: false,
       isLoading: false,
+      reply_token: ''
     }
   },
   components: {
@@ -719,14 +721,17 @@ export default {
       liffId :'1655993001-QLqyKnVe'
         }).then(()=>{
           console.log("PASS")
+          
         })
     })
     .catch((err) => {
         console.log("f",err)
       // Failed to fetch script
     });
+    this.reply_token = this.$route.query.replyToken
     this.isLoading = true
     this.isLoading = false
+  
   },
   beforeCreate(){
   
@@ -769,7 +774,29 @@ export default {
         this.questionIndex--
       }
     },
-    next() {
+    async sendMessage(){   
+      let token = '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU='
+          const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        const bodyParameters = {
+            to: 'Ueb59687406ee1813431033235e2b83ec',
+            "messages":[
+        {
+            "type":"text",
+            "text":"Hello, world1"
+        },
+        {
+            "type":"text",
+            "text":"Hello, world2"
+        }
+    ]
+          };
+         await this.$axios.post('https://api.line.me/v2/bot/message/push',bodyParameters,config)
+    },
+    async next() {
+      console.log('next')
+      await this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length

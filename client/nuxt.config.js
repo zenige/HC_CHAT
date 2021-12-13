@@ -89,6 +89,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'nuxt-i18n',
+    '@nuxtjs/proxy'
   ],
 
   i18n: {
@@ -134,8 +135,12 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:200/',
+    baseURL: 'https://api.line.me/',
+    proxyHeaders: false,
+    credentials: false
   },
+
+ 
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
