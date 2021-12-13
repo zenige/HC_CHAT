@@ -154,10 +154,8 @@
   </div>
 </template>
 
-
 <script>
 import Vue from 'vue'
-
 
 var quiz = {
   title: 'quiz sample',
@@ -704,7 +702,7 @@ export default {
       final: 0,
       end: false,
       isLoading: false,
-      reply_token: ''
+      reply_token: '',
     }
   },
   components: {
@@ -714,30 +712,39 @@ export default {
     //   this.liff.init({
     //   liffId :'1655993001-QLqyKnVe'
     // })
-    Vue.loadScript("https://static.line-scdn.net/liff/edge/2/sdk.js")
-    .then(() => {
-      // Script is loaded, do something
-        liff.init({
-      liffId :'1655993001-QLqyKnVe'
-        }).then(()=>{
-          console.log("PASS")
-          
-        })
-    })
-    .catch((err) => {
-        console.log("f",err)
-      // Failed to fetch script
-    });
+    Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
+      .then(() => {
+        // Script is loaded, do something
+        liff
+          .init({
+            liffId: '1655993001-QLqyKnVe',
+          })
+          .then(() => {
+                   liff.sendMessages([
+          {
+            type: 'text',
+            text: 'Hello, World!'
+          }
+        ])
+          .then(() => {
+            console.log('message sent');
+          })
+          .catch((err) => {
+            console.log('error', err);
+          });
+            console.log('PASS')
+          })
+      })
+      .catch((err) => {
+        console.log('f', err)
+        // Failed to fetch script
+      })
     this.reply_token = this.$route.query.replyToken
     this.isLoading = true
     this.isLoading = false
-  
   },
-  beforeCreate(){
-  
-  },
+  beforeCreate() {},
   methods: {
-
     math() {
       let head =
         (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) *
@@ -774,25 +781,36 @@ export default {
         this.questionIndex--
       }
     },
-    async sendMessage(){   
-      let token = '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU='
-          const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-        const bodyParameters = {
-            to: 'Ueb59687406ee1813431033235e2b83ec',
-            "messages":[
-        {
-            "type":"text",
-            "text":"Hello, world1"
-        },
-        {
-            "type":"text",
-            "text":"Hello, world2"
-        }
-    ]
-          };
-         await this.$axios.post('https://api.line.me/v2/bot/message/push',bodyParameters,config)
+    async sendMessage() {
+       
+      // let token =
+      //   '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU='
+      // const config = {
+      //   headers: {
+      //     Authorization: 'Bearer ' + token,
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Accept':'*/*',
+      //     'Accept-Encoding':'gzip, deflate, br',
+      //     'Connection':'keep-alive',
+      //     'User-Agent':'PostmanRuntime/7.28.0'
+      //   },
+      // }
+      // const bodyParameters = {
+      //   to: 'Ueb59687406ee1813431033235e2b83ec',
+      //   messages: [
+      //     {
+      //       type: 'text',
+      //       text: 'Hello, world1',
+      //     },
+      //     {
+      //       type: 'text',
+      //       text: 'Hello, world2',
+      //     },
+      //   ],
+      // }
+      // await this.$axios.post('v2/bot/message/push', config, bodyParameters)
+
     },
     async next() {
       console.log('next')

@@ -74,6 +74,8 @@ export default {
   plugins: [
     {src:'~/plugins/line',mode: 'client'},
     { src: '~/plugins/load-script.js' },
+    '~/plugins/axios',
+    
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -136,8 +138,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'https://api.line.me/',
-    proxyHeaders: false,
-    credentials: false
+
+
   },
 
  
