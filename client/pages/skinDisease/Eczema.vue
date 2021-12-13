@@ -153,7 +153,7 @@
   </div>
 </template>
 
-<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
 <script>
 import Vue from 'vue'
 
@@ -709,9 +709,22 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   async mounted() {
-      this.$liff.init({
+    //   this.liff.init({
+    //   liffId :'1655993001-QLqyKnVe'
+    // })
+    Vue.loadScript("https://static.line-scdn.net/liff/edge/2/sdk.js")
+    .then(() => {
+      // Script is loaded, do something
+        liff.init({
       liffId :'1655993001-QLqyKnVe'
+        }).then(()=>{
+          console.log("PASS")
+        })
     })
+    .catch((err) => {
+        console.log("f",err)
+      // Failed to fetch script
+    });
     this.isLoading = true
     this.isLoading = false
   },
@@ -719,6 +732,7 @@ export default {
   
   },
   methods: {
+
     math() {
       let head =
         (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) *

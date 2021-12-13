@@ -28,7 +28,7 @@ export default {
       },
     ],
     script: [
-      { src: 'https://static.line-scdn.net/liff/edge/2.1/sdk.js' }
+    
     ]
   },
 
@@ -41,6 +41,8 @@ export default {
     { src: 'assets/hc-libs/js/plugins/loaders/blockui.min.js' },
     { src: 'assets/hc-libs/js/app.js' },
     { src: 'assets/hc-libs/js/swiper.js' },
+    { src: 'https://static.line-scdn.net/liff/edge/2.1/sdk.js' },
+
   ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -71,6 +73,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src:'~/plugins/line',mode: 'client'},
+    { src: '~/plugins/load-script.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -142,6 +145,8 @@ export default {
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
       }),
+      
     ],
+    transpile: ['vue-plugin-load-script']
   },
 }
