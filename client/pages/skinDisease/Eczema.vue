@@ -720,18 +720,19 @@ export default {
             liffId: '1655993001-QLqyKnVe',
           })
           .then(() => {
-                   liff.sendMessages([
-          {
-            type: 'text',
-            text: 'Hello, World!'
-          }
-        ])
-          .then(() => {
-            console.log('message sent');
-          })
-          .catch((err) => {
-            console.log('error', err);
-          });
+            liff
+              .sendMessages([
+                {
+                  type: 'text',
+                  text: 'Hello, World!',
+                },
+              ])
+              .then(() => {
+                console.log('message sent')
+              })
+              .catch((err) => {
+                console.log('error', err)
+              })
             console.log('PASS')
           })
       })
@@ -782,7 +783,6 @@ export default {
       }
     },
     async sendMessage() {
-       
       // let token =
       //   '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU='
       // const config = {
@@ -810,7 +810,6 @@ export default {
       //   ],
       // }
       // await this.$axios.post('v2/bot/message/push', config, bodyParameters)
-
     },
     async next() {
       console.log('next')
