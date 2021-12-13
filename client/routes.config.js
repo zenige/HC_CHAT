@@ -70,6 +70,11 @@ const DASHBOARD_ROUTE = [
     path: '/dashboard/patient-in-group/:groupId',
     component: 'pages/dashboard/PatientInGroup.vue',
   },
+  {
+    name: 'Pattttp',
+    path: '/test',
+    component: 'pages/test.vue',
+  },
 ]
 
 const SKIN_DISEASE = [

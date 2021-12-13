@@ -739,9 +739,9 @@ export default {
         console.log('f', err)
         // Failed to fetch script
       })
-    this.reply_token = this.$route.query.replyToken
-    this.isLoading = true
-    this.isLoading = false
+    // this.reply_token = this.$route.query.replyToken
+    // this.isLoading = true
+    // this.isLoading = false
   },
   beforeCreate() {},
   methods: {
