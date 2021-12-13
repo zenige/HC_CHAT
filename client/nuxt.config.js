@@ -27,6 +27,9 @@ export default {
         rel: 'stylesheet',
       },
     ],
+    script: [
+      { src: 'https://static.line-scdn.net/liff/edge/2.1/sdk.js' }
+    ]
   },
 
   /**
@@ -66,7 +69,9 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {src:'~/plugins/line',mode: 'client'},
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

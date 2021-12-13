@@ -153,7 +153,11 @@
   </div>
 </template>
 
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script>
+import Vue from 'vue'
+
+
 var quiz = {
   title: 'quiz sample',
   questions: [
@@ -705,8 +709,14 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   async mounted() {
+      this.$liff.init({
+      liffId :'1655993001-QLqyKnVe'
+    })
     this.isLoading = true
     this.isLoading = false
+  },
+  beforeCreate(){
+  
   },
   methods: {
     math() {
