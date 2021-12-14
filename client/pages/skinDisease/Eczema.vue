@@ -783,10 +783,7 @@ export default {
     sendMessage(){
             liff
               .sendMessages([
-                {
-                  type: 'text',
-                  text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
-                },
+               
                 {
   "type": "template",
   "altText": "this is a confirm template",
@@ -830,7 +827,7 @@ export default {
     },
 
     async next() {
- 
+  await this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
