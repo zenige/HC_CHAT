@@ -768,7 +768,7 @@ export default {
             type: 'bubble',
             hero: {
               type: 'image',
-              url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+              url: 'https://cdn.discordapp.com/attachments/791178261371289631/917601652649889812/Healthcare_Chatbot_-_LINE_Chatbot_Logo.png',
               size: 'full',
               aspectRatio: '20:13',
               aspectMode: 'cover',
@@ -776,6 +776,9 @@ export default {
                 type: 'uri',
                 uri: 'http://linecorp.com/',
               },
+              margin: 'sm',
+              position: 'relative',
+              align: 'start',
             },
             body: {
               type: 'box',
@@ -783,101 +786,12 @@ export default {
               contents: [
                 {
                   type: 'text',
-                  text: 'Brown Cafe',
-                  weight: 'bold',
-                  size: 'xl',
-                },
-                {
-                  type: 'box',
-                  layout: 'baseline',
-                  margin: 'md',
-                  contents: [
-                    {
-                      type: 'icon',
-                      size: 'sm',
-                      url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
-                    },
-                    {
-                      type: 'icon',
-                      size: 'sm',
-                      url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
-                    },
-                    {
-                      type: 'icon',
-                      size: 'sm',
-                      url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
-                    },
-                    {
-                      type: 'icon',
-                      size: 'sm',
-                      url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png',
-                    },
-                    {
-                      type: 'icon',
-                      size: 'sm',
-                      url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png',
-                    },
-                    {
-                      type: 'text',
-                      text: '4.0',
-                      size: 'sm',
-                      color: '#999999',
-                      margin: 'md',
-                      flex: 0,
-                    },
-                  ],
-                },
-                {
-                  type: 'box',
-                  layout: 'vertical',
-                  margin: 'lg',
-                  spacing: 'sm',
-                  contents: [
-                    {
-                      type: 'box',
-                      layout: 'baseline',
-                      spacing: 'sm',
-                      contents: [
-                        {
-                          type: 'text',
-                          text: 'Place',
-                          color: '#aaaaaa',
-                          size: 'sm',
-                          flex: 1,
-                        },
-                        {
-                          type: 'text',
-                          text: 'Miraina Tower, 4-1-6 Shinjuku, Tokyo',
-                          wrap: true,
-                          color: '#666666',
-                          size: 'sm',
-                          flex: 5,
-                        },
-                      ],
-                    },
-                    {
-                      type: 'box',
-                      layout: 'baseline',
-                      spacing: 'sm',
-                      contents: [
-                        {
-                          type: 'text',
-                          text: 'Time',
-                          color: '#aaaaaa',
-                          size: 'sm',
-                          flex: 1,
-                        },
-                        {
-                          type: 'text',
-                          text: '10:00 - 23:00',
-                          wrap: true,
-                          color: '#666666',
-                          size: 'sm',
-                          flex: 5,
-                        },
-                      ],
-                    },
-                  ],
+                  text: 'ผมสามารถวินิจฉัยโรคผิวหนังของคุณได้ว่าคุณป่วยเป็นโรคอะไร เพียงคุณส่งรูปมาให้ผม เริ่มวินิจฉัยกันเลยไหมครับ? กรุณาเลือกเมนูด้านล่าง',
+                  size: 'md',
+                  style: 'normal',
+                  decoration: 'none',
+                  position: 'relative',
+                  wrap: True,
                 },
               ],
             },
@@ -891,9 +805,9 @@ export default {
                   style: 'link',
                   height: 'sm',
                   action: {
-                    type: 'uri',
-                    label: 'CALL',
-                    uri: 'https://linecorp.com',
+                    type: 'postback',
+                    label: 'เริ่มการวินิฉัย',
+                    data: 'action=start&state=start',
                   },
                 },
                 {
@@ -901,9 +815,9 @@ export default {
                   style: 'link',
                   height: 'sm',
                   action: {
-                    type: 'uri',
-                    label: 'WEBSITE',
-                    uri: 'https://linecorp.com',
+                    type: 'postback',
+                    label: 'ดูเพิ่มเติม',
+                    data: 'action=seeMore&state=seeMore',
                   },
                 },
               ],
