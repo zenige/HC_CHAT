@@ -765,6 +765,10 @@ export default {
                   type: 'text',
                   text: 'Hello, World!',
                 },
+                {
+                  type: 'text',
+                  text: 'sec 2',
+                }
               ])
               .then(() => {
                 console.log('message sent')
