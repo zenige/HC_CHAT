@@ -720,19 +720,7 @@ export default {
             liffId: '1655993001-QLqyKnVe',
           })
           .then(() => {
-            liff
-              .sendMessages([
-                {
-                  type: 'text',
-                  text: 'Hello, World!',
-                },
-              ])
-              .then(() => {
-                console.log('message sent')
-              })
-              .catch((err) => {
-                console.log('error', err)
-              })
+           
             console.log('PASS')
           })
       })
@@ -767,7 +755,23 @@ export default {
       let sum = head + U_limbs + trunk + L_limbs
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
+      this.sendMessage()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
+    },
+    sendMessage(){
+            liff
+              .sendMessages([
+                {
+                  type: 'text',
+                  text: 'Hello, World!',
+                },
+              ])
+              .then(() => {
+                console.log('message sent')
+              })
+              .catch((err) => {
+                console.log('error', err)
+              })
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -782,38 +786,8 @@ export default {
         this.questionIndex--
       }
     },
-    async sendMessage() {
-      // let token =
-      //   '/j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU='
-      // const config = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + token,
-      //     'Content-Type': 'application/json',
-      //     'Access-Control-Allow-Origin': '*',
-      //     'Accept':'*/*',
-      //     'Accept-Encoding':'gzip, deflate, br',
-      //     'Connection':'keep-alive',
-      //     'User-Agent':'PostmanRuntime/7.28.0'
-      //   },
-      // }
-      // const bodyParameters = {
-      //   to: 'Ueb59687406ee1813431033235e2b83ec',
-      //   messages: [
-      //     {
-      //       type: 'text',
-      //       text: 'Hello, world1',
-      //     },
-      //     {
-      //       type: 'text',
-      //       text: 'Hello, world2',
-      //     },
-      //   ],
-      // }
-      // await this.$axios.post('v2/bot/message/push', config, bodyParameters)
-    },
+
     async next() {
-      console.log('next')
-      await this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
