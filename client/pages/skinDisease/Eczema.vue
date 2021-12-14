@@ -765,63 +765,40 @@ export default {
             text: 'Hello, World!',
           },
           {
-            type: 'bubble',
-            hero: {
-              type: 'image',
-              url: 'https://cdn.discordapp.com/attachments/791178261371289631/917601652649889812/Healthcare_Chatbot_-_LINE_Chatbot_Logo.png',
-              size: 'full',
-              aspectRatio: '20:13',
-              aspectMode: 'cover',
-              action: {
-                type: 'uri',
-                uri: 'http://linecorp.com/',
-              },
-              margin: 'sm',
-              position: 'relative',
-              align: 'start',
-            },
-            body: {
-              type: 'box',
-              layout: 'vertical',
-              contents: [
-                {
-                  type: 'text',
-                  text: 'ผมสามารถวินิจฉัยโรคผิวหนังของคุณได้ว่าคุณป่วยเป็นโรคอะไร เพียงคุณส่งรูปมาให้ผม เริ่มวินิจฉัยกันเลยไหมครับ? กรุณาเลือกเมนูด้านล่าง',
-                  size: 'md',
-                  style: 'normal',
-                  decoration: 'none',
-                  position: 'relative',
-                  wrap: true,
-                },
-              ],
-            },
-            footer: {
-              type: 'box',
-              layout: 'vertical',
-              spacing: 'sm',
-              contents: [
-                {
-                  type: 'button',
-                  style: 'link',
-                  height: 'sm',
-                  action: {
-                type: 'uri',
-                uri: 'http://linecorp.com/',
-              },
-                },
-                {
-                  type: 'button',
-                  style: 'link',
-                  height: 'sm',
-                  action: {
-                type: 'uri',
-                uri: 'http://linecorp.com/',
-              },
-                },
-              ],
-              flex: 0,
-            },
+  "type": "template",
+  "altText": "This is a buttons template",
+  "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+      "imageAspectRatio": "rectangle",
+      "imageSize": "cover",
+      "imageBackgroundColor": "#FFFFFF",
+      "title": "Menu",
+      "text": "Please select",
+      "defaultAction": {
+          "type": "uri",
+          "label": "View detail",
+          "uri": "http://example.com/page/123"
+      },
+      "actions": [
+          {
+            "type": "postback",
+            "label": "Buy",
+            "data": "action=buy&itemid=123"
           },
+          {
+            "type": "postback",
+            "label": "Add to cart",
+            "data": "action=add&itemid=123"
+          },
+          {
+            "type": "uri",
+            "label": "View detail",
+            "uri": "http://example.com/page/123"
+          }
+      ]
+  }
+}
         ])
         .then(() => {
           console.log('message sent')
