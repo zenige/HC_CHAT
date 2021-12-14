@@ -791,7 +791,7 @@ export default {
                   style: 'normal',
                   decoration: 'none',
                   position: 'relative',
-                  wrap: True,
+                  wrap: true,
                 },
               ],
             },
