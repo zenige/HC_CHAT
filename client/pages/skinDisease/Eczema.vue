@@ -783,25 +783,25 @@ export default {
     sendMessage(){
             liff
               .sendMessages([
-               
                 {
-  "type": "template",
-  "altText": "this is a confirm template",
-  "template": {
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
+  "type": "flex",
+  "altText": "this is a flex message",
+  "contents": {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "hello"
+        },
+        {
+          "type": "text",
+          "text": "world"
+        }
       ]
+    }
   }
 }
               ])
