@@ -720,7 +720,6 @@ export default {
             liffId: '1655993001-QLqyKnVe',
           })
           .then(() => {
-           
             console.log('PASS')
           })
       })
@@ -758,24 +757,87 @@ export default {
 
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
-    sendMessage(){
-            liff
-              .sendMessages([
+    sendMessage() {
+      liff
+        .sendMessages([
+          {
+            type: 'text',
+            text: 'Hello, World!',
+          },
+          {
+            type: 'template',
+            altText: 'this is a carousel template',
+            template: {
+              type: 'carousel',
+              columns: [
                 {
-                  type: 'text',
-                  text: 'Hello, World!',
+                  thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+                  imageBackgroundColor: '#FFFFFF',
+                  title: 'this is menu',
+                  text: 'description',
+                  defaultAction: {
+                    type: 'uri',
+                    label: 'View detail',
+                    uri: 'http://example.com/page/123',
+                  },
+                  actions: [
+                    {
+                      type: 'postback',
+                      label: 'Buy',
+                      data: 'action=buy&itemid=111',
+                    },
+                    {
+                      type: 'postback',
+                      label: 'Add to cart',
+                      data: 'action=add&itemid=111',
+                    },
+                    {
+                      type: 'uri',
+                      label: 'View detail',
+                      uri: 'http://example.com/page/111',
+                    },
+                  ],
                 },
                 {
-                  type: 'text',
-                  text: 'sec 2',
-                }
-              ])
-              .then(() => {
-                console.log('message sent')
-              })
-              .catch((err) => {
-                console.log('error', err)
-              })
+                  thumbnailImageUrl: 'https://example.com/bot/images/item2.jpg',
+                  imageBackgroundColor: '#000000',
+                  title: 'this is menu',
+                  text: 'description',
+                  defaultAction: {
+                    type: 'uri',
+                    label: 'View detail',
+                    uri: 'http://example.com/page/222',
+                  },
+                  actions: [
+                    {
+                      type: 'postback',
+                      label: 'Buy',
+                      data: 'action=buy&itemid=222',
+                    },
+                    {
+                      type: 'postback',
+                      label: 'Add to cart',
+                      data: 'action=add&itemid=222',
+                    },
+                    {
+                      type: 'uri',
+                      label: 'View detail',
+                      uri: 'http://example.com/page/222',
+                    },
+                  ],
+                },
+              ],
+              imageAspectRatio: 'rectangle',
+              imageSize: 'cover',
+            },
+          },
+        ])
+        .then(() => {
+          console.log('message sent')
+        })
+        .catch((err) => {
+          console.log('error', err)
+        })
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -792,7 +854,7 @@ export default {
     },
 
     async next() {
-      await  this.sendMessage()
+      await this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
