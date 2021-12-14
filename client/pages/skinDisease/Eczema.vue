@@ -755,7 +755,7 @@ export default {
       let sum = head + U_limbs + trunk + L_limbs
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
-      this.sendMessage()
+
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
     sendMessage(){
@@ -788,6 +788,7 @@ export default {
     },
 
     async next() {
+      await  this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
