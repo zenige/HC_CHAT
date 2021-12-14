@@ -703,6 +703,7 @@ export default {
       end: false,
       isLoading: false,
       reply_token: '',
+      damage :''
     }
   },
   components: {
@@ -720,6 +721,7 @@ export default {
             liffId: '1655993001-QLqyKnVe',
           })
           .then(() => {
+           
             console.log('PASS')
           })
       })
@@ -733,7 +735,7 @@ export default {
   },
   beforeCreate() {},
   methods: {
-    math() {
+    async math() {
       let head =
         (this.ans[1] + this.ans[2] + this.ans[3] + this.ans[4]) *
         this.ans[0] *
@@ -754,166 +756,44 @@ export default {
       let sum = head + U_limbs + trunk + L_limbs
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
-
+      await this.calDamgae()
+      await this.sendMessage()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
-    sendMessage() {
-      liff
-        .sendMessages([
-         {
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    }
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "Brown Cafe",
-        "weight": "bold",
-        "size": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "baseline",
-        "margin": "md",
-        "contents": [
-          {
-            "type": "icon",
-            "size": "sm",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-          },
-          {
-            "type": "icon",
-            "size": "sm",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-          },
-          {
-            "type": "icon",
-            "size": "sm",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-          },
-          {
-            "type": "icon",
-            "size": "sm",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-          },
-          {
-            "type": "icon",
-            "size": "sm",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-          },
-          {
-            "type": "text",
-            "text": "4.0",
-            "size": "sm",
-            "color": "#999999",
-            "margin": "md",
-            "flex": 0
-          }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "lg",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "Place",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1
-              },
-              {
-                "type": "text",
-                "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "Time",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1
-              },
-              {
-                "type": "text",
-                "text": "10:00 - 23:00",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
-              }
-            ]
-          }
-        ]
+    calDamgae(){
+      if(this.final === 0){
+        this.damage = 'ไม่มีระดับความรุนแรง'
       }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "CALL",
-          "uri": "https://linecorp.com"
-        }
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "WEBSITE",
-          "uri": "https://linecorp.com"
-        }
+      else if(this.final >= 0.1 && this.final <= 1){
+        this.damage = 'มีความรุนแรงระดับต่ำ'
       }
-    ],
-    "flex": 0
-  }
-}
-        ])
-        .then(() => {
-          console.log('message sent')
-        })
-        .catch((err) => {
-          console.log('dderror', err)
-          alert('Hello! I am an alert box!!', err)
-        })
+      else if(this.final >= 1.1 && this.final <= 7){
+        this.damage = 'มีความรุนแรงเล็กน้อย'
+      }
+      else if(this.final >= 7.1 && this.final <= 21){
+        this.damage = 'มีความรุนแรงปานกลาง'
+      }
+      else if(this.final >= 21.1 && this.final <= 50){
+        this.damage = 'มีความรุนแรงมาก'
+      }
+      else if(this.final >= 50.1 && this.final <= 72){
+        this.damage = 'มีความรุนแรงมากที่สุด'
+      }
+    },
+    sendMessage(){
+            liff
+              .sendMessages([
+                {
+                  type: 'text',
+                  text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
+                }
+              ])
+              .then(() => {
+                console.log('message sent')
+              })
+              .catch((err) => {
+                console.log('error', err)
+              })
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -930,7 +810,7 @@ export default {
     },
 
     async next() {
-      await this.sendMessage()
+ 
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
