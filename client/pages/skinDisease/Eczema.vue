@@ -786,7 +786,27 @@ export default {
                 {
                   type: 'text',
                   text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
-                }
+                },
+                {
+  "type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
+}
               ])
               .then(() => {
                 console.log('message sent')
