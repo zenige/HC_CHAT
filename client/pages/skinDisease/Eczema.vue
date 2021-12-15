@@ -815,7 +815,7 @@ export default {
           state: 'eczema',
           subState: this.damage.damageEN,
         }
-        await this.$axios.post('http://localhost:8000/api/updateState', body)
+        await this.$axios.post('http://localhost:8000/api/updatestate', body)
       } catch (err) {
         alert(err)
       }
