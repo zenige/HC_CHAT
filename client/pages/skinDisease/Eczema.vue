@@ -773,7 +773,6 @@ export default {
           damageEN: 'clear',
           med: 'แนวทางในการใช้ยารักษาตามระดับความรุนแรงนี้\n\nควรเลือกใช้ยาคอร์ติโคสเตียรอยด์ชนิดทาภายนอกที่มีระดับความแรงระดับ Class VII: Least Potent \n\nเช่น Hydrocortisone acetate 1%, 2.5% cream (Hytisone® cream) หรือ Prednisolone 0.5% (Clinipred® cream) เป็นต้น\n\n\nอ้างอิงจาก: https://www.psoriasis.org/potency-chart/',
         }
-
       } else if (this.final >= 0.1 && this.final <= 1) {
         this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
       } else if (this.final >= 1.1 && this.final <= 7) {
@@ -797,7 +796,8 @@ export default {
           },
           {
             type: 'message',
-            message: "คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ \"ใช่\" เพื่อดูผลิตภัณฑ์แนะนำ",
+            message:
+              'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
           },
         ])
         .then(() => {
@@ -816,11 +816,11 @@ export default {
           subState: this.damage.damageEN,
         }
         await this.$axios.post(
-          'https://3a8a-58-10-4-220.ngrok.io/api/updateState',
+          'https://3a8a-58-10-4-220.ngrok.io/api/updatestate',
           body
         )
       } catch (err) {
-        console.log(err)
+        alert(err)
       }
     },
     checkpointbg(value, score) {
