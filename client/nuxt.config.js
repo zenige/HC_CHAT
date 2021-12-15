@@ -17,19 +17,17 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        href: 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900',
-        rel: 'stylesheet',
-        type: 'text/css',
-      },
+      // {
+      //   href: 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900',
+      //   rel: 'stylesheet',
+      //   type: 'text/css',
+      // },
       {
         href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
         rel: 'stylesheet',
       },
     ],
-    script: [
-    
-    ]
+    script: [],
   },
 
   /**
@@ -42,7 +40,6 @@ export default {
     { src: 'assets/hc-libs/js/app.js' },
     { src: 'assets/hc-libs/js/swiper.js' },
     { src: 'https://static.line-scdn.net/liff/edge/2.1/sdk.js' },
-
   ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -72,10 +69,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src:'~/plugins/line',mode: 'client'},
+    { src: '~/plugins/line', mode: 'client' },
     { src: '~/plugins/load-script.js' },
     '~/plugins/axios',
-    
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -91,7 +87,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'nuxt-i18n',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
   ],
 
   i18n: {
@@ -138,11 +134,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'https://api.line.me/',
-
-
   },
-
- 
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -152,8 +144,7 @@ export default {
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
       }),
-      
     ],
-    transpile: ['vue-plugin-load-script']
+    transpile: ['vue-plugin-load-script'],
   },
 }
