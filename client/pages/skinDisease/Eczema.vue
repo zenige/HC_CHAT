@@ -804,7 +804,7 @@ export default {
           console.log('message sent')
         })
         .catch((err) => {
-        
+          alear('liff',err)
           console.log('error', err)
         })
     },
@@ -817,7 +817,7 @@ export default {
           subState: this.damage.damageEN,
         }
         await this.$axios.post(
-          'https://3a8a-58-10-4-220.ngrok.io/api/updateState',
+          'https://8907-58-10-4-220.ngrok.io/api/updatestate',
           body
         )
       } catch (err) {
