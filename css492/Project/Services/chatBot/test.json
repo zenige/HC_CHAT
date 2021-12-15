@@ -1,0 +1,16 @@
+curl -v -X POST https://api.line.me/v2/bot/message/reply \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer /j7EhbUFpBEyRWQ/S4L/ENoFex6cRKDTSgWLfHnBbRHJrGW2DfFzndBaUTDqS+ryp+37YkTpE+ApqsGOF3gGnOgK3qdALaGKXPfNcDIVZ+yr5GZ5I3NRz8l6DtK4jnAxOwsXWsG5BxhzLUr6sHhbSgdB04t89/1O/w1cDnyilFU=' \
+-d '{
+    "replyToken":"dc5872fe8f9e4074b8705a74c636b21e",
+    "messages":[
+        {
+            "type":"text",
+            "text":"Hello, user"
+        },
+        {
+            "type":"text",
+            "text":"May I help you?"
+        }
+    ]
+}'

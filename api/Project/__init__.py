@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from pydantic.errors import IPvAnyInterfaceError
-cred = credentials.Certificate("./testchatbot-75944-firebase-adminsdk-3i2th-9940873c27.json")
+cred = credentials.Certificate("./css492-firebase-adminsdk-6617j-2b5f9cbf6b.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 

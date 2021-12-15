@@ -9,6 +9,7 @@ origins = [
     "https://localhost.tiangolo.com",
     "http://localhost",
     "http://localhost:3000",
+    "https://6173-2001-fb1-d8-7efe-4563-29a2-208d-ea04.ngrok.io"
 ]
 
 app.add_middleware(

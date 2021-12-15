@@ -9,6 +9,13 @@ import datetime
 from typing import Any, Dict, AnyStr, List, Union
 import ast
 router = APIRouter()
+
+
+class updateState(BaseModel):
+    userId:str
+    state: str
+    subState: str
+
 @router.get("/")
 async def getUsers():
     docs = db.collection("users").stream()
@@ -70,3 +77,16 @@ async def getUsersByGroup(group: Optional[str] = None):
 
 
     return group
+
+@router.post("/updatestate")
+async def test(data: updateState):
+    print('in updateState')
+    try:
+        data = data.dict()
+        print(data)
+        doc_ref = db.collection(u'users').document(data['userId'])
+        doc_ref.update({'mainState': data['state'], 'subState': data['subState']})
+        res = "Update Successful"
+    except:
+        res = "Update Failed" 
+    return res
