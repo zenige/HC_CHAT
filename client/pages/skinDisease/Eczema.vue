@@ -703,7 +703,8 @@ export default {
       end: false,
       isLoading: false,
       reply_token: '',
-      damage :{}
+      damage: {},
+      userId: '',
     }
   },
   components: {
@@ -713,6 +714,8 @@ export default {
     //   this.liff.init({
     //   liffId :'1655993001-QLqyKnVe'
     // })
+    this.userId = this.$route.query.userId
+    alert(this.userId)
     console.log(this.$route)
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
@@ -722,7 +725,6 @@ export default {
             liffId: '1655993001-QLqyKnVe',
           })
           .then(() => {
-           
             console.log('PASS')
           })
       })
@@ -758,53 +760,68 @@ export default {
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
       await this.calDamgae()
+      await this.updateState()
       await this.sendMessage()
+
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
-    calDamgae(){
-      if(this.final === 0){
-        this.damage = {damageTH:'ไม่มีระดับความรุนแรง',damageEN:'clear'}
-        this.damage = {med:'แนวทางในการใช้ยารักษาตามระดับความรุนแรงนี้\n\nควรเลือกใช้ยาคอร์ติโคสเตียรอยด์ชนิดทาภายนอกที่มีระดับความแรงระดับ Class VII: Least Potent \n\nเช่น Hydrocortisone acetate 1%, 2.5% cream (Hytisone® cream) หรือ Prednisolone 0.5% (Clinipred® cream) เป็นต้น\n\n\nอ้างอิงจาก: https://www.psoriasis.org/potency-chart/'}
-      }
-      else if(this.final >= 0.1 && this.final <= 1){
-         this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
-    
-      }
-      else if(this.final >= 1.1 && this.final <= 7){
-        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
-      }
-      else if(this.final >= 7.1 && this.final <= 21){
-        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
-      }
-      else if(this.final >= 21.1 && this.final <= 50){
-       this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
-      }
-      else if(this.final >= 50.1 && this.final <= 72){
-       this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
-      }
-      else{
-        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
+    calDamgae() {
+      if (this.final == 0) {
+        console.log('000')
+        this.damage = {
+          damageTH: 'ไม่มีระดับความรุนแรง',
+          damageEN: 'clear',
+          med: 'แนวทางในการใช้ยารักษาตามระดับความรุนแรงนี้\n\nควรเลือกใช้ยาคอร์ติโคสเตียรอยด์ชนิดทาภายนอกที่มีระดับความแรงระดับ Class VII: Least Potent \n\nเช่น Hydrocortisone acetate 1%, 2.5% cream (Hytisone® cream) หรือ Prednisolone 0.5% (Clinipred® cream) เป็นต้น\n\n\nอ้างอิงจาก: https://www.psoriasis.org/potency-chart/',
+        }
+
+      } else if (this.final >= 0.1 && this.final <= 1) {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+      } else if (this.final >= 1.1 && this.final <= 7) {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+      } else if (this.final >= 7.1 && this.final <= 21) {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+      } else if (this.final >= 21.1 && this.final <= 50) {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+      } else if (this.final >= 50.1 && this.final <= 72) {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+      } else {
+        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
       }
     },
-    sendMessage(){
-            liff
-              .sendMessages([
-                {
-                  "type": "message",
-                  "message":`คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`
-                },
-                {
-                  "type":"message",
-                  "message": this.damage.med
-                }
-                
-              ])
-              .then(() => {
-                console.log('message sent')
-              })
-              .catch((err) => {
-                console.log('error', err)
-              })
+    sendMessage() {
+      liff
+        .sendMessages([
+          {
+            type: 'message',
+            message: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
+          },
+          {
+            type: 'message',
+            message: "คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ \"ใช่\" เพื่อดูผลิตภัณฑ์แนะนำ",
+          },
+        ])
+        .then(() => {
+          console.log('message sent')
+        })
+        .catch((err) => {
+          console.log('error', err)
+        })
+    },
+    async updateState() {
+      console.log(this.damage.damageEN)
+      try {
+        let body = {
+          userId: this.userId,
+          state: 'eczema',
+          substate: this.damage.damageEN,
+        }
+        await this.$axios.post(
+          'https://3a8a-58-10-4-220.ngrok.io/api/updateState',
+          body
+        )
+      } catch (err) {
+        console.log(err)
+      }
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value
@@ -821,7 +838,7 @@ export default {
     },
 
     async next() {
-  await this.sendMessage()
+      await this.sendMessage()
       if (
         this.questionIndex >= 1 &&
         this.questionIndex !== this.quiz.questions.length
