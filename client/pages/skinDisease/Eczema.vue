@@ -703,7 +703,7 @@ export default {
       end: false,
       isLoading: false,
       reply_token: '',
-      damage :''
+      damage :{}
     }
   },
   components: {
@@ -713,6 +713,7 @@ export default {
     //   this.liff.init({
     //   liffId :'1655993001-QLqyKnVe'
     // })
+    console.log(this.$route)
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
         // Script is loaded, do something
@@ -762,48 +763,41 @@ export default {
     },
     calDamgae(){
       if(this.final === 0){
-        this.damage = 'ไม่มีระดับความรุนแรง'
+        this.damage = {damageTH:'ไม่มีระดับความรุนแรง',damageEN:'clear'}
+        this.damage = {med:'แนวทางในการใช้ยารักษาตามระดับความรุนแรงนี้\n\nควรเลือกใช้ยาคอร์ติโคสเตียรอยด์ชนิดทาภายนอกที่มีระดับความแรงระดับ Class VII: Least Potent \n\nเช่น Hydrocortisone acetate 1%, 2.5% cream (Hytisone® cream) หรือ Prednisolone 0.5% (Clinipred® cream) เป็นต้น\n\n\nอ้างอิงจาก: https://www.psoriasis.org/potency-chart/'}
       }
       else if(this.final >= 0.1 && this.final <= 1){
-        this.damage = 'มีความรุนแรงระดับต่ำ'
+         this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
+    
       }
       else if(this.final >= 1.1 && this.final <= 7){
-        this.damage = 'มีความรุนแรงเล็กน้อย'
+        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
       }
       else if(this.final >= 7.1 && this.final <= 21){
-        this.damage = 'มีความรุนแรงปานกลาง'
+        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
       }
       else if(this.final >= 21.1 && this.final <= 50){
-        this.damage = 'มีความรุนแรงมาก'
+       this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
       }
       else if(this.final >= 50.1 && this.final <= 72){
-        this.damage = 'มีความรุนแรงมากที่สุด'
+       this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
+      }
+      else{
+        this.damage = {damageTH:'ไม่มีระดับความรุนแรง'}
       }
     },
     sendMessage(){
             liff
               .sendMessages([
                 {
-  "type": "flex",
-  "altText": "this is a flex message",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "hello"
-        },
-        {
-          "type": "text",
-          "text": "world"
-        }
-      ]
-    }
-  }
-}
+                  "type": "message",
+                  "message":`คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`
+                },
+                {
+                  "type":"message",
+                  "message": this.damage.med
+                }
+                
               ])
               .then(() => {
                 console.log('message sent')
