@@ -133,7 +133,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://api.line.me/',
+    
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

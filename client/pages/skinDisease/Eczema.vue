@@ -813,7 +813,7 @@ export default {
         let body = {
           userId: this.userId,
           state: 'eczema',
-          substate: this.damage.damageEN,
+          subState: this.damage.damageEN,
         }
         await this.$axios.post(
           'https://3a8a-58-10-4-220.ngrok.io/api/updateState',
