@@ -126,7 +126,7 @@
             >
               <div class="m_width_120p">
                 <div class="m_width_120p text-center footerBtn">
-                  ส่งแบบสอบถาม
+                  ส่งแบบประเมิน
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@
             >
               <div class="m_width_120p">
                 <div class="m_width_120p text-center footerBtn">
-                  ส่งแบบสอบถาม
+                  ส่งแบบประเมิน
                 </div>
               </div>
             </div>
@@ -804,7 +804,7 @@ export default {
           console.log('message sent')
         })
         .catch((err) => {
-          alear('liff',err)
+          alear('liff', err)
           console.log('error', err)
         })
     },

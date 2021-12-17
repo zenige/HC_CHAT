@@ -49,7 +49,7 @@
             Group: <span>{{ userInfoDataModal.Group }}</span>
           </div>
           <div class="txt_patientInfo_16px" style="padding-top: 0.5rem">
-            แบบสอบถาม
+            แบบประเมิน
           </div>
           <div
             v-for="(itemSurvey, index) in userInfoDataModal.SurveyData"
