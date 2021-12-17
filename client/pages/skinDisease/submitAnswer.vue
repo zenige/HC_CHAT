@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="text-center question_txt mt-3">
-            ส่งแบบสอบถามเรียบร้อยแล้ว !
+            ส่งแบบประเมินเรียบร้อยแล้ว !
           </div>
           <div class="text-center answer_txt mt-1">
             กรุณากลับไปที่ LINE Chatbot เพื่อดูผลลัพธ์
