@@ -1,0 +1,309 @@
+/* main_vl.css */
+.body_bg_grey {
+  background-color: #f3f3f3;
+}
+
+.hc_navbar .txt_hc_head,
+.modal-dialog .txt_hc_head {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  color: #192a3e;
+  line-height: 1.35em !important;
+  font-size: 16px;
+}
+.hc_navbar .card {
+  margin-bottom: 1.25rem;
+  border: 0px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 1px 5px 0 rgba(14, 30, 62, 0.18);
+  border-radius: 10px;
+}
+.card {
+  margin-bottom: 1.25rem;
+  border: 0px solid #888;
+  box-shadow: 0 1px 5px 0 rgba(14, 30, 62, 0.18);
+  border-radius: 10px;
+}
+.txt_hc_head {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  color: #000;
+  line-height: 1em;
+  font-size: 20px;
+}
+.txt_grey_close {
+  color: #888;
+}
+.txt_grey_cancel {
+  color: #707683;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.txt_grey_cancel:hover {
+  color: #de493c;
+}
+.txt_hc_bighead_sm {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 20px;
+  color: #333333;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_24p {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 24px;
+  color: #192a3e;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_18p {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 18px;
+  color: #192a3e;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_20p {
+  font-family: 'Prompt-Medium';
+  font-style: normal;
+  font-size: 20px;
+  color: #192a3e;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_sub_16p {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  font-size: 16px;
+  color: #90a0b7;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.txt_hc_bighead_sm_regular {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  font-size: 20px;
+  color: #333333;
+  line-height: 1.35em;
+  overflow: hidden;
+}
+.btn_hc_grey_light_border {
+  color: #888;
+  background-color: transparent;
+  border-radius: 5rem;
+  font-size: 18px;
+  padding: 0.1375rem 1rem;
+  border: 1px solid #d9d9d9;
+}
+.btn_hc_grey_light_border:hover {
+  color: #fff;
+  background-color: #10c4cc;
+  border: 1px solid #10c4cc;
+}
+.txt_hc_black_24p {
+  font-style: normal;
+  font-size: 24px;
+  color: #333333;
+  line-height: 1.35em;
+}
+.border_gray_ddd {
+  border-color: #ddd !important;
+}
+.p_card {
+  padding: 10px !important;
+}
+.txt_hc_red {
+  color: #10c4cc;
+}
+.form_check_0 .switchery > small {
+  top: 0px;
+}
+.btn_hc_setting_grey {
+  color: #888 !important;
+  background-color: transparent;
+  padding: 8px 14px;
+  border-radius: 5rem;
+  border: 0px;
+}
+.btn_hc_setting_grey:hover {
+  color: #10c4cc !important;
+  background-color: #f3f3f3;
+  padding: 8px 14px;
+  border-radius: 5rem;
+  border: 0px;
+  opacity: 1 !important;
+}
+/* /.main_vl.css */
+/* AnyTime Picker Date */
+.AnyTime-win {
+  padding: 0.9375rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  z-index: 1070;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+.AnyTime-mon-btn {
+  float: left;
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+}
+.AnyTime-btn {
+  padding: 0.4375rem;
+  cursor: pointer;
+  border-radius: 5rem;
+  transition: all ease-in-out 0.15s;
+}
+.AnyTime-yr-cur-btn,
+.AnyTime-yr-next-btn,
+.AnyTime-yr-prior-btn {
+  display: inline-block;
+  min-width: 3rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-yrs-ahead-btn,
+.AnyTime-yrs-past-btn {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-btn:hover {
+  color: #fff;
+  background-color: #10c4cc;
+  border-radius: 5rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-body-yr-selector .AnyTime-cur-btn,
+.AnyTime-body-yr-selector .AnyTime-cur-btn:hover,
+.AnyTime-dom-table .AnyTime-cur-btn,
+.AnyTime-dom-table .AnyTime-cur-btn:hover {
+  background-color: #10c4cc;
+  color: #fff;
+  border-radius: 5rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-mons .AnyTime-cur-btn,
+.AnyTime-mons .AnyTime-cur-btn:hover {
+  background-color: #10c4cc;
+  color: #fff;
+  border-radius: 5rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-time .AnyTime-cur-btn,
+.AnyTime-time .AnyTime-cur-btn:hover {
+  background-color: #10c4cc;
+  color: #fff;
+  border-radius: 5rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-yrs .AnyTime-cur-btn,
+.AnyTime-yrs .AnyTime-cur-btn:hover,
+.AnyTime-mons .AnyTime-cur-btn,
+.AnyTime-mons .AnyTime-cur-btn:hover,
+.AnyTime-time .AnyTime-cur-btn,
+.AnyTime-time .AnyTime-cur-btn:hover,
+.AnyTime-body-yr-selector .AnyTime-cur-btn,
+.AnyTime-body-yr-selector .AnyTime-cur-btn:hover,
+.AnyTime-dom-table .AnyTime-cur-btn,
+.AnyTime-dom-table .AnyTime-cur-btn:hover {
+  background-color: #10c4cc;
+  color: #fff;
+  border-radius: 5rem;
+  width: 45px;
+  height: 45px;
+}
+.AnyTime-dom-table th,
+.AnyTime-dom-table td {
+  width: 45px; /*14.28571%*/
+  height: 45px;
+}
+.AnyTime-hr-btn,
+.AnyTime-min-one-btn,
+.AnyTime-min-ten-btn,
+.AnyTime-sec-one-btn,
+.AnyTime-sec-ten-btn {
+  /* min-width: 2.5rem; */
+  width: 45px;
+  height: 45px;
+}
+/* /.AnyTime Picker Date */
+.ic_hc_noti {
+  right: -7px;
+  top: -3px;
+}
+.ic_hc_noti_card {
+  right: 5px;
+  top: 3px;
+}
+.ic_hc_noti_menu {
+  right: 0px;
+  top: -5px;
+}
+.minheight_70p {
+  min-height: 70px;
+}
+.txt_hc_head_24p {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  color: #333333;
+  line-height: 1.35em !important;
+  font-size: 24px;
+}
+.txt_hc_subject {
+  font-family: 'Prompt-Regular';
+  font-style: normal;
+  font-size: 30px;
+  color: #333333;
+  line-height: 1em;
+}
+/* hide scrollbar */
+.cd-tabs__navigation-2,
+.hide_scrollbar {
+  background-color: transparent;
+  overflow-y: scroll;
+}
+.cd-tabs__navigation-2::-webkit-scrollbar,
+.hide_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.cd-tabs__navigation-2,
+.hide_scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* /.hide scrollbar */
+
+@media (max-width: 1366px) {
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 1024px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+  .txt_hc_subject {
+    font-family: 'Prompt-Regular';
+    font-style: normal;
+    font-size: 28px;
+    color: #333333;
+    line-height: 1em;
+  }
+}
+@media (max-width: 414px) {
+}
+@media (max-width: 375px) {
+}
+@media (max-width: 320px) {
+}
